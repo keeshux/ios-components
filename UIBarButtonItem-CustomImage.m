@@ -42,6 +42,15 @@
     return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];    
 }
 
++ (id) itemWithImage:(UIImage *)image
+{
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:image forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];    
+}
+
 + (id) itemWithImage:(UIImage *)image target:(id)target action:(SEL)action
 {
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
