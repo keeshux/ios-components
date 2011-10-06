@@ -33,13 +33,11 @@
 
 + (id) itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action
 {
-    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [aButton setBackgroundImage:image forState:UIControlStateNormal];
-    aButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    aButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    UIBarButtonItem *item = [UIBarButtonItem itemWithBackgroundImage:image];
+    UIButton *aButton = (UIButton *) item.customView;
     [aButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 
-    return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];    
+    return item;
 }
 
 + (id) itemWithImage:(UIImage *)image
@@ -53,12 +51,11 @@
 
 + (id) itemWithImage:(UIImage *)image target:(id)target action:(SEL)action
 {
-    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [aButton setImage:image forState:UIControlStateNormal];
-    aButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIBarButtonItem *item = [UIBarButtonItem itemWithImage:image];
+    UIButton *aButton = (UIButton *) item.customView;
     [aButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    
-    return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];    
+
+    return item;
 }
 
 @end
