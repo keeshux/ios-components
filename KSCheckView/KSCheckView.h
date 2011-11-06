@@ -1,5 +1,5 @@
 /*
- * CheckView.h
+ * KSCheckView.h
  *
  * Copyright 2011 Davide De Rosa
  * 
@@ -19,7 +19,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CheckView : UIView {
+@interface KSCheckView : UIView {
     CGFloat width;
     CGMutablePathRef path;
 

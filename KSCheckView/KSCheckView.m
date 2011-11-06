@@ -1,5 +1,5 @@
 /*
- * CheckView.m
+ * KSCheckView.m
  *
  * Copyright 2011 Davide De Rosa
  * 
@@ -17,9 +17,9 @@
  *
  */
 
-#import "CheckView.h"
+#import "KSCheckView.h"
 
-@implementation CheckView
+@implementation KSCheckView
 
 @synthesize enabled;
 @synthesize color;
