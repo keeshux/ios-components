@@ -1,5 +1,1 @@
 CheckView is a simple checkbox control.
-
-UIBarButtonItem (CustomImage) is a category that adds convenient constructors for bar items with custom images (through an UIButton).
-
-UIButton (HideResponder) simulates the "hide keyboard on outside touch" behaviour with an invisible full-screen UIButton to be put right behind the keyboard.
