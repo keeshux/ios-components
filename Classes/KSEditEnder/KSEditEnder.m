@@ -45,6 +45,7 @@
         // will end editing in future superview (the view parameter)
         [self addTarget:self action:@selector(endEditingInSuperview) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:self];
+        [view bringSubviewToFront:self];
     }
     return self;
 }
