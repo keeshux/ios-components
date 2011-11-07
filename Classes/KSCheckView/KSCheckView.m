@@ -21,18 +21,24 @@
 
 @implementation KSCheckView
 
-@synthesize enabled;
+@synthesize checked;
 @synthesize color;
 
-- (id) initWithCoder:(NSCoder *)aDecoder
+- (id) initWithFrame:(CGRect)frame
 {
-    if ((self = [super initWithCoder:aDecoder])) {
+    if ((self = [super initWithFrame:frame])) {
         width = self.frame.size.width / 8.0;
 
         path = CGPathCreateMutable();
         CGPathMoveToPoint(path, NULL, width, self.frame.size.height / 2);
         CGPathAddLineToPoint(path, NULL, self.frame.size.width * 0.4, self.frame.size.height - width);
         CGPathAddLineToPoint(path, NULL, self.frame.size.width - width, width);
+
+        self.backgroundColor = [UIColor whiteColor];
+        self.color = [UIColor blackColor];
+
+        // toggle action
+        [self addTarget:self action:@selector(toggle) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -40,14 +46,14 @@
 - (void) dealloc
 {
     CGPathRelease(path);
-    [color release];
+    self.color = nil;
 
     [super dealloc];
 }
 
-- (void) setEnabled:(BOOL)aEnabled
+- (void) setChecked:(BOOL)aChecked
 {
-    enabled = aEnabled;
+    checked = aChecked;
     [self setNeedsDisplay];
 }
 
@@ -60,7 +66,7 @@
     CGContextFillRect(context, rect);
 
     // check mark
-    if (enabled) {
+    if (checked) {
         CGContextSetStrokeColorWithColor(context, color.CGColor);
         CGContextSetShouldAntialias(context, YES);
         CGContextSetLineCap(context, kCGLineCapRound);
@@ -70,6 +76,11 @@
         CGContextAddPath(context, path);
         CGContextStrokePath(context);
     }
+}
+
+- (void) toggle
+{
+    self.checked = !checked;
 }
 
 @end

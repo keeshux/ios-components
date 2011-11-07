@@ -1,5 +1,5 @@
 /*
- * KSCheckView.h
+ * KSSheetView.h
  *
  * Copyright 2011 Davide De Rosa
  * 
@@ -19,15 +19,28 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KSCheckView : UIView {
-    CGFloat width;
-    CGMutablePathRef path;
+@protocol KSSheetViewDelegate;
 
-    BOOL enabled;
-    UIColor *color;
+@interface KSSheetView : UIView {
+    CGColorRef paperColor;
+    CGColorRef lineColor;
 }
 
-@property (nonatomic, assign) BOOL enabled;
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, assign) NSUInteger cellSize;
+@property (nonatomic, assign) CGPoint offset;
+@property (nonatomic, assign) CGFloat lineWidth;
+
+// derived from cellSize
+@property (nonatomic, readonly) NSUInteger gridWidth;
+@property (nonatomic, readonly) NSUInteger gridHeight;
+
+// for custom drawing
+@property (nonatomic, assign) id<KSSheetViewDelegate> delegate;
+
+@end
+
+@protocol KSSheetViewDelegate
+
+- (void) drawInSheet:(KSSheetView *)sheetView inContext:(CGContextRef)context inRect:(CGRect)rect;
 
 @end

@@ -1,3 +1,7 @@
 .DS_Store
 *.swp
 *.o
+*.class
+Demo/ComponentsDemo.xcodeproj/project.xcworkspace
+Demo/ComponentsDemo.xcodeproj/xcuserdata
+comment
