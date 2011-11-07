@@ -8,12 +8,6 @@
 
 #import "ViewController.h"
 
-//#import "VC_KSAdvancedPicker.h"
-//#import "VC_KSCheckView.h"
-//#import "VC_KSEditEnder.h"
-//#import "VC_KSProgressDownloader.h"
-//#import "VC_KSSheetView.h"
-
 @implementation ViewController
 
 @synthesize menu;
