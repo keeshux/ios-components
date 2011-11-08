@@ -59,7 +59,6 @@
         table.contentInset = UIEdgeInsetsMake(centralRowOffset, 0, centralRowOffset, 0);
         table.separatorStyle = UITableViewCellSeparatorStyleNone;
         table.showsVerticalScrollIndicator = NO;
-        table.allowsSelection = NO;
 
         // custom background?
         if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) {
@@ -146,7 +145,21 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row];
+    UITableViewCell *cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row];
+
+    // allow selection but keep invisible
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self scrollToRowAtIndex:indexPath.row animated:YES];
+
+    [delegate advancedPicker:self didClickRowAtIndex:indexPath.row];
 }
 
 #pragma mark - UIScrollViewDelegate

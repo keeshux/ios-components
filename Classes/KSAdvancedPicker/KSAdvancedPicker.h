@@ -48,6 +48,7 @@
 
 // selected row
 - (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex;
+- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex;
 
 // table background view (checked in the same order)
 - (UIView *) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker;
