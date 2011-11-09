@@ -24,6 +24,8 @@
 @synthesize checked;
 @synthesize color;
 
+@synthesize delegate;
+
 - (id) initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
@@ -53,8 +55,15 @@
 
 - (void) setChecked:(BOOL)aChecked
 {
+    // do nothing
+    if (checked == aChecked) {
+        return;
+    }
+
     checked = aChecked;
     [self setNeedsDisplay];
+
+    [delegate checkView:self didChangeToChecked:checked];
 }
 
 - (void) drawRect:(CGRect)rect

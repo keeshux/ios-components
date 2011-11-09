@@ -19,6 +19,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KSCheckViewDelegate;
+
 @interface KSCheckView : UIControl {
     CGFloat width;
     CGMutablePathRef path;
@@ -27,6 +29,14 @@
 @property (nonatomic, assign) BOOL checked;
 @property (nonatomic, retain) UIColor *color;
 
+@property (nonatomic, assign) id<KSCheckViewDelegate> delegate;
+
 - (void) toggleChecked;
+
+@end
+
+@protocol KSCheckViewDelegate
+
+- (void) checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked;
 
 @end

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "KSCheckView.h"
 
-@interface VC_KSCheckView : UIViewController
+@interface VC_KSCheckView : UIViewController<KSCheckViewDelegate>
 
 @end

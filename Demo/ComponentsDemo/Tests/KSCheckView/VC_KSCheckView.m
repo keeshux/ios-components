@@ -30,6 +30,7 @@
     onCheck.backgroundColor = [UIColor blueColor];
     onCheck.color = [UIColor whiteColor];
     onCheck.checked = YES;
+    onCheck.delegate = self;
     [self.view addSubview:onCheck];
     [onCheck release];
 
@@ -37,6 +38,7 @@
     offCheck.backgroundColor = [UIColor redColor];
     offCheck.color = [UIColor yellowColor];
     offCheck.checked = NO;
+    offCheck.delegate = self;
     [self.view addSubview:offCheck];
     [offCheck release];
 }
@@ -51,6 +53,13 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
+}
+
+#pragma mark - KSCheckViewDelegate
+
+- (void) checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked
+{
+    NSLog(@"check view is now %@", (checked ? @"checked" : @"unchecked"));
 }
 
 @end
