@@ -12,6 +12,14 @@
 
 @synthesize fileInfo;
 
+- (void) dealloc
+{
+    [KSProgressDownloader instance].delegate = nil;
+    self.fileInfo = nil;
+
+    [super dealloc];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

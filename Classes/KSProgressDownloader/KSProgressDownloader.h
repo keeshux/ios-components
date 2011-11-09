@@ -22,8 +22,7 @@
 
 @protocol KSProgressDownloaderDelegate;
 
-@interface KSProgressDownloader : NSObject<ASIHTTPRequestDelegate, UIAlertViewDelegate> {
-}
+@interface KSProgressDownloader : NSObject<ASIHTTPRequestDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, copy) NSString *message;
 //@property (nonatomic, copy) NSString *cancelTitle;
