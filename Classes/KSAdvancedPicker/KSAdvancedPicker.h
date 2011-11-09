@@ -21,8 +21,7 @@
 
 @protocol KSAdvancedPickerDelegate;
 
-@interface KSAdvancedPicker : UIView<UITableViewDataSource, UITableViewDelegate> {
-}
+@interface KSAdvancedPicker : UIView<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, readonly) UITableView *table;
 @property (nonatomic, readonly) NSInteger selectedRowIndex;

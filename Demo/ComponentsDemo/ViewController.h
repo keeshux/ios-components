@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@interface MenuItem : NSObject
+
+@property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *categoryName;
+
++ (id) itemWithClassName:(NSString *)aClassName;
++ (id) itemWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
+- (id) initWithClassName:(NSString *)aClassName;
+- (id) initWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
+
+@end
+
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
 }
 
-@property (nonatomic, retain) NSMutableArray *menu;
+@property (nonatomic, retain) NSMutableArray *menuClasses;
+@property (nonatomic, retain) NSMutableArray *menuCategories;
 
 @end
