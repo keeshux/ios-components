@@ -34,8 +34,8 @@
     [onCheck release];
 
     KSCheckView *offCheck = [[KSCheckView alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
-    offCheck.backgroundColor = [UIColor blueColor];
-    offCheck.color = [UIColor whiteColor];
+    offCheck.backgroundColor = [UIColor redColor];
+    offCheck.color = [UIColor yellowColor];
     offCheck.checked = NO;
     [self.view addSubview:offCheck];
     [offCheck release];
