@@ -27,4 +27,6 @@
 @property (nonatomic, assign) BOOL checked;
 @property (nonatomic, retain) UIColor *color;
 
+- (void) toggleChecked;
+
 @end

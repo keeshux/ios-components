@@ -38,7 +38,7 @@
         self.color = [UIColor blackColor];
 
         // toggle action
-        [self addTarget:self action:@selector(toggle) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(toggleChecked) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -78,7 +78,7 @@
     }
 }
 
-- (void) toggle
+- (void) toggleChecked
 {
     self.checked = !checked;
 }
