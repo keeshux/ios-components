@@ -37,6 +37,10 @@
 		8C712706146751DC00C03BD2 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126F4146751DC00C03BD2 /* ASINetworkQueue.m */; };
 		8C712707146751DC00C03BD2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8C7126F8146751DC00C03BD2 /* LICENSE */; };
 		8C712708146751DC00C03BD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126FE146751DC00C03BD2 /* Reachability.m */; };
+		8CA7D63D146D828C0042648E /* MKMapView+Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D63C146D828C0042648E /* MKMapView+Zoom.m */; };
+		8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */; };
+		8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D642146D84B60042648E /* MapKit.framework */; };
+		8CA7D645146D84E60042648E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D644146D84E60042648E /* CoreLocation.framework */; };
 		8CABAF95146AC9DC0056D831 /* VC_NSString_DateConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF91146AC9DC0056D831 /* VC_NSString_DateConversion.m */; };
 		8CABAF96146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF94146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m */; };
 		8CABAF9D146AD2440056D831 /* NSString+DateConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF99146AD2440056D831 /* NSString+DateConversion.m */; };
@@ -106,6 +110,12 @@
 		8C7126F8146751DC00C03BD2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8C7126FD146751DC00C03BD2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8C7126FE146751DC00C03BD2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8CA7D63B146D828C0042648E /* MKMapView+Zoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Zoom.h"; sourceTree = "<group>"; };
+		8CA7D63C146D828C0042648E /* MKMapView+Zoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Zoom.m"; sourceTree = "<group>"; };
+		8CA7D63F146D84810042648E /* VC_MKMapView_Zoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_MKMapView_Zoom.h; sourceTree = "<group>"; };
+		8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_MKMapView_Zoom.m; sourceTree = "<group>"; };
+		8CA7D642146D84B60042648E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8CA7D644146D84E60042648E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8CABAF90146AC9DC0056D831 /* VC_NSString_DateConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSString_DateConversion.h; sourceTree = "<group>"; };
 		8CABAF91146AC9DC0056D831 /* VC_NSString_DateConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSString_DateConversion.m; sourceTree = "<group>"; };
 		8CABAF93146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIBarButtonItem_CustomImage.h; sourceTree = "<group>"; };
@@ -142,6 +152,8 @@
 				8C4D3D19146756A90093F771 /* CFNetwork.framework in Frameworks */,
 				8C4D3D1F146756E00093F771 /* MobileCoreServices.framework in Frameworks */,
 				8C4D3D1D146756CD0093F771 /* libz.dylib in Frameworks */,
+				8CA7D645146D84E60042648E /* CoreLocation.framework in Frameworks */,
+				8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +187,8 @@
 				8C4D3D18146756A80093F771 /* CFNetwork.framework */,
 				8C4D3D1E146756E00093F771 /* MobileCoreServices.framework */,
 				8C4D3D1C146756CD0093F771 /* libz.dylib */,
+				8CA7D644146D84E60042648E /* CoreLocation.framework */,
+				8CA7D642146D84B60042648E /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -364,9 +378,28 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		8CA7D639146D82200042648E /* MKMapView+Zoom */ = {
+			isa = PBXGroup;
+			children = (
+				8CA7D63B146D828C0042648E /* MKMapView+Zoom.h */,
+				8CA7D63C146D828C0042648E /* MKMapView+Zoom.m */,
+			);
+			path = "MKMapView+Zoom";
+			sourceTree = "<group>";
+		};
+		8CA7D63E146D83DB0042648E /* MKMapView+Zoom */ = {
+			isa = PBXGroup;
+			children = (
+				8CA7D63F146D84810042648E /* VC_MKMapView_Zoom.h */,
+				8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */,
+			);
+			path = "MKMapView+Zoom";
+			sourceTree = "<group>";
+		};
 		8CABAF7E146AC8C60056D831 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8CA7D639146D82200042648E /* MKMapView+Zoom */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
 				8CABAF9A146AD2440056D831 /* UIBarButtonItem+CustomImage */,
 			);
@@ -377,6 +410,7 @@
 		8CABAF8E146AC9DC0056D831 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8CA7D63E146D83DB0042648E /* MKMapView+Zoom */,
 				8CABAF8F146AC9DC0056D831 /* NSString+DateConversion */,
 				8CABAF92146AC9DC0056D831 /* UIBarButtonItem+CustomImage */,
 			);
@@ -577,6 +611,8 @@
 				8CABAFB1146AD26D0056D831 /* VC_KSEditEnder.m in Sources */,
 				8CABAFB2146AD26D0056D831 /* VC_KSProgressDownloader.m in Sources */,
 				8CABAFB3146AD26D0056D831 /* VC_KSSheetView.m in Sources */,
+				8CA7D63D146D828C0042648E /* MKMapView+Zoom.m in Sources */,
+				8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
