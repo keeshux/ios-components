@@ -7,50 +7,8 @@
 //
 
 #import "VC_MKMapView_Zoom.h"
+#import "KSBasicMapAnnotation.h"
 #import "MKMapView+Zoom.h"
-
-@interface KSBasicMapAnnotation : NSObject<MKAnnotation>
-
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subtitle;
-
-- (id) initWithCoordinate:(CLLocationCoordinate2D)aCoordinate title:(NSString *)aTitle subtitle:(NSString *)aSubtitle;
-
-@end
-
-@implementation KSBasicMapAnnotation
-
-@synthesize coordinate;
-@synthesize title;
-@synthesize subtitle;
-
-+ (id) annotationWithCoordinate:(CLLocationCoordinate2D)aCoordinate title:(NSString *)aTitle subtitle:(NSString *)aSubtitle
-{
-    return [[[self alloc] initWithCoordinate:aCoordinate title:aTitle subtitle:aSubtitle] autorelease];
-}
-
-- (id) initWithCoordinate:(CLLocationCoordinate2D)aCoordinate title:(NSString *)aTitle subtitle:(NSString *)aSubtitle
-{
-    if ((self = [super init])) {
-        self.coordinate = aCoordinate;
-        self.title = aTitle;
-        self.subtitle = aSubtitle;
-    }
-    return self;
-}
-
-- (void) dealloc
-{
-    self.title = nil;
-    self.subtitle = nil;
-
-    [super dealloc];
-}
-
-@end
-
-//
 
 @implementation VC_MKMapView_Zoom
 
