@@ -29,10 +29,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"KSAdvancedPicker";
-
-    //
-
     data = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < 20; ++i) {
         [data addObject:[NSString stringWithFormat:@"Row %d", i]];

@@ -22,10 +22,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"KSSheetView";
-
-    //
-
     KSSheetView *sheet = [[KSSheetView alloc] initWithFrame:self.view.bounds];
     sheet.cellSize = 20;
     sheet.lineWidth = 1.0;

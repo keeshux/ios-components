@@ -165,13 +165,17 @@
     }
 
     NSString *vcName = nil;
+    NSString *vcTitle = nil;
     if (!item.categoryName) {
         vcName = [NSString stringWithFormat:@"VC_%@", item.className];
+        vcTitle = item.className;
     } else {
         vcName = [NSString stringWithFormat:@"VC_%@_%@", item.className, item.categoryName];
+        vcTitle = [NSString stringWithFormat:@"%@+%@", item.className, item.categoryName];
     }
 
     UIViewController *vc = [[NSClassFromString(vcName) alloc] init];
+    vc.title = vcTitle;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }

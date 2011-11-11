@@ -42,10 +42,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"NSString+DateConversion";
-
-    //
-
     UIScrollView *scroller = [[UIScrollView alloc] initWithFrame:self.view.frame];
     
     CGSize scrollableSize = self.view.frame.size;

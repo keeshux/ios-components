@@ -35,10 +35,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"MKMapView+Zoom";
-
-    //
-
     MKMapView *map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:map];
     [map release];

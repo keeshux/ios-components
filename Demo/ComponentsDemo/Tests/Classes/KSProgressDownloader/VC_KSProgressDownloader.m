@@ -32,10 +32,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"KSProgressDownloader";
-
-    //
-
     self.fileInfo = [[UITextView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:fileInfo];
     [fileInfo release];

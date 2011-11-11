@@ -22,10 +22,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"KSCheckView";
-
-    //
-
     KSCheckView *onCheck = [[KSCheckView alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
     onCheck.backgroundColor = [UIColor blueColor];
     onCheck.color = [UIColor whiteColor];

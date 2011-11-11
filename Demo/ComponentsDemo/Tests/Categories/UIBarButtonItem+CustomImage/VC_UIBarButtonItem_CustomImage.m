@@ -25,10 +25,6 @@
 {
     [super viewDidLoad];
 
-    self.title = @"UIBarButtonItem+CustomImage";
-    
-    //
-    
     UIBarButtonItem *leftItem = [UIBarButtonItem itemWithBackgroundImage:[UIImage imageNamed:@"ItemBackgroundImage.png"]
                                                                   target:self
                                                                   action:@selector(leftItemClicked:)];

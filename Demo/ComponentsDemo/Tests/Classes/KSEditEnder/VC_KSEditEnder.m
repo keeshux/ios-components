@@ -33,10 +33,6 @@
 {
     [super viewDidLoad];
     
-    self.title = @"KSEditEnder";
-
-    //
-
     self.fields = [NSMutableArray array];
 
     const CGFloat width = self.view.frame.size.width - 40;    
