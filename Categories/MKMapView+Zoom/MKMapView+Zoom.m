@@ -39,6 +39,11 @@
     [annotations release];
 }
 
+- (void) zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated
+{
+    [self zoomOnAnnotations:customAnnotations spanCorrection:0.1 animated:animated];
+}
+
 - (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
 {
     const NSUInteger annotationsCount = [customAnnotations count];
