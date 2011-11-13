@@ -24,5 +24,6 @@
 
 - (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated;
 - (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
+- (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
 
 @end

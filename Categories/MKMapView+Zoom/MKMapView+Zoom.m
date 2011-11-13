@@ -28,29 +28,38 @@
 
 - (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
 {
-    const NSUInteger annotationsCount = [self.annotations count];
+    NSMutableArray *annotations = [[NSMutableArray alloc] initWithArray:self.annotations];
 
+    // optionally exclude user location annotation
+    if (!includeUserLocation) {
+        [annotations removeObject:self.userLocation];
+    }
+    
+    [self zoomOnAnnotations:annotations spanCorrection:spanCorrection animated:animated];
+    [annotations release];
+}
+
+- (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
+{
+    const NSUInteger annotationsCount = [customAnnotations count];
+    
     if (annotationsCount == 0) {
         return;
     } else if (annotationsCount == 1) {
-        CLLocation *center = [self.annotations objectAtIndex:0];
-
+        CLLocation *center = [customAnnotations objectAtIndex:0];
+        
         // zoom the only coordinate with a radius
         if (CLLocationCoordinate2DIsValid(center.coordinate)) {
             [self setRegion:MKCoordinateRegionMake(center.coordinate, MKCoordinateSpanMake(0.01, 0.01)) animated:animated];
         }
-
+        
         return;
     }
-
+    
     CLLocationCoordinate2D nw = CLLocationCoordinate2DMake(90, 180);
     CLLocationCoordinate2D se = CLLocationCoordinate2DMake(-90, -180);
     
-    for (id<MKAnnotation> ann in self.annotations) {
-        if (!includeUserLocation && [ann isKindOfClass:[MKUserLocation class]]) {
-            continue;
-        }
-
+    for (id<MKAnnotation> ann in customAnnotations) {
         if (ann.coordinate.latitude < nw.latitude) {
             nw.latitude = ann.coordinate.latitude;
         }
@@ -64,16 +73,16 @@
             se.longitude = ann.coordinate.longitude;
         }
     }
-
-//    DDLog(@"north-west = {%f,%f}", nw.latitude, nw.longitude);
-//    DDLog(@"south-east = {%f,%f}", se.latitude, se.longitude);
-
+    
+    //    DDLog(@"north-west = {%f,%f}", nw.latitude, nw.longitude);
+    //    DDLog(@"south-east = {%f,%f}", se.latitude, se.longitude);
+    
     MKCoordinateRegion zoom;
     zoom.center.latitude = nw.latitude - (nw.latitude - se.latitude) / 2.0;
     zoom.center.longitude = nw.longitude + (se.longitude - nw.longitude) / 2.0;
     zoom.span.latitudeDelta = (nw.latitude - se.latitude) * (1.0 + spanCorrection);
     zoom.span.longitudeDelta = (se.longitude - nw.longitude) * (1.0 + spanCorrection);
-
+    
     const MKCoordinateRegion fitZoom = [self regionThatFits:zoom];
     [self setRegion:fitZoom animated:animated];
 }
