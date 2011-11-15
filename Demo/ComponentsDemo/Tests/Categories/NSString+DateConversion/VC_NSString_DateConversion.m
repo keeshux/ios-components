@@ -51,8 +51,11 @@
     const CGFloat width = scrollableSize.width - 2 * x;
     
     inputDate = [[UITextField alloc] initWithFrame:CGRectMake(x, 20, width, 30)];
+    inputDate.placeholder = @"Input date (e.g.: 06/15/2011)";
     inputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 60, width, 30)];
+    inputFormat.placeholder = @"Input format (e.g.: MM/dd/yyyy)";
     outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
+    outputFormat.placeholder = @"Output format (e.g.: eee dd)";
     outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
     convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
@@ -72,10 +75,6 @@
     [scroller addSubview:outputDate];
     [scroller addSubview:convertButton];
     
-    inputDate.text = @"06/15/2011";
-    inputFormat.text = @"MM/dd/yyyy";
-    outputFormat.text = @"eee dd MMMM yyyy";
-
     [self.view addSubview:scroller];
     [scroller release];
 }
