@@ -50,17 +50,11 @@
     const CGFloat x = 20;
     const CGFloat width = scrollableSize.width - 2 * x;
     
-    self.inputDate = [[UITextField alloc] initWithFrame:CGRectMake(x, 20, width, 30)];
-    self.inputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 60, width, 30)];
-    self.outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
-    self.outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
-    self.convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    
-    // retainCount = 2
-    [inputDate release];
-    [inputFormat release];
-    [outputFormat release];
-    [outputDate release];
+    inputDate = [[UITextField alloc] initWithFrame:CGRectMake(x, 20, width, 30)];
+    inputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 60, width, 30)];
+    outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
+    outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
+    convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     inputDate.borderStyle = UITextBorderStyleRoundedRect;
     inputDate.delegate = self;
