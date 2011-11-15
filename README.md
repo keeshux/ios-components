@@ -36,6 +36,10 @@ Zoom on multiple map annotations optionally including user location. A delta can
 
 Convert date format in `NSString` without bothering with `NSDateFormatter`.
 
+## NSString+Digest
+
+Generate MD5 and SHA1 digest from `NSString`.
+
 ## UIBarButtonItem+CustomImage
 
 Add a custom image or background image to your `UIBarButtonItem`.
