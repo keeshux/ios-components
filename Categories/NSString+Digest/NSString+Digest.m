@@ -31,8 +31,8 @@
         return nil;
     }
     
-    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; ++i) {
+    NSMutableString *digest = [NSMutableString stringWithCapacity:(CC_MD5_DIGEST_LENGTH * 2)];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; ++i) {
         [digest appendFormat:@"%02x", digestBytes[i]];
     }
     
@@ -49,8 +49,8 @@
         return nil;
     }
     
-    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; ++i) {
+    NSMutableString *digest = [NSMutableString stringWithCapacity:(CC_SHA1_DIGEST_LENGTH * 2)];
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; ++i) {
         [digest appendFormat:@"%02x", digestBytes[i]];
     }
     
