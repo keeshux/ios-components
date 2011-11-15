@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
 
-    UIScrollView *scroller = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    UIScrollView *scroller = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     
     CGSize scrollableSize = self.view.frame.size;
     scrollableSize.height += 100;
