@@ -36,7 +36,7 @@
 
 - (id) initWithView:(UIView *)view
 {
-    if ((self = [super initWithFrame:view.frame])) {
+    if ((self = [super initWithFrame:view.bounds])) {
 
         // initially disabled
         self.userInteractionEnabled = NO;
