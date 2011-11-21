@@ -21,12 +21,12 @@
 
 @implementation MKMapView (Zoom)
 
-- (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated
+- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated
 {
-    [self zoomOnCurrentAnnotazionsIncludingUserLocation:includeUserLocation spanCorrection:0.1 animated:animated];
+    [self zoomOnCurrentAnnotationsIncludingUserLocation:includeUserLocation spanCorrection:0.1 animated:animated];
 }
 
-- (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
+- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
 {
     NSMutableArray *annotations = [[NSMutableArray alloc] initWithArray:self.annotations];
 

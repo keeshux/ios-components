@@ -22,8 +22,8 @@
 
 @interface MKMapView (Zoom)
 
-- (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated;
-- (void) zoomOnCurrentAnnotazionsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
+- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated;
+- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
 - (void) zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated;
 - (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
 
