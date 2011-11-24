@@ -35,7 +35,7 @@
 @implementation KSProgressDownloader
 
 @synthesize message;
-//@synthesize cancelTitle;
+@synthesize cancelTitle;
 
 @synthesize request;
 @synthesize originalHeaders;
@@ -56,7 +56,7 @@
 {
     if ((self = [super init])) {
         self.message = @"Downloading";
-//        self.cancelTitle = @"Cancel";
+        self.cancelTitle = @"Cancel";
     }
     return self;
 }
@@ -64,7 +64,7 @@
 - (void) dealloc
 {
     self.message = nil;
-//    self.cancelTitle = nil;
+    self.cancelTitle = nil;
 
     request.downloadProgressDelegate = nil;
     request.delegate = nil;
@@ -86,15 +86,14 @@
 
     // create new alert
     progressAlert = [[UIAlertView alloc] initWithTitle:nil
-                                               message:message
+                                               message:[NSString stringWithFormat:@"%@\n\n", message]
                                               delegate:self
-//                                     cancelButtonTitle:cancelTitle
-                                     cancelButtonTitle:nil
+                                     cancelButtonTitle:cancelTitle
                                      otherButtonTitles:nil];
 
     // add progress to alert
     UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
-    progressView.frame = CGRectMake(30, 80, 225, 90);
+    progressView.frame = CGRectMake(30, 50, 225, 30);
     [progressAlert addSubview:progressView];
     [progressView release];
 
@@ -119,7 +118,8 @@
 
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-//    [self cleanUpRequest];
+    [request cancel];
+    [self cleanUpRequest];
 }
 
 #pragma mark - Custom delegate
