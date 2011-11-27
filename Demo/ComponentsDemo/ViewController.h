@@ -18,6 +18,9 @@
 - (id) initWithClassName:(NSString *)aClassName;
 - (id) initWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
 
+- (NSString *) name;
+- (NSString *) title;
+
 @end
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {

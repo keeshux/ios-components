@@ -45,6 +45,24 @@
     [super dealloc];
 }
 
+- (NSString *) name
+{
+    if (!categoryName) {
+        return [NSString stringWithFormat:@"VC_%@", className];
+    } else {
+        return [NSString stringWithFormat:@"VC_%@_%@", className, categoryName];
+    }
+}
+
+- (NSString *) title
+{
+    if (!categoryName) {
+        return className;
+    } else {
+        return [NSString stringWithFormat:@"%@+%@", className, categoryName];
+    }
+}
+
 @end
 
 @implementation ViewController
@@ -165,18 +183,8 @@
         item = [menuCategories objectAtIndex:indexPath.row];
     }
 
-    NSString *vcName = nil;
-    NSString *vcTitle = nil;
-    if (!item.categoryName) {
-        vcName = [NSString stringWithFormat:@"VC_%@", item.className];
-        vcTitle = item.className;
-    } else {
-        vcName = [NSString stringWithFormat:@"VC_%@_%@", item.className, item.categoryName];
-        vcTitle = [NSString stringWithFormat:@"%@+%@", item.className, item.categoryName];
-    }
-
-    UIViewController *vc = [[NSClassFromString(vcName) alloc] init];
-    vc.title = vcTitle;
+    UIViewController *vc = [[NSClassFromString([item name]) alloc] init];
+    vc.title = [item title];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
 }
