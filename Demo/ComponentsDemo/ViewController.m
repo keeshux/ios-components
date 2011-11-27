@@ -45,7 +45,7 @@
     [super dealloc];
 }
 
-- (NSString *) name
+- (NSString *) viewControllerClassName
 {
     if (!categoryName) {
         return [NSString stringWithFormat:@"VC_%@", className];
@@ -183,7 +183,7 @@
         item = [menuCategories objectAtIndex:indexPath.row];
     }
 
-    UIViewController *vc = [[NSClassFromString([item name]) alloc] init];
+    UIViewController *vc = [[NSClassFromString([item viewControllerClassName]) alloc] init];
     vc.title = [item title];
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];

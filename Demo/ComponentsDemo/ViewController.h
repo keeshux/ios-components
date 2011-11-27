@@ -18,7 +18,7 @@
 - (id) initWithClassName:(NSString *)aClassName;
 - (id) initWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
 
-- (NSString *) name;
+- (NSString *) viewControllerClassName;
 - (NSString *) title;
 
 @end
