@@ -57,7 +57,7 @@
                                                              subtitle:@"Italy"]];
 
     // zoom on them
-    [map zoomOnCurrentAnnotazionsIncludingUserLocation:NO spanCorrection:0.2 animated:YES];
+    [map zoomOnCurrentAnnotationsIncludingUserLocation:YES spanCorrection:0.2 animated:YES];
 }
 
 - (void)viewDidUnload
