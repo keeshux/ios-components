@@ -57,7 +57,7 @@
     outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
     outputFormat.placeholder = @"Output format (e.g.: eee dd)";
     outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
-    convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     inputDate.borderStyle = UITextBorderStyleRoundedRect;
     inputDate.delegate = self;
