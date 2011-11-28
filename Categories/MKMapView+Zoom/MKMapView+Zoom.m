@@ -85,8 +85,8 @@
     MKCoordinateRegion zoom;
     zoom.center.latitude = nw.latitude - (nw.latitude - se.latitude) / 2.0;
     zoom.center.longitude = nw.longitude + (se.longitude - nw.longitude) / 2.0;
-    zoom.span.latitudeDelta = (nw.latitude - se.latitude) * (1.0 + spanCorrection);
-    zoom.span.longitudeDelta = (se.longitude - nw.longitude) * (1.0 + spanCorrection);
+    zoom.span.latitudeDelta = fabs(nw.latitude - se.latitude) * (1.0 + spanCorrection);
+    zoom.span.longitudeDelta = fabs(se.longitude - nw.longitude) * (1.0 + spanCorrection);
     
     const MKCoordinateRegion fitZoom = [self regionThatFits:zoom];
     [self setRegion:fitZoom animated:animated];
