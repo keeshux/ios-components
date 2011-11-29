@@ -159,7 +159,10 @@
 {
     [self scrollToRowAtIndex:indexPath.row animated:YES];
 
-    [delegate advancedPicker:self didClickRowAtIndex:indexPath.row];
+    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:)]) {
+        [delegate advancedPicker:self didClickRowAtIndex:indexPath.row];
+    }
+    
 }
 
 #pragma mark - UIScrollViewDelegate
