@@ -41,7 +41,7 @@
 
 // row view (multiple components)
 - (NSInteger) numberOfComponentsInAdvancedPicker:(KSAdvancedPicker *)picker;
-- (NSInteger) numberOfRowsInAdvancedPicker:(KSAdvancedPicker *)picker inComponent:(NSInteger)component;
+- (NSInteger) advancedPicker:(KSAdvancedPicker *)picker numberOfRowsInComponent:(NSInteger)component;
 - (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex forComponent:(NSInteger)component;
 
 @optional

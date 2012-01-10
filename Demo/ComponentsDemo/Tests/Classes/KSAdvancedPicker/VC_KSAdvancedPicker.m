@@ -92,7 +92,7 @@
     return 3;
 }
 
-- (NSInteger) numberOfRowsInAdvancedPicker:(KSAdvancedPicker *)picker inComponent:(NSInteger)component
+- (NSInteger) advancedPicker:(KSAdvancedPicker *)picker numberOfRowsInComponent:(NSInteger)component
 {
     return [data count];
 }

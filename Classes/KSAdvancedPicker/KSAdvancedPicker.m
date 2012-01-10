@@ -223,9 +223,9 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // LEGACY: remove respondsToSelector later, this is a required method
-    if ([delegate respondsToSelector:@selector(numberOfRowsInAdvancedPicker:inComponent:)]) {
+    if ([delegate respondsToSelector:@selector(advancedPicker:numberOfRowsInComponent:)]) {
         const NSInteger component = [self componentFromTableView:tableView];
-        return [delegate numberOfRowsInAdvancedPicker:self inComponent:component];
+        return [delegate advancedPicker:self numberOfRowsInComponent:component];
     } else {
         return [delegate numberOfRowsInAdvancedPicker:self];
     }
