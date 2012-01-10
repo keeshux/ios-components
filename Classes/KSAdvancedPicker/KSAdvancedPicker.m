@@ -21,20 +21,25 @@
 
 @interface KSAdvancedPicker ()
 
+@property (nonatomic, retain) NSMutableArray *tables;
+@property (nonatomic, retain) NSMutableArray *selectedRowIndexes;
 @property (nonatomic, retain) UIView *selector;
 
-- (void) alignToRowBoundary;
+- (NSInteger) componentFromTableView:(UITableView *)tableView;
+- (void) alignTableViewToRowBoundary:(UITableView *)tableView;
 
 @end
 
 @implementation KSAdvancedPicker
 
 // public
-@synthesize table;
-@synthesize selectedRowIndex;
+//@synthesize table;
+//@synthesize selectedRowIndex;
 @synthesize delegate;
 
 // private
+@synthesize tables;
+@synthesize selectedRowIndexes;
 @synthesize selector;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id<KSAdvancedPickerDelegate>)aDelegate
@@ -53,25 +58,56 @@
         // distance from center
         const CGFloat centralRowOffset = (frame.size.height - rowHeight) / 2;
 
-        // picker content
-        table = [[UITableView alloc] initWithFrame:self.bounds];
-        table.rowHeight = rowHeight;
-        table.contentInset = UIEdgeInsetsMake(centralRowOffset, 0, centralRowOffset, 0);
-        table.separatorStyle = UITableViewCellSeparatorStyleNone;
-        table.showsVerticalScrollIndicator = NO;
-
-        // custom background?
-        if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) {
-            table.backgroundView = [delegate backgroundViewForAdvancedPicker:self];
-        } else if ([delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) {
-            table.backgroundColor = [delegate backgroundColorForAdvancedPicker:self];
-        } else {
-            table.backgroundColor = [UIColor whiteColor];
+        // LEGACY: remove respondsToSelector later, this is a required method
+        NSInteger components = 1;
+        if ([delegate respondsToSelector:@selector(numberOfComponentsInAdvancedPicker:)]) {
+            components = [delegate numberOfComponentsInAdvancedPicker:self];
         }
 
-        table.dataSource = self;
-        table.delegate = self;
-        [self addSubview:table];
+        // picker content
+        tables = [[NSMutableArray alloc] init];
+        selectedRowIndexes = [[NSMutableArray alloc] init];
+        CGRect tableFrame = CGRectMake(0, 0, 0, self.bounds.size.height);
+        for (NSInteger i = 0; i < components; ++i) {
+
+            // optional width
+            if ([delegate respondsToSelector:@selector(advancedPicker:widthForComponent:)]) {
+                tableFrame.size.width = [delegate advancedPicker:self widthForComponent:i];
+            } else {
+                tableFrame.size.width = frame.size.width / components;
+            }
+
+            // component table
+            UITableView *table = [[UITableView alloc] initWithFrame:tableFrame];
+            table.rowHeight = rowHeight;
+            table.contentInset = UIEdgeInsetsMake(centralRowOffset, 0, centralRowOffset, 0);
+            table.separatorStyle = UITableViewCellSeparatorStyleNone;
+            table.showsVerticalScrollIndicator = NO;
+
+            // custom background?
+            if ([delegate respondsToSelector:@selector(advancedPicker:backgroundViewForComponent:)]) {
+                table.backgroundView = [delegate advancedPicker:self backgroundViewForComponent:i];
+            } else if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) { // deprecated
+                table.backgroundView = [delegate backgroundViewForAdvancedPicker:self];
+            } else if ([delegate respondsToSelector:@selector(advancedPicker:backgroundColorForComponent:)]) {
+                table.backgroundColor = [delegate advancedPicker:self backgroundColorForComponent:i];
+            } else if ([delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) { // deprecated
+                table.backgroundColor = [delegate backgroundColorForAdvancedPicker:self];
+            } else {
+                table.backgroundColor = [UIColor whiteColor];
+            }
+
+            table.dataSource = self;
+            table.delegate = self;
+            [self addSubview:table];
+
+            [tables addObject:table];
+            [selectedRowIndexes addObject:[NSNumber numberWithInteger:-1]];
+            [table release];
+
+            // next component offset
+            tableFrame.origin.x += tableFrame.size.width;
+        }
         
         // custom selector?
         if ([delegate respondsToSelector:@selector(viewForAdvancedPickerSelector:)]) {
@@ -108,27 +144,68 @@
 - (void) dealloc
 {
     self.delegate = nil;
-    [table release];
+    self.tables = nil;
+    self.selectedRowIndexes = nil;
     self.selector = nil;
 
     [super dealloc];
 }
 
+// deprecated
+- (UITableView *) table
+{
+    return [tables objectAtIndex:0];
+}
+
+// deprecated
+- (NSInteger) selectedRowIndex
+{
+    return [self selectedRowIndexInComponent:0];
+}
+
+// deprecated
 - (void) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated
 {
-    selectedRowIndex = rowIndex;
+    [self scrollToRowAtIndex:rowIndex inComponent:0 animated:animated];
+}
+
+- (UITableView *) tableViewForComponent:(NSInteger)component
+{
+    return [tables objectAtIndex:component];
+}
+
+- (NSInteger) selectedRowIndexInComponent:(NSInteger)component
+{
+    return [[selectedRowIndexes objectAtIndex:component] integerValue];
+}
+
+- (void) scrollToRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component animated:(BOOL)animated
+{
+    [selectedRowIndexes replaceObjectAtIndex:component withObject:[NSNumber numberWithInteger:rowIndex]];
+    
+    UITableView *table = [tables objectAtIndex:component];
 
     const CGPoint alignedOffset = CGPointMake(0, rowIndex * table.rowHeight - table.contentInset.top);
     [table setContentOffset:alignedOffset animated:animated];
-
-    if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRowAtIndex:)]) {
+    
+    // LEGACY: backwards compatibility
+    if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRowAtIndex:inComponent:)]) {
+        [delegate advancedPicker:self didSelectRowAtIndex:rowIndex inComponent:component];
+    } else if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRowAtIndex:)]) {
         [delegate advancedPicker:self didSelectRowAtIndex:rowIndex];
     }
 }
 
+- (void) reloadDataForComponent:(NSInteger)component
+{
+    [[tables objectAtIndex:component] reloadData];
+}
+
 - (void) reloadData
 {
-    [table reloadData];
+    for (UITableView *table in tables) {
+        [table reloadData];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -140,12 +217,25 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [delegate numberOfRowsInAdvancedPicker:self];
+    // LEGACY: remove respondsToSelector later, this is a required method
+    if ([delegate respondsToSelector:@selector(numberOfRowsInAdvancedPicker:inComponent:)]) {
+        const NSInteger component = [self componentFromTableView:tableView];
+        return [delegate numberOfRowsInAdvancedPicker:self inComponent:component];
+    } else {
+        return [delegate numberOfRowsInAdvancedPicker:self];
+    }
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row];
+    // LEGACY: remove respondsToSelector later, this is a required method
+    UITableViewCell *cell = nil;
+    if ([delegate respondsToSelector:@selector(advancedPicker:tableView:cellForRowAtIndex:forComponent:)]) {
+        const NSInteger component = [self componentFromTableView:tableView];
+        cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row forComponent:component];
+    } else {
+        cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row];
+    }
 
     // allow selection but keep invisible
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -157,12 +247,17 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self scrollToRowAtIndex:indexPath.row animated:YES];
+    const NSInteger component = [self componentFromTableView:tableView];
 
-    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:)]) {
+    // call upon animation end?
+    // LEGACY: backwards compatibility
+    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:inComponent:)]) {
+        [delegate advancedPicker:self didClickRowAtIndex:indexPath.row inComponent:component];
+    } else if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:)]) {
         [delegate advancedPicker:self didClickRowAtIndex:indexPath.row];
     }
-    
+
+    [self scrollToRowAtIndex:indexPath.row inComponent:component animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -170,29 +265,35 @@
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate) {
-        [self alignToRowBoundary];
+        [self alignTableViewToRowBoundary:(UITableView *)scrollView];
     }
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self alignToRowBoundary];
+    [self alignTableViewToRowBoundary:(UITableView *)scrollView];
 }
 
 #pragma mark - Private methods
 
-- (void) alignToRowBoundary
+- (NSInteger) componentFromTableView:(UITableView *)tableView
 {
-//    NSLog(@"contentOffset = %@", NSStringFromCGPoint(table.contentOffset));
-//    NSLog(@"rowHeight = %f", table.rowHeight);
+    return [tables indexOfObject:tableView];
+}
 
-    const CGPoint relativeOffset = CGPointMake(0, table.contentOffset.y + table.contentInset.top);
+- (void) alignTableViewToRowBoundary:(UITableView *)tableView
+{
+//    NSLog(@"contentOffset = %@", NSStringFromCGPoint(tableView.contentOffset));
+//    NSLog(@"rowHeight = %f", tableView.rowHeight);
+
+    const CGPoint relativeOffset = CGPointMake(0, tableView.contentOffset.y + tableView.contentInset.top);
 //    NSLog(@"relativeOffset = %@", NSStringFromCGPoint(relativeOffset));
 
-    const NSUInteger rowIndex = round(relativeOffset.y / table.rowHeight);
+    const NSUInteger rowIndex = round(relativeOffset.y / tableView.rowHeight);
 //    NSLog(@"rowIndex = %d", rowIndex);
 
-    [self scrollToRowAtIndex:rowIndex animated:YES];
+    const NSInteger component = [self componentFromTableView:tableView];
+    [self scrollToRowAtIndex:rowIndex inComponent:component animated:YES];
 }
 
 @end

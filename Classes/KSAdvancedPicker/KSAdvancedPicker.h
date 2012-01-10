@@ -23,35 +23,50 @@
 
 @interface KSAdvancedPicker : UIView<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, readonly) UITableView *table;
-@property (nonatomic, readonly) NSInteger selectedRowIndex;
+@property (nonatomic, readonly) UITableView __attribute__((deprecated)) *table;
+@property (nonatomic, readonly) NSInteger __attribute__((deprecated)) selectedRowIndex;
 @property (nonatomic, assign) id<KSAdvancedPickerDelegate> delegate;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id<KSAdvancedPickerDelegate>)aDelegate;
 
-- (void) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated;
+- (UITableView *) tableViewForComponent:(NSInteger)component;
+- (NSInteger) selectedRowIndexInComponent:(NSInteger)component;
+- (void) scrollToRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component animated:(BOOL)animated;
+- (void) __attribute__((deprecated)) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated;
 - (void) reloadData;
 
 @end
 
 @protocol KSAdvancedPickerDelegate<NSObject>
 
-// row view
-- (NSInteger) numberOfRowsInAdvancedPicker:(KSAdvancedPicker *)picker;
-- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex;
+// row view (multiple components)
+- (NSInteger) numberOfComponentsInAdvancedPicker:(KSAdvancedPicker *)picker;
+- (NSInteger) numberOfRowsInAdvancedPicker:(KSAdvancedPicker *)picker inComponent:(NSInteger)component;
+- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex forComponent:(NSInteger)component;
 
 @optional
+
+// row view (single component)
+- (NSInteger) __attribute__((deprecated)) numberOfRowsInAdvancedPicker:(KSAdvancedPicker *)picker;
+- (UITableViewCell *) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex;
 
 // row height
 - (CGFloat) heightForRowInAdvancedPicker:(KSAdvancedPicker *)picker;
 
+// component width
+- (CGFloat) advancedPicker:(KSAdvancedPicker *)picker widthForComponent:(NSInteger)component;
+
 // selected row
-- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex;
-- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex;
+- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component;
+- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component;
+- (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex;
+- (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex;
 
 // table background view (checked in the same order)
-- (UIView *) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker;
-- (UIColor *) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker;
+- (UIView *) advancedPicker:(KSAdvancedPicker *)picker backgroundViewForComponent:(NSInteger)component;
+- (UIColor *) advancedPicker:(KSAdvancedPicker *)picker backgroundColorForComponent:(NSInteger)component;
+- (UIView *) __attribute__((deprecated)) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker;
+- (UIColor *) __attribute__((deprecated)) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker;
 
 // selector view (checked in the same order)
 - (UIView *) viewForAdvancedPickerSelector:(KSAdvancedPicker *)picker;
