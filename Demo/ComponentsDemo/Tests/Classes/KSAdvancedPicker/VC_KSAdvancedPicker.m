@@ -52,6 +52,13 @@
 #endif
     [self.view addSubview:ap];
     [ap release];
+
+//    for (NSUInteger i = 0; i < [self numberOfComponentsInAdvancedPicker:ap]; ++i) {
+//        UITableView *table = [ap tableViewForComponent:i];
+//
+//        NSLog(@"table[%d] width = %f", i, table.frame.size.width);
+//        NSLog(@"table[%d] insets = %@", i, NSStringFromUIEdgeInsets(table.contentInset));
+//    }
 }
 
 - (void)viewDidUnload
@@ -104,23 +111,31 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [data objectAtIndex:rowIndex];
     
+//    NSLog(@"cell[%d][%d].frame = %@", component, rowIndex, NSStringFromCGRect(cell.frame));
+
     return cell;
 }
 
 - (CGFloat) advancedPicker:(KSAdvancedPicker *)picker widthForComponent:(NSInteger)component
 {
-    const CGFloat width = picker.frame.size.width;
+    CGFloat width = picker.frame.size.width;
 
     switch (component) {
         case 0:
-            return width * 0.45;
+            width *= 0.45;
+            break;
         case 1:
-            return width * 0.25;
+            width *= 0.25;
+            break;
         case 2:
-            return width * 0.3;
+            width *= 0.3;
+            break;
         default:
             return 0; // never
     }
+
+//    return width;
+    return round(width);
 }
 
 //- (UIView *) advancedPicker:(KSAdvancedPicker *)picker backgroundViewForComponent:(NSInteger)component
