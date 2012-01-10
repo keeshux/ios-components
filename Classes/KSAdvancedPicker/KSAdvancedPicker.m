@@ -83,7 +83,7 @@
             if ([delegate respondsToSelector:@selector(advancedPicker:widthForComponent:)]) {
                 tableFrame.size.width = [delegate advancedPicker:self widthForComponent:i];
             } else {
-                tableFrame.size.width = frame.size.width / components;
+                tableFrame.size.width = round(frame.size.width / components);
             }
 
             // component table
