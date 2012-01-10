@@ -107,7 +107,7 @@
             [self addSubview:table];
 
             [tables addObject:table];
-            [selectedRowIndexes addObject:[NSNumber numberWithInteger:-1]];
+            [selectedRowIndexes addObject:[NSNumber numberWithInteger:0]]; // first row selected by default
             [table release];
 
             // next component offset
