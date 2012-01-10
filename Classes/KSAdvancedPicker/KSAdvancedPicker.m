@@ -165,13 +165,13 @@
 // deprecated
 - (NSInteger) selectedRowIndex
 {
-    return [self selectedRowIndexInComponent:0];
+    return [self selectedRowInComponent:0];
 }
 
 // deprecated
 - (void) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated
 {
-    [self scrollToRowAtIndex:rowIndex inComponent:0 animated:animated];
+    [self selectRow:rowIndex inComponent:0 animated:animated];
 }
 
 - (UITableView *) tableViewForComponent:(NSInteger)component
@@ -179,25 +179,25 @@
     return [tables objectAtIndex:component];
 }
 
-- (NSInteger) selectedRowIndexInComponent:(NSInteger)component
+- (NSInteger) selectedRowInComponent:(NSInteger)component
 {
     return [[selectedRowIndexes objectAtIndex:component] integerValue];
 }
 
-- (void) scrollToRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component animated:(BOOL)animated
+- (void) selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
 {
-    [selectedRowIndexes replaceObjectAtIndex:component withObject:[NSNumber numberWithInteger:rowIndex]];
+    [selectedRowIndexes replaceObjectAtIndex:component withObject:[NSNumber numberWithInteger:row]];
     
     UITableView *table = [tables objectAtIndex:component];
 
-    const CGPoint alignedOffset = CGPointMake(0, rowIndex * table.rowHeight - table.contentInset.top);
+    const CGPoint alignedOffset = CGPointMake(0, row * table.rowHeight - table.contentInset.top);
     [table setContentOffset:alignedOffset animated:animated];
     
     // LEGACY: backwards compatibility
-    if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRowAtIndex:inComponent:)]) {
-        [delegate advancedPicker:self didSelectRowAtIndex:rowIndex inComponent:component];
+    if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRow:inComponent:)]) {
+        [delegate advancedPicker:self didSelectRow:row inComponent:component];
     } else if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRowAtIndex:)]) {
-        [delegate advancedPicker:self didSelectRowAtIndex:rowIndex];
+        [delegate advancedPicker:self didSelectRowAtIndex:row];
     }
 }
 
@@ -235,9 +235,9 @@
 {
     // LEGACY: remove respondsToSelector later, this is a required method
     UITableViewCell *cell = nil;
-    if ([delegate respondsToSelector:@selector(advancedPicker:tableView:cellForRowAtIndex:forComponent:)]) {
+    if ([delegate respondsToSelector:@selector(advancedPicker:tableView:cellForRow:forComponent:)]) {
         const NSInteger component = [self componentFromTableView:tableView];
-        cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row forComponent:component];
+        cell = [delegate advancedPicker:self tableView:tableView cellForRow:indexPath.row forComponent:component];
     } else {
         cell = [delegate advancedPicker:self tableView:tableView cellForRowAtIndex:indexPath.row];
     }
@@ -256,13 +256,13 @@
 
     // call upon animation end?
     // LEGACY: backwards compatibility
-    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:inComponent:)]) {
-        [delegate advancedPicker:self didClickRowAtIndex:indexPath.row inComponent:component];
+    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRow:inComponent:)]) {
+        [delegate advancedPicker:self didClickRow:indexPath.row inComponent:component];
     } else if ([delegate respondsToSelector:@selector(advancedPicker:didClickRowAtIndex:)]) {
         [delegate advancedPicker:self didClickRowAtIndex:indexPath.row];
     }
 
-    [self scrollToRowAtIndex:indexPath.row inComponent:component animated:YES];
+    [self selectRow:indexPath.row inComponent:component animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -294,11 +294,11 @@
     const CGPoint relativeOffset = CGPointMake(0, tableView.contentOffset.y + tableView.contentInset.top);
 //    NSLog(@"relativeOffset = %@", NSStringFromCGPoint(relativeOffset));
 
-    const NSUInteger rowIndex = round(relativeOffset.y / tableView.rowHeight);
-//    NSLog(@"rowIndex = %d", rowIndex);
+    const NSUInteger row = round(relativeOffset.y / tableView.rowHeight);
+//    NSLog(@"row = %d", row);
 
     const NSInteger component = [self componentFromTableView:tableView];
-    [self scrollToRowAtIndex:rowIndex inComponent:component animated:YES];
+    [self selectRow:row inComponent:component animated:YES];
 }
 
 @end

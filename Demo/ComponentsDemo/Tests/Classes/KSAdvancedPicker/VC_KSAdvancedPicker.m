@@ -46,7 +46,7 @@
     KSAdvancedPicker *ap = [[KSAdvancedPicker alloc] initWithFrame:frame delegate:self];
     [ap reloadData];
 #ifndef LEGACY
-    [ap scrollToRowAtIndex:4 inComponent:0 animated:YES];
+    [ap selectRow:4 inComponent:0 animated:YES];
 #else
     [ap scrollToRowAtIndex:4 animated:YES];
 #endif
@@ -97,7 +97,7 @@
     return [data count];
 }
 
-- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex forComponent:(NSInteger)component
+- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     static NSString *identifier = @"CellIdentifier";
     
@@ -109,9 +109,9 @@
     }
     
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.text = [data objectAtIndex:rowIndex];
+    cell.textLabel.text = [data objectAtIndex:row];
     
-//    NSLog(@"cell[%d][%d].frame = %@", component, rowIndex, NSStringFromCGRect(cell.frame));
+//    NSLog(@"cell[%d][%d].frame = %@", component, row, NSStringFromCGRect(cell.frame));
 
     return cell;
 }
@@ -159,14 +159,14 @@
     }
 }
 
-- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component
+- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"selected row %d in component %d", rowIndex, component);
+    NSLog(@"selected row %d in component %d", row, component);
 }
 
-- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component
+- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"clicked row %d in component %d", rowIndex, component);
+    NSLog(@"clicked row %d in component %d", row, component);
 }
 
 #else

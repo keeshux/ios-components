@@ -30,8 +30,8 @@
 - (id) initWithFrame:(CGRect)frame delegate:(id<KSAdvancedPickerDelegate>)aDelegate;
 
 - (UITableView *) tableViewForComponent:(NSInteger)component;
-- (NSInteger) selectedRowIndexInComponent:(NSInteger)component;
-- (void) scrollToRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component animated:(BOOL)animated;
+- (NSInteger) selectedRowInComponent:(NSInteger)component;
+- (void) selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;
 - (void) __attribute__((deprecated)) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated;
 - (void) reloadData;
 - (void) reloadDataInComponent:(NSInteger)component;
@@ -43,7 +43,7 @@
 // row view (multiple components)
 - (NSInteger) numberOfComponentsInAdvancedPicker:(KSAdvancedPicker *)picker;
 - (NSInteger) advancedPicker:(KSAdvancedPicker *)picker numberOfRowsInComponent:(NSInteger)component;
-- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRowAtIndex:(NSInteger)rowIndex forComponent:(NSInteger)component;
+- (UITableViewCell *) advancedPicker:(KSAdvancedPicker *)picker tableView:(UITableView *)tableView cellForRow:(NSInteger)row forComponent:(NSInteger)component;
 
 @optional
 
@@ -58,8 +58,8 @@
 - (CGFloat) advancedPicker:(KSAdvancedPicker *)picker widthForComponent:(NSInteger)component;
 
 // selected row
-- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component;
-- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component;
+- (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (void) advancedPicker:(KSAdvancedPicker *)picker didClickRow:(NSInteger)row inComponent:(NSInteger)component;
 - (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex;
 - (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex;
 
