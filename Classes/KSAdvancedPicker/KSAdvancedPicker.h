@@ -62,11 +62,13 @@
 - (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex;
 - (void) __attribute__((deprecated)) advancedPicker:(KSAdvancedPicker *)picker didClickRowAtIndex:(NSInteger)rowIndex;
 
-// table background view (checked in the same order)
+// picker background view (checked in the same order)
+- (UIView *) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker;
+- (UIColor *) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker;
+
+// components background view (checked in the same order)
 - (UIView *) advancedPicker:(KSAdvancedPicker *)picker backgroundViewForComponent:(NSInteger)component;
 - (UIColor *) advancedPicker:(KSAdvancedPicker *)picker backgroundColorForComponent:(NSInteger)component;
-- (UIView *) __attribute__((deprecated)) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker;
-- (UIColor *) __attribute__((deprecated)) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker;
 
 // selector view (checked in the same order)
 - (UIView *) viewForAdvancedPickerSelector:(KSAdvancedPicker *)picker;

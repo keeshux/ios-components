@@ -64,6 +64,15 @@
             components = [delegate numberOfComponentsInAdvancedPicker:self];
         }
 
+        // picker background
+        if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) {
+            UIView *backgroundView = [delegate backgroundViewForAdvancedPicker:self];
+            [self addSubview:backgroundView];
+            [self sendSubviewToBack:backgroundView];
+        } else if ([delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) {
+            self.backgroundColor = [delegate backgroundColorForAdvancedPicker:self];
+        }
+        
         // picker content
         tables = [[NSMutableArray alloc] init];
         selectedRowIndexes = [[NSMutableArray alloc] init];
@@ -84,17 +93,13 @@
             table.separatorStyle = UITableViewCellSeparatorStyleNone;
             table.showsVerticalScrollIndicator = NO;
 
-            // custom background?
+            // component background
             if ([delegate respondsToSelector:@selector(advancedPicker:backgroundViewForComponent:)]) {
                 table.backgroundView = [delegate advancedPicker:self backgroundViewForComponent:i];
-            } else if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) { // deprecated
-                table.backgroundView = [delegate backgroundViewForAdvancedPicker:self];
             } else if ([delegate respondsToSelector:@selector(advancedPicker:backgroundColorForComponent:)]) {
                 table.backgroundColor = [delegate advancedPicker:self backgroundColorForComponent:i];
-            } else if ([delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) { // deprecated
-                table.backgroundColor = [delegate backgroundColorForAdvancedPicker:self];
             } else {
-                table.backgroundColor = [UIColor whiteColor];
+                table.backgroundColor = [UIColor clearColor];
             }
 
             table.dataSource = self;

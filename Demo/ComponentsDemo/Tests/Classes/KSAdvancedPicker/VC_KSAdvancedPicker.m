@@ -8,7 +8,7 @@
 
 #import "VC_KSAdvancedPicker.h"
 
-//#define LEGACY
+#define LEGACY
 
 @implementation VC_KSAdvancedPicker
 
@@ -130,6 +130,8 @@
 
 - (UIColor *) advancedPicker:(KSAdvancedPicker *)picker backgroundColorForComponent:(NSInteger)component
 {
+//    return [UIColor clearColor];
+
     switch (component) {
         case 0:
             return [UIColor colorWithRed:0.5 green:0.5 blue:0.0 alpha:1.0];
@@ -170,20 +172,10 @@
         [cell autorelease];
     }
 
-    cell.textLabel.textColor = [UIColor blueColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [data objectAtIndex:rowIndex];
 
     return cell;
-}
-
-//- (UIView *) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker
-//{
-//    return nil;
-//}
-
-- (UIColor *) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker
-{
-    return [UIColor lightGrayColor];
 }
 
 - (void) advancedPicker:(KSAdvancedPicker *)picker didSelectRowAtIndex:(NSInteger)rowIndex
@@ -197,6 +189,16 @@
 }
 
 #endif
+
+//- (UIView *) backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker
+//{
+//    return nil;
+//}
+
+- (UIColor *) backgroundColorForAdvancedPicker:(KSAdvancedPicker *)picker
+{
+    return [UIColor lightGrayColor];
+}
 
 //- (UIView *) viewForAdvancedPickerSelector:(KSAdvancedPicker *)picker
 //{
