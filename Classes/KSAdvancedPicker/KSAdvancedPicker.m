@@ -208,7 +208,7 @@
     }
 }
 
-- (void) reloadDataForComponent:(NSInteger)component
+- (void) reloadDataInComponent:(NSInteger)component
 {
     [[tables objectAtIndex:component] reloadData];
 }
