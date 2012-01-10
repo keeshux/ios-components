@@ -34,6 +34,7 @@
 - (void) scrollToRowAtIndex:(NSInteger)rowIndex inComponent:(NSInteger)component animated:(BOOL)animated;
 - (void) __attribute__((deprecated)) scrollToRowAtIndex:(NSInteger)rowIndex animated:(BOOL)animated;
 - (void) reloadData;
+- (void) reloadDataForComponent:(NSInteger)component;
 
 @end
 

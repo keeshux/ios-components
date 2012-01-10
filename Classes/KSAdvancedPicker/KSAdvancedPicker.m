@@ -201,16 +201,16 @@
     }
 }
 
-- (void) reloadDataForComponent:(NSInteger)component
-{
-    [[tables objectAtIndex:component] reloadData];
-}
-
 - (void) reloadData
 {
     for (UITableView *table in tables) {
         [table reloadData];
     }
+}
+
+- (void) reloadDataForComponent:(NSInteger)component
+{
+    [[tables objectAtIndex:component] reloadData];
 }
 
 #pragma mark - UITableViewDataSource
