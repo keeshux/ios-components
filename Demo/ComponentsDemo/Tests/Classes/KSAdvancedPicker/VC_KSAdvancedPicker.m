@@ -8,7 +8,7 @@
 
 #import "VC_KSAdvancedPicker.h"
 
-#define LEGACY
+//#define LEGACY
 
 @implementation VC_KSAdvancedPicker
 
