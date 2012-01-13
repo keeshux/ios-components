@@ -142,8 +142,8 @@
             selector.backgroundColor = [delegate viewColorForAdvancedPickerSelector:self];
         } else {
             selector = [[UIView alloc] init];
-            selector.backgroundColor = [UIColor blueColor];
-            selector.alpha = 0.5;
+            selector.backgroundColor = [UIColor blackColor];
+            selector.alpha = 0.3;
         }
         
         // ignore user input on selector
