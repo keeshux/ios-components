@@ -71,6 +71,10 @@
 - (UIView *) advancedPicker:(KSAdvancedPicker *)picker backgroundViewForComponent:(NSInteger)component;
 - (UIColor *) advancedPicker:(KSAdvancedPicker *)picker backgroundColorForComponent:(NSInteger)component;
 
+// overlay view (checked in the same order)
+- (UIView *) overlayViewForAdvancedPickerSelector:(KSAdvancedPicker *)picker;
+- (UIColor *) overlayColorForAdvancedPickerSelector:(KSAdvancedPicker *)picker;
+
 // selector view (checked in the same order)
 - (UIView *) viewForAdvancedPickerSelector:(KSAdvancedPicker *)picker;
 - (UIColor *) viewColorForAdvancedPickerSelector:(KSAdvancedPicker *)picker;

@@ -23,6 +23,7 @@
 
 @property (nonatomic, retain) NSMutableArray *tables;
 @property (nonatomic, retain) NSMutableArray *selectedRowIndexes;
+@property (nonatomic, retain) UIView *overlay;
 @property (nonatomic, retain) UIView *selector;
 
 - (NSInteger) componentFromTableView:(UITableView *)tableView;
@@ -40,6 +41,7 @@
 // private
 @synthesize tables;
 @synthesize selectedRowIndexes;
+@synthesize overlay;
 @synthesize selector;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id<KSAdvancedPickerDelegate>)aDelegate
@@ -114,6 +116,24 @@
             tableFrame.origin.x += tableFrame.size.width;
         }
         
+        // optional overlay
+        if ([delegate respondsToSelector:@selector(overlayViewForAdvancedPickerSelector:)]) {
+            self.overlay = [delegate overlayViewForAdvancedPickerSelector:self];
+        } else if ([delegate respondsToSelector:@selector(overlayColorForAdvancedPickerSelector:)]) {
+            overlay = [[UIView alloc] init];
+            overlay.backgroundColor = [delegate overlayColorForAdvancedPickerSelector:self];
+        }
+
+        if (overlay) {
+
+            // ignore user input on selector
+            overlay.userInteractionEnabled = NO;
+
+            // fill parent
+            overlay.frame = self.bounds;
+            [self addSubview:overlay];
+        }
+
         // custom selector?
         if ([delegate respondsToSelector:@selector(viewForAdvancedPickerSelector:)]) {
             self.selector = [delegate viewForAdvancedPickerSelector:self];
@@ -136,7 +156,7 @@
         selectorFrame.size.width = frame.size.width;
         selectorFrame.size.height = rowHeight;
         selector.frame = selectorFrame;
-        
+
         [self addSubview:selector];
         
 //        NSLog(@"self.frame = %@", NSStringFromCGRect(self.frame));
@@ -151,6 +171,7 @@
     self.delegate = nil;
     self.tables = nil;
     self.selectedRowIndexes = nil;
+    self.overlay = nil;
     self.selector = nil;
 
     [super dealloc];
