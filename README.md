@@ -46,7 +46,7 @@ Generate MD5 and SHA1 digest from `NSString`.
 
 ## UIAcceleration+DeviceAngle
 
-Compute the device 2D angle. Looking at the device laying flat from the home button: the x is the rotation around the longer display axis (towards left), the y is the rotation around the shorter one (towards the observer). This category is sort of an exercise (probably useless), so there's much room for improvement.
+Compute the device 2D angle from `UIAcceleration`. Looking at the device laying flat from the home button: the x is the rotation around the longer display axis (towards left), the y is the rotation around the shorter one (towards the observer). This category is sort of an experiment (probably useless), so there's much room for improvement.
 
 ## UIBarButtonItem+CustomImage
 
