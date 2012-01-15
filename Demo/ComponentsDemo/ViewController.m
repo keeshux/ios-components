@@ -101,6 +101,7 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"MKMapView" categoryName:@"Zoom"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"DateConversion"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"Digest"]];
+    [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
 }
 
