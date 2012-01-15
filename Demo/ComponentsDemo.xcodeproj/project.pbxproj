@@ -59,6 +59,8 @@
 		8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055B014730C12001A3EF5 /* VC_NSString_Digest.m */; };
 		8CFBD72314C27E940041D042 /* UIAcceleration+DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */; };
 		8CFBD72714C280210041D042 /* VC_UIAcceleration_DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72614C280210041D042 /* VC_UIAcceleration_DeviceAngle.m */; };
+		8CFBD72F14C2884C0041D042 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72E14C2884C0041D042 /* NSMutableArray+Shuffling.m */; };
+		8CFBD73614C288750041D042 /* VC_NSMutableArray_Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD73514C288750041D042 /* VC_NSMutableArray_Shuffling.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +155,10 @@
 		8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAcceleration+DeviceAngle.m"; sourceTree = "<group>"; };
 		8CFBD72514C280210041D042 /* VC_UIAcceleration_DeviceAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIAcceleration_DeviceAngle.h; sourceTree = "<group>"; };
 		8CFBD72614C280210041D042 /* VC_UIAcceleration_DeviceAngle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_UIAcceleration_DeviceAngle.m; sourceTree = "<group>"; };
+		8CFBD72D14C2884C0041D042 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		8CFBD72E14C2884C0041D042 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		8CFBD73414C288750041D042 /* VC_NSMutableArray_Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSMutableArray_Shuffling.h; sourceTree = "<group>"; };
+		8CFBD73514C288750041D042 /* VC_NSMutableArray_Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSMutableArray_Shuffling.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA7D639146D82200042648E /* MKMapView+Zoom */,
+				8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
 				8CD055A914730BA9001A3EF5 /* NSString+Digest */,
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
@@ -438,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA7D63E146D83DB0042648E /* MKMapView+Zoom */,
+				8CFBD73014C2885C0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF8F146AC9DC0056D831 /* NSString+DateConversion */,
 				8CD055AE14730BFA001A3EF5 /* NSString+Digest */,
 				8CFBD72414C27FEC0041D042 /* UIAcceleration+DeviceAngle */,
@@ -579,6 +587,24 @@
 			path = "UIAcceleration+DeviceAngle";
 			sourceTree = "<group>";
 		};
+		8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */ = {
+			isa = PBXGroup;
+			children = (
+				8CFBD72D14C2884C0041D042 /* NSMutableArray+Shuffling.h */,
+				8CFBD72E14C2884C0041D042 /* NSMutableArray+Shuffling.m */,
+			);
+			path = "NSMutableArray+Shuffling";
+			sourceTree = "<group>";
+		};
+		8CFBD73014C2885C0041D042 /* NSMutableArray+Shuffling */ = {
+			isa = PBXGroup;
+			children = (
+				8CFBD73414C288750041D042 /* VC_NSMutableArray_Shuffling.h */,
+				8CFBD73514C288750041D042 /* VC_NSMutableArray_Shuffling.m */,
+			);
+			path = "NSMutableArray+Shuffling";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -683,6 +709,8 @@
 				8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */,
 				8CFBD72314C27E940041D042 /* UIAcceleration+DeviceAngle.m in Sources */,
 				8CFBD72714C280210041D042 /* VC_UIAcceleration_DeviceAngle.m in Sources */,
+				8CFBD72F14C2884C0041D042 /* NSMutableArray+Shuffling.m in Sources */,
+				8CFBD73614C288750041D042 /* VC_NSMutableArray_Shuffling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
