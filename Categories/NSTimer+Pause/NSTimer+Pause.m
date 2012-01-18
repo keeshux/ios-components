@@ -1,5 +1,5 @@
 /*
- * NSTimer+Pause.h
+ * NSTimer+Pause.m
  *
  * Copyright 2011 Davide De Rosa
  * 
