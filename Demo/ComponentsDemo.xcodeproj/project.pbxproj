@@ -57,6 +57,8 @@
 		8CABAFBB146AD3120056D831 /* ItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB7146AD3120056D831 /* ItemImage@2x.png */; };
 		8CD055AC14730BA9001A3EF5 /* NSString+Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055AB14730BA9001A3EF5 /* NSString+Digest.m */; };
 		8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055B014730C12001A3EF5 /* VC_NSString_Digest.m */; };
+		8CEA567314C7735000453958 /* NSTimer+Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA567214C7735000453958 /* NSTimer+Pause.m */; };
+		8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */; };
 		8CFBD72314C27E940041D042 /* UIAcceleration+DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */; };
 		8CFBD72714C280210041D042 /* VC_UIAcceleration_DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72614C280210041D042 /* VC_UIAcceleration_DeviceAngle.m */; };
 		8CFBD72F14C2884C0041D042 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72E14C2884C0041D042 /* NSMutableArray+Shuffling.m */; };
@@ -151,6 +153,10 @@
 		8CD055AB14730BA9001A3EF5 /* NSString+Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Digest.m"; sourceTree = "<group>"; };
 		8CD055AF14730C12001A3EF5 /* VC_NSString_Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSString_Digest.h; sourceTree = "<group>"; };
 		8CD055B014730C12001A3EF5 /* VC_NSString_Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSString_Digest.m; sourceTree = "<group>"; };
+		8CEA567114C7735000453958 /* NSTimer+Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Pause.h"; sourceTree = "<group>"; };
+		8CEA567214C7735000453958 /* NSTimer+Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Pause.m"; sourceTree = "<group>"; };
+		8CEA567514C7796600453958 /* VC_NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSTimer_Pause.h; sourceTree = "<group>"; };
+		8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSTimer_Pause.m; sourceTree = "<group>"; };
 		8CFBD72114C27E940041D042 /* UIAcceleration+DeviceAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAcceleration+DeviceAngle.h"; sourceTree = "<group>"; };
 		8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAcceleration+DeviceAngle.m"; sourceTree = "<group>"; };
 		8CFBD72514C280210041D042 /* VC_UIAcceleration_DeviceAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIAcceleration_DeviceAngle.h; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 				8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
 				8CD055A914730BA9001A3EF5 /* NSString+Digest */,
+				8CEA566F14C7724900453958 /* NSTimer+Pause */,
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
 				8CABAF9A146AD2440056D831 /* UIBarButtonItem+CustomImage */,
 			);
@@ -448,6 +455,7 @@
 				8CFBD73014C2885C0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF8F146AC9DC0056D831 /* NSString+DateConversion */,
 				8CD055AE14730BFA001A3EF5 /* NSString+Digest */,
+				8CEA567414C7795700453958 /* NSTimer+Pause */,
 				8CFBD72414C27FEC0041D042 /* UIAcceleration+DeviceAngle */,
 				8CABAF92146AC9DC0056D831 /* UIBarButtonItem+CustomImage */,
 			);
@@ -567,6 +575,24 @@
 				8CD055B014730C12001A3EF5 /* VC_NSString_Digest.m */,
 			);
 			path = "NSString+Digest";
+			sourceTree = "<group>";
+		};
+		8CEA566F14C7724900453958 /* NSTimer+Pause */ = {
+			isa = PBXGroup;
+			children = (
+				8CEA567114C7735000453958 /* NSTimer+Pause.h */,
+				8CEA567214C7735000453958 /* NSTimer+Pause.m */,
+			);
+			path = "NSTimer+Pause";
+			sourceTree = "<group>";
+		};
+		8CEA567414C7795700453958 /* NSTimer+Pause */ = {
+			isa = PBXGroup;
+			children = (
+				8CEA567514C7796600453958 /* VC_NSTimer_Pause.h */,
+				8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */,
+			);
+			path = "NSTimer+Pause";
 			sourceTree = "<group>";
 		};
 		8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */ = {
@@ -711,6 +737,8 @@
 				8CFBD72714C280210041D042 /* VC_UIAcceleration_DeviceAngle.m in Sources */,
 				8CFBD72F14C2884C0041D042 /* NSMutableArray+Shuffling.m in Sources */,
 				8CFBD73614C288750041D042 /* VC_NSMutableArray_Shuffling.m in Sources */,
+				8CEA567314C7735000453958 /* NSTimer+Pause.m in Sources */,
+				8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
