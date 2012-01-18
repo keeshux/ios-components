@@ -7,7 +7,6 @@
 //
 
 #import "VC_UIAcceleration_DeviceAngle.h"
-
 #import "UIAcceleration+DeviceAngle.h"
 
 #define R2D(rads)       (rads * 180.0 / M_PI)
