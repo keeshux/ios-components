@@ -104,7 +104,7 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
 
-    self.menu = [NSMutableArray arrayWithObjects:menuClasses, menuCategories, nil];
+    self.menu = [NSArray arrayWithObjects:menuClasses, menuCategories, nil];
     [menuClasses release];
     [menuCategories release];
 }
