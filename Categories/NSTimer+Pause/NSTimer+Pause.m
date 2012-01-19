@@ -41,8 +41,8 @@ static NSString *const NSTimerPreviousFireDate  = @"NSTimerPreviousFireDate";
     const NSTimeInterval pauseTime = -[pauseDate timeIntervalSinceNow];
     self.fireDate = [NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate];
 
-    objc_setAssociatedObject(self, NSTimerPauseDate, nil, OBJC_ASSOCIATION_ASSIGN);
-    objc_setAssociatedObject(self, NSTimerPreviousFireDate, nil, OBJC_ASSOCIATION_ASSIGN);
+//    objc_setAssociatedObject(self, NSTimerPauseDate, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(self, NSTimerPreviousFireDate, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
