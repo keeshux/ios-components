@@ -26,7 +26,6 @@
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
 }
 
-@property (nonatomic, retain) NSMutableArray *menuClasses;
-@property (nonatomic, retain) NSMutableArray *menuCategories;
+@property (nonatomic, retain) NSMutableArray *menu;
 
 @end

@@ -67,13 +67,11 @@
 
 @implementation ViewController
 
-@synthesize menuClasses;
-@synthesize menuCategories;
+@synthesize menu;
 
 - (void) dealloc
 {
-    self.menuClasses = nil;
-    self.menuCategories = nil;
+    self.menu = nil;
 
     [super dealloc];
 }
@@ -90,14 +88,14 @@
 {
     [super viewDidLoad];
     
-    self.menuClasses = [NSMutableArray array];
+    NSMutableArray *menuClasses = [[NSMutableArray alloc] init];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSAdvancedPicker"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSCheckView"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSEditEnder"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSProgressDownloader"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSSheetView"]];
 
-    self.menuCategories = [NSMutableArray array];
+    NSMutableArray *menuCategories = [[NSMutableArray alloc] init];
     [menuCategories addObject:[MenuItem itemWithClassName:@"MKMapView" categoryName:@"Zoom"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSMutableArray" categoryName:@"Shuffling"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"DateConversion"]];
@@ -105,14 +103,17 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSTimer" categoryName:@"Pause"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
+
+    self.menu = [NSMutableArray arrayWithObjects:menuClasses, menuCategories, nil];
+    [menuClasses release];
+    [menuCategories release];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
-    self.menuClasses = nil;
-    self.menuCategories = nil;
+    self.menu = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -129,7 +130,7 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return [menu count];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -143,11 +144,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return [menuClasses count];
-    } else {
-        return [menuCategories count];
-    }
+    return [[menu objectAtIndex:section] count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -160,12 +157,7 @@
                                        reuseIdentifier:identifier] autorelease];
     }
 
-    MenuItem *item = nil;
-    if (indexPath.section == 0) {
-        item = [menuClasses objectAtIndex:indexPath.row];
-    } else {
-        item = [menuCategories objectAtIndex:indexPath.row];
-    }
+    MenuItem *item = [[menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
     cell.textLabel.text = item.className;
     if (item.categoryName) {
@@ -179,12 +171,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuItem *item = nil;
-    if (indexPath.section == 0) {
-        item = [menuClasses objectAtIndex:indexPath.row];
-    } else {
-        item = [menuCategories objectAtIndex:indexPath.row];
-    }
+    MenuItem *item = [[menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
     UIViewController *vc = [[NSClassFromString([item viewControllerClassName]) alloc] init];
     vc.title = [item title];
