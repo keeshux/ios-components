@@ -23,8 +23,7 @@
 
 @end
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
-}
+@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSArray *menu;
 

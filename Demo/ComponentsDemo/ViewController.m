@@ -92,6 +92,7 @@
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSAdvancedPicker"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSCheckView"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSEditEnder"]];
+    [menuClasses addObject:[MenuItem itemWithClassName:@"KSKeyboardScroller"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSProgressDownloader"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSSheetView"]];
 

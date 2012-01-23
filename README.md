@@ -16,6 +16,10 @@ A simple checkbox control.
 
 A tiny control for an extremely common task: hide keyboard when touching outside edited field.
 
+## KSKeyboardScroller
+
+The keyboard keeps covering your controls? You're tired of writing ridiculous amounts of code to prevent it? Then this class suits your needs.
+
 ## KSProgressDownloader
 
 HTTP fetcher with embedded caching showing an `UIAlertView` with download progress.

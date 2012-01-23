@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C1D039914CD7E1900C34909 /* KSKeyboardScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1D039814CD7E1900C34909 /* KSKeyboardScroller.m */; };
+		8C1D039E14CD7ED000C34909 /* VC_KSKeyboardScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1D039D14CD7ED000C34909 /* VC_KSKeyboardScroller.m */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
 		8C2C55A6146750E70065A877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A5146750E70065A877 /* CoreGraphics.framework */; };
@@ -66,6 +68,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C1D039714CD7E1900C34909 /* KSKeyboardScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSKeyboardScroller.h; sourceTree = "<group>"; };
+		8C1D039814CD7E1900C34909 /* KSKeyboardScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSKeyboardScroller.m; sourceTree = "<group>"; };
+		8C1D039C14CD7ED000C34909 /* VC_KSKeyboardScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSKeyboardScroller.h; sourceTree = "<group>"; };
+		8C1D039D14CD7ED000C34909 /* VC_KSKeyboardScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSKeyboardScroller.m; sourceTree = "<group>"; };
 		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C55A1146750E70065A877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C2C55A3146750E70065A877 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +193,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C1D039614CD7E1900C34909 /* KSKeyboardScroller */ = {
+			isa = PBXGroup;
+			children = (
+				8C1D039714CD7E1900C34909 /* KSKeyboardScroller.h */,
+				8C1D039814CD7E1900C34909 /* KSKeyboardScroller.m */,
+			);
+			path = KSKeyboardScroller;
+			sourceTree = "<group>";
+		};
+		8C1D039B14CD7EB800C34909 /* KSKeyboardScroller */ = {
+			isa = PBXGroup;
+			children = (
+				8C1D039C14CD7ED000C34909 /* VC_KSKeyboardScroller.h */,
+				8C1D039D14CD7ED000C34909 /* VC_KSKeyboardScroller.m */,
+			);
+			path = KSKeyboardScroller;
+			sourceTree = "<group>";
+		};
 		8C2C5592146750E70065A877 = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +282,7 @@
 				8CA7D646146D98C70042648E /* KSBasicMapAnnotation */,
 				8C2C55B91467510A0065A877 /* KSCheckView */,
 				8C7126CF146751A300C03BD2 /* KSEditEnder */,
+				8C1D039614CD7E1900C34909 /* KSKeyboardScroller */,
 				8C7126D2146751A300C03BD2 /* KSProgressDownloader */,
 				8C7126D5146751A300C03BD2 /* KSSheetView */,
 			);
@@ -508,6 +533,7 @@
 				8CABAFA0146AD26D0056D831 /* KSAdvancedPicker */,
 				8CABAFA3146AD26D0056D831 /* KSCheckView */,
 				8CABAFA6146AD26D0056D831 /* KSEditEnder */,
+				8C1D039B14CD7EB800C34909 /* KSKeyboardScroller */,
 				8CABAFA9146AD26D0056D831 /* KSProgressDownloader */,
 				8CABAFAC146AD26D0056D831 /* KSSheetView */,
 			);
@@ -739,6 +765,8 @@
 				8CFBD73614C288750041D042 /* VC_NSMutableArray_Shuffling.m in Sources */,
 				8CEA567314C7735000453958 /* NSTimer+Pause.m in Sources */,
 				8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */,
+				8C1D039914CD7E1900C34909 /* KSKeyboardScroller.m in Sources */,
+				8C1D039E14CD7ED000C34909 /* VC_KSKeyboardScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
