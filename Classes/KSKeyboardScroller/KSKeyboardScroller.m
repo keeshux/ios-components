@@ -113,9 +113,9 @@
     // absolute origin
     CGPoint activeOrigin = activeView.frame.origin;
     UIView *activeSuperview = activeView.superview;
-    while (activeSuperview != scrollView) {
+    while (activeSuperview && (activeSuperview != scrollView)) {
         activeOrigin.y += activeSuperview.frame.origin.y;
-        activeSuperview = activeView.superview;
+        activeSuperview = activeSuperview.superview;
     }
     activeOrigin.y -= scrollView.contentOffset.y;
 
