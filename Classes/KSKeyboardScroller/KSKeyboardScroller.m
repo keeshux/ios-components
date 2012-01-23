@@ -96,7 +96,7 @@
 
 - (void) keyboardWasShown:(NSNotification *)notification
 {
-    if (!scrollView) {
+    if (!scrollView || !activeView) {
         return;
     }
 
@@ -128,7 +128,7 @@
 
 - (void) keyboardWillBeHidden:(NSNotification *)notification
 {
-    if (!scrollView) {
+    if (!scrollView || !activeView) {
         return;
     }
     
