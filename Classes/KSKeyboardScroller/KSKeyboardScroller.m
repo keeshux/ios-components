@@ -39,7 +39,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:)
                                                      name:UIKeyboardWillHideNotification
                                                    object:nil];
-
+        
         self.mainView = aMainView;
     }
     return self;
@@ -49,7 +49,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [scrollView release];
-
+    
     [super dealloc];
 }
 
@@ -57,7 +57,7 @@
 {
     // unwrap previous
     if (scrollView) {
-
+        
         // replace parent in subviews
         for (UIView *subview in scrollView.subviews) {
             [subview retain];
@@ -65,18 +65,18 @@
             [mainView addSubview:subview];
             [subview release];
         }
-
+        
         // detach from main view
         [scrollView removeFromSuperview];
         [scrollView release];
         scrollView = nil;
     }
-
+    
     mainView = aMainView;
     
     // might be nil
     if (mainView) {
-
+        
         // wrap into scroll view
         scrollView = [[UIScrollView alloc] initWithFrame:mainView.bounds];
         scrollView.contentSize = mainView.bounds.size;
@@ -88,7 +88,7 @@
             [scrollView addSubview:subview];
             [subview release];
         }
-
+        
         // attach to main view
         [mainView addSubview:scrollView];
     }
@@ -99,29 +99,46 @@
     if (!scrollView || !activeView) {
         return;
     }
-
+    
     NSDictionary* info = [notification userInfo];
     const CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
     scrollView.scrollIndicatorInsets = scrollView.contentInset;
     
-    // make field visible
+    // 1) visibile frame
+    
     CGRect visibleFrame = mainView.frame;
+//    NSLog(@"visibleFrame (no keyboard) = %@", NSStringFromCGRect(visibleFrame));
+    
+    // keyboard coverage
     visibleFrame.size.height -= keyboardSize.height;
-
-    // absolute origin
-    CGPoint activeOrigin = activeView.frame.origin;
-    UIView *activeSuperview = activeView.superview;
-    while (activeSuperview && (activeSuperview != scrollView)) {
-        activeOrigin.y += activeSuperview.frame.origin.y;
-        activeSuperview = activeSuperview.superview;
+//    NSLog(@"visibleFrame (with keyboard) = %@", NSStringFromCGRect(visibleFrame));
+    
+    // 2) control origin
+    
+    CGPoint origin = activeView.frame.origin;
+//    NSLog(@"relative origin = %@", NSStringFromCGPoint(origin));
+    
+    // add absolute control origin
+    UIView *parent = activeView.superview;
+    while (parent) {
+//        NSLog(@"\tparent frame = %@", NSStringFromCGRect(parent.frame));
+        origin.y += parent.frame.origin.y;
+        parent = parent.superview;
     }
-    activeOrigin.y -= scrollView.contentOffset.y;
-
-    // scroll to visible
-    if (!CGRectContainsPoint(visibleFrame, activeOrigin)) {
-        const CGPoint offset = CGPointMake(0, activeOrigin.y + activeView.bounds.size.height - visibleFrame.size.height);
+//    NSLog(@"absolute origin = %@", NSStringFromCGPoint(origin));
+    
+    // subtract scroll view offset
+//    NSLog(@"scrollView.contentOffset.y = %f", scrollView.contentOffset.y);
+    origin.y -= scrollView.contentOffset.y;
+//    NSLog(@"final origin = %@", NSStringFromCGPoint(origin));
+    
+    // 3) scroll to visible
+    
+    if (!CGRectContainsPoint(visibleFrame, origin)) {
+        const CGPoint offset = CGPointMake(0, origin.y - visibleFrame.size.height);
+//        NSLog(@"offset = %@", NSStringFromCGPoint(offset));
         [scrollView setContentOffset:offset animated:YES];
     }
 }
