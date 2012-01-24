@@ -106,39 +106,23 @@
     scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
     scrollView.scrollIndicatorInsets = scrollView.contentInset;
     
-    // 1) visibile frame
-    
+    // consider keyboard coverage
     CGRect visibleFrame = mainView.frame;
-//    NSLog(@"visibleFrame (no keyboard) = %@", NSStringFromCGRect(visibleFrame));
-    
-    // keyboard coverage
     visibleFrame.size.height -= keyboardSize.height;
-//    NSLog(@"visibleFrame (with keyboard) = %@", NSStringFromCGRect(visibleFrame));
     
-    // 2) control origin
-    
+    // absolute control origin
     CGPoint origin = activeView.frame.origin;
-//    NSLog(@"relative origin = %@", NSStringFromCGPoint(origin));
-    
-    // add absolute control origin
     UIView *parent = activeView.superview;
     while (parent) {
-//        NSLog(@"\tparent frame = %@", NSStringFromCGRect(parent.frame));
         origin.y += parent.frame.origin.y;
         parent = parent.superview;
     }
-//    NSLog(@"absolute origin = %@", NSStringFromCGPoint(origin));
     
     // subtract scroll view offset
-//    NSLog(@"scrollView.contentOffset.y = %f", scrollView.contentOffset.y);
     origin.y -= scrollView.contentOffset.y;
-//    NSLog(@"final origin = %@", NSStringFromCGPoint(origin));
-    
-    // 3) scroll to visible
     
     if (!CGRectContainsPoint(visibleFrame, origin)) {
         const CGPoint offset = CGPointMake(0, origin.y - visibleFrame.size.height);
-//        NSLog(@"offset = %@", NSStringFromCGPoint(offset));
         [scrollView setContentOffset:offset animated:YES];
     }
 }
