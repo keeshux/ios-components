@@ -48,17 +48,7 @@
 {
     [super viewDidLoad];
 
-#if TARGET_IPHONE_SIMULATOR
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ios-components"
-                                                        message:@"Unavailable on Simulator!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
-
-    [self.navigationController popViewControllerAnimated:YES];
-#else
+#if !TARGET_IPHONE_SIMULATOR
     angleLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 20, (self.view.bounds.size.height - 100) / 2)];
     angleLabel.textAlignment = UITextAlignmentCenter;
     angleLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
@@ -68,6 +58,22 @@
     self.accelerometer = [UIAccelerometer sharedAccelerometer];
     accelerometer.updateInterval = .1;
     accelerometer.delegate = self;
+#endif
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+#if TARGET_IPHONE_SIMULATOR
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ios-components"
+                                                        message:@"Unavailable on Simulator!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    [self.navigationController popViewControllerAnimated:YES];
 #endif
 }
 
