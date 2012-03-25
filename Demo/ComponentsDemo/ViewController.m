@@ -98,6 +98,7 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSMutableArray" categoryName:@"Shuffling"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"DateConversion"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"Digest"]];
+    [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"Random"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSTimer" categoryName:@"Pause"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
@@ -116,12 +117,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 #pragma mark - UITableViewDataSource
