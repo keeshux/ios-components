@@ -18,6 +18,7 @@
 		8C4D3D15146756170093F771 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D3D0E146756170093F771 /* ViewController_iPhone.xib */; };
 		8C4D3D16146756170093F771 /* Window_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D3D10146756170093F771 /* Window_iPad.xib */; };
 		8C4D3D17146756170093F771 /* Window_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4D3D12146756170093F771 /* Window_iPhone.xib */; };
+		8C53A2C81525CA34009C71A7 /* NSFileManager+UserDirectories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C53A2C71525CA34009C71A7 /* NSFileManager+UserDirectories.m */; };
 		8C7126CB1467517100C03BD2 /* KSCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126CA1467517100C03BD2 /* KSCheckView.m */; };
 		8C7126D9146751A300C03BD2 /* KSEditEnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126D1146751A300C03BD2 /* KSEditEnder.m */; };
 		8C7126DB146751A300C03BD2 /* KSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126D7146751A300C03BD2 /* KSSheetView.m */; };
@@ -66,6 +67,8 @@
 		8C4D3D0F146756170093F771 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		8C4D3D11146756170093F771 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Window_iPad.xib; sourceTree = "<group>"; };
 		8C4D3D13146756170093F771 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Window_iPhone.xib; sourceTree = "<group>"; };
+		8C53A2C61525CA34009C71A7 /* NSFileManager+UserDirectories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+UserDirectories.h"; sourceTree = "<group>"; };
+		8C53A2C71525CA34009C71A7 /* NSFileManager+UserDirectories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+UserDirectories.m"; sourceTree = "<group>"; };
 		8C7126C91467517100C03BD2 /* KSCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCheckView.h; sourceTree = "<group>"; };
 		8C7126CA1467517100C03BD2 /* KSCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCheckView.m; sourceTree = "<group>"; };
 		8C7126D0146751A300C03BD2 /* KSEditEnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSEditEnder.h; sourceTree = "<group>"; };
@@ -225,6 +228,15 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		8C53A2C41525CA1E009C71A7 /* NSFileManager+UserDirectories */ = {
+			isa = PBXGroup;
+			children = (
+				8C53A2C61525CA34009C71A7 /* NSFileManager+UserDirectories.h */,
+				8C53A2C71525CA34009C71A7 /* NSFileManager+UserDirectories.m */,
+			);
+			path = "NSFileManager+UserDirectories";
+			sourceTree = "<group>";
+		};
 		8C7126CF146751A300C03BD2 /* KSEditEnder */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA7D639146D82200042648E /* MKMapView+Zoom */,
+				8C53A2C41525CA1E009C71A7 /* NSFileManager+UserDirectories */,
 				8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
 				8CD055A914730BA9001A3EF5 /* NSString+Digest */,
@@ -564,6 +577,7 @@
 				8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */,
 				8CCC9725151FE1870085C7EE /* NSString+Random.m in Sources */,
 				8CCC972A151FE1ED0085C7EE /* VC_NSString_Random.m in Sources */,
+				8C53A2C81525CA34009C71A7 /* NSFileManager+UserDirectories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
