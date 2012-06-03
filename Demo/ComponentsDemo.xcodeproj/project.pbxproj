@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C11E1D0157B660200B773C9 /* UIViewController+SubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
 		8C2C55A6146750E70065A877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A5146750E70065A877 /* CoreGraphics.framework */; };
@@ -51,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C11E1CE157B660200B773C9 /* UIViewController+SubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SubtitleView.h"; sourceTree = "<group>"; };
+		8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SubtitleView.m"; sourceTree = "<group>"; };
 		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C55A1146750E70065A877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C2C55A3146750E70065A877 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */ = {
+			isa = PBXGroup;
+			children = (
+				8C11E1CE157B660200B773C9 /* UIViewController+SubtitleView.h */,
+				8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */,
+			);
+			path = "UIViewController+SubtitleView";
+			sourceTree = "<group>";
+		};
 		8C2C5592146750E70065A877 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +306,7 @@
 				8CEA566F14C7724900453958 /* NSTimer+Pause */,
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
 				8CABAF9A146AD2440056D831 /* UIBarButtonItem+CustomImage */,
+				8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */,
 			);
 			name = Categories;
 			path = ../../Categories;
@@ -578,6 +591,7 @@
 				8CCC9725151FE1870085C7EE /* NSString+Random.m in Sources */,
 				8CCC972A151FE1ED0085C7EE /* VC_NSString_Random.m in Sources */,
 				8C53A2C81525CA34009C71A7 /* NSFileManager+UserDirectories.m in Sources */,
+				8C11E1D0157B660200B773C9 /* UIViewController+SubtitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
