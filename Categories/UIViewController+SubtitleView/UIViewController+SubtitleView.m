@@ -29,6 +29,9 @@
         return;
     }
 
+#warning XXX: restart from scratch
+    self.navigationItem.titleView = nil;
+
     BOOL created = NO;
     UIView *titleView = self.navigationItem.titleView;
     UILabel *labelTitle = nil;
