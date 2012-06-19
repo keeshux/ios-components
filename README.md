@@ -34,6 +34,14 @@ Graph paper background with custom content through Core Graphics context delegat
 
 Zoom on multiple map annotations optionally including user location. A delta can be specified to adjust the zoomed area.
 
+## NSArray+Occurrences
+
+Count object occurrences in `NSArray`.
+
+## NSFileManager+UserDirectories
+
+Shortcuts for user directories paths.
+
 ## NSMutableArray+Shuffling
 
 Convenient shuffling methods for `NSMutableArray`.
@@ -46,6 +54,10 @@ Convert date format in `NSString` without bothering with `NSDateFormatter`.
 
 Generate MD5 and SHA1 digest from `NSString`.
 
+## NSString+Random
+
+Generate random `NSString`.
+
 ## NSTimer+Pause
 
 Add pause/resume capability to `NSTimer`.
@@ -57,3 +69,7 @@ Compute the device 2D angle from `UIAcceleration`. Looking at the device laying 
 ## UIBarButtonItem+CustomImage
 
 Add a custom image or background image to your `UIBarButtonItem`.
+
+## UIViewController+SubtitleView
+
+Add a title with subtitle to a `UIViewController` (currently iPhone only).
