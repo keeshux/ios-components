@@ -23,6 +23,15 @@
 
 - (void) setTitle:(NSString *)title subtitle:(NSString *)subtitle
 {
+    // standard title
+    if (!subtitle) {
+        self.title = title;
+        return;
+    }
+
+#warning XXX: restart from scratch
+    self.navigationItem.titleView = nil;
+
     BOOL created = NO;
     UIView *titleView = self.navigationItem.titleView;
     UILabel *labelTitle = nil;
@@ -70,28 +79,18 @@
                                  self.navigationController.navigationBar.bounds.size.height);
     
     labelTitle.center = CGPointMake(titleView.bounds.size.width / 2, 15);
-    labelSubtitle.center = CGPointMake(titleView.bounds.size.width / 2, 31);
-    
-    CGRect frame;
-    
-    frame = labelTitle.frame;
-    frame.origin.x = (NSUInteger) frame.origin.x;
-    frame.origin.y = (NSUInteger) frame.origin.y;
-    labelTitle.frame = frame;
-    
-    frame = labelSubtitle.frame;
-    frame.origin.x = (NSUInteger) frame.origin.x;
-    frame.origin.y = (NSUInteger) frame.origin.y;
-    labelSubtitle.frame = frame;
+    labelSubtitle.center = CGPointMake(titleView.bounds.size.width / 2, 31);    
+    labelTitle.frame = CGRectIntegral(labelTitle.frame);
+    labelSubtitle.frame = CGRectIntegral(labelSubtitle.frame);
     
     titleView.autoresizesSubviews = YES;
     titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     labelTitle.autoresizingMask = titleView.autoresizingMask;
     labelSubtitle.autoresizingMask = titleView.autoresizingMask;
     
-    //    DDLog(@"titleView.frame = %@", NSStringFromCGRect(titleView.frame));
-    //    DDLog(@"labelTitle.frame = %@", NSStringFromCGRect(labelTitle.frame));
-    //    DDLog(@"labelSubtitle.frame = %@", NSStringFromCGRect(labelSubtitle.frame));
+//    DDLog(@"titleView.frame = %@", NSStringFromCGRect(titleView.frame));
+//    DDLog(@"labelTitle.frame = %@", NSStringFromCGRect(labelTitle.frame));
+//    DDLog(@"labelSubtitle.frame = %@", NSStringFromCGRect(labelSubtitle.frame));
     
     if (created) {
         self.navigationItem.titleView = titleView;
