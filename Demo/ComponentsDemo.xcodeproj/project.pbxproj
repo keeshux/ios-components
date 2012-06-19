@@ -39,6 +39,7 @@
 		8CABAFB9146AD3120056D831 /* ItemBackgroundImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB5146AD3120056D831 /* ItemBackgroundImage@2x.png */; };
 		8CABAFBA146AD3120056D831 /* ItemImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB6146AD3120056D831 /* ItemImage.png */; };
 		8CABAFBB146AD3120056D831 /* ItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB7146AD3120056D831 /* ItemImage@2x.png */; };
+		8CB228181591455400965996 /* UIColor+Darkening.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB228171591455400965996 /* UIColor+Darkening.m */; };
 		8CCC9725151FE1870085C7EE /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC9724151FE1870085C7EE /* NSString+Random.m */; };
 		8CCC972A151FE1ED0085C7EE /* VC_NSString_Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC9729151FE1ED0085C7EE /* VC_NSString_Random.m */; };
 		8CD055AC14730BA9001A3EF5 /* NSString+Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055AB14730BA9001A3EF5 /* NSString+Digest.m */; };
@@ -105,6 +106,8 @@
 		8CABAFB5146AD3120056D831 /* ItemBackgroundImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ItemBackgroundImage@2x.png"; sourceTree = "<group>"; };
 		8CABAFB6146AD3120056D831 /* ItemImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemImage.png; sourceTree = "<group>"; };
 		8CABAFB7146AD3120056D831 /* ItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ItemImage@2x.png"; sourceTree = "<group>"; };
+		8CB228161591455400965996 /* UIColor+Darkening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Darkening.h"; sourceTree = "<group>"; };
+		8CB228171591455400965996 /* UIColor+Darkening.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Darkening.m"; sourceTree = "<group>"; };
 		8CCC9723151FE1870085C7EE /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
 		8CCC9724151FE1870085C7EE /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
 		8CCC9728151FE1ED0085C7EE /* VC_NSString_Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSString_Random.h; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 				8CEA566F14C7724900453958 /* NSTimer+Pause */,
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
 				8CABAF9A146AD2440056D831 /* UIBarButtonItem+CustomImage */,
+				8CB228151591455400965996 /* UIColor+Darkening */,
 				8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */,
 			);
 			name = Categories;
@@ -406,6 +410,15 @@
 				8CABAFAE146AD26D0056D831 /* VC_KSSheetView.m */,
 			);
 			path = KSSheetView;
+			sourceTree = "<group>";
+		};
+		8CB228151591455400965996 /* UIColor+Darkening */ = {
+			isa = PBXGroup;
+			children = (
+				8CB228161591455400965996 /* UIColor+Darkening.h */,
+				8CB228171591455400965996 /* UIColor+Darkening.m */,
+			);
+			path = "UIColor+Darkening";
 			sourceTree = "<group>";
 		};
 		8CCC9722151FE1870085C7EE /* NSString+Random */ = {
@@ -606,6 +619,7 @@
 				8C53A2C81525CA34009C71A7 /* NSFileManager+UserDirectories.m in Sources */,
 				8C11E1D0157B660200B773C9 /* UIViewController+SubtitleView.m in Sources */,
 				8CE7FDB0158DDE6500844C59 /* NSArray+Occurrences.m in Sources */,
+				8CB228181591455400965996 /* UIColor+Darkening.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

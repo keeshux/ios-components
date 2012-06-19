@@ -70,6 +70,10 @@ Compute the device 2D angle from `UIAcceleration`. Looking at the device laying 
 
 Add a custom image or background image to your `UIBarButtonItem`.
 
+## UIColor+Darkening
+
+Darken an `UIColor` by a factor (0.0 to 1.0).
+
 ## UIViewController+SubtitleView
 
 Add a title with subtitle to a `UIViewController` (currently iPhone only).
