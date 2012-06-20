@@ -298,6 +298,14 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
 
 #pragma mark - NSObject
 
+- (BOOL)isEqual:(id)object
+{
+    if ([object class] != [self class]) {
+        return NO;
+    }
+    return [self isEqualToCIDictionary:object];
+}
+
 - (NSString *)description
 {
     return [_backing description];
