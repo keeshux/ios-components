@@ -42,7 +42,14 @@
 
 - (NSUInteger)count;
 - (id)objectForKey:(NSString *)aKey;
+- (NSArray *)objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker;
 - (NSEnumerator *)keyEnumerator;
+- (NSEnumerator *)objectEnumerator;
+
+- (NSArray *)allKeys;
+- (NSArray *)allKeysForObject:(id)anObject;    
+- (NSArray *)allValues;
+- (BOOL)isEqualToCIDictionary:(KSCIDictionary *)otherDictionary;
 
 @end
 

@@ -249,10 +249,54 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return [_backing objectForKey:originalKey];
 }
 
+- (NSArray *)objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker
+{
+    NSArray *ciKeys = KSCIDictionaryKeys(keys);
+    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:nil];
+
+    return [_backing objectsForKeys:originalKeys notFoundMarker:marker];
+}
+
 - (NSEnumerator *)keyEnumerator
 {
     return [_backing keyEnumerator];
 }
+
+- (NSEnumerator *)objectEnumerator
+{
+    return [_backing objectEnumerator];
+}
+
+- (NSArray *)allKeys
+{
+    return [_backing allKeys];
+}
+
+- (NSArray *)allKeysForObject:(id)anObject
+{
+    return [_backing allKeysForObject:anObject];
+}
+
+- (NSArray *)allValues
+{
+    return [_backing allValues];
+}
+
+- (BOOL)isEqualToCIDictionary:(KSCIDictionary *)otherDictionary
+{
+    if ([self count] != [otherDictionary count]) {
+        return NO;
+    }
+
+    for (NSString *originalKey in [_backing allKeys]) {
+        if (![otherDictionary objectForKey:originalKey]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+#pragma mark - NSObject
 
 - (NSString *)description
 {
