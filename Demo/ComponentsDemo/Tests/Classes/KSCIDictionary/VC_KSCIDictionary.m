@@ -139,8 +139,11 @@
     NSLog(@"copy = %@", [[dictionary copy] autorelease]);
     NSLog(@"mutableCopy = %@", [[dictionary mutableCopy] autorelease]);
 
-    NSDictionary *serialized = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]];
+    KSCIDictionary *serialized = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]];
     NSLog(@"serialized = %@", serialized);
+
+    NSLog(@"(dictionary == serialized) = %d", [dictionary isEqualToCIDictionary:serialized]);
+    NSLog(@"(dictionary == <test>) = %d", [dictionary isEqualToCIDictionary:[KSCIDictionary dictionaryWithObject:@"test" forKey:@"one"]]);
 }
 
 - (void)viewDidUnload
