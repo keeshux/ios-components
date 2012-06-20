@@ -289,7 +289,9 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     }
 
     for (NSString *originalKey in [_backing allKeys]) {
-        if (![otherDictionary objectForKey:originalKey]) {
+        id object = [self objectForKey:originalKey];
+        id otherObject = [otherDictionary objectForKey:originalKey];
+        if (!otherObject || ![otherObject isEqual:object]) {
             return NO;
         }
     }

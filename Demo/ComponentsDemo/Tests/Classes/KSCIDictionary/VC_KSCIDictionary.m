@@ -144,6 +144,14 @@
 
     NSLog(@"(dictionary == serialized) = %d", [dictionary isEqualToCIDictionary:serialized]);
     NSLog(@"(dictionary == <test>) = %d", [dictionary isEqualToCIDictionary:[KSCIDictionary dictionaryWithObject:@"test" forKey:@"one"]]);
+
+    KSCIMutableDictionary *lowercase = [KSCIMutableDictionary dictionary];
+    for (NSString *key in [dictionary allKeys]) {
+        [lowercase setObject:[dictionary objectForKey:key] forKey:[key lowercaseString]];
+    }
+    NSLog(@"dictionary = %@", dictionary);
+    NSLog(@"lowercase = %@", lowercase);
+    NSLog(@"(dictionary == <lowercase>) = %d", [dictionary isEqualToCIDictionary:lowercase]);
 }
 
 - (void)viewDidUnload
