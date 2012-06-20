@@ -303,6 +303,40 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return [_backing description];
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    KSCIDictionary *otherDictionary = [[self class] allocWithZone:zone];
+    otherDictionary.backing = [[_backing mutableCopy] autorelease];
+    otherDictionary.mapping = [[_mapping mutableCopy] autorelease];
+    return otherDictionary;
+}
+
+#pragma mark - NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    return [self copyWithZone:zone];
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super init])) {
+        self.backing = [aDecoder decodeObject];
+        self.mapping = [aDecoder decodeObject];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:_backing];
+    [aCoder encodeObject:_mapping];
+}
+
 @end
 
 @implementation KSCIMutableDictionary

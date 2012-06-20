@@ -19,7 +19,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KSCIDictionary : NSObject
+@interface KSCIDictionary : NSObject <NSCopying, NSMutableCopying, NSCoding>
 
 + (id)dictionary;
 + (id)dictionaryWithObject:(id)object forKey:(NSString *)key;

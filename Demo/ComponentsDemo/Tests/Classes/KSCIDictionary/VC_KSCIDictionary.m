@@ -133,6 +133,12 @@
     NSLog(@"dictionaryWithContentsOfURL:\n\n");
     dictionary = [KSCIDictionary dictionaryWithContentsOfURL:url];
     [self testDictionary4:dictionary];
+
+    NSLog(@"copy = %@", [[dictionary copy] autorelease]);
+    NSLog(@"mutableCopy = %@", [[dictionary mutableCopy] autorelease]);
+
+    NSDictionary *serialized = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]];
+    NSLog(@"serialized = %@", serialized);
 }
 
 - (void)viewDidUnload
