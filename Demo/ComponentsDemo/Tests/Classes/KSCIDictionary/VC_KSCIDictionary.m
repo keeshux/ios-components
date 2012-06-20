@@ -33,6 +33,8 @@
     NSLog(@"\tanOthER -> %@", [dictionary objectForKey:@"anOthER"]);
     NSLog(@"\tanother -> %@", [dictionary objectForKey:@"another"]);
     NSLog(@"\tANOTHER -> %@", [dictionary objectForKey:@"ANOTHER"]);
+    NSLog(@"\t<oNE, aNothER> -> %@", [dictionary objectsForKeys:[NSArray arrayWithObjects:@"oNE", @"aNothER", nil]
+                                                 notFoundMarker:[NSNull null]]);
     NSLog(@"\n");
 }
 

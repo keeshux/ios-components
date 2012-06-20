@@ -252,7 +252,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
 - (NSArray *)objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker
 {
     NSArray *ciKeys = KSCIDictionaryKeys(keys);
-    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:nil];
+    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:[NSNull null]];
 
     return [_backing objectsForKeys:originalKeys notFoundMarker:marker];
 }
@@ -385,7 +385,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
 - (void)removeObjectsForKeys:(NSArray *)keyArray
 {
     NSArray *ciKeys = KSCIDictionaryKeys(keyArray);
-    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:nil];
+    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:[NSNull null]];
     [_backing removeObjectsForKeys:originalKeys];
     [_mapping removeObjectsForKeys:ciKeys];
 }
