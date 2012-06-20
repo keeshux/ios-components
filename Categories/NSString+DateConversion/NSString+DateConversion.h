@@ -21,6 +21,8 @@
 
 @interface NSString (DateConversion)
 
++ (NSString *) stringWithDate:(NSDate *)date format:(NSString *)format;
+- (NSDate *) dateValueWithFormat:(NSString *)format;
 - (NSString *) dateStringFromFormat:(NSString *)inFormat toFormat:(NSString *)outFormat;
 
 @end

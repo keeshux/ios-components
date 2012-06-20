@@ -48,7 +48,7 @@ Convenient shuffling methods for `NSMutableArray`.
 
 ## NSString+DateConversion
 
-Convert date format in `NSString` without bothering with `NSDateFormatter`.
+Convert dates in `NSString` without bothering with `NSDateFormatter`.
 
 ## NSString+Digest
 
