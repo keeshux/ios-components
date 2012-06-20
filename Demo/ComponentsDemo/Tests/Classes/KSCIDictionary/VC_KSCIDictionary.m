@@ -109,6 +109,18 @@
     NSLog(@"setDictionary:\n\n");
     [dictionary setDictionary:other];
     [self testDictionary3:dictionary];
+
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"KSCIDictionaryTest" ofType:@"plist"];
+
+    NSLog(@"dictionaryWithContentsOfFile:\n\n");
+    dictionary = [KSCIDictionary dictionaryWithContentsOfFile:file];
+    [self testDictionary3:dictionary];
+
+    NSURL *url = [NSURL fileURLWithPath:file];
+    
+    NSLog(@"dictionaryWithContentsOfURL:\n\n");
+    dictionary = [KSCIDictionary dictionaryWithContentsOfURL:url];
+    [self testDictionary3:dictionary];
 }
 
 - (void)viewDidUnload

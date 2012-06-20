@@ -35,6 +35,11 @@
 - (id)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag;
 - (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys;
 
++ (id)dictionaryWithContentsOfFile:(NSString *)path;
++ (id)dictionaryWithContentsOfURL:(NSURL *)url;
+- (id)initWithContentsOfFile:(NSString *)path;
+- (id)initWithContentsOfURL:(NSURL *)url;
+
 - (NSUInteger)count;
 - (id)objectForKey:(NSString *)aKey;
 - (NSEnumerator *)keyEnumerator;

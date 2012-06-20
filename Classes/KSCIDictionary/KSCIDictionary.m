@@ -99,12 +99,11 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 - (id)initWithObjects:(const id [])objects forKeys:(NSString * [])keys count:(NSUInteger)cnt
 {
     if ((self = [super init])) {
-        NSMutableDictionary *ciDictionary = [NSMutableDictionary dictionaryWithCapacity:cnt];
-        for (NSUInteger i = 0; i < cnt; ++i) {
-            [ciDictionary setObject:objects[i] forKey:KSCIDictionaryKey(keys[i])];
-        }
+        self.backing = [NSMutableDictionary dictionaryWithCapacity:cnt];
 
-        self.backing = ciDictionary;
+        for (NSUInteger i = 0; i < cnt; ++i) {
+            [_backing setObject:objects[i] forKey:KSCIDictionaryKey(keys[i])];
+        }
     }
     return self;
 }
@@ -112,21 +111,20 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 - (id)initWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
 {
     if ((self = [super init])) {
+        self.backing = [NSMutableDictionary dictionary];
+        
         va_list args;
         va_start(args, firstObject);
 
-        NSMutableDictionary *ciDictionary = [NSMutableDictionary dictionary];
         id object = firstObject;
         NSString *key = va_arg(args, NSString *);
         while (object && key) {
-            [ciDictionary setObject:object forKey:KSCIDictionaryKey(key)];
+            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
 
             object = va_arg(args, id);
             key = va_arg(args, NSString *);
         }
         va_end(args);
-
-        self.backing = ciDictionary;
     }
     return self;
 }
@@ -139,15 +137,15 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 - (id)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag
 {
     if ((self = [super init])) {
-        NSMutableDictionary *ciDictionary = [NSMutableDictionary dictionary];
+        self.backing = [NSMutableDictionary dictionary];
+
         for (NSString *key in [otherDictionary allKeys]) {
             id object = [otherDictionary objectForKey:key];
             if (flag) {
                 [[object copy] autorelease];
             }
-            [ciDictionary setObject:object forKey:KSCIDictionaryKey(key)];
+            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
         }
-        self.backing = ciDictionary;
     }
     return self;
 }
@@ -156,6 +154,44 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionaryWithObjects:objects forKeys:KSCIDictionaryKeys(keys)];
+    }
+    return self;
+}
+
++ (id)dictionaryWithContentsOfFile:(NSString *)path
+{
+    return [[[self alloc] initWithContentsOfFile:path] autorelease];
+}
+
++ (id)dictionaryWithContentsOfURL:(NSURL *)url
+{
+    return [[[self alloc] initWithContentsOfURL:url] autorelease];
+}
+
+- (id)initWithContentsOfFile:(NSString *)path
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    if ((self = [super init])) {
+        self.backing = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
+
+        for (NSString *key in [dictionary allKeys]) {
+            id object = [dictionary objectForKey:key];
+            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+        }
+    }
+    return self;
+}
+
+- (id)initWithContentsOfURL:(NSURL *)url
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfURL:url];
+    if ((self = [super init])) {
+        self.backing = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
+
+        for (NSString *key in [dictionary allKeys]) {
+            id object = [dictionary objectForKey:key];
+            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+        }
     }
     return self;
 }
