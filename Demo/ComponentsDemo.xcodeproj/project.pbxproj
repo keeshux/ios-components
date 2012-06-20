@@ -41,6 +41,8 @@
 		8CABAFBB146AD3120056D831 /* ItemImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB7146AD3120056D831 /* ItemImage@2x.png */; };
 		8CB228181591455400965996 /* UIColor+Darkening.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB228171591455400965996 /* UIColor+Darkening.m */; };
 		8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB2282915914BC400965996 /* VC_UIViewController_SubtitleView.m */; };
+		8CB228ED159152CF00965996 /* KSCIDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB228EC159152CF00965996 /* KSCIDictionary.m */; };
+		8CB228F11591578B00965996 /* VC_KSCIDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB228F01591578B00965996 /* VC_KSCIDictionary.m */; };
 		8CCC9725151FE1870085C7EE /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC9724151FE1870085C7EE /* NSString+Random.m */; };
 		8CCC972A151FE1ED0085C7EE /* VC_NSString_Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC9729151FE1ED0085C7EE /* VC_NSString_Random.m */; };
 		8CD055AC14730BA9001A3EF5 /* NSString+Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055AB14730BA9001A3EF5 /* NSString+Digest.m */; };
@@ -109,8 +111,12 @@
 		8CABAFB7146AD3120056D831 /* ItemImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ItemImage@2x.png"; sourceTree = "<group>"; };
 		8CB228161591455400965996 /* UIColor+Darkening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Darkening.h"; sourceTree = "<group>"; };
 		8CB228171591455400965996 /* UIColor+Darkening.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Darkening.m"; sourceTree = "<group>"; };
-		8CB2282815914BC400965996 /* VC_UIViewController_SubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = VC_UIViewController_SubtitleView.h; sourceTree = "<group>"; };
+		8CB2282815914BC400965996 /* VC_UIViewController_SubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIViewController_SubtitleView.h; sourceTree = "<group>"; };
 		8CB2282915914BC400965996 /* VC_UIViewController_SubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_UIViewController_SubtitleView.m; sourceTree = "<group>"; };
+		8CB228EB159152CF00965996 /* KSCIDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCIDictionary.h; sourceTree = "<group>"; };
+		8CB228EC159152CF00965996 /* KSCIDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCIDictionary.m; sourceTree = "<group>"; };
+		8CB228EF1591578B00965996 /* VC_KSCIDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSCIDictionary.h; sourceTree = "<group>"; };
+		8CB228F01591578B00965996 /* VC_KSCIDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSCIDictionary.m; sourceTree = "<group>"; };
 		8CCC9723151FE1870085C7EE /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
 		8CCC9724151FE1870085C7EE /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
 		8CCC9728151FE1ED0085C7EE /* VC_NSString_Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSString_Random.h; sourceTree = "<group>"; };
@@ -224,6 +230,7 @@
 			children = (
 				8CA7D646146D98C70042648E /* KSBasicMapAnnotation */,
 				8C2C55B91467510A0065A877 /* KSCheckView */,
+				8CB228E9159152BF00965996 /* KSCIDictionary */,
 				8C7126CF146751A300C03BD2 /* KSEditEnder */,
 				8C7126D5146751A300C03BD2 /* KSSheetView */,
 			);
@@ -383,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				8CABAFA3146AD26D0056D831 /* KSCheckView */,
+				8CB228EE1591577100965996 /* KSCIDictionary */,
 				8CABAFA6146AD26D0056D831 /* KSEditEnder */,
 				8CABAFAC146AD26D0056D831 /* KSSheetView */,
 			);
@@ -432,6 +440,24 @@
 				8CB2282915914BC400965996 /* VC_UIViewController_SubtitleView.m */,
 			);
 			path = "UIViewController+SubtitleView";
+			sourceTree = "<group>";
+		};
+		8CB228E9159152BF00965996 /* KSCIDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				8CB228EB159152CF00965996 /* KSCIDictionary.h */,
+				8CB228EC159152CF00965996 /* KSCIDictionary.m */,
+			);
+			path = KSCIDictionary;
+			sourceTree = "<group>";
+		};
+		8CB228EE1591577100965996 /* KSCIDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				8CB228EF1591578B00965996 /* VC_KSCIDictionary.h */,
+				8CB228F01591578B00965996 /* VC_KSCIDictionary.m */,
+			);
+			path = KSCIDictionary;
 			sourceTree = "<group>";
 		};
 		8CCC9722151FE1870085C7EE /* NSString+Random */ = {
@@ -634,6 +660,8 @@
 				8CE7FDB0158DDE6500844C59 /* NSArray+Occurrences.m in Sources */,
 				8CB228181591455400965996 /* UIColor+Darkening.m in Sources */,
 				8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */,
+				8CB228ED159152CF00965996 /* KSCIDictionary.m in Sources */,
+				8CB228F11591578B00965996 /* VC_KSCIDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

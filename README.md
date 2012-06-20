@@ -12,6 +12,10 @@ The most basic `MKAnnotation` implementation.
 
 A simple checkbox control.
 
+## KSCIDictionary
+
+Case-insensitive `NSDictionary` and `NSMutableDictionary` wrappers.
+
 ## KSEditEnder
 
 A tiny control for an extremely common task: hide keyboard when touching outside edited field.
@@ -76,4 +80,4 @@ Darken an `UIColor` by a factor (0.0 to 1.0).
 
 ## UIViewController+SubtitleView
 
-Add a title with subtitle to a `UIViewController` (currently iPhone only).
+Add a title with subtitle to a `UIViewController` (still limited).
