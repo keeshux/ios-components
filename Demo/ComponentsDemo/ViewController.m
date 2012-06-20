@@ -102,6 +102,7 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSTimer" categoryName:@"Pause"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
+    [menuCategories addObject:[MenuItem itemWithClassName:@"UIViewController" categoryName:@"SubtitleView"]];
 
     self.menu = [NSArray arrayWithObjects:menuClasses, menuCategories, nil];
     [menuClasses release];

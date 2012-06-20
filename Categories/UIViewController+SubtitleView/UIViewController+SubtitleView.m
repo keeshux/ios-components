@@ -29,8 +29,10 @@
         return;
     }
 
-#warning XXX: restart from scratch
+    // FIXME: restart from scratch
     self.navigationItem.titleView = nil;
+
+    // FIXME: fixed color
 
     BOOL created = NO;
     UIView *titleView = self.navigationItem.titleView;
@@ -97,62 +99,62 @@
     }
 }
 
-- (void) setTitle2:(NSString *)title subtitle:(NSString *)subtitle
-{
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectZero];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    
-    // Set font for sizing width
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    titleLabel.shadowColor = [UIColor darkGrayColor];
-    subtitleLabel.font = [UIFont systemFontOfSize:14];
-    subtitleLabel.shadowColor = [UIColor darkGrayColor];
-    
-    // Set the width of the views according to the text size
-    CGFloat titleDesiredWidth = [title sizeWithFont:titleLabel.font
-                                  constrainedToSize:CGSizeMake([[UIScreen mainScreen] applicationFrame].size.width, titleLabel.frame.size.height)
-                                      lineBreakMode:UILineBreakModeCharacterWrap].width;
-    CGFloat subtitleDesiredWidth = [subtitle sizeWithFont:subtitleLabel.font
-                                        constrainedToSize:CGSizeMake([[UIScreen mainScreen] applicationFrame].size.width, subtitleLabel.frame.size.height)
-                                            lineBreakMode:UILineBreakModeCharacterWrap].width;
-    
-    CGRect frame;
-    
-    frame = titleLabel.frame;
-    frame.size.height = 20;
-    frame.size.width = titleDesiredWidth;
-    titleLabel.frame = frame;
-    
-    frame = subtitleLabel.frame;
-    frame.size.height = 20;
-    frame.size.width = subtitleDesiredWidth;
-    subtitleLabel.frame = frame;
-    
-    frame = titleView.frame;
-    frame.size.height = 44;
-    frame.size.width = MAX(titleDesiredWidth, subtitleDesiredWidth);
-    titleView.frame = frame;
-    
-    // Ensure text is on one line, centered and truncates if the bounds are restricted
-    titleLabel.numberOfLines = 1;
-    titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
-    titleLabel.textAlignment = UITextAlignmentCenter;
-    
-    // Use autoresizing to restrict the bounds to the area that the titleview allows
-    titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    titleView.autoresizesSubviews = YES;
-    titleLabel.autoresizingMask = titleView.autoresizingMask;
-    subtitleLabel.autoresizingMask = titleView.autoresizingMask;
-    
-    // Set the text
-    titleLabel.text = title;
-    subtitleLabel.text = subtitle;
-    
-    // Add as the nav bar's titleview
-    [titleView addSubview:titleLabel];
-    [titleView addSubview:subtitleLabel];
-    self.navigationItem.titleView = titleView;
-}
+//- (void) setTitle:(NSString *)title subtitle:(NSString *)subtitle
+//{
+//    UIView *titleView = [[UIView alloc] initWithFrame:CGRectZero];
+//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    
+//    // Set font for sizing width
+//    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+//    titleLabel.shadowColor = [UIColor darkGrayColor];
+//    subtitleLabel.font = [UIFont systemFontOfSize:14];
+//    subtitleLabel.shadowColor = [UIColor darkGrayColor];
+//    
+//    // Set the width of the views according to the text size
+//    CGFloat titleDesiredWidth = [title sizeWithFont:titleLabel.font
+//                                  constrainedToSize:CGSizeMake([[UIScreen mainScreen] applicationFrame].size.width, titleLabel.frame.size.height)
+//                                      lineBreakMode:UILineBreakModeCharacterWrap].width;
+//    CGFloat subtitleDesiredWidth = [subtitle sizeWithFont:subtitleLabel.font
+//                                        constrainedToSize:CGSizeMake([[UIScreen mainScreen] applicationFrame].size.width, subtitleLabel.frame.size.height)
+//                                            lineBreakMode:UILineBreakModeCharacterWrap].width;
+//    
+//    CGRect frame;
+//    
+//    frame = titleLabel.frame;
+//    frame.size.height = 20;
+//    frame.size.width = titleDesiredWidth;
+//    titleLabel.frame = frame;
+//    
+//    frame = subtitleLabel.frame;
+//    frame.size.height = 20;
+//    frame.size.width = subtitleDesiredWidth;
+//    subtitleLabel.frame = frame;
+//    
+//    frame = titleView.frame;
+//    frame.size.height = 44;
+//    frame.size.width = MAX(titleDesiredWidth, subtitleDesiredWidth);
+//    titleView.frame = frame;
+//    
+//    // Ensure text is on one line, centered and truncates if the bounds are restricted
+//    titleLabel.numberOfLines = 1;
+//    titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+//    titleLabel.textAlignment = UITextAlignmentCenter;
+//    
+//    // Use autoresizing to restrict the bounds to the area that the titleview allows
+//    titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+//    titleView.autoresizesSubviews = YES;
+//    titleLabel.autoresizingMask = titleView.autoresizingMask;
+//    subtitleLabel.autoresizingMask = titleView.autoresizingMask;
+//    
+//    // Set the text
+//    titleLabel.text = title;
+//    subtitleLabel.text = subtitle;
+//    
+//    // Add as the nav bar's titleview
+//    [titleView addSubview:titleLabel];
+//    [titleView addSubview:subtitleLabel];
+//    self.navigationItem.titleView = titleView;
+//}
 
 @end
