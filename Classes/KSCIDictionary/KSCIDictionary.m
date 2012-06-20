@@ -31,18 +31,36 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
     return ciKeys;
 }
 
+static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictionary,
+                                                     NSMutableDictionary *mapping,
+                                                     id object,
+                                                     NSString *key) {
+
+    NSString *ciKey = KSCIDictionaryKey(key);
+    NSString *originalKey = [mapping objectForKey:ciKey];
+
+    if (!originalKey) {
+        originalKey = key;
+    }
+    [mapping setObject:originalKey forKey:ciKey];
+    [dictionary setObject:object forKey:originalKey];
+}
+
 @interface KSCIDictionary () {
 @protected
     NSMutableDictionary *_backing;
+    NSMutableDictionary *_mapping;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *backing;
+@property (nonatomic, retain) NSMutableDictionary *mapping;
 
 @end
 
 @implementation KSCIDictionary
 
 @synthesize backing = _backing;
+@synthesize mapping = _mapping;
 
 + (id)dictionary
 {
@@ -92,6 +110,7 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
+        self.mapping = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -100,9 +119,10 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionaryWithCapacity:cnt];
+        self.mapping = [NSMutableDictionary dictionaryWithCapacity:cnt];
 
         for (NSUInteger i = 0; i < cnt; ++i) {
-            [_backing setObject:objects[i] forKey:KSCIDictionaryKey(keys[i])];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, objects[i], keys[i]);
         }
     }
     return self;
@@ -112,6 +132,7 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
+        self.mapping = [NSMutableDictionary dictionary];
         
         va_list args;
         va_start(args, firstObject);
@@ -119,7 +140,7 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
         id object = firstObject;
         NSString *key = va_arg(args, NSString *);
         while (object && key) {
-            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
 
             object = va_arg(args, id);
             key = va_arg(args, NSString *);
@@ -138,13 +159,14 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
+        self.mapping = [NSMutableDictionary dictionary];
 
         for (NSString *key in [otherDictionary allKeys]) {
             id object = [otherDictionary objectForKey:key];
             if (flag) {
                 [[object copy] autorelease];
             }
-            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
         }
     }
     return self;
@@ -153,7 +175,15 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 - (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
 {
     if ((self = [super init])) {
-        self.backing = [NSMutableDictionary dictionaryWithObjects:objects forKeys:KSCIDictionaryKeys(keys)];
+        self.backing = [NSMutableDictionary dictionary];
+        self.mapping = [NSMutableDictionary dictionary];
+
+        NSUInteger i = 0;
+        for (NSString *key in keys) {
+            id object = [objects objectAtIndex:i];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
+            ++i;
+        }
     }
     return self;
 }
@@ -173,10 +203,11 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
+        self.mapping = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
 
         for (NSString *key in [dictionary allKeys]) {
             id object = [dictionary objectForKey:key];
-            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
         }
     }
     return self;
@@ -187,10 +218,11 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfURL:url];
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
+        self.mapping = [NSMutableDictionary dictionaryWithCapacity:[dictionary count]];
 
         for (NSString *key in [dictionary allKeys]) {
             id object = [dictionary objectForKey:key];
-            [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+            KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
         }
     }
     return self;
@@ -199,6 +231,7 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 - (void)dealloc
 {
     self.backing = nil;
+    self.mapping = nil;
 
     [super dealloc];
 }
@@ -210,7 +243,10 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 
 - (id)objectForKey:(NSString *)aKey
 {
-    return [_backing objectForKey:KSCIDictionaryKey(aKey)];
+    NSString *ciKey = KSCIDictionaryKey(aKey);
+    NSString *originalKey = [_mapping objectForKey:ciKey];
+
+    return [_backing objectForKey:originalKey];
 }
 
 - (NSEnumerator *)keyEnumerator
@@ -236,36 +272,44 @@ static inline NSArray *KSCIDictionaryKeys(NSArray *keys) {
 {
     if ((self = [super init])) {
         self.dictionary = [NSMutableDictionary dictionaryWithCapacity:numItems];
+        self.backing = [NSMutableDictionary dictionaryWithCapacity:numItems];
     }
     return self;
 }
 
 - (void)removeObjectForKey:(NSString *)aKey
 {
-    [_backing removeObjectForKey:KSCIDictionaryKey(aKey)];
+    NSString *ciKey = KSCIDictionaryKey(aKey);
+    NSString *originalKey = [_mapping objectForKey:ciKey];
+    [_backing removeObjectForKey:originalKey];
+    [_mapping removeObjectForKey:ciKey];
 }
 
 - (void)setObject:(id)anObject forKey:(NSString *)aKey
 {
-    [_backing setObject:anObject forKey:KSCIDictionaryKey(aKey)];
+    KSCIDictionarySetObjectAndMapping(_backing, _mapping, anObject, aKey);
 }
 
 - (void)addEntriesFromDictionary:(NSDictionary *)otherDictionary
 {
     for (NSString *key in [otherDictionary allKeys]) {
         id object = [otherDictionary objectForKey:key];
-        [_backing setObject:object forKey:KSCIDictionaryKey(key)];
+        KSCIDictionarySetObjectAndMapping(_backing, _mapping, object, key);
     }
 }
 
 - (void)removeAllObjects
 {
     [_backing removeAllObjects];
+    [_mapping removeAllObjects];
 }
 
 - (void)removeObjectsForKeys:(NSArray *)keyArray
 {
-    [_backing removeObjectsForKeys:KSCIDictionaryKeys(keyArray)];
+    NSArray *ciKeys = KSCIDictionaryKeys(keyArray);
+    NSArray *originalKeys = [_mapping objectsForKeys:ciKeys notFoundMarker:nil];
+    [_backing removeObjectsForKeys:originalKeys];
+    [_mapping removeObjectsForKeys:ciKeys];
 }
 
 - (void)setDictionary:(NSDictionary *)otherDictionary

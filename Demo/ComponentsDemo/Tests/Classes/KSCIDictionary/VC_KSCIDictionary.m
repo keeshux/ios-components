@@ -18,6 +18,7 @@
 - (void) testDictionary1:(KSCIDictionary *)dictionary
 {
     NSLog(@"test 1");
+    NSLog(@"dictionary = %@", dictionary);
     NSLog(@"\tONE -> %@", [dictionary objectForKey:@"ONE"]);
     NSLog(@"\toNe -> %@", [dictionary objectForKey:@"oNe"]);
     NSLog(@"\tone -> %@", [dictionary objectForKey:@"one"]);
@@ -28,6 +29,7 @@
 - (void) testDictionary2:(KSCIDictionary *)dictionary
 {
     NSLog(@"test 2");
+    NSLog(@"dictionary = %@", dictionary);
     NSLog(@"\tanOthER -> %@", [dictionary objectForKey:@"anOthER"]);
     NSLog(@"\tanother -> %@", [dictionary objectForKey:@"another"]);
     NSLog(@"\tANOTHER -> %@", [dictionary objectForKey:@"ANOTHER"]);
@@ -37,10 +39,20 @@
 - (void) testDictionary3:(KSCIDictionary *)dictionary
 {
     NSLog(@"test 3");
-    NSLog(@"\t<all> -> %@", dictionary);
+    NSLog(@"dictionary = %@", dictionary);
     NSLog(@"\tOne -> %@", [dictionary objectForKey:@"One"]);
     NSLog(@"\ttwO -> %@", [dictionary objectForKey:@"twO"]);
     NSLog(@"\tthREE -> %@", [dictionary objectForKey:@"thREE"]);
+    NSLog(@"\n");
+}
+
+- (void) testDictionary4:(KSCIDictionary *)dictionary
+{
+    NSLog(@"test 4");
+    NSLog(@"dictionary = %@", dictionary);
+    NSLog(@"\tProPeRTY1 -> %@", [dictionary objectForKey:@"ProPeRTY1"]);
+    NSLog(@"\tPROPERTY2 -> %@", [dictionary objectForKey:@"PROPERTY2"]);
+    NSLog(@"\tproperty3 -> %@", [dictionary objectForKey:@"property3"]);
     NSLog(@"\n");
 }
 
@@ -114,13 +126,13 @@
 
     NSLog(@"dictionaryWithContentsOfFile:\n\n");
     dictionary = [KSCIDictionary dictionaryWithContentsOfFile:file];
-    [self testDictionary3:dictionary];
+    [self testDictionary4:dictionary];
 
     NSURL *url = [NSURL fileURLWithPath:file];
     
     NSLog(@"dictionaryWithContentsOfURL:\n\n");
     dictionary = [KSCIDictionary dictionaryWithContentsOfURL:url];
-    [self testDictionary3:dictionary];
+    [self testDictionary4:dictionary];
 }
 
 - (void)viewDidUnload
