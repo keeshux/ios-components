@@ -90,7 +90,6 @@
     
     NSMutableArray *menuClasses = [[NSMutableArray alloc] init];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSCheckView"]];
-    [menuClasses addObject:[MenuItem itemWithClassName:@"KSCIDictionary"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSEditEnder"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSSheetView"]];
 

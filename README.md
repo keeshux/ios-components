@@ -14,7 +14,7 @@ A simple checkbox control.
 
 ## KSCIDictionary
 
-Case-insensitive `NSDictionary` and `NSMutableDictionary` wrappers.
+Moved to [its own repository](http://github.com/keeshux/KSCIDictionary).
 
 ## KSEditEnder
 
