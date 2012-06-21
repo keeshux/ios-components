@@ -23,26 +23,26 @@
 
 - (UIColor *) darkenedColorWithFactor:(CGFloat)factor
 {
-    const CGFloat *contentComponents = CGColorGetComponents(self.CGColor);
-    CGFloat touchedContentComponents[4];
+    const CGFloat *components = CGColorGetComponents(self.CGColor);
+    CGFloat darkenedComponents[4];
     switch (CGColorGetNumberOfComponents(self.CGColor)) {
         case 2:
-            touchedContentComponents[0] = contentComponents[0] * factor;
-            touchedContentComponents[1] = contentComponents[0] * factor;
-            touchedContentComponents[2] = contentComponents[0] * factor;
-            touchedContentComponents[3] = contentComponents[1];
+            darkenedComponents[0] = components[0] * factor;
+            darkenedComponents[1] = components[0] * factor;
+            darkenedComponents[2] = components[0] * factor;
+            darkenedComponents[3] = components[1];
             break;
         case 4:
-            touchedContentComponents[0] = contentComponents[0] * factor;
-            touchedContentComponents[1] = contentComponents[1] * factor;
-            touchedContentComponents[2] = contentComponents[2] * factor;
-            touchedContentComponents[3] = contentComponents[3];
+            darkenedComponents[0] = components[0] * factor;
+            darkenedComponents[1] = components[1] * factor;
+            darkenedComponents[2] = components[2] * factor;
+            darkenedComponents[3] = components[3];
             break;
     }
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	CGColorRef darkenedCG = CGColorCreate(colorSpace, touchedContentComponents);
-	CGColorSpaceRelease(colorSpace);
+	CGColorRef darkenedCG = CGColorCreate(colorSpace, darkenedComponents);
 	UIColor *darkened = [UIColor colorWithCGColor:darkenedCG];
+	CGColorSpaceRelease(colorSpace);
 	CGColorRelease(darkenedCG);
     return darkened;
 }
