@@ -48,6 +48,7 @@
 		8CE7FDB0158DDE6500844C59 /* NSArray+Occurrences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE7FDAF158DDE6500844C59 /* NSArray+Occurrences.m */; };
 		8CEA567314C7735000453958 /* NSTimer+Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA567214C7735000453958 /* NSTimer+Pause.m */; };
 		8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */; };
+		8CEF14751599011D00F007AC /* UIScrollView+Shortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF14741599011D00F007AC /* UIScrollView+Shortcuts.m */; };
 		8CFBD72314C27E940041D042 /* UIAcceleration+DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */; };
 		8CFBD72714C280210041D042 /* VC_UIAcceleration_DeviceAngle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72614C280210041D042 /* VC_UIAcceleration_DeviceAngle.m */; };
 		8CFBD72F14C2884C0041D042 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD72E14C2884C0041D042 /* NSMutableArray+Shuffling.m */; };
@@ -125,6 +126,8 @@
 		8CEA567214C7735000453958 /* NSTimer+Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Pause.m"; sourceTree = "<group>"; };
 		8CEA567514C7796600453958 /* VC_NSTimer_Pause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSTimer_Pause.h; sourceTree = "<group>"; };
 		8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSTimer_Pause.m; sourceTree = "<group>"; };
+		8CEF14731599011D00F007AC /* UIScrollView+Shortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Shortcuts.h"; sourceTree = "<group>"; };
+		8CEF14741599011D00F007AC /* UIScrollView+Shortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Shortcuts.m"; sourceTree = "<group>"; };
 		8CFBD72114C27E940041D042 /* UIAcceleration+DeviceAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAcceleration+DeviceAngle.h"; sourceTree = "<group>"; };
 		8CFBD72214C27E940041D042 /* UIAcceleration+DeviceAngle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAcceleration+DeviceAngle.m"; sourceTree = "<group>"; };
 		8CFBD72514C280210041D042 /* VC_UIAcceleration_DeviceAngle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIAcceleration_DeviceAngle.h; sourceTree = "<group>"; };
@@ -317,6 +320,7 @@
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
 				8CABAF9A146AD2440056D831 /* UIBarButtonItem+CustomImage */,
 				8CB228151591455400965996 /* UIColor+Darkening */,
+				8CEF14721599011D00F007AC /* UIScrollView+Shortcuts */,
 				8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */,
 			);
 			name = Categories;
@@ -497,6 +501,15 @@
 			path = "NSTimer+Pause";
 			sourceTree = "<group>";
 		};
+		8CEF14721599011D00F007AC /* UIScrollView+Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				8CEF14731599011D00F007AC /* UIScrollView+Shortcuts.h */,
+				8CEF14741599011D00F007AC /* UIScrollView+Shortcuts.m */,
+			);
+			path = "UIScrollView+Shortcuts";
+			sourceTree = "<group>";
+		};
 		8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +647,7 @@
 				8CE7FDB0158DDE6500844C59 /* NSArray+Occurrences.m in Sources */,
 				8CB228181591455400965996 /* UIColor+Darkening.m in Sources */,
 				8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */,
+				8CEF14751599011D00F007AC /* UIScrollView+Shortcuts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

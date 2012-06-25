@@ -78,6 +78,10 @@ Add a custom image or background image to your `UIBarButtonItem`.
 
 Darken an `UIColor` by a factor (0.0 to 1.0).
 
+## UIScrollView+Shortcuts
+
+Some shortcuts for common `UIScrollView` operations.
+
 ## UIViewController+SubtitleView
 
 Add a title with subtitle to a `UIViewController` (still limited).
