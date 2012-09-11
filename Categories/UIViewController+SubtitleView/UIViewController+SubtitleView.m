@@ -47,17 +47,22 @@
         
         labelTitle.backgroundColor = [UIColor clearColor];
         labelTitle.textAlignment = UITextAlignmentCenter;
-        labelTitle.shadowColor = [UIColor darkGrayColor];
-        labelTitle.textColor = [UIColor whiteColor];
         labelTitle.lineBreakMode = UILineBreakModeTailTruncation;
         labelSubtitle.backgroundColor = [UIColor clearColor];
         labelSubtitle.textAlignment = UITextAlignmentCenter;
-        labelSubtitle.textColor = [UIColor whiteColor];
-        labelSubtitle.shadowColor = [UIColor darkGrayColor];
         labelSubtitle.lineBreakMode = UILineBreakModeTailTruncation;
         labelTitle.font = [UIFont boldSystemFontOfSize:18];
         labelSubtitle.font = [UIFont systemFontOfSize:14];
         
+        labelTitle.textColor = [UIColor whiteColor];
+        labelTitle.shadowColor = [UIColor darkGrayColor];
+//        labelTitle.textColor = [UIColor colorWithRed:1.0 green:0.3 blue:0.0 alpha:1.0];
+//        labelTitle.shadowColor = [UIColor whiteColor];
+//        labelTitle.shadowOffset = CGSizeMake(0, 1);
+        labelSubtitle.textColor = labelTitle.textColor;
+        labelSubtitle.shadowColor = labelTitle.shadowColor;
+        labelSubtitle.shadowOffset = labelTitle.shadowOffset;
+
         [titleView addSubview:labelTitle];
         [titleView addSubview:labelSubtitle];
         
