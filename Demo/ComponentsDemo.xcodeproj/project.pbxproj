@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C023B4D1631A98D00744302 /* UIWebView+Activity.m */; };
 		8C11E1D0157B660200B773C9 /* UIViewController+SubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
@@ -56,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C023B4C1631A98D00744302 /* UIWebView+Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Activity.h"; sourceTree = "<group>"; };
+		8C023B4D1631A98D00744302 /* UIWebView+Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Activity.m"; sourceTree = "<group>"; };
 		8C11E1CE157B660200B773C9 /* UIViewController+SubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SubtitleView.h"; sourceTree = "<group>"; };
 		8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SubtitleView.m"; sourceTree = "<group>"; };
 		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C023B4A1631A97B00744302 /* UIWebView+Activity */ = {
+			isa = PBXGroup;
+			children = (
+				8C023B4C1631A98D00744302 /* UIWebView+Activity.h */,
+				8C023B4D1631A98D00744302 /* UIWebView+Activity.m */,
+			);
+			path = "UIWebView+Activity";
+			sourceTree = "<group>";
+		};
 		8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +334,7 @@
 				8CB228151591455400965996 /* UIColor+Darkening */,
 				8CEF14721599011D00F007AC /* UIScrollView+Shortcuts */,
 				8C11E1CD157B660200B773C9 /* UIViewController+SubtitleView */,
+				8C023B4A1631A97B00744302 /* UIWebView+Activity */,
 			);
 			name = Categories;
 			path = ../../Categories;
@@ -648,6 +661,7 @@
 				8CB228181591455400965996 /* UIColor+Darkening.m in Sources */,
 				8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */,
 				8CEF14751599011D00F007AC /* UIScrollView+Shortcuts.m in Sources */,
+				8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
