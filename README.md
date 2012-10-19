@@ -84,4 +84,8 @@ Some shortcuts for common `UIScrollView` operations.
 
 ## UIViewController+SubtitleView
 
-Add a title with subtitle to a `UIViewController` (still limited).
+Add a title with subtitle to an `UIViewController` (still limited).
+
+## UIWebView+Activity
+
+Add and easily control an UIActivityIndicatorView in an `UIWebView`.
