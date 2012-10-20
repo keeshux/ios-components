@@ -17,6 +17,8 @@
  *
  */
 
+#import "ARCHelper.h"
+
 @interface UIViewController (SubtitleView)
 
 - (void) setTitle:(NSString *)title subtitle:(NSString *)subtitle;

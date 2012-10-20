@@ -28,7 +28,7 @@
     self.countdownLabel = nil;
     self.timer = nil;
     
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning

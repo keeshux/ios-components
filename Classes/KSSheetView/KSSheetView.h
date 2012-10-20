@@ -18,6 +18,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ARCHelper.h"
 
 @protocol KSSheetViewDelegate;
 
@@ -35,7 +36,7 @@
 @property (nonatomic, readonly) NSUInteger gridHeight;
 
 // for custom drawing
-@property (nonatomic, assign) id<KSSheetViewDelegate> delegate;
+@property (nonatomic, ah_weak) id<KSSheetViewDelegate> delegate;
 
 @end
 

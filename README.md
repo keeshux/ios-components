@@ -1,3 +1,7 @@
+# ios-components
+
+Everything works with both ARC and non-ARC projects.
+
 # Classes
 
 ## KSAdvancedPicker

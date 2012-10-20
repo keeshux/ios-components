@@ -42,7 +42,7 @@
     self.className = nil;
     self.categoryName = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (NSString *) viewControllerClassName
@@ -73,7 +73,7 @@
 {
     self.menu = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,9 +155,7 @@
     MenuItem *item = [[menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
     cell.textLabel.text = item.className;
-    if (item.categoryName) {
-        cell.detailTextLabel.text = item.categoryName;
-    }
+    cell.detailTextLabel.text = item.categoryName; // may be nil
 
     return cell;
 }

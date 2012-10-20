@@ -50,7 +50,7 @@
     CGPathRelease(path);
     self.color = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void) setChecked:(BOOL)aChecked

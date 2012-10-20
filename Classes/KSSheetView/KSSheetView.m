@@ -58,7 +58,7 @@
     CGColorRelease(paperColor);
     CGColorRelease(lineColor);
     
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void) setCellSize:(NSUInteger)aCellSize

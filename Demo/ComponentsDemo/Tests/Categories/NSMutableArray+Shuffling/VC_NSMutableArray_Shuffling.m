@@ -32,7 +32,7 @@
     self.shuffleButton = nil;
     self.afterLabel = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning

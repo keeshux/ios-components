@@ -45,7 +45,7 @@
     self.title = nil;
     self.subtitle = nil;
     
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 @end

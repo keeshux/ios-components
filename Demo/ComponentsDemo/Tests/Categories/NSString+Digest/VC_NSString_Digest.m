@@ -30,7 +30,7 @@
     self.outputField = nil;
     self.digestChoice = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning
