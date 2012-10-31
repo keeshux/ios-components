@@ -25,7 +25,7 @@
     self.outputDate = nil;
     self.convertButton = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning

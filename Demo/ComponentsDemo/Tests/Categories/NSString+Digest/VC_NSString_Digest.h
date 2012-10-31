@@ -10,9 +10,9 @@
 
 @interface VC_NSString_Digest : UIViewController
 
-@property (nonatomic, retain) UITextField *inputField;
-@property (nonatomic, retain) UITextField *outputField;
-@property (nonatomic, retain) UISegmentedControl *digestChoice;
+@property (nonatomic, strong) UITextField *inputField;
+@property (nonatomic, strong) UITextField *outputField;
+@property (nonatomic, strong) UISegmentedControl *digestChoice;
 
 - (void) updateDigest;
 

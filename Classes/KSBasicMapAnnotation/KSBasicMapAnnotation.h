@@ -20,6 +20,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "ARCHelper.h"
 
 @interface KSBasicMapAnnotation : NSObject<MKAnnotation>
 

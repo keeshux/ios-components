@@ -10,11 +10,11 @@
 
 @interface VC_NSString_DateConversion : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, retain) UITextField *inputDate;
-@property (nonatomic, retain) UITextField *inputFormat;
-@property (nonatomic, retain) UITextField *outputFormat;
-@property (nonatomic, retain) UILabel *outputDate;
-@property (nonatomic, retain) UIButton *convertButton;
+@property (nonatomic, strong) UITextField *inputDate;
+@property (nonatomic, strong) UITextField *inputFormat;
+@property (nonatomic, strong) UITextField *outputFormat;
+@property (nonatomic, strong) UILabel *outputDate;
+@property (nonatomic, strong) UIButton *convertButton;
 
 - (void) convertDate:(id)sender;
 

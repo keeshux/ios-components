@@ -12,7 +12,7 @@
     NSUInteger seconds;
 }
 
-@property (nonatomic, retain) UILabel *countdownLabel;
-@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, strong) UILabel *countdownLabel;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end

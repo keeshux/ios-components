@@ -31,7 +31,7 @@
     self.accelerometer = nil;
     self.angleLabel = nil;
 
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning

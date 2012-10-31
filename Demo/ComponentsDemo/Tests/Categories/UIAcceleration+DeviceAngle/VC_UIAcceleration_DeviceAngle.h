@@ -10,7 +10,7 @@
 
 @interface VC_UIAcceleration_DeviceAngle : UIViewController<UIAccelerometerDelegate>
 
-@property (nonatomic, retain) UIAccelerometer *accelerometer;
-@property (nonatomic, retain) UILabel *angleLabel;
+@property (nonatomic, strong) UIAccelerometer *accelerometer;
+@property (nonatomic, strong) UILabel *angleLabel;
 
 @end

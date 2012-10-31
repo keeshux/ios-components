@@ -25,13 +25,13 @@ static NSString *const letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRS
 
 + (id) randomStringWithLength:(NSUInteger)length
 {
-    NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
+    NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
 
     for (NSUInteger i = 0; i < length; ++i) {
         [randomString appendFormat:@"%c", [letters characterAtIndex:(arc4random() % [letters length])]];
     }
 
-    return randomString;
+    return [randomString autorelease];
 }
 
 @end

@@ -10,10 +10,10 @@
 
 @interface VC_NSMutableArray_Shuffling : UIViewController
 
-@property (nonatomic, retain) NSMutableArray *testData;
-@property (nonatomic, retain) UILabel *beforeLabel;
-@property (nonatomic, retain) UIButton *shuffleButton;
-@property (nonatomic, retain) UILabel *afterLabel;
+@property (nonatomic, strong) NSMutableArray *testData;
+@property (nonatomic, strong) UILabel *beforeLabel;
+@property (nonatomic, strong) UIButton *shuffleButton;
+@property (nonatomic, strong) UILabel *afterLabel;
 
 - (void) shuffleData:(id)sender;
 

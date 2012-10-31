@@ -10,7 +10,7 @@
 
 @interface VC_NSString_Random : UIViewController
 
-@property (nonatomic, retain) UITextField *outputField;
+@property (nonatomic, strong) UITextField *outputField;
 
 - (void) generateString;
 

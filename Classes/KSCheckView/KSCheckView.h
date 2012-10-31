@@ -18,6 +18,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ARCHelper.h"
 
 @protocol KSCheckViewDelegate;
 
@@ -27,9 +28,9 @@
 }
 
 @property (nonatomic, assign) BOOL checked;
-@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, strong) UIColor *color;
 
-@property (nonatomic, assign) id<KSCheckViewDelegate> delegate;
+@property (nonatomic, ah_weak) id<KSCheckViewDelegate> delegate;
 
 - (void) toggleChecked;
 

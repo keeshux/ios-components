@@ -18,7 +18,7 @@
     self.fields = nil;
     self.editEnder = nil;
     
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)didReceiveMemoryWarning

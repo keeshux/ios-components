@@ -30,7 +30,7 @@
 {
     self.outputField = nil;
     
-    [super dealloc];
+    [super ah_dealloc];
 }
 
 - (void)viewDidLoad

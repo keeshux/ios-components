@@ -11,7 +11,7 @@
 
 @interface VC_KSEditEnder : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, retain) NSMutableArray *fields; // of UITextField
-@property (nonatomic, retain) KSEditEnder *editEnder;
+@property (nonatomic, strong) NSMutableArray *fields; // of UITextField
+@property (nonatomic, strong) KSEditEnder *editEnder;
 
 @end
