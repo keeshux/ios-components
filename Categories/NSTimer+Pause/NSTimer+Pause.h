@@ -18,6 +18,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "ARCHelper.h"
 
 @interface NSTimer (Pause)
 
