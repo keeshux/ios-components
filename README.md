@@ -66,6 +66,10 @@ Generate MD5 and SHA1 digest from `NSString`.
 
 Generate random `NSString`.
 
+## NSString+Numeric
+
+Check if `NSString` only contains digits.
+
 ## NSTimer+Pause
 
 Add pause/resume capability to `NSTimer`.
