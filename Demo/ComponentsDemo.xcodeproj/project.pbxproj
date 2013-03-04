@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C023B4D1631A98D00744302 /* UIWebView+Activity.m */; };
 		8C11E1D0157B660200B773C9 /* UIViewController+SubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */; };
+		8C1CCF4B16E4BD17009B25A0 /* NSString+Numeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CCF4A16E4BD17009B25A0 /* NSString+Numeric.m */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
 		8C2C55A6146750E70065A877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A5146750E70065A877 /* CoreGraphics.framework */; };
@@ -61,6 +62,8 @@
 		8C023B4D1631A98D00744302 /* UIWebView+Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Activity.m"; sourceTree = "<group>"; };
 		8C11E1CE157B660200B773C9 /* UIViewController+SubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SubtitleView.h"; sourceTree = "<group>"; };
 		8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SubtitleView.m"; sourceTree = "<group>"; };
+		8C1CCF4916E4BD17009B25A0 /* NSString+Numeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Numeric.h"; sourceTree = "<group>"; };
+		8C1CCF4A16E4BD17009B25A0 /* NSString+Numeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Numeric.m"; sourceTree = "<group>"; };
 		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C55A1146750E70065A877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C2C55A3146750E70065A877 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,6 +177,15 @@
 				8C11E1CF157B660200B773C9 /* UIViewController+SubtitleView.m */,
 			);
 			path = "UIViewController+SubtitleView";
+			sourceTree = "<group>";
+		};
+		8C1CCF4816E4BD17009B25A0 /* NSString+Numeric */ = {
+			isa = PBXGroup;
+			children = (
+				8C1CCF4916E4BD17009B25A0 /* NSString+Numeric.h */,
+				8C1CCF4A16E4BD17009B25A0 /* NSString+Numeric.m */,
+			);
+			path = "NSString+Numeric";
 			sourceTree = "<group>";
 		};
 		8C2C5592146750E70065A877 = {
@@ -329,6 +341,7 @@
 				8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
 				8CD055A914730BA9001A3EF5 /* NSString+Digest */,
+				8C1CCF4816E4BD17009B25A0 /* NSString+Numeric */,
 				8CCC9722151FE1870085C7EE /* NSString+Random */,
 				8CEA566F14C7724900453958 /* NSTimer+Pause */,
 				8CFBD71F14C27E7F0041D042 /* UIAcceleration+DeviceAngle */,
@@ -664,6 +677,7 @@
 				8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */,
 				8CEF14751599011D00F007AC /* UIScrollView+Shortcuts.m in Sources */,
 				8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */,
+				8C1CCF4B16E4BD17009B25A0 /* NSString+Numeric.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
