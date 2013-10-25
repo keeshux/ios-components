@@ -24,6 +24,7 @@
 		8C7126CB1467517100C03BD2 /* KSCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126CA1467517100C03BD2 /* KSCheckView.m */; };
 		8C7126D9146751A300C03BD2 /* KSEditEnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126D1146751A300C03BD2 /* KSEditEnder.m */; };
 		8C7126DB146751A300C03BD2 /* KSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7126D7146751A300C03BD2 /* KSSheetView.m */; };
+		8C8577B2181AD15F0028290A /* NSArray+Varargs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8577B1181AD15F0028290A /* NSArray+Varargs.m */; };
 		8CA7D63D146D828C0042648E /* MKMapView+Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D63C146D828C0042648E /* MKMapView+Zoom.m */; };
 		8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */; };
 		8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D642146D84B60042648E /* MapKit.framework */; };
@@ -85,6 +86,8 @@
 		8C7126D1146751A300C03BD2 /* KSEditEnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSEditEnder.m; sourceTree = "<group>"; };
 		8C7126D6146751A300C03BD2 /* KSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSheetView.h; sourceTree = "<group>"; };
 		8C7126D7146751A300C03BD2 /* KSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSheetView.m; sourceTree = "<group>"; };
+		8C8577B0181AD15F0028290A /* NSArray+Varargs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Varargs.h"; sourceTree = "<group>"; };
+		8C8577B1181AD15F0028290A /* NSArray+Varargs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Varargs.m"; sourceTree = "<group>"; };
 		8CA7D63B146D828C0042648E /* MKMapView+Zoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Zoom.h"; sourceTree = "<group>"; };
 		8CA7D63C146D828C0042648E /* MKMapView+Zoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Zoom.m"; sourceTree = "<group>"; };
 		8CA7D63F146D84810042648E /* VC_MKMapView_Zoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_MKMapView_Zoom.h; sourceTree = "<group>"; };
@@ -293,6 +296,15 @@
 			path = KSSheetView;
 			sourceTree = "<group>";
 		};
+		8C8577AF181AD15F0028290A /* NSArray+Varargs */ = {
+			isa = PBXGroup;
+			children = (
+				8C8577B0181AD15F0028290A /* NSArray+Varargs.h */,
+				8C8577B1181AD15F0028290A /* NSArray+Varargs.m */,
+			);
+			path = "NSArray+Varargs";
+			sourceTree = "<group>";
+		};
 		8CA7D639146D82200042648E /* MKMapView+Zoom */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +337,7 @@
 			children = (
 				8CA7D639146D82200042648E /* MKMapView+Zoom */,
 				8CE7FDAD158DDE6500844C59 /* NSArray+Occurrences */,
+				8C8577AF181AD15F0028290A /* NSArray+Varargs */,
 				8C53A2C41525CA1E009C71A7 /* NSFileManager+UserDirectories */,
 				8CFBD72C14C2884B0041D042 /* NSMutableArray+Shuffling */,
 				8CABAF97146AD2440056D831 /* NSString+DateConversion */,
@@ -664,6 +677,7 @@
 				8CB2282A15914BC400965996 /* VC_UIViewController_SubtitleView.m in Sources */,
 				8CEF14751599011D00F007AC /* UIScrollView+Shortcuts.m in Sources */,
 				8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */,
+				8C8577B2181AD15F0028290A /* NSArray+Varargs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

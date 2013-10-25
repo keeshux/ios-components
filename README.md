@@ -42,6 +42,10 @@ Graph paper background with custom content through Core Graphics context delegat
 
 Zoom on multiple map annotations optionally including user location. A delta can be specified to adjust the zoomed area.
 
+## NSArray+Varargs
+
+Bridge varargs-based methods to `NSArray` methods.
+
 ## NSArray+Occurrences
 
 Count object occurrences in `NSArray`.
