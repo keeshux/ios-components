@@ -70,6 +70,10 @@ Generate MD5 and SHA1 digest from `NSString`.
 
 Generate random `NSString`.
 
+## NSString+Numeric
+
+Check if `NSString` only contains digits.
+
 ## NSTimer+Pause
 
 Add pause/resume capability to `NSTimer`.
@@ -89,10 +93,6 @@ Darken an `UIColor` by a factor (0.0 to 1.0).
 ## UIScrollView+Shortcuts
 
 Some shortcuts for common `UIScrollView` operations.
-
-## UIViewController+SubtitleView
-
-Add a title with subtitle to an `UIViewController` (still limited).
 
 ## UIWebView+Activity
 
