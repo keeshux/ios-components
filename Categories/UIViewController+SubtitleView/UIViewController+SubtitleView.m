@@ -17,6 +17,8 @@
  *
  */
 
+#import "KSMacrosSystem.h"
+
 #import "UIViewController+SubtitleView.h"
 
 @implementation UIViewController (SubtitleView)
@@ -53,22 +55,24 @@
         labelSubtitle.lineBreakMode = UILineBreakModeTailTruncation;
         labelTitle.font = [UIFont boldSystemFontOfSize:18];
         labelSubtitle.font = [UIFont systemFontOfSize:14];
-        
-        labelTitle.textColor = [UIColor whiteColor];
-        labelTitle.shadowColor = [UIColor darkGrayColor];
-//        labelTitle.textColor = [UIColor colorWithRed:1.0 green:0.3 blue:0.0 alpha:1.0];
-//        labelTitle.shadowColor = [UIColor whiteColor];
-//        labelTitle.shadowOffset = CGSizeMake(0, 1);
-        labelSubtitle.textColor = labelTitle.textColor;
-        labelSubtitle.shadowColor = labelTitle.shadowColor;
-        labelSubtitle.shadowOffset = labelTitle.shadowOffset;
+
+#ifdef __IPHONE_7_0
+        if (KSSystemIsiOS7()) {
+            labelTitle.textColor = [UIColor blackColor];
+            labelSubtitle.textColor = labelTitle.textColor;
+        } else {
+#endif
+            labelTitle.textColor = [UIColor whiteColor];
+            labelTitle.shadowColor = [UIColor darkGrayColor];
+            labelSubtitle.textColor = labelTitle.textColor;
+            labelSubtitle.shadowColor = labelTitle.shadowColor;
+            labelSubtitle.shadowOffset = labelTitle.shadowOffset;
+#ifdef __IPHONE_7_0
+        }
+#endif
 
         [titleView addSubview:labelTitle];
         [titleView addSubview:labelSubtitle];
-        
-//        titleView.backgroundColor = [UIColor greenColor];
-//        labelTitle.backgroundColor = [UIColor orangeColor];
-//        labelSubtitle.backgroundColor = [UIColor orangeColor];
         
         [titleView autorelease];
         [labelTitle autorelease];
