@@ -21,6 +21,6 @@
 
 @interface UIScrollView (Shortcuts)
 
-- (void) scrollToTopAnimated:(BOOL)animated;
+- (void)scrollToTopAnimated:(BOOL)animated;
 
 @end

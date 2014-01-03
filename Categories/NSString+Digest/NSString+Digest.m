@@ -21,7 +21,7 @@
 
 @implementation NSString (Digest)
 
-- (NSString *) digestByMD5
+- (NSString *)digestByMD5
 {
     const char *stringBytes = [self UTF8String];
     unsigned char digestBytes[CC_MD5_DIGEST_LENGTH];
@@ -39,7 +39,7 @@
     return [digest lowercaseString];
 }
 
-- (NSString *) digestBySHA1
+- (NSString *)digestBySHA1
 {
     const char *stringBytes = [self UTF8String];
     unsigned char digestBytes[CC_SHA1_DIGEST_LENGTH];

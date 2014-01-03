@@ -22,6 +22,6 @@
 
 @interface NSString (Random)
 
-+ (id) randomStringWithLength:(NSUInteger)length;
++ (id)randomStringWithLength:(NSUInteger)length;
 
 @end

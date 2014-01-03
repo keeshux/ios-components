@@ -22,7 +22,7 @@
 
 @interface NSString (Digest)
 
-- (NSString *) digestByMD5;
-- (NSString *) digestBySHA1;
+- (NSString *)digestByMD5;
+- (NSString *)digestBySHA1;
 
 @end

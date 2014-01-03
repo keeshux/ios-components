@@ -23,7 +23,7 @@
 
 static NSString *const letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-+ (id) randomStringWithLength:(NSUInteger)length
++ (id)randomStringWithLength:(NSUInteger)length
 {
     NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
 

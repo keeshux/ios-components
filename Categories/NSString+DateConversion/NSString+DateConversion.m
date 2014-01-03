@@ -21,7 +21,7 @@
 
 @implementation NSString (DateConversion)
 
-+ (NSString *) stringWithDate:(NSDate *)date format:(NSString *)format
++ (NSString *)stringWithDate:(NSDate *)date format:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = format;
@@ -31,7 +31,7 @@
     return string;
 }
 
-- (NSDate *) dateValueWithFormat:(NSString *)format
+- (NSDate *)dateValueWithFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = format;
@@ -41,7 +41,7 @@
     return date;
 }
 
-- (NSString *) dateStringFromFormat:(NSString *)inFormat toFormat:(NSString *)outFormat
+- (NSString *)dateStringFromFormat:(NSString *)inFormat toFormat:(NSString *)outFormat
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = inFormat;

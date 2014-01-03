@@ -21,7 +21,7 @@
 
 @implementation UIColor (Darkening)
 
-- (UIColor *) darkenedColorWithFactor:(CGFloat)factor
+- (UIColor *)darkenedColorWithFactor:(CGFloat)factor
 {
     const CGFloat *components = CGColorGetComponents(self.CGColor);
     CGFloat darkenedComponents[4];

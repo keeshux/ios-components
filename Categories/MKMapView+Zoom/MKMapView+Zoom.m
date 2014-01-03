@@ -21,12 +21,12 @@
 
 @implementation MKMapView (Zoom)
 
-- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated
+- (void)zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated
 {
     [self zoomOnCurrentAnnotationsIncludingUserLocation:includeUserLocation spanCorrection:0.1 animated:animated];
 }
 
-- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
+- (void)zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
 {
     NSMutableArray *annotations = [[NSMutableArray alloc] initWithArray:self.annotations];
 
@@ -39,12 +39,12 @@
     [annotations release];
 }
 
-- (void) zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated
+- (void)zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated
 {
     [self zoomOnAnnotations:customAnnotations spanCorrection:0.1 animated:animated];
 }
 
-- (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
+- (void)zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated
 {
     const NSUInteger annotationsCount = [customAnnotations count];
     

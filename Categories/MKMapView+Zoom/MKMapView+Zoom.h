@@ -19,12 +19,13 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "ARCHelper.h"
 
 @interface MKMapView (Zoom)
 
-- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated;
-- (void) zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
-- (void) zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated;
-- (void) zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
+- (void)zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation animated:(BOOL)animated;
+- (void)zoomOnCurrentAnnotationsIncludingUserLocation:(BOOL)includeUserLocation spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
+- (void)zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated;
+- (void)zoomOnAnnotations:(NSArray *)customAnnotations spanCorrection:(CGFloat)spanCorrection animated:(BOOL)animated;
 
 @end
