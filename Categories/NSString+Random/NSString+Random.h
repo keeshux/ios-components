@@ -23,5 +23,6 @@
 @interface NSString (Random)
 
 + (id)randomStringWithLength:(NSUInteger)length;
++ (id)randomHexStringWithLength:(NSUInteger)length;
 
 @end
