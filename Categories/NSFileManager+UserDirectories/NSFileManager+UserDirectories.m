@@ -21,22 +21,22 @@
 
 @implementation NSFileManager (UserDirectories)
 
-- (NSString *) pathForUserDocuments
+- (NSString *)pathForUserDocuments
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
-- (NSString *) pathForUserDocumentFile:(NSString *)file
+- (NSString *)pathForUserDocumentFile:(NSString *)file
 {
     return [[self pathForUserDocuments] stringByAppendingPathComponent:file];
 }
 
-- (NSString *) pathForUserCaches
+- (NSString *)pathForUserCaches
 {
     return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
-- (NSString *) pathForUserCacheFile:(NSString *)file
+- (NSString *)pathForUserCacheFile:(NSString *)file
 {
     return [[self pathForUserCaches] stringByAppendingPathComponent:file];
 }

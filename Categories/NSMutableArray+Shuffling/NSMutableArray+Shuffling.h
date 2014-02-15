@@ -21,6 +21,6 @@
 
 @interface NSMutableArray (Shuffling)
 
-- (void) shuffle;
+- (void)shuffle;
 
 @end

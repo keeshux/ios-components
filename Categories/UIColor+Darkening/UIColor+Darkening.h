@@ -21,6 +21,6 @@
 
 @interface UIColor (Darkening)
 
-- (UIColor *) darkenedColorWithFactor:(CGFloat)factor;
+- (UIColor *)darkenedColorWithFactor:(CGFloat)factor;
 
 @end

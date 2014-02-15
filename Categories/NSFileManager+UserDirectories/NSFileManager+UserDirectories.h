@@ -19,9 +19,9 @@
 
 @interface NSFileManager (UserDirectories)
 
-- (NSString *) pathForUserDocuments;
-- (NSString *) pathForUserDocumentFile:(NSString *)file;
-- (NSString *) pathForUserCaches;
-- (NSString *) pathForUserCacheFile:(NSString *)file;
+- (NSString *)pathForUserDocuments;
+- (NSString *)pathForUserDocumentFile:(NSString *)file;
+- (NSString *)pathForUserCaches;
+- (NSString *)pathForUserCacheFile:(NSString *)file;
 
 @end

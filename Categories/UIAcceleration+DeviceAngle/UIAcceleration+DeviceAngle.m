@@ -25,7 +25,7 @@ static inline CGFloat normalize(const CGFloat value) {
     return MIN(MAX(value, -1.0), 1.0);
 }
 
-- (CGPoint) deviceAngle
+- (CGPoint)deviceAngle
 {
     CGPoint angle;
 

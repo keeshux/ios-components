@@ -21,6 +21,6 @@
 
 @interface NSArray (Occurrences)
 
-- (NSUInteger) occurrencesOfObject:(id)object;
+- (NSUInteger)occurrencesOfObject:(id)object;
 
 @end

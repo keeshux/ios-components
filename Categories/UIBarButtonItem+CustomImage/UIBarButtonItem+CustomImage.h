@@ -24,12 +24,12 @@
 
 @interface UIBarButtonItem (CustomImage)
 
-+ (id) itemWithBackgroundImage:(UIImage *)image;
-+ (id) itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action;
-- (void) setCustomButtonTitle:(NSString *)title forState:(UIControlState)state;
-- (void) setCustomButtonTitleColor:(UIColor *)color forState:(UIControlState)state;
++ (id)itemWithBackgroundImage:(UIImage *)image;
++ (id)itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action;
+- (void)setCustomButtonTitle:(NSString *)title forState:(UIControlState)state;
+- (void)setCustomButtonTitleColor:(UIColor *)color forState:(UIControlState)state;
 
-+ (id) itemWithImage:(UIImage *)image;
-+ (id) itemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
++ (id)itemWithImage:(UIImage *)image;
++ (id)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
 
 @end

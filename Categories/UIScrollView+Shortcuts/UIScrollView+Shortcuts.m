@@ -21,7 +21,7 @@
 
 @implementation UIScrollView (Shortcuts)
 
-- (void) scrollToTopAnimated:(BOOL)animated
+- (void)scrollToTopAnimated:(BOOL)animated
 {
     [self scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:animated];
 }

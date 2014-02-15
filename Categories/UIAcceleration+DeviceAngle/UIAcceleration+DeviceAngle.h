@@ -21,6 +21,6 @@
 
 @interface UIAcceleration (DeviceAngle)
 
-- (CGPoint) deviceAngle;
+- (CGPoint)deviceAngle;
 
 @end

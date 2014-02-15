@@ -21,16 +21,29 @@
 
 @implementation NSString (Random)
 
-static NSString *const letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-+ (id) randomStringWithLength:(NSUInteger)length
++ (id)randomStringWithLength:(NSUInteger)length
 {
+    static NSString *const letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+    
     NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
 
     for (NSUInteger i = 0; i < length; ++i) {
         [randomString appendFormat:@"%c", [letters characterAtIndex:(arc4random() % [letters length])]];
     }
 
+    return [randomString autorelease];
+}
+
++ (id)randomHexStringWithLength:(NSUInteger)length
+{
+    static NSString *const letters = @"abcdef0123456789";
+    
+    NSMutableString *randomString = [[NSMutableString alloc] initWithCapacity:length];
+    
+    for (NSUInteger i = 0; i < length; ++i) {
+        [randomString appendFormat:@"%c", [letters characterAtIndex:(arc4random() % [letters length])]];
+    }
+    
     return [randomString autorelease];
 }
 

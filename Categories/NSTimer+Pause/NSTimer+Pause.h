@@ -22,7 +22,7 @@
 
 @interface NSTimer (Pause)
 
-- (void) pause;
-- (void) resume;
+- (void)pause;
+- (void)resume;
 
 @end

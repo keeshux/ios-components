@@ -21,7 +21,7 @@
 
 @implementation NSMutableArray (Shuffling)
 
-- (void) shuffle
+- (void)shuffle
 {
     const NSUInteger count = [self count];
 

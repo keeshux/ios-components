@@ -21,7 +21,7 @@
 
 @implementation NSArray (Occurrences)
 
-- (NSUInteger) occurrencesOfObject:(id)object
+- (NSUInteger)occurrencesOfObject:(id)object
 {
     NSUInteger count = 0;
     for (id element in self) {
