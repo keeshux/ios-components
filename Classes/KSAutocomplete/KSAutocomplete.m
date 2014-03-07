@@ -44,10 +44,10 @@
 
 @implementation KSAutocomplete
 
-- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))aFilterBlock
+- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock
 {
     if ((self = [super init])) {
-        self.filterBlock = aFilterBlock;
+        self.filterBlock = filterBlock;
     }
     return self;
 }

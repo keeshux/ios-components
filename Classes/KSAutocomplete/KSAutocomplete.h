@@ -43,7 +43,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL enableFallback;
 @property (nonatomic, retain) NSArray *fallbackList;
 
-- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))aFilterBlock;
+- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock;
 
 - (KSAutocompleteResult)searchWithPattern:(NSString *)searchPattern;
 - (BOOL)setRemoteList:(NSArray *)remoteList originalSearchPattern:(NSString *)originalSearchPattern;
