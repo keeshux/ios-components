@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C023B4E1631A98D00744302 /* UIWebView+Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C023B4D1631A98D00744302 /* UIWebView+Activity.m */; };
+		8C08241E18CA6DEC00491FEE /* KSBasicMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0823B518CA6DEC00491FEE /* KSBasicMapAnnotation.m */; };
 		8C1CCF4B16E4BD17009B25A0 /* NSString+Numeric.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CCF4A16E4BD17009B25A0 /* NSString+Numeric.m */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
@@ -29,7 +30,6 @@
 		8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */; };
 		8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D642146D84B60042648E /* MapKit.framework */; };
 		8CA7D645146D84E60042648E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D644146D84E60042648E /* CoreLocation.framework */; };
-		8CA7D649146D98E50042648E /* KSBasicMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D648146D98E50042648E /* KSBasicMapAnnotation.m */; };
 		8CABAF95146AC9DC0056D831 /* VC_NSString_DateConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF91146AC9DC0056D831 /* VC_NSString_DateConversion.m */; };
 		8CABAF96146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF94146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m */; };
 		8CABAF9D146AD2440056D831 /* NSString+DateConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF99146AD2440056D831 /* NSString+DateConversion.m */; };
@@ -59,6 +59,9 @@
 /* Begin PBXFileReference section */
 		8C023B4C1631A98D00744302 /* UIWebView+Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Activity.h"; sourceTree = "<group>"; };
 		8C023B4D1631A98D00744302 /* UIWebView+Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Activity.m"; sourceTree = "<group>"; };
+		8C0823B418CA6DEC00491FEE /* KSBasicMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSBasicMapAnnotation.h; sourceTree = "<group>"; };
+		8C0823B518CA6DEC00491FEE /* KSBasicMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSBasicMapAnnotation.m; sourceTree = "<group>"; };
+		8C08245618CA6EF900491FEE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8C1CCF4916E4BD17009B25A0 /* NSString+Numeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Numeric.h"; sourceTree = "<group>"; };
 		8C1CCF4A16E4BD17009B25A0 /* NSString+Numeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Numeric.m"; sourceTree = "<group>"; };
 		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,8 +96,6 @@
 		8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_MKMapView_Zoom.m; sourceTree = "<group>"; };
 		8CA7D642146D84B60042648E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8CA7D644146D84E60042648E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8CA7D647146D98E50042648E /* KSBasicMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSBasicMapAnnotation.h; sourceTree = "<group>"; };
-		8CA7D648146D98E50042648E /* KSBasicMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSBasicMapAnnotation.m; sourceTree = "<group>"; };
 		8CABAF90146AC9DC0056D831 /* VC_NSString_DateConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_NSString_DateConversion.h; sourceTree = "<group>"; };
 		8CABAF91146AC9DC0056D831 /* VC_NSString_DateConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_NSString_DateConversion.m; sourceTree = "<group>"; };
 		8CABAF93146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_UIBarButtonItem_CustomImage.h; sourceTree = "<group>"; };
@@ -167,6 +168,15 @@
 			path = "UIWebView+Activity";
 			sourceTree = "<group>";
 		};
+		8C0823B318CA6DEC00491FEE /* KSBasicMapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				8C0823B418CA6DEC00491FEE /* KSBasicMapAnnotation.h */,
+				8C0823B518CA6DEC00491FEE /* KSBasicMapAnnotation.m */,
+			);
+			path = KSBasicMapAnnotation;
+			sourceTree = "<group>";
+		};
 		8C1CCF4816E4BD17009B25A0 /* NSString+Numeric */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +211,7 @@
 				8C2C55A5146750E70065A877 /* CoreGraphics.framework */,
 				8CA7D644146D84E60042648E /* CoreLocation.framework */,
 				8CA7D642146D84B60042648E /* MapKit.framework */,
+				8C08245618CA6EF900491FEE /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,7 +221,7 @@
 			children = (
 				8C2C55B81467510A0065A877 /* Classes */,
 				8CABAF7E146AC8C60056D831 /* Categories */,
-				8C4D3D06146754690093F771 /* Tests */,
+				8C4D3D06146754690093F771 /* Showcase */,
 				8C2C55B0146750E70065A877 /* AppDelegate.h */,
 				8C2C55B1146750E70065A877 /* AppDelegate.m */,
 				8CC7F7401633411300A6511F /* ARCHelper.h */,
@@ -239,7 +250,7 @@
 		8C2C55B81467510A0065A877 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8CA7D646146D98C70042648E /* KSBasicMapAnnotation */,
+				8C0823B318CA6DEC00491FEE /* KSBasicMapAnnotation */,
 				8C2C55B91467510A0065A877 /* KSCheckView */,
 				8C7126CF146751A300C03BD2 /* KSEditEnder */,
 				8C7126D5146751A300C03BD2 /* KSSheetView */,
@@ -257,13 +268,13 @@
 			path = KSCheckView;
 			sourceTree = "<group>";
 		};
-		8C4D3D06146754690093F771 /* Tests */ = {
+		8C4D3D06146754690093F771 /* Showcase */ = {
 			isa = PBXGroup;
 			children = (
 				8CABAF9F146AD26D0056D831 /* Classes */,
 				8CABAF8E146AC9DC0056D831 /* Categories */,
 			);
-			path = Tests;
+			path = Showcase;
 			sourceTree = "<group>";
 		};
 		8C53A2C41525CA1E009C71A7 /* NSFileManager+UserDirectories */ = {
@@ -318,15 +329,6 @@
 				8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */,
 			);
 			path = "MKMapView+Zoom";
-			sourceTree = "<group>";
-		};
-		8CA7D646146D98C70042648E /* KSBasicMapAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-				8CA7D647146D98E50042648E /* KSBasicMapAnnotation.h */,
-				8CA7D648146D98E50042648E /* KSBasicMapAnnotation.m */,
-			);
-			path = KSBasicMapAnnotation;
 			sourceTree = "<group>";
 		};
 		8CABAF7E146AC8C60056D831 /* Categories */ = {
@@ -640,13 +642,13 @@
 				8CABAF95146AC9DC0056D831 /* VC_NSString_DateConversion.m in Sources */,
 				8CABAF96146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m in Sources */,
 				8CABAF9D146AD2440056D831 /* NSString+DateConversion.m in Sources */,
+				8C08241E18CA6DEC00491FEE /* KSBasicMapAnnotation.m in Sources */,
 				8CABAF9E146AD2440056D831 /* UIBarButtonItem+CustomImage.m in Sources */,
 				8CABAFB0146AD26D0056D831 /* VC_KSCheckView.m in Sources */,
 				8CABAFB1146AD26D0056D831 /* VC_KSEditEnder.m in Sources */,
 				8CABAFB3146AD26D0056D831 /* VC_KSSheetView.m in Sources */,
 				8CA7D63D146D828C0042648E /* MKMapView+Zoom.m in Sources */,
 				8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */,
-				8CA7D649146D98E50042648E /* KSBasicMapAnnotation.m in Sources */,
 				8CD055AC14730BA9001A3EF5 /* NSString+Digest.m in Sources */,
 				8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */,
 				8CFBD72314C27E940041D042 /* UIAcceleration+DeviceAngle.m in Sources */,
