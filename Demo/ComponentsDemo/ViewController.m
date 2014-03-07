@@ -89,8 +89,10 @@
     [super viewDidLoad];
     
     NSMutableArray *menuClasses = [[NSMutableArray alloc] init];
+    [menuClasses addObject:[MenuItem itemWithClassName:@"KSAdvancedPicker"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSCheckView"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSEditEnder"]];
+    [menuClasses addObject:[MenuItem itemWithClassName:@"KSGridView"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSSheetView"]];
 
     NSMutableArray *menuCategories = [[NSMutableArray alloc] init];
