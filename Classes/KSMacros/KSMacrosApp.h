@@ -1,6 +1,4 @@
 //
-// KSMacrosApp.h
-//
 // Copyright (c) 2011, Davide De Rosa
 // All rights reserved.
 //
