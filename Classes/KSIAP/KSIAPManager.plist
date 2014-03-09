@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Non-Consumable</key>
+	<array>
+		<string>com.example.Your_App.iap_identifier1</string>
+		<string>com.example.Your_App.iap_identifier2</string>
+	</array>
+	<key>Consumable</key>
+	<array>
+		<string>com.example.Your_App.iap_identifier3</string>
+	</array>
+</dict>
+</plist>
