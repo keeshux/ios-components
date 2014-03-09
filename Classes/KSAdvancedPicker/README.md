@@ -6,7 +6,7 @@ Look at the fancy screenshot, customizations are endless!
 
 `KSAdvancedPicker` works with both ARC and non-ARC projects.
 
-![](Screenshots/01.png)
+[![](Screenshots/01-th.png)](Screenshots/01.png)
 
 ## Known issues
 
