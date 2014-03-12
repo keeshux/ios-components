@@ -51,13 +51,13 @@
 - (id)initWithContentsOfURL:(NSURL *)url;
 
 - (NSUInteger)count;
-- (id)objectForKey:(NSString *)aKey;
+- (id)objectForKey:(NSString *)key;
 - (NSArray *)objectsForKeys:(NSArray *)keys notFoundMarker:(id)marker;
 - (NSEnumerator *)keyEnumerator;
 - (NSEnumerator *)objectEnumerator;
 
 - (NSArray *)allKeys;
-- (NSArray *)allKeysForObject:(id)anObject;    
+- (NSArray *)allKeysForObject:(id)object;
 - (NSArray *)allValues;
 - (BOOL)isEqualToCIDictionary:(KSCIDictionary *)otherDictionary;
 
@@ -67,8 +67,8 @@
 
 @interface KSCIMutableDictionary : KSCIDictionary
 
-- (void)removeObjectForKey:(NSString *)aKey;
-- (void)setObject:(id)anObject forKey:(NSString *)aKey;
+- (void)removeObjectForKey:(NSString *)key;
+- (void)setObject:(id)object forKey:(NSString *)key;
 
 - (void)addEntriesFromDictionary:(NSDictionary *)otherDictionary;
 - (void)removeAllObjects;
