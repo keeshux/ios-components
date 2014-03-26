@@ -32,58 +32,58 @@
 
 + (void)setData:(NSData *)object forKey:(NSString *)key
 {
-	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-	[dict setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
-	[dict setObject:key forKey:(__bridge id)kSecAttrService];
-	
-	SecItemDelete((__bridge CFDictionaryRef)dict);
+    [dict setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
+    [dict setObject:key forKey:(__bridge id)kSecAttrService];
     
-	if (object) {
-		[dict setObject:object forKey:(__bridge id)kSecValueData];
-		SecItemAdd((__bridge CFDictionaryRef)dict, NULL);
-	}
+    SecItemDelete((__bridge CFDictionaryRef)dict);
+    
+    if (object) {
+        [dict setObject:object forKey:(__bridge id)kSecValueData];
+        SecItemAdd((__bridge CFDictionaryRef)dict, NULL);
+    }
 }
 
 + (NSData *)dataForKey:(NSString *)key
 {
-	NSMutableDictionary *query = [NSMutableDictionary dictionary];
+    NSMutableDictionary *query = [NSMutableDictionary dictionary];
 
-	[query setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
-	[query setObject:key forKey:(__bridge id)kSecAttrService];
-	[query setObject:(id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
+    [query setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
+    [query setObject:key forKey:(__bridge id)kSecAttrService];
+    [query setObject:(id)kCFBooleanTrue forKey:(__bridge id)kSecReturnData];
     
-	CFTypeRef result = nil;
-	SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
-	if (!result) {
-		return nil;
+    CFTypeRef result = nil;
+    SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
+    if (!result) {
+        return nil;
     }
     
-	return (__bridge NSData *)result;
+    return (__bridge NSData *)result;
 }
 
 + (void)setString:(NSString *)object forKey:(NSString *)key
 {
-	[self setData:[object dataUsingEncoding:NSUTF8StringEncoding] forKey:key];
+    [self setData:[object dataUsingEncoding:NSUTF8StringEncoding] forKey:key];
 }
 
 + (NSString *)stringForKey:(NSString *)key
 {
-	NSData* data = [self dataForKey:key];
-	if (!data) {
-		return nil;
+    NSData* data = [self dataForKey:key];
+    if (!data) {
+        return nil;
     }
-	return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 }
 
 + (void)removeKey:(NSString *)key
 {
-	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-	[dict setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
-	[dict setObject:key forKey:(__bridge id)kSecAttrService];
-	
-	SecItemDelete((__bridge CFDictionaryRef)dict);
+    [dict setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
+    [dict setObject:key forKey:(__bridge id)kSecAttrService];
+    
+    SecItemDelete((__bridge CFDictionaryRef)dict);
 }
 
 @end
