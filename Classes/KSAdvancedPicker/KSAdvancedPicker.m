@@ -185,7 +185,10 @@
         if ([dataSource respondsToSelector:@selector(advancedPicker:viewForComponent:inRect:)]) {
             view = [dataSource advancedPicker:self viewForComponent:component inRect:viewRect];
         } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             view = [dataSource advancedPicker:self viewForComponent:component];
+#pragma clang diagnostic pop
         }
 
         view.frame = viewRect;
