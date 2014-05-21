@@ -29,10 +29,6 @@
 #ifndef KSMacrosSystem_h
 #define KSMacrosSystem_h
 
-#ifndef DDLog
-#define DDLog(fmt, ...) NSLog((@"%s [%d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#endif
-
 static inline NSString *KSSystemVersion()
 {
     return [[UIDevice currentDevice] systemVersion];
