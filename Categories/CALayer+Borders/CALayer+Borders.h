@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2011, Davide De Rosa
+// Copyright (c) 2014, Davide De Rosa
 // All rights reserved.
 //
 // This code is distributed under the terms and conditions of the BSD license.
@@ -26,36 +26,21 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef KSMacrosUI_h
-#define KSMacrosUI_h
+#import <UIKit/UIKit.h>
 
-static inline BOOL KSUIIsPad()
-{
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-}
+typedef enum {
+    CALayerBorderPositionTop        = 0x1,
+    CALayerBorderPositionRight      = 0x2,
+    CALayerBorderPositionBottom     = 0x4,
+    CALayerBorderPositionLeft       = 0x8
+} CALayerBorderPosition;
 
-static inline BOOL KSUIIsPhone5()
-{
-    return (fabs((double)[UIScreen mainScreen].bounds.size.height - (double)568) < DBL_EPSILON);
-}
+@interface CALayer (Borders)
 
-static inline BOOL KSUIIsRetina()
-{
-    return ([[UIScreen mainScreen] scale] > 1.9);
-}
+- (CALayer *)addTopBorderWithColor:(CGColorRef)color width:(CGFloat)width;
+- (CALayer *)addRightBorderWithColor:(CGColorRef)color width:(CGFloat)width;
+- (CALayer *)addBottomBorderWithColor:(CGColorRef)color width:(CGFloat)width;
+- (CALayer *)addLeftBorderWithColor:(CGColorRef)color width:(CGFloat)width;
+- (void)addBorders:(NSUInteger)borders color:(CGColorRef)color width:(CGFloat)width;
 
-static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
-{
-    const CGFloat r = ((rgb >> 16) & 0xFF) / 255.0;
-    const CGFloat g = ((rgb >> 8) & 0xFF) / 255.0;
-    const CGFloat b = (rgb & 0xFF) / 255.0;
-    
-    return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
-}
-
-static inline NSString *KSUIString(NSString *key)
-{
-    return NSLocalizedString(key, nil);
-}
-
-#endif
+@end

@@ -19,6 +19,7 @@ Everything _should_ work with both ARC and non-ARC projects.
 
 ## Categories
 
+- [CALayer+Borders](Categories/CALayer+Borders)
 - [MKMapView+Zoom](Categories/MKMapView+Zoom)
 - [NSArray+Occurrences](Categories/NSArray+Occurrences)
 - [NSArray+Varargs](Categories/NSArray+Varargs)
