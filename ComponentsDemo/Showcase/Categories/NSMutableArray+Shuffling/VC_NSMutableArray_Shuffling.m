@@ -63,7 +63,7 @@
     [self.view addSubview:shuffleButton];
     [self.view addSubview:afterLabel];
 
-    beforeLabel.text = [testData description];
+    beforeLabel.text = [testData componentsJoinedByString:@" "];
 }
 
 - (void)viewDidUnload
@@ -85,7 +85,7 @@
 - (void) shuffleData:(id)sender
 {
     [testData shuffle];
-    afterLabel.text = [testData description];
+    afterLabel.text = [testData componentsJoinedByString:@" "];
 }
 
 @end
