@@ -2,6 +2,6 @@
 *.swp
 *.o
 *.class
-Demo/ComponentsDemo.xcodeproj/project.xcworkspace
-Demo/ComponentsDemo.xcodeproj/xcuserdata
+*.xcodeproj/project.xcworkspace
+*.xcodeproj/xcuserdata
 comment
