@@ -110,7 +110,7 @@
 		8C0824B418CA737300491FEE /* VC_KSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSGridView.m; sourceTree = "<group>"; };
 		8C0824B718CA760300491FEE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8C0824B918CA761100491FEE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8C2C559D146750E70065A877 /* Components.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Components.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2C559D146750E70065A877 /* ComponentsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2C55A1146750E70065A877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C2C55A3146750E70065A877 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8C2C55A5146750E70065A877 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -332,7 +332,7 @@
 		8C2C559E146750E70065A877 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8C2C559D146750E70065A877 /* Components.app */,
+				8C2C559D146750E70065A877 /* ComponentsDemo.app */,
 				8C8AE0301967878E007787ED /* libComponents.a */,
 				8C8AE03D1967878E007787ED /* ComponentsTests.xctest */,
 			);
@@ -944,7 +944,7 @@
 			);
 			name = ComponentsDemo;
 			productName = ComponentsDemo;
-			productReference = 8C2C559D146750E70065A877 /* Components.app */;
+			productReference = 8C2C559D146750E70065A877 /* ComponentsDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8C8AE02F1967878E007787ED /* Components */ = {
@@ -1249,7 +1249,7 @@
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Components;
+				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1261,7 +1261,7 @@
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Components;
+				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1430,6 +1430,7 @@
 				8C8AE04E1967878E007787ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C8AE04F1967878E007787ED /* Build configuration list for PBXNativeTarget "ComponentsTests" */ = {
 			isa = XCConfigurationList;
@@ -1438,6 +1439,7 @@
 				8C8AE0511967878E007787ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
