@@ -175,8 +175,6 @@ static inline NSArray *casedKeysFromKey(NSString *key) {
 
 - (void)testFileAndURL
 {
-    NSDi
-    
     NSString *file = [[NSBundle bundleForClass:[self class]] pathForResource:@"KSCIDictionaryTests" ofType:@"plist"];
     NSLog(@"file = %@", file);
     NSURL *url = [NSURL fileURLWithPath:file];
