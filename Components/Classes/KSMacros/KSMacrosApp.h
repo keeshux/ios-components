@@ -29,6 +29,8 @@
 #ifndef KSMacrosApp_h
 #define KSMacrosApp_h
 
+#import <Foundation/Foundation.h>
+
 #define KSAppLinkProtocol               @"itms-apps"
 #define KSAppLinkProtocolWeb            @"http"
 

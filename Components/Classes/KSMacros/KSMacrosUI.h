@@ -29,6 +29,9 @@
 #ifndef KSMacrosUI_h
 #define KSMacrosUI_h
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 static inline BOOL KSUIIsPad()
 {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
@@ -52,6 +55,8 @@ static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
     
     return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
+
+#define KSUISF(format, ...)     [NSString stringWithFormat:format, __VA_ARGS__]
 
 static inline NSString *KSUIString(NSString *key)
 {
