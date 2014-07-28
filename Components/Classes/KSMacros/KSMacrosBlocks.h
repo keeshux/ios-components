@@ -29,6 +29,8 @@
 #ifndef KSMacrosBlocks_h
 #define KSMacrosBlocks_h
 
+#import <Foundation/Foundation.h>
+
 void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)());
 
 #endif

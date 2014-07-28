@@ -29,6 +29,8 @@
 #ifndef KSMacrosSystem_h
 #define KSMacrosSystem_h
 
+#import <Foundation/Foundation.h>
+
 static inline NSString *KSSystemVersion()
 {
     return [[UIDevice currentDevice] systemVersion];
