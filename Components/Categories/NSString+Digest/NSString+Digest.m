@@ -36,7 +36,7 @@
     unsigned char digestBytes[CC_MD5_DIGEST_LENGTH];
 
     // check failure
-    if (!CC_MD5(stringBytes, strlen(stringBytes), digestBytes)) {
+    if (!CC_MD5(stringBytes, (CC_LONG)strlen(stringBytes), digestBytes)) {
         return nil;
     }
     
@@ -54,7 +54,7 @@
     unsigned char digestBytes[CC_SHA1_DIGEST_LENGTH];
     
     // check failure
-    if (!CC_SHA1(stringBytes, strlen(stringBytes), digestBytes)) {
+    if (!CC_SHA1(stringBytes, (CC_LONG)strlen(stringBytes), digestBytes)) {
         return nil;
     }
     
