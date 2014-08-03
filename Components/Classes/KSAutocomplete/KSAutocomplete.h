@@ -27,6 +27,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ARCHelper.h"
 
 //#define KS_AUTOCOMPLETE_VERBOSE
 
