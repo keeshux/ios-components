@@ -27,6 +27,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "ARCHelper.h"
 
 // NOTE: customView is an UIButton
