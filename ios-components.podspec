@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.source            = { :git => 'https://github.com/keeshux/ios-components.git',
                             :tag => s.version.to_s }
 
-    s.platform          = :ios
+    s.platform          = :ios, '6.0'
     s.source_files      = 'Components/**/*.{h,m}'
     s.exclude_files     = [ 'ComponentsDemo', 'ComponentsTests' ]
     s.requires_arc      = true
