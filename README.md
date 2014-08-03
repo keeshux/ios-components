@@ -1,5 +1,9 @@
 # ios-components
 
+Podfile:
+
+    pod 'ios-components', '~> 1.0'
+
 Everything _should_ work with both ARC and non-ARC projects.
 
 ## Classes
