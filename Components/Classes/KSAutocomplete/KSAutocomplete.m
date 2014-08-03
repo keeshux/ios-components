@@ -27,6 +27,7 @@
 //
 
 #import "KSAutocomplete.h"
+#import "ARCHelper.h"
 
 @interface KSAutocomplete ()
 
