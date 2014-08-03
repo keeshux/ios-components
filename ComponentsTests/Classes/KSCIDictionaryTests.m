@@ -74,8 +74,8 @@ static inline NSArray *casedKeysFromKey(NSString *key) {
 {
     id object = @"object #1";
     id key = @"ONe";
-    id objects[] = { object };
-    id keys[] = { key };
+//    id objects[] = { object };
+//    id keys[] = { key };
     
     KSCIMutableDictionary *dictionary;
     
