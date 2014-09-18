@@ -63,4 +63,9 @@ static inline NSString *KSUIString(NSString *key)
     return NSLocalizedString(key, nil);
 }
 
+static inline NSString *KSUITableString(NSString *table, NSString *key)
+{
+    return NSLocalizedStringFromTable(key, table, nil);
+}
+
 #endif
