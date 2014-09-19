@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EE38619CC64E700229C3C /* Default-568h@2x.png */; };
 		8C0824B518CA737300491FEE /* VC_KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */; };
 		8C0824B618CA737300491FEE /* VC_KSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B418CA737300491FEE /* VC_KSGridView.m */; };
 		8C0824B818CA760300491FEE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0824B718CA760300491FEE /* StoreKit.framework */; };
@@ -103,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E9EE38619CC64E700229C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8C08245618CA6EF900491FEE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8C0824B018CA737300491FEE /* VC_KSAdvancedPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSAdvancedPicker.h; sourceTree = "<group>"; };
 		8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSAdvancedPicker.m; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		8C2C5592146750E70065A877 = {
 			isa = PBXGroup;
 			children = (
+				0E9EE38619CC64E700229C3C /* Default-568h@2x.png */,
 				8C8AE0321967878E007787ED /* Components */,
 				8C8AE0441967878E007787ED /* ComponentsTests */,
 				8C2C55A7146750E70065A877 /* ComponentsDemo */,
@@ -1023,6 +1026,7 @@
 				8C2C55AC146750E70065A877 /* InfoPlist.strings in Resources */,
 				8C4D3D14146756170093F771 /* ViewController_iPad.xib in Resources */,
 				8C4D3D15146756170093F771 /* ViewController_iPhone.xib in Resources */,
+				0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */,
 				8C4D3D16146756170093F771 /* Window_iPad.xib in Resources */,
 				8C4D3D17146756170093F771 /* Window_iPhone.xib in Resources */,
 				8CABAFB8146AD3120056D831 /* ItemBackgroundImage.png in Resources */,
