@@ -51,7 +51,7 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind);
 
 @property (nonatomic, copy) NSString *productIdentifier;
 @property (nonatomic, assign) NSInteger quantity;
-@property (nonatomic, copy) NSString *hash;
+@property (nonatomic, copy) NSString *purchaseHash;
 
 @end
 

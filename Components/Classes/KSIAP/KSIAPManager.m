@@ -52,7 +52,7 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind) 
     return nil;
 }
 
-//
+#pragma mark -
 
 @implementation KSIAPProductMetadata
 
@@ -67,14 +67,14 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind) 
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:_productIdentifier forKey:@"productIdentifier"];
-    [aCoder encodeInteger:_kind forKey:@"kind"];
+    [aCoder encodeObject:self.productIdentifier forKey:@"productIdentifier"];
+    [aCoder encodeInteger:self.kind forKey:@"kind"];
 }
 
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@ productIdentifier=%@, kind=%@",
-            [super description], _productIdentifier, KSIAPProductMetadataKindToString(_kind)];
+            [super description], self.productIdentifier, KSIAPProductMetadataKindToString(self.kind)];
 }
 
 @end
@@ -86,22 +86,22 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind) 
     if ((self = [super init])) {
         self.productIdentifier = [aDecoder decodeObjectForKey:@"productIdentifier"];
         self.quantity = [aDecoder decodeIntegerForKey:@"quantity"];
-        self.hash = [aDecoder decodeObjectForKey:@"hash"];
+        self.purchaseHash = [aDecoder decodeObjectForKey:@"purchaseHash"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:_productIdentifier forKey:@"productIdentifier"];
-    [aCoder encodeInteger:_quantity forKey:@"quantity"];
-    [aCoder encodeObject:_hash forKey:@"hash"];
+    [aCoder encodeObject:self.productIdentifier forKey:@"productIdentifier"];
+    [aCoder encodeInteger:self.quantity forKey:@"quantity"];
+    [aCoder encodeObject:self.purchaseHash forKey:@"purchaseHash"];
 }
 
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@ productIdentifier=%@, quantity=%d",
-            [super description], _productIdentifier, _quantity];
+            [super description], self.productIdentifier, self.quantity];
 }
 
 @end
@@ -171,7 +171,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 
         self.keychainSalt = [self generateSalt];
-//        NSLog(@"keychain salt is %@", _keychainSalt);
+//        NSLog(@"keychain salt is %@", self.keychainSalt);
         
         // load products metadata from configuration file
         self.metadataPath = [[NSBundle bundleForClass:[self class]] pathForResource:KSIAPManagerConfigurationPlist ofType:@"plist"];
@@ -254,7 +254,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
 - (NSString *)hashForPurchase:(KSIAPPurchase *)purchase
 {
-    NSString *key = [NSString stringWithFormat:@"%@.%@", _keychainSalt, purchase.productIdentifier];
+    NSString *key = [NSString stringWithFormat:@"%@.%@", self.keychainSalt, purchase.productIdentifier];
     
     return [key digestBySHA1];
 }
@@ -264,7 +264,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 - (NSDictionary *)loadProductsMetadata
 {
     NSMutableDictionary *metadata = [[NSMutableDictionary alloc] init];
-    NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:_metadataPath];
+    NSDictionary *plist = [[NSDictionary alloc] initWithContentsOfFile:self.metadataPath];
 
     for (NSString *kindString in [plist allKeys]) {
         NSArray *kindProductIdentifiers = [plist objectForKey:kindString];
@@ -288,7 +288,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
 - (NSDictionary *)loadPurchases
 {
-    NSMutableDictionary *purchases = [[NSKeyedUnarchiver unarchiveObjectWithFile:_purchasesPath] mutableCopy];
+    NSMutableDictionary *purchases = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.purchasesPath] mutableCopy];
     if (!purchases) {
         purchases = [[NSMutableDictionary alloc] init];
     }
@@ -300,7 +300,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 //        NSLog(@"\thash: %@, expected: %@", purchase.hash, [self hashForPurchase:purchase]);
 
         // compare stored hash with expected
-        if (![purchase.hash isEqualToString:[self hashForPurchase:purchase]]) {
+        if (![purchase.purchaseHash isEqualToString:[self hashForPurchase:purchase]]) {
             [invalidIdentifiers addObject:purchase.productIdentifier];
             NSLog(@"\tintegrity check failed on: %@", purchase);
         }
@@ -311,7 +311,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         [purchases removeObjectsForKeys:invalidIdentifiers];
 
         // update stored file
-        [NSKeyedArchiver archiveRootObject:purchases toFile:_purchasesPath];
+        [NSKeyedArchiver archiveRootObject:purchases toFile:self.purchasesPath];
     }
     [invalidIdentifiers release];
 
@@ -321,19 +321,19 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 - (KSIAPPurchase *)savePurchaseWithProductIdentifier:(NSString *)productIdentifier quantity:(NSInteger)quantity
 {
     // remember purchased product
-    KSIAPPurchase *purchase = [_purchases objectForKey:productIdentifier];
+    KSIAPPurchase *purchase = [self.purchases objectForKey:productIdentifier];
     if (!purchase) {
         purchase = [[[KSIAPPurchase alloc] init] autorelease];
         purchase.productIdentifier = productIdentifier;
         purchase.quantity = quantity;
-        purchase.hash = [self hashForPurchase:purchase];
+        purchase.purchaseHash = [self hashForPurchase:purchase];
     } else {
         purchase.quantity += quantity;
     }
-    [_purchases setObject:purchase forKey:productIdentifier];
+    [self.purchases setObject:purchase forKey:productIdentifier];
 
     // persist purchases
-    [NSKeyedArchiver archiveRootObject:_purchases toFile:_purchasesPath];
+    [NSKeyedArchiver archiveRootObject:self.purchases toFile:self.purchasesPath];
 
     return purchase;
 }
@@ -341,29 +341,29 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 - (void)fetchProductsList
 {
     // XXX: when to download products?
-    NSSet *productIdentifiers = [[NSSet alloc] initWithArray:[_productsMetadata allKeys]];
+    NSSet *productIdentifiers = [[NSSet alloc] initWithArray:[self.productsMetadata allKeys]];
     
     // refresh products list
     self.ongoingProductsRequest = [[[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers] autorelease];
-    _ongoingProductsRequest.delegate = self;
-    [_ongoingProductsRequest start];
+    self.ongoingProductsRequest.delegate = self;
+    [self.ongoingProductsRequest start];
     
     [productIdentifiers release];
 }
 
 - (BOOL)isPurchasedProductIdentifier:(NSString *)productIdentifier
 {
-    return [[_purchases allKeys] containsObject:productIdentifier];
+    return [[self.purchases allKeys] containsObject:productIdentifier];
 }
 
 - (NSArray *)purchasedProductIdentifiers
 {
-    return [_purchases allKeys];
+    return [self.purchases allKeys];
 }
 
 - (KSIAPPurchase *)purchaseWithProductIdentifier:(NSString *)productIdentifier
 {
-    return [_purchases objectForKey:productIdentifier];
+    return [self.purchases objectForKey:productIdentifier];
 }
 
 #pragma mark - Requests
@@ -375,7 +375,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 //    return;
     
     // already purchased (if non-consumable)
-    KSIAPProductMetadata *metadata = [_productsMetadata objectForKey:productIdentifier];
+    KSIAPProductMetadata *metadata = [self.productsMetadata objectForKey:productIdentifier];
     if ((metadata.kind == KSIAPProductMetadataKindNonConsumable) &&
         [self isPurchasedProductIdentifier:productIdentifier]) {
 
@@ -394,10 +394,10 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     }
     
     // products not yet retrieved
-    if ([_availableProducts count] == 0) {
+    if ([self.availableProducts count] == 0) {
 
         // refetch if nothing ongoing
-        if (!_ongoingProductsRequest) {
+        if (!self.ongoingProductsRequest) {
             [self fetchProductsList];
         }
 
@@ -405,11 +405,11 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     }
     
     // unknown product
-    if (![_availableProducts objectForKey:productIdentifier]) {
+    if (![self.availableProducts objectForKey:productIdentifier]) {
         return KSIAPManagerPurchaseResultErrorUnknownProduct;
     }
     
-    SKProduct *product = [_availableProducts objectForKey:productIdentifier];
+    SKProduct *product = [self.availableProducts objectForKey:productIdentifier];
     SKPayment *payment = [SKPayment paymentWithProduct:product];
     
     // enqueue payment
@@ -448,7 +448,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     NSString *productIdentifier = transaction.payment.productIdentifier;
     const NSUInteger quantity = transaction.payment.quantity;
     KSIAPPurchase *purchase = [self savePurchaseWithProductIdentifier:productIdentifier quantity:quantity];
-    SKProduct *product = [_availableProducts objectForKey:productIdentifier];
+    SKProduct *product = [self.availableProducts objectForKey:productIdentifier];
 
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, @"product",
                               purchase, @"purchase", nil];
@@ -465,7 +465,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     NSString *productIdentifier = transaction.originalTransaction.payment.productIdentifier;
     const NSUInteger quantity = transaction.originalTransaction.payment.quantity;
     KSIAPPurchase *purchase = [self savePurchaseWithProductIdentifier:productIdentifier quantity:quantity];
-    SKProduct *product = [_availableProducts objectForKey:productIdentifier];
+    SKProduct *product = [self.availableProducts objectForKey:productIdentifier];
 
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, @"product",
                               purchase, @"purchase", [NSNumber numberWithBool:YES], @"isRestored", nil];
