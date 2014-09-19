@@ -26,6 +26,7 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [CALayer+Borders](Components/Categories/CALayer+Borders)
 - [MKMapView+Zoom](Components/Categories/MKMapView+Zoom)
 - [NSArray+Occurrences](Components/Categories/NSArray+Occurrences)
+- [NSArray+Reverse](Components/Categories/NSArray+Reverse)
 - [NSArray+Varargs](Components/Categories/NSArray+Varargs)
 - [NSFileManager+UserDirectories](Components/Categories/NSFileManager+UserDirectories)
 - [NSMutableArray+Shuffling](Components/Categories/NSMutableArray+Shuffling)
