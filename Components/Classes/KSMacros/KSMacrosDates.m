@@ -161,3 +161,9 @@ NSDate *KSDatesDatePlusDays(NSDate *date, NSInteger days) {
     
     return plus;
 }
+
+NSUInteger KSDatesAge(NSDate *birthDate) {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:birthDate toDate:[NSDate date] options:0];
+    return components.year;
+}

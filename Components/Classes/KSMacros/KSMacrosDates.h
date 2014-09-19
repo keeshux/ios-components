@@ -113,3 +113,5 @@ BOOL KSDatesIsPastDay(NSDate *date);
 NSInteger KSDatesDistanceInDays(NSDate *from, NSDate *to);
 
 NSDate *KSDatesDatePlusDays(NSDate *date, NSInteger days);
+
+NSUInteger KSDatesAge(NSDate *birthDate);
