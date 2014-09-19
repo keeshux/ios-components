@@ -33,18 +33,10 @@
 - (NSString *)stringWithFormat:(NSString *)format
 {
     const NSUInteger count = [self count];
-    char *args[count];
+    NSMutableData *args = [[NSMutableData alloc] initWithLength:count * sizeof(id)];
+    [self getObjects:(__unsafe_unretained id *)args.mutableBytes range:NSMakeRange(0, count)];
     
-    NSUInteger i = 0;
-    for (id item in self) {
-        args[i] = (char *)CFBridgingRetain(item);
-        ++i;
-    }
-    
-    NSString *string = [[NSString alloc] initWithFormat:format arguments:(va_list)args];
-    for (NSUInteger i = 0; i < count; ++i) {
-        CFBridgingRelease(args[i]);
-    }
+    NSString *string = [[NSString alloc] initWithFormat:format arguments:args.mutableBytes];
     return [string autorelease];
 }
 
