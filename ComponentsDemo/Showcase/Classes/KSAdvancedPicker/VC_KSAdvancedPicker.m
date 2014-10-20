@@ -3,7 +3,7 @@
 //  Components
 //
 //  Created by Davide De Rosa on 10/17/11.
-//  Copyright (c) 2011 algoritmico. All rights reserved.
+//  Copyright (c) 2011 Davide De Rosa. All rights reserved.
 //
 
 #import "VC_KSAdvancedPicker.h"

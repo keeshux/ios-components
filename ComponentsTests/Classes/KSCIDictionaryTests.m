@@ -3,7 +3,7 @@
 //  KSCIDictionaryTests
 //
 //  Created by Davide De Rosa on 6/21/12.
-//  Copyright (c) 2012 algoritmico. All rights reserved.
+//  Copyright (c) 2012 Davide De Rosa. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

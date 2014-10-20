@@ -992,7 +992,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = algoritmico;
+				ORGANIZATIONNAME = "Davide De Rosa";
 				TargetAttributes = {
 					8C8AE03C1967878E007787ED = {
 						TestTargetID = 8C8AE02F1967878E007787ED;
