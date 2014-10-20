@@ -27,6 +27,7 @@
 //
 
 #import "KSMacrosSharing.h"
+#import "KSMacrosUI.h"
 
 void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL)
 {
