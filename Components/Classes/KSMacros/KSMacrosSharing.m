@@ -26,6 +26,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#import <Social/Social.h>
+
 #import "KSMacrosSharing.h"
 #import "KSMacrosUI.h"
 
@@ -40,4 +42,24 @@ void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL)
     else {
         [app openURL:[NSURL URLWithString:fallbackURL]];
     }
+}
+
+static inline void KSSharingPostStatus(UIViewController *controller, NSString *serviceType, NSString *status, UIImage *image)
+{
+    SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [composer setInitialText:status];
+    if (image) {
+        [composer addImage:image];
+    }
+    [controller presentViewController:composer animated:YES completion:NULL];
+}
+
+void KSSharingFacebookPostStatus(UIViewController *controller, NSString *status, UIImage *image)
+{
+    KSSharingPostStatus(controller, SLServiceTypeFacebook, status, image);
+}
+
+void KSSharingTwitterPostStatus(UIViewController *controller, NSString *status, UIImage *image)
+{
+    KSSharingPostStatus(controller, SLServiceTypeTwitter, status, image);
 }

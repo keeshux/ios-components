@@ -31,3 +31,7 @@
 #import "ARCHelper.h"
 
 void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL);
+
+void KSSharingFacebookPostStatus(UIViewController *controller, NSString *status, UIImage *image);
+
+void KSSharingTwitterPostStatus(UIViewController *controller, NSString *status, UIImage *image);
