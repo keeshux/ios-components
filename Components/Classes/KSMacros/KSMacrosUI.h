@@ -32,6 +32,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "ARCHelper.h"
+
 static inline BOOL KSUIIsPad()
 {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);

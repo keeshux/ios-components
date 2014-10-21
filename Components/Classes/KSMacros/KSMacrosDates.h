@@ -28,6 +28,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ARCHelper.h"
+
 #pragma mark - Year
 
 NSInteger KSDatesYear(NSDate *date);

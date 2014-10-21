@@ -31,6 +31,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ARCHelper.h"
+
 static inline NSString *KSSystemVersion()
 {
     return [[UIDevice currentDevice] systemVersion];

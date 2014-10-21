@@ -28,4 +28,6 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ARCHelper.h"
+
 void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL);

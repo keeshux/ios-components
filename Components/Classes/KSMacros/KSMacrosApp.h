@@ -31,6 +31,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ARCHelper.h"
+
 #define KSAppLinkProtocol               @"itms-apps"
 #define KSAppLinkProtocolWeb            @"http"
 
