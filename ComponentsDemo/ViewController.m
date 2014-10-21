@@ -102,7 +102,6 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"Digest"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSString" categoryName:@"Random"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"NSTimer" categoryName:@"Pause"]];
-    [menuCategories addObject:[MenuItem itemWithClassName:@"UIAcceleration" categoryName:@"DeviceAngle"]];
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
 
     self.menu = [NSArray arrayWithObjects:menuClasses, menuCategories, nil];

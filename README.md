@@ -35,7 +35,6 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [NSString+Numeric](Components/Categories/NSString+Numeric)
 - [NSString+Random](Components/Categories/NSString+Random)
 - [NSTimer+Pause](Components/Categories/NSTimer+Pause)
-- [UIAcceleration+DeviceAngle](Components/Categories/UIAcceleration+DeviceAngle)
 - [UIBarButtonItem+CustomImage](Components/Categories/UIBarButtonItem+CustomImage)
 - [UIColor+Darkening](Components/Categories/UIColor+Darkening)
 - [UIScrollView+Shortcuts](Components/Categories/UIScrollView+Shortcuts)
