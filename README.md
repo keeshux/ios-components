@@ -39,3 +39,7 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [UIColor+Darkening](Components/Categories/UIColor+Darkening)
 - [UIScrollView+Shortcuts](Components/Categories/UIScrollView+Shortcuts)
 - [UIWebView+Activity](Components/Categories/UIWebView+Activity)
+
+## Donations
+
+Bitcoin address: [16w2AWamiH2SS68NYSMDcrbh5MnZ1c5eju](bitcoin:16w2AWamiH2SS68NYSMDcrbh5MnZ1c5eju)
