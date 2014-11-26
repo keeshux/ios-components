@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E84FF6019F5DC2600035B0D /* KSMacrosDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5D19F5DC2600035B0D /* KSMacrosDates.m */; };
 		0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5F19F5DC2600035B0D /* KSMacrosSharing.m */; };
+		0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */; };
 		0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EE38619CC64E700229C3C /* Default-568h@2x.png */; };
 		8C0824B518CA737300491FEE /* VC_KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */; };
 		8C0824B618CA737300491FEE /* VC_KSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B418CA737300491FEE /* VC_KSGridView.m */; };
@@ -108,6 +109,8 @@
 		0E84FF5D19F5DC2600035B0D /* KSMacrosDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMacrosDates.m; sourceTree = "<group>"; };
 		0E84FF5E19F5DC2600035B0D /* KSMacrosSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMacrosSharing.h; sourceTree = "<group>"; };
 		0E84FF5F19F5DC2600035B0D /* KSMacrosSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMacrosSharing.m; sourceTree = "<group>"; };
+		0E8C851D1A25E1D600CAD8D4 /* KSOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOptionsViewController.h; sourceTree = "<group>"; };
+		0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOptionsViewController.m; sourceTree = "<group>"; };
 		0E9EE38619CC64E700229C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8C08245618CA6EF900491FEE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8C0824B018CA737300491FEE /* VC_KSAdvancedPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSAdvancedPicker.h; sourceTree = "<group>"; };
@@ -301,6 +304,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E8C851C1A25E1D600CAD8D4 /* KSOptionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0E8C851D1A25E1D600CAD8D4 /* KSOptionsViewController.h */,
+				0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */,
+			);
+			path = KSOptionsViewController;
+			sourceTree = "<group>";
+		};
 		8C0824AF18CA737300491FEE /* KSAdvancedPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +630,7 @@
 				8C8AE0C0196787B3007787ED /* KSIAP */,
 				8C8AE0C5196787B3007787ED /* KSKeychain */,
 				8C8AE0C9196787B3007787ED /* KSMacros */,
+				0E8C851C1A25E1D600CAD8D4 /* KSOptionsViewController */,
 				8C8AE0D0196787B3007787ED /* KSSheetView */,
 			);
 			path = Classes;
@@ -1085,6 +1098,7 @@
 				0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */,
 				8C8AE0D9196787B3007787ED /* NSMutableArray+Shuffling.m in Sources */,
 				8C8AE0D6196787B3007787ED /* NSArray+Occurrences.m in Sources */,
+				0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */,
 				0E84FF6019F5DC2600035B0D /* KSMacrosDates.m in Sources */,
 				8C8AE0E5196787B3007787ED /* KSAdvancedPicker.m in Sources */,
 			);

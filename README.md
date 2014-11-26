@@ -19,6 +19,7 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [KSIAP](Components/Classes/KSIAP) - Easier in-app purchases tracking
 - [KSKeychain](Components/Classes/KSKeychain) - Rapid keychain access
 - [KSMacros](Components/Classes/KSMacros) - Common routines
+- [KSOptionsViewController](Components/Classes/KSOptionsViewController) - Convenient table view controller for option selection
 - [KSSheetView](Components/Classes/KSSheetView)
 
 ## Categories
