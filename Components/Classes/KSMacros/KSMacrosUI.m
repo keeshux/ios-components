@@ -26,52 +26,27 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef KSMacrosUI_h
-#define KSMacrosUI_h
+#import "KSMacrosUI.h"
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
-#import "ARCHelper.h"
-
-static inline BOOL KSUIIsPad()
-{
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+BOOL KSUIPhoneCanCall() {
+    NSURL *url = [NSURL URLWithString:@"tel:0123456789"];
+    return [[UIApplication sharedApplication] canOpenURL:url];
 }
 
-static inline BOOL KSUIIsPhone5()
-{
-    return (fabs((double)[UIScreen mainScreen].bounds.size.height - (double)568) < DBL_EPSILON);
-}
-
-static inline BOOL KSUIIsRetina()
-{
-    return ([[UIScreen mainScreen] scale] > 1.9);
-}
-
-static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
-{
-    const CGFloat r = ((rgb >> 16) & 0xFF) / 255.0;
-    const CGFloat g = ((rgb >> 8) & 0xFF) / 255.0;
-    const CGFloat b = (rgb & 0xFF) / 255.0;
+BOOL KSUIPhoneCall(NSString *phone) {
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *url = nil;
     
-    return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
+    if (phone.length > 0) {
+        url = [NSURL URLWithString:KSUISF(@"tel:%@", phone)];
+        if (![application canOpenURL:url]) {
+            url = nil;
+        }
+    }
+    
+    if (!url) {
+        return NO;
+    }
+    [application openURL:url];
+    return YES;
 }
-
-#define KSUISF(format, ...)     [NSString stringWithFormat:format, __VA_ARGS__]
-
-static inline NSString *KSUIString(NSString *key)
-{
-    return NSLocalizedString(key, nil);
-}
-
-static inline NSString *KSUITableString(NSString *table, NSString *key)
-{
-    return NSLocalizedStringFromTable(key, table, nil);
-}
-
-BOOL KSUIPhoneCanCall();
-
-BOOL KSUIPhoneCall(NSString *phone);
-
-#endif
