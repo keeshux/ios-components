@@ -28,52 +28,52 @@
 
 #import "KSGridViewCell.h"
 
+@interface KSGridViewCell ()
+
+@property (nonatomic, strong) NSMutableArray *items;
+
+@end
+
 @implementation KSGridViewCell
 
-@synthesize row;
-@synthesize numberOfColumns;
-@synthesize numberOfVisibleItems;
-@synthesize itemSize;
-@synthesize delegate;
-
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        items = [[NSMutableArray alloc] init];
-        itemSize = CGSizeZero;
+        self.items = [[[NSMutableArray alloc] init] autorelease];
+        self.itemSize = CGSizeZero;
     }
     return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
-    [items release];
+    self.items = nil;
 
     [super ah_dealloc];
 }
 
-- (void) setNumberOfColumns:(NSUInteger)aNumberOfColumns
+- (void)setNumberOfColumns:(NSUInteger)numberOfColumns
 {
-    [self setNumberOfColumns:aNumberOfColumns removeExceedingItems:NO];
+    [self setNumberOfColumns:numberOfColumns removeExceedingItems:NO];
 }
 
-- (void) setNumberOfColumns:(NSUInteger)aNumberOfColumns removeExceedingItems:(BOOL)removeExceedingItems
+- (void)setNumberOfColumns:(NSUInteger)numberOfColumns removeExceedingItems:(BOOL)removeExceedingItems
 {
-    if (aNumberOfColumns == numberOfColumns) {
+    if (numberOfColumns == _numberOfColumns) {
         return;
     }
 
-    numberOfColumns = aNumberOfColumns;
+    _numberOfColumns = numberOfColumns;
 
     // append new items if necessary
-    const NSInteger neededItems = numberOfColumns - [items count];
+    const NSInteger neededItems = _numberOfColumns - [self.items count];
     if (neededItems > 0) {
         for (NSUInteger i = 0; i < neededItems; ++i) {
-            UIView *itemView = [delegate gridViewCell:self viewForItemInRect:self.contentView.bounds];
+            UIView *itemView = [self.delegate gridViewCell:self viewForItemInRect:self.contentView.bounds];
             itemView.userInteractionEnabled = NO; // for touchesBegan
-            [items addObject:itemView];
+            [self.items addObject:itemView];
 
             // add to cell content
             [self.contentView addSubview:itemView];
@@ -82,53 +82,53 @@
     // optionally destroy unused items
     else if (removeExceedingItems && (neededItems < 0)) {
         for (NSUInteger i = 0; i < -neededItems; ++i) {
-            UIView *itemView = [items lastObject];
+            UIView *itemView = [self.items lastObject];
             [itemView removeFromSuperview];
-            [items removeLastObject];
+            [self.items removeLastObject];
         }
     }
     
     // cap visible items
-    self.numberOfVisibleItems = MIN(numberOfColumns, numberOfVisibleItems);
+    self.numberOfVisibleItems = MIN(_numberOfColumns, self.numberOfVisibleItems);
 
     [self setNeedsLayout];
 }
 
-- (void) setNumberOfVisibleItems:(NSUInteger)aNumberOfVisibleItems
+- (void)setNumberOfVisibleItems:(NSUInteger)numberOfVisibleItems
 {
-    NSAssert2(aNumberOfVisibleItems <= numberOfColumns,
+    NSAssert2(numberOfVisibleItems <= self.numberOfColumns,
               @"numberOfVisibleItems must be <= numberOfColumns (%d > %d)",
-              aNumberOfVisibleItems, numberOfColumns);
+              numberOfVisibleItems, self.numberOfColumns);
 
-    numberOfVisibleItems = aNumberOfVisibleItems;
+    _numberOfVisibleItems = numberOfVisibleItems;
 
     NSUInteger i = 0;
-    for (UIView *itemView in items) {
-        itemView.hidden = (i >= numberOfVisibleItems);
+    for (UIView *itemView in self.items) {
+        itemView.hidden = (i >= _numberOfVisibleItems);
         ++i;
     }
 }
 
-- (UIView *) itemAtIndex:(NSUInteger)index
+- (UIView *)itemAtIndex:(NSUInteger)index
 {
-    return [items objectAtIndex:index];
+    return self.items[index];
 }
 
-#pragma mark - Layout
+#pragma mark Layout
 
-- (void) layoutSubviews
+- (void)layoutSubviews
 {
     CGSize paddedSize;
-    paddedSize.width = (NSUInteger)(self.bounds.size.width / numberOfColumns);
+    paddedSize.width = (NSUInteger)(self.bounds.size.width / self.numberOfColumns);
     paddedSize.height = (NSUInteger) self.bounds.size.height;
 
     // fixed item size
     CGRect itemFrame = CGRectZero;
-    itemFrame.size = itemSize;
+    itemFrame.size = self.itemSize;
 
     // size and center items
     NSUInteger i = 0;
-    for (UIView *itemView in items) {
+    for (UIView *itemView in self.items) {
         itemView.frame = itemFrame;
         itemView.center = CGPointMake((i + 0.5) * paddedSize.width, 0.5 * paddedSize.height);
 
@@ -136,18 +136,18 @@
     }
 }
 
-#pragma mark - Events
+#pragma mark Events
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     const CGPoint location = [touch locationInView:self];
 
     // notify touched item
     NSUInteger i = 0;
-    for (UIView *itemView in items) {
+    for (UIView *itemView in self.items) {
         if (!itemView.hidden && CGRectContainsPoint(itemView.frame, location)) {
-            [delegate gridViewCell:self didSelectItemIndex:i];
+            [self.delegate gridViewCell:self didSelectItemIndex:i];
             return;
         }
         ++i;

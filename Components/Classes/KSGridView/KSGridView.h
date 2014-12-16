@@ -34,38 +34,38 @@
 @protocol KSGridViewDataSource;
 @protocol KSGridViewDelegate;
 
-@interface KSGridView : UIView<UITableViewDataSource, UITableViewDelegate, KSGridViewCellDelegate>
+@interface KSGridView : UIView <UITableViewDataSource, UITableViewDelegate, KSGridViewCellDelegate>
 
 @property (nonatomic, ah_weak) id<KSGridViewDataSource> dataSource;
 @property (nonatomic, ah_weak) id<KSGridViewDelegate> delegate;
 
-- (void) reloadData;
+- (void)reloadData;
 
 @end
 
 @protocol KSGridViewDataSource<NSObject>
 
-- (NSString *) identifierForGridView:(KSGridView *)gridView;
+- (NSString *)identifierForGridView:(KSGridView *)gridView;
 
-- (NSInteger) numberOfItemsInGridView:(KSGridView *)gridView;
-- (NSInteger) numberOfColumnsInGridView:(KSGridView *)gridView;
+- (NSInteger)numberOfItemsInGridView:(KSGridView *)gridView;
+- (NSInteger)numberOfColumnsInGridView:(KSGridView *)gridView;
 
-- (CGSize) sizeForItemInGridView:(KSGridView *)gridView;
-- (UIView *) gridView:(KSGridView *)gridView viewForItemInRect:(CGRect)rect;
+- (CGSize)sizeForItemInGridView:(KSGridView *)gridView;
+- (UIView *)gridView:(KSGridView *)gridView viewForItemInRect:(CGRect)rect;
 
-- (void) gridView:(KSGridView *)gridView setDataForItemView:(UIView *)itemView atIndex:(KSGridViewIndex *)index;
+- (void)gridView:(KSGridView *)gridView setDataForItemView:(UIView *)itemView atIndex:(KSGridViewIndex *)index;
 
 @optional
 
-- (UIView *) __attribute__((deprecated)) viewForItemInGridView:(KSGridView *)gridView;
+- (UIView *)__attribute__((deprecated))viewForItemInGridView:(KSGridView *)gridView;
 
 // defaults to .height from sizeForItemInGridView:
-- (CGFloat) heightForRowInGridView:(KSGridView *)gridView;
+- (CGFloat)heightForRowInGridView:(KSGridView *)gridView;
 
 @end
 
 @protocol KSGridViewDelegate<NSObject>
 
-- (void) gridView:(KSGridView *)gridView didSelectIndex:(KSGridViewIndex *)index;
+- (void)gridView:(KSGridView *)gridView didSelectIndex:(KSGridViewIndex *)index;
 
 @end

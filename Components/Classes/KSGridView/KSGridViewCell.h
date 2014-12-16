@@ -31,9 +31,7 @@
 
 @protocol KSGridViewCellDelegate;
 
-@interface KSGridViewCell : UITableViewCell {
-    NSMutableArray *items;
-}
+@interface KSGridViewCell : UITableViewCell
 
 @property (nonatomic, assign) NSUInteger row;
 @property (nonatomic, assign) NSUInteger numberOfColumns;
@@ -41,16 +39,16 @@
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic, ah_weak) id<KSGridViewCellDelegate> delegate;
 
-- (id) initWithReuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
-- (void) setNumberOfColumns:(NSUInteger)aNumberOfColumns removeExceedingItems:(BOOL)removeExceedingItems;
-- (UIView *) itemAtIndex:(NSUInteger)index;
+- (void)setNumberOfColumns:(NSUInteger)numberOfColumns removeExceedingItems:(BOOL)removeExceedingItems;
+- (UIView *)itemAtIndex:(NSUInteger)index;
 
 @end
 
 @protocol KSGridViewCellDelegate
 
-- (UIView *) gridViewCell:(KSGridViewCell *)cell viewForItemInRect:(CGRect)rect;
-- (void) gridViewCell:(KSGridViewCell *)cell didSelectItemIndex:(NSInteger)itemIndex;
+- (UIView *)gridViewCell:(KSGridViewCell *)cell viewForItemInRect:(CGRect)rect;
+- (void)gridViewCell:(KSGridViewCell *)cell didSelectItemIndex:(NSInteger)itemIndex;
 
 @end

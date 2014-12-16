@@ -31,40 +31,36 @@
 
 @implementation KSGridViewIndex
 
-@synthesize position;
-@synthesize row;
-@synthesize column;
-
-+ (id) indexWithPosition:(NSUInteger)aPosition row:(NSUInteger)aRow column:(NSUInteger)aColumn
++ (id)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
 {
-    return [[[self alloc] initWithPosition:aPosition row:aRow column:aColumn] autorelease];
+    return [[[self alloc] initWithPosition:position row:row column:column] autorelease];
 }
 
-+ (id) indexWithCell:(KSGridViewCell *)aCell column:(NSUInteger)aColumn
++ (id)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
 {
-    return [[[self alloc] initWithCell:aCell column:aColumn] autorelease];
+    return [[[self alloc] initWithCell:cell column:column] autorelease];
 }
 
-- (id) initWithPosition:(NSUInteger)aPosition row:(NSUInteger)aRow column:(NSUInteger)aColumn
+- (id)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
 {
     if ((self = [super init])) {
-        position = aPosition;
-        row = aRow;
-        column = aColumn;
+        _position = position;
+        _row = row;
+        _column = column;
     }
     return self;
 }
 
-- (id) initWithCell:(KSGridViewCell *)aCell column:(NSUInteger)aColumn
+- (id)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
 {
-    const NSInteger aPosition = aCell.row * aCell.numberOfColumns + aColumn;
+    const NSInteger position = cell.row * cell.numberOfColumns + column;
     
-    return [self initWithPosition:aPosition row:aCell.row column:aColumn];
+    return [self initWithPosition:position row:cell.row column:column];
 }
 
-- (NSString *) description
+- (NSString *)description
 {
-    return [NSString stringWithFormat:@"{position:%d, row:%d, column:%d}", position, row, column];
+    return [NSString stringWithFormat:@"{position:%d, row:%d, column:%d}", self.position, self.row, self.column];
 }
 
 @end

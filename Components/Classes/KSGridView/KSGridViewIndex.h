@@ -37,9 +37,9 @@
 @property (nonatomic, readonly) NSUInteger row;
 @property (nonatomic, readonly) NSUInteger column;
 
-+ (id) indexWithPosition:(NSUInteger)aPosition row:(NSUInteger)aRow column:(NSUInteger)aColumn;
-+ (id) indexWithCell:(KSGridViewCell *)aCell column:(NSUInteger)aColumn;
-- (id) initWithPosition:(NSUInteger)aPosition row:(NSUInteger)aRow column:(NSUInteger)aColumn;
-- (id) initWithCell:(KSGridViewCell *)aCell column:(NSUInteger)aColumn;
++ (id)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
++ (id)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
+- (id)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
+- (id)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
 
 @end

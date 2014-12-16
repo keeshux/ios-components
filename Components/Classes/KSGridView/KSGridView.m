@@ -37,50 +37,43 @@
 
 @implementation KSGridView
 
-// public
-@synthesize dataSource;
-@synthesize delegate;
-
-// private
-@synthesize table;
-
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        table = [[UITableView alloc] initWithFrame:self.bounds];
-        table.backgroundColor = [UIColor clearColor];
-        table.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        table.separatorStyle = UITableViewCellSeparatorStyleNone;
-        table.dataSource = self;
-        table.delegate = self;
-        [self addSubview:table];
+        self.table = [[[UITableView alloc] initWithFrame:self.bounds] autorelease];
+        self.table.backgroundColor = [UIColor clearColor];
+        self.table.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.table.dataSource = self;
+        self.table.delegate = self;
+        [self addSubview:self.table];
     }
     return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
     self.table = nil;
 
     [super ah_dealloc];
 }
 
-- (void) reloadData
+- (void)reloadData
 {
-    [table reloadData];
+    [self.table reloadData];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark UITableViewDataSource
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    const NSUInteger numberOfItems = [dataSource numberOfItemsInGridView:self];
-    const NSUInteger numberOfColumns = [dataSource numberOfColumnsInGridView:self];
+    const NSUInteger numberOfItems = [self.dataSource numberOfItemsInGridView:self];
+    const NSUInteger numberOfColumns = [self.dataSource numberOfColumnsInGridView:self];
     NSUInteger rows = numberOfItems / numberOfColumns;
 
     // add partial row
@@ -91,21 +84,21 @@
     return rows;
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *defaultIdentifier = @"KSGridViewCell";
 
     // LEGACY: default identifier (mandatory method instead)
     NSString *identifier = nil;
-    if ([dataSource respondsToSelector:@selector(identifierForGridView:)]) {
-        identifier = [dataSource identifierForGridView:self];
+    if ([self.dataSource respondsToSelector:@selector(identifierForGridView:)]) {
+        identifier = [self.dataSource identifierForGridView:self];
     } else {
         identifier = defaultIdentifier;
     }
 
     // data source size
-    const NSUInteger numberOfItems = [dataSource numberOfItemsInGridView:self];
-    const NSUInteger numberOfColumns = [dataSource numberOfColumnsInGridView:self];
+    const NSUInteger numberOfItems = [self.dataSource numberOfItemsInGridView:self];
+    const NSUInteger numberOfColumns = [self.dataSource numberOfColumnsInGridView:self];
     const NSUInteger numberOfRows = [self tableView:tableView numberOfRowsInSection:0];
 
     KSGridViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -114,7 +107,7 @@
         cell.delegate = self;
 
         // fixed item size
-        cell.itemSize = [dataSource sizeForItemInGridView:self];
+        cell.itemSize = [self.dataSource sizeForItemInGridView:self];
     }
 
     // set current row and number of columns
@@ -135,7 +128,7 @@
 
         // provide compound index to data source
         KSGridViewIndex *index = [KSGridViewIndex indexWithCell:cell column:i];
-        [dataSource gridView:self setDataForItemView:itemView atIndex:index];
+        [self.dataSource gridView:self setDataForItemView:itemView atIndex:index];
     }
 
     // save visible items count
@@ -144,32 +137,32 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark UITableViewDelegate
 
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([dataSource respondsToSelector:@selector(heightForRowInGridView:)]) {
-        return [dataSource heightForRowInGridView:self];
+    if ([self.dataSource respondsToSelector:@selector(heightForRowInGridView:)]) {
+        return [self.dataSource heightForRowInGridView:self];
     } else {
-        return [dataSource sizeForItemInGridView:self].height;
+        return [self.dataSource sizeForItemInGridView:self].height;
     }
 }
 
-#pragma mark - KSGridViewCellDelegate
+#pragma mark KSGridViewCellDelegate
 
-- (UIView *) gridViewCell:(KSGridViewCell *)cell viewForItemInRect:(CGRect)rect
+- (UIView *)gridViewCell:(KSGridViewCell *)cell viewForItemInRect:(CGRect)rect
 {
-    if ([dataSource respondsToSelector:@selector(gridView:viewForItemInRect:)]) {
-        return [dataSource gridView:self viewForItemInRect:rect];
+    if ([self.dataSource respondsToSelector:@selector(gridView:viewForItemInRect:)]) {
+        return [self.dataSource gridView:self viewForItemInRect:rect];
     } else {
-        return [dataSource viewForItemInGridView:self];
+        return [self.dataSource viewForItemInGridView:self];
     }
 }
 
-- (void) gridViewCell:(KSGridViewCell *)cell didSelectItemIndex:(NSInteger)itemIndex
+- (void)gridViewCell:(KSGridViewCell *)cell didSelectItemIndex:(NSInteger)itemIndex
 {
     KSGridViewIndex *index = [KSGridViewIndex indexWithCell:cell column:itemIndex];
-    [delegate gridView:self didSelectIndex:index];
+    [self.delegate gridView:self didSelectIndex:index];
 }
 
 @end
