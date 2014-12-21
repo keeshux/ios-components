@@ -58,6 +58,24 @@
     [super ah_dealloc];
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+
+    self.table.backgroundColor = backgroundColor;
+    [self.table reloadData];
+}
+
+- (BOOL)scrollEnabled
+{
+    return self.table.scrollEnabled;
+}
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled
+{
+    self.table.scrollEnabled = scrollEnabled;
+}
+
 - (void)reloadData
 {
     [self.table reloadData];
@@ -109,6 +127,7 @@
         // fixed item size
         cell.itemSize = [self.dataSource sizeForItemInGridView:self];
     }
+    cell.backgroundColor = self.backgroundColor;
 
     // set current row and number of columns
     cell.row = indexPath.row;

@@ -36,6 +36,7 @@
 
 @interface KSGridView : UIView <UITableViewDataSource, UITableViewDelegate, KSGridViewCellDelegate>
 
+@property (nonatomic, assign) BOOL scrollEnabled;
 @property (nonatomic, ah_weak) id<KSGridViewDataSource> dataSource;
 @property (nonatomic, ah_weak) id<KSGridViewDelegate> delegate;
 
