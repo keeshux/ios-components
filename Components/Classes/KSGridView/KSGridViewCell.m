@@ -72,7 +72,7 @@
     if (neededItems > 0) {
         for (NSUInteger i = 0; i < neededItems; ++i) {
             UIView *itemView = [self.delegate gridViewCell:self viewForItemInRect:self.contentView.bounds];
-            itemView.userInteractionEnabled = NO; // for touchesBegan
+//            itemView.userInteractionEnabled = NO; // for touchesBegan
             [self.items addObject:itemView];
 
             // add to cell content
