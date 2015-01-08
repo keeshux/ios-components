@@ -60,8 +60,9 @@
 {
     UITableViewCell *cell = [self.dataSource optionsController:self reusableCellAtRow:indexPath.row];
     id option = self.options[indexPath.row];
+    const BOOL isSelected = [option isEqual:self.selectedOption];
 
-    [self.dataSource optionsController:self renderOption:option inCell:cell atRow:indexPath.row];
+    [self.dataSource optionsController:self renderOption:option inCell:cell atRow:indexPath.row isSelected:isSelected];
     
     return cell;
 }
