@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E84FF6019F5DC2600035B0D /* KSMacrosDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5D19F5DC2600035B0D /* KSMacrosDates.m */; };
 		0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5F19F5DC2600035B0D /* KSMacrosSharing.m */; };
+		0E8C4A101A692E4F00E5AC12 /* UITableViewCell+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C4A0F1A692E4F00E5AC12 /* UITableViewCell+Separator.m */; };
+		0E8C4A121A692E8500E5AC12 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C4A111A692E8500E5AC12 /* README.md */; };
 		0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */; };
 		0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EE38619CC64E700229C3C /* Default-568h@2x.png */; };
 		8C0824B518CA737300491FEE /* VC_KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */; };
@@ -109,6 +111,9 @@
 		0E84FF5D19F5DC2600035B0D /* KSMacrosDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMacrosDates.m; sourceTree = "<group>"; };
 		0E84FF5E19F5DC2600035B0D /* KSMacrosSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMacrosSharing.h; sourceTree = "<group>"; };
 		0E84FF5F19F5DC2600035B0D /* KSMacrosSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMacrosSharing.m; sourceTree = "<group>"; };
+		0E8C4A0E1A692E4F00E5AC12 /* UITableViewCell+Separator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Separator.h"; sourceTree = "<group>"; };
+		0E8C4A0F1A692E4F00E5AC12 /* UITableViewCell+Separator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Separator.m"; sourceTree = "<group>"; };
+		0E8C4A111A692E8500E5AC12 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0E8C851D1A25E1D600CAD8D4 /* KSOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOptionsViewController.h; sourceTree = "<group>"; };
 		0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOptionsViewController.m; sourceTree = "<group>"; };
 		0E9EE38619CC64E700229C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -304,6 +309,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E8C4A0D1A692E3400E5AC12 /* UITableViewCell+Separator */ = {
+			isa = PBXGroup;
+			children = (
+				0E8C4A111A692E8500E5AC12 /* README.md */,
+				0E8C4A0E1A692E4F00E5AC12 /* UITableViewCell+Separator.h */,
+				0E8C4A0F1A692E4F00E5AC12 /* UITableViewCell+Separator.m */,
+			);
+			path = "UITableViewCell+Separator";
+			sourceTree = "<group>";
+		};
 		0E8C851C1A25E1D600CAD8D4 /* KSOptionsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +477,7 @@
 				8C8AE083196787B3007787ED /* UIBarButtonItem+CustomImage */,
 				8C8AE087196787B3007787ED /* UIColor+Darkening */,
 				8C8AE08B196787B3007787ED /* UIScrollView+Shortcuts */,
+				0E8C4A0D1A692E3400E5AC12 /* UITableViewCell+Separator */,
 				8C8AE08F196787B3007787ED /* UIWebView+Activity */,
 			);
 			path = Categories;
@@ -1093,9 +1109,11 @@
 				8C8AE0EA196787B3007787ED /* KSEditEnder.m in Sources */,
 				8C8AE0D4196787B3007787ED /* CALayer+Borders.m in Sources */,
 				8C8AE0EC196787B3007787ED /* KSGridViewCell.m in Sources */,
+				0E8C4A101A692E4F00E5AC12 /* UITableViewCell+Separator.m in Sources */,
 				8C8AE0EB196787B3007787ED /* KSGridView.m in Sources */,
 				8C8AE0DE196787B3007787ED /* NSTimer+Pause.m in Sources */,
 				0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */,
+				0E8C4A121A692E8500E5AC12 /* README.md in Sources */,
 				8C8AE0D9196787B3007787ED /* NSMutableArray+Shuffling.m in Sources */,
 				8C8AE0D6196787B3007787ED /* NSArray+Occurrences.m in Sources */,
 				0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */,

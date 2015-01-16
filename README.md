@@ -39,6 +39,7 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [UIBarButtonItem+CustomImage](Components/Categories/UIBarButtonItem+CustomImage)
 - [UIColor+Darkening](Components/Categories/UIColor+Darkening)
 - [UIScrollView+Shortcuts](Components/Categories/UIScrollView+Shortcuts)
+- [UITableViewCell+Separator](Components/Categories/UITableViewCell+Separator)
 - [UIWebView+Activity](Components/Categories/UIWebView+Activity)
 
 ## Donations
