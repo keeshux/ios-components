@@ -58,11 +58,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.dataSource optionsController:self reusableCellAtRow:indexPath.row];
+    UITableViewCell *cell = [self.delegate optionsController:self tableView:tableView reusableCellAtRow:indexPath.row];
     id option = self.options[indexPath.row];
     const BOOL isSelected = [option isEqual:self.selectedOption];
 
-    [self.dataSource optionsController:self renderOption:option inCell:cell atRow:indexPath.row isSelected:isSelected];
+    [self.delegate optionsController:self renderOption:option inCell:cell atRow:indexPath.row isSelected:isSelected];
     
     return cell;
 }
@@ -74,6 +74,7 @@
     id option = self.options[indexPath.row];
 
     [self.delegate optionsController:self didSelectOption:option atRow:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

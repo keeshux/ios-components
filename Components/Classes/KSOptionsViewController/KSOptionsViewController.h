@@ -35,20 +35,15 @@
 
 @property (nonatomic, strong) NSArray *options;
 @property (nonatomic, strong) id selectedOption;
-@property (nonatomic, weak) id<KSOptionsViewControllerDataSource> dataSource;
+@property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, weak) id<KSOptionsViewControllerDelegate> delegate;
-
-@end
-
-@protocol KSOptionsViewControllerDataSource <NSObject>
-
-- (UITableViewCell *)optionsController:(KSOptionsViewController *)controller reusableCellAtRow:(NSUInteger)row;
-- (void)optionsController:(KSOptionsViewController *)controller renderOption:(id)option inCell:(UITableViewCell *)cell atRow:(NSUInteger)row isSelected:(BOOL)isSelected;
 
 @end
 
 @protocol KSOptionsViewControllerDelegate <NSObject>
 
+- (UITableViewCell *)optionsController:(KSOptionsViewController *)controller tableView:(UITableView *)tableView reusableCellAtRow:(NSUInteger)row;
+- (void)optionsController:(KSOptionsViewController *)controller renderOption:(id)option inCell:(UITableViewCell *)cell atRow:(NSUInteger)row isSelected:(BOOL)isSelected;
 - (void)optionsController:(KSOptionsViewController *)controller didSelectOption:(id)option atRow:(NSUInteger)row;
 
 @end
