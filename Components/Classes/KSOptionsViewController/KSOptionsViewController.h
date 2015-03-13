@@ -28,7 +28,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol KSOptionsViewControllerDataSource;
 @protocol KSOptionsViewControllerDelegate;
 
 @interface KSOptionsViewController : UITableViewController
