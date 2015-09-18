@@ -171,7 +171,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 
         self.keychainSalt = [self generateSalt];
-//        NSLog(@"keychain salt is %@", self.keychainSalt);
+//        NSLog(@"KSIAP: Keychain salt is %@", self.keychainSalt);
         
         // load products metadata from configuration file
         self.metadataPath = [[NSBundle bundleForClass:[self class]] pathForResource:KSIAPManagerConfigurationPlist ofType:@"plist"];
@@ -224,7 +224,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
     // no existing salt from keychain, generate a new one
     if (!salt) {
-        NSLog(@"no salt found in keychain, generating a new one");
+        NSLog(@"KSIAP: No salt found in keychain, generating a new one");
 
         // start from random string
         NSMutableString *newSalt = [[[NSString randomStringWithLength:KSIAPManagerSaltKeyLength] mutableCopy] autorelease];
@@ -280,7 +280,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         }
     }
 
-    NSLog(@"products metadata from configuration file: %@", metadata);
+    NSLog(@"KSIAP: Products metadata from configuration file: %@", metadata);
     [plist release];
 
     return [metadata autorelease];
@@ -292,17 +292,17 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     if (!purchases) {
         purchases = [[NSMutableDictionary alloc] init];
     }
-    NSLog(@"purchases history: %@", purchases);
+    NSLog(@"KSIAP: Purchases history: %@", purchases);
     
     // integrity check
     NSMutableArray *invalidIdentifiers = [[NSMutableArray alloc] init];
     for (KSIAPPurchase *purchase in [purchases allValues]) {
-//        NSLog(@"\thash: %@, expected: %@", purchase.hash, [self hashForPurchase:purchase]);
+//        NSLog(@"\tHash: %@, expected: %@", purchase.hash, [self hashForPurchase:purchase]);
 
         // compare stored hash with expected
         if (![purchase.purchaseHash isEqualToString:[self hashForPurchase:purchase]]) {
             [invalidIdentifiers addObject:purchase.productIdentifier];
-            NSLog(@"\tintegrity check failed on: %@", purchase);
+            NSLog(@"\tIntegrity check failed on: %@", purchase);
         }
     }
 
@@ -504,10 +504,10 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     for (SKProduct *product in response.products) {
         [products setObject:product forKey:product.productIdentifier];
 
-        NSLog(@"product: %@, title: '%@', price: %@", product.productIdentifier, product.localizedTitle, product.price);
+        NSLog(@"KSIAP: Product: %@, title: '%@', price: %@", product.productIdentifier, product.localizedTitle, product.price);
     }
     for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
-        NSLog(@"invalid product: %@", invalidIdentifier);
+        NSLog(@"KSIAP: Invalid product: %@", invalidIdentifier);
     }
 
     self.availableProducts = products;
@@ -544,13 +544,13 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
             }
         }
 
-        NSLog(@"transaction: %@ (state = %ld)", transaction.payment.productIdentifier, (long)transaction.transactionState);
+        NSLog(@"KSIAP: Transaction: %@ (state = %ld)", transaction.payment.productIdentifier, (long)transaction.transactionState);
     }
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
-    NSLog(@"restored completed transactions");
+    NSLog(@"KSIAP: Restored completed transactions");
 
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidRestoreCompletedNotification
                                                         object:nil
@@ -559,7 +559,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
 {
-    NSLog(@"failed to restore completed transactions: %@", error);
+    NSLog(@"KSIAP: Failed to restore completed transactions: %@", error);
 
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailToRestoreCompletedNotification
