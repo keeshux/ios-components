@@ -2,7 +2,7 @@
 
 Podfile:
 
-    pod 'ios-components', '~> 1.0'
+    pod 'ios-components', '~> 1.2'
 
 Everything _should_ work with both ARC and non-ARC projects.
 
