@@ -70,7 +70,7 @@ static inline NSString *KSUITableString(NSString *table, NSString *key)
     return NSLocalizedStringFromTable(key, table, nil);
 }
 
-BOOL KSUIPhoneCanCall();
+BOOL KSUIPhoneCanCall(void);
 
 BOOL KSUIPhoneCall(NSString *phone);
 
