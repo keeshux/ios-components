@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSArray *options;
 @property (nonatomic, strong) id selectedOption;
 @property (nonatomic, assign) NSInteger tag;
+@property (nonatomic, strong) id object;
 @property (nonatomic, weak) id<KSOptionsViewControllerDelegate> delegate;
 
 @end
