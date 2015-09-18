@@ -11,9 +11,6 @@
 
 @implementation VC_NSTimer_Pause
 
-@synthesize countdownLabel;
-@synthesize timer;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,17 +42,17 @@
 {
     [super viewDidLoad];
 
-    countdownLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 20, (self.view.bounds.size.height - 100) / 2)];
-    countdownLabel.textAlignment = UITextAlignmentCenter;
-    countdownLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
+    self.countdownLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.view.bounds, 20, (self.view.bounds.size.height - 100) / 2)];
+    self.countdownLabel.textAlignment = NSTextAlignmentCenter;
+    self.countdownLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [self.view addSubview:countdownLabel];
+    [self.view addSubview:self.countdownLabel];
 
     // pause after 2.2s
     [self performSelector:@selector(delayCountdown) withObject:nil afterDelay:2.2];
 
     // countdown for 5s
-    seconds = 5;
+    self.seconds = 5;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(count) userInfo:nil repeats:YES];
 }
 
@@ -73,24 +70,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void) delayCountdown
+- (void)delayCountdown
 {
-    [timer pause];
-    countdownLabel.text = @"Paused for 3s";
+    [self.timer pause];
+    self.countdownLabel.text = @"Paused for 3s";
 
     // resume in 3s
-    [timer performSelector:@selector(resume) withObject:nil afterDelay:3.0];
+    [self.timer performSelector:@selector(resume) withObject:nil afterDelay:3.0];
 }
 
-- (void) count
+- (void)count
 {
-    if (seconds > 0) {
-        countdownLabel.text = [NSString stringWithFormat:@"%d", seconds];
-        --seconds;
+    if (self.seconds > 0) {
+        self.countdownLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.seconds];
+        --self.seconds;
     } else {
-        [timer invalidate];
+        [self.timer invalidate];
         self.timer = nil;
-        countdownLabel.text = @"Stopped";
+        self.countdownLabel.text = @"Stopped";
     }
 }
 

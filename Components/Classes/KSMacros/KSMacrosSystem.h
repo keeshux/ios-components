@@ -30,6 +30,7 @@
 #define KSMacrosSystem_h
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "ARCHelper.h"
 

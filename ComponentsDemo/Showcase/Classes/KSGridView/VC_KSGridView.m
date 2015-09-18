@@ -113,13 +113,13 @@
     } else {
         label.textColor = [UIColor redColor];
     }
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
     return [label autorelease];
 }
 
 - (void)gridView:(KSGridView *)gridView setDataForItemView:(UIView *)itemView atIndex:(KSGridViewIndex *)index
 {
-    NSString *title = [NSString stringWithFormat:@"%d", index.position + 1];
+    NSString *title = [NSString stringWithFormat:@"%lu", (unsigned long)(index.position + 1)];
 
     [(UILabel *)itemView setText:title];
 }

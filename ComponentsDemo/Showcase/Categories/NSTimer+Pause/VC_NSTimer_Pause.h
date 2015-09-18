@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VC_NSTimer_Pause : LegacyViewController {
-    NSUInteger seconds;
-}
+@interface VC_NSTimer_Pause : LegacyViewController
 
 @property (nonatomic, strong) UILabel *countdownLabel;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) NSUInteger seconds;
 
 @end

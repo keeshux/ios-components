@@ -72,7 +72,7 @@
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
 
     switch (component) {
         case 0:
@@ -93,7 +93,7 @@
 {
     UILabel *label = (UILabel *) view;
 
-    label.text = [NSString stringWithFormat:@"%d", component * [self advancedPicker:picker numberOfRowsInComponent:component] + row];
+    label.text = [NSString stringWithFormat:@"%lu", (unsigned long)(component * [self advancedPicker:picker numberOfRowsInComponent:component] + row)];
 }
 
 - (CGFloat)heightForRowInAdvancedPicker:(KSAdvancedPicker *)picker
@@ -131,12 +131,12 @@
 
 - (void)advancedPicker:(KSAdvancedPicker *)picker didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"selected row %d in component %d", row, component);
+    NSLog(@"selected row %ld in component %ld", (long)row, (long)component);
 }
 
 - (void)advancedPicker:(KSAdvancedPicker *)picker didClickRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"clicked row %d in component %d", row, component);
+    NSLog(@"clicked row %ld in component %ld", (long)row, (long)component);
 }
 
 //- (UIView *)backgroundViewForAdvancedPicker:(KSAdvancedPicker *)picker

@@ -60,7 +60,7 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind) 
 {
     if ((self = [super init])) {
         self.productIdentifier = [aDecoder decodeObjectForKey:@"productIdentifier"];
-        self.kind = [aDecoder decodeIntegerForKey:@"kind"];
+        self.kind = [aDecoder decodeIntForKey:@"kind"];
     }
     return self;
 }
@@ -100,8 +100,8 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind) 
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ productIdentifier=%@, quantity=%d",
-            [super description], self.productIdentifier, self.quantity];
+    return [NSString stringWithFormat:@"%@ productIdentifier=%@, quantity=%ld",
+            [super description], self.productIdentifier, (long)self.quantity];
 }
 
 @end
@@ -544,7 +544,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
             }
         }
 
-        NSLog(@"transaction: %@ (state = %d)", transaction.payment.productIdentifier, transaction.transactionState);
+        NSLog(@"transaction: %@ (state = %ld)", transaction.payment.productIdentifier, (long)transaction.transactionState);
     }
 }
 

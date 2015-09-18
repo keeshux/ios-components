@@ -10,7 +10,6 @@
 		0E84FF6019F5DC2600035B0D /* KSMacrosDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5D19F5DC2600035B0D /* KSMacrosDates.m */; };
 		0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E84FF5F19F5DC2600035B0D /* KSMacrosSharing.m */; };
 		0E8C4A101A692E4F00E5AC12 /* UITableViewCell+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C4A0F1A692E4F00E5AC12 /* UITableViewCell+Separator.m */; };
-		0E8C4A121A692E8500E5AC12 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C4A111A692E8500E5AC12 /* README.md */; };
 		0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C851E1A25E1D600CAD8D4 /* KSOptionsViewController.m */; };
 		0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EE38619CC64E700229C3C /* Default-568h@2x.png */; };
 		8C0824B518CA737300491FEE /* VC_KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */; };
@@ -1002,7 +1001,7 @@
 		8C2C5594146750E70065A877 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Davide De Rosa";
 				TargetAttributes = {
 					8C8AE03C1967878E007787ED = {
@@ -1113,7 +1112,6 @@
 				8C8AE0EB196787B3007787ED /* KSGridView.m in Sources */,
 				8C8AE0DE196787B3007787ED /* NSTimer+Pause.m in Sources */,
 				0E84FF6119F5DC2600035B0D /* KSMacrosSharing.m in Sources */,
-				0E8C4A121A692E8500E5AC12 /* README.md in Sources */,
 				8C8AE0D9196787B3007787ED /* NSMutableArray+Shuffling.m in Sources */,
 				8C8AE0D6196787B3007787ED /* NSArray+Occurrences.m in Sources */,
 				0E8C851F1A25E1D600CAD8D4 /* KSOptionsViewController.m in Sources */,
@@ -1207,8 +1205,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1223,7 +1223,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1247,6 +1246,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1255,7 +1255,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1271,6 +1270,7 @@
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1283,6 +1283,7 @@
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1385,6 +1386,7 @@
 				INFOPLIST_FILE = "ComponentsTests/ComponentsTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1419,6 +1421,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = "ComponentsTests/ComponentsTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};

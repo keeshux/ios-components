@@ -60,7 +60,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"{position:%d, row:%d, column:%d}", self.position, self.row, self.column];
+    return [NSString stringWithFormat:@"{position:%lu, row:%lu, column:%lu}",
+            (unsigned long)self.position, (unsigned long)self.row, (unsigned long)self.column];
 }
 
 @end

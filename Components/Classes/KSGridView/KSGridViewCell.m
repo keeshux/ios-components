@@ -97,8 +97,8 @@
 - (void)setNumberOfVisibleItems:(NSUInteger)numberOfVisibleItems
 {
     NSAssert2(numberOfVisibleItems <= self.numberOfColumns,
-              @"numberOfVisibleItems must be <= numberOfColumns (%d > %d)",
-              numberOfVisibleItems, self.numberOfColumns);
+              @"numberOfVisibleItems must be <= numberOfColumns (%lu > %lu)",
+              (unsigned long)numberOfVisibleItems, (unsigned long)self.numberOfColumns);
 
     _numberOfVisibleItems = numberOfVisibleItems;
 
