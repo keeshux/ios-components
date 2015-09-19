@@ -6,41 +6,47 @@ Podfile:
 
 Everything _should_ work with both ARC and non-ARC projects.
 
-## Classes
+## Macros
 
-- [KSActionView](Components/Classes/KSActionView)
-- [KSAdvancedPicker](Components/Classes/KSAdvancedPicker) - Meant to overcome `UIPickerView` limitations
-- [KSAutocomplete](Components/Classes/KSAutocomplete)
-- [KSBasicMapAnnotation](Components/Classes/KSBasicMapAnnotation)
-- [KSCIDictionary](Components/Classes/KSCIDictionary) - Case-insensitive `NSDictionary` and `NSMutableDictionary` wrappers
-- [KSCheckView](Components/Classes/KSCheckView)
-- [KSEditEnder](Components/Classes/KSEditEnder)
-- [KSGridView](Components/Classes/KSGridView) - Static, no-brainer, bidimensional grid
-- [KSIAP](Components/Classes/KSIAP) - Easier in-app purchases tracking
-- [KSKeychain](Components/Classes/KSKeychain) - Rapid keychain access
-- [KSMacros](Components/Classes/KSMacros) - Common routines
-- [KSOptionsViewController](Components/Classes/KSOptionsViewController) - Convenient table view controller for option selection
-- [KSSheetView](Components/Classes/KSSheetView)
+- [KSMacros](Components/Macros) - Common routines
 
-## Categories
+## Utils
 
-- [CALayer+Borders](Components/Categories/CALayer+Borders)
-- [MKMapView+Zoom](Components/Categories/MKMapView+Zoom)
-- [NSArray+Occurrences](Components/Categories/NSArray+Occurrences)
-- [NSArray+Reverse](Components/Categories/NSArray+Reverse)
-- [NSArray+Varargs](Components/Categories/NSArray+Varargs)
-- [NSFileManager+UserDirectories](Components/Categories/NSFileManager+UserDirectories)
-- [NSMutableArray+Shuffling](Components/Categories/NSMutableArray+Shuffling)
-- [NSString+DateConversion](Components/Categories/NSString+DateConversion)
-- [NSString+Digest](Components/Categories/NSString+Digest)
-- [NSString+Numeric](Components/Categories/NSString+Numeric)
-- [NSString+Random](Components/Categories/NSString+Random)
-- [NSTimer+Pause](Components/Categories/NSTimer+Pause)
-- [UIBarButtonItem+CustomImage](Components/Categories/UIBarButtonItem+CustomImage)
-- [UIColor+Darkening](Components/Categories/UIColor+Darkening)
-- [UIScrollView+Shortcuts](Components/Categories/UIScrollView+Shortcuts)
-- [UITableViewCell+Separator](Components/Categories/UITableViewCell+Separator)
-- [UIWebView+Activity](Components/Categories/UIWebView+Activity)
+- [KSAutocomplete](Components/Utils/KSAutocomplete)
+- [KSCIDictionary](Components/Utils/KSCIDictionary) - Case-insensitive `NSDictionary` and `NSMutableDictionary` wrappers
+- [KSKeychain](Components/Utils/KSKeychain) - Rapid keychain access
+- [NSArray+Occurrences](Components/Utils/NSArray+Occurrences)
+- [NSArray+Reverse](Components/Utils/NSArray+Reverse)
+- [NSArray+Varargs](Components/Utils/NSArray+Varargs)
+- [NSFileManager+UserDirectories](Components/Utils/NSFileManager+UserDirectories)
+- [NSMutableArray+Shuffling](Components/Utils/NSMutableArray+Shuffling)
+- [NSString+DateConversion](Components/Utils/NSString+DateConversion)
+- [NSString+Digest](Components/Utils/NSString+Digest)
+- [NSString+Numeric](Components/Utils/NSString+Numeric)
+- [NSString+Random](Components/Utils/NSString+Random)
+- [NSTimer+Pause](Components/Utils/NSTimer+Pause)
+
+## UI
+
+- [CALayer+Borders](Components/UI/CALayer+Borders)
+- [KSActionView](Components/UI/KSActionView)
+- [KSAdvancedPicker](Components/UI/KSAdvancedPicker) - Meant to overcome `UIPickerView` limitations
+- [KSBasicMapAnnotation](Components/UI/KSBasicMapAnnotation)
+- [KSCheckView](Components/UI/KSCheckView)
+- [KSEditEnder](Components/UI/KSEditEnder)
+- [KSGridView](Components/UI/KSGridView) - Static, no-brainer, bidimensional grid
+- [KSOptionsViewController](Components/UI/KSOptionsViewController) - Convenient table view controller for option selection
+- [KSSheetView](Components/UI/KSSheetView)
+- [MKMapView+Zoom](Components/UI/MKMapView+Zoom)
+- [UIBarButtonItem+CustomImage](Components/UI/UIBarButtonItem+CustomImage)
+- [UIColor+Darkening](Components/UI/UIColor+Darkening)
+- [UIScrollView+Shortcuts](Components/UI/UIScrollView+Shortcuts)
+- [UITableViewCell+Separator](Components/UI/UITableViewCell+Separator)
+- [UIWebView+Activity](Components/UI/UIWebView+Activity)
+
+## In-app purchases
+
+- [KSIAP](Components/IAP) - Easier in-app purchases tracking
 
 ## Donations
 
