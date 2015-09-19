@@ -36,11 +36,8 @@
 #define KSAppLinkProtocol               @"itms-apps"
 #define KSAppLinkProtocolWeb            @"http"
 
-#define KSAppLinkFormat                 @"%@://itunes.apple.com/app/id%d"
-#define KSAppLinkExFormat               @"%@://itunes.apple.com/%@/app/id%d"
-
-#define KSAppArtistLinkFormat           @"%@://itunes.apple.com/artist/id%d"
-#define KSAppArtistLinkExFormat         @"%@://itunes.apple.com/%@/artist/id%d"
+#define KSAppLinkFormat                 @"%@://itunes.apple.com/app/id%lu"
+#define KSAppArtistLinkFormat           @"%@://itunes.apple.com/developer/id%lu"
 
 #define KSAppGCLogin                    @"gamecenter:/me"
 
@@ -74,19 +71,9 @@ static inline NSString *KSAppURL(const NSUInteger appID)
     return [NSString stringWithFormat:KSAppLinkFormat, KSAppLinkProtocol, appID];
 }
 
-static inline NSString *KSAppURLEx(const NSUInteger appID, NSString *region)
-{
-    return [NSString stringWithFormat:KSAppLinkExFormat, KSAppLinkProtocol, region, appID];
-}
-
 static inline NSString *KSAppArtistURL(const NSUInteger artistID)
 {
     return [NSString stringWithFormat:KSAppArtistLinkFormat, KSAppLinkProtocol, artistID];
-}
-
-static inline NSString *KSAppArtistURLEx(const NSUInteger artistID, NSString *region)
-{
-    return [NSString stringWithFormat:KSAppArtistLinkExFormat, KSAppLinkProtocol, region, artistID];
 }
 
 static inline NSString *KSAppWebURL(const NSUInteger appID)
@@ -94,19 +81,9 @@ static inline NSString *KSAppWebURL(const NSUInteger appID)
     return [NSString stringWithFormat:KSAppLinkFormat, KSAppLinkProtocolWeb, appID];
 }
 
-static inline NSString *KSAppWebURLEx(const NSUInteger appID, NSString *region)
-{
-    return [NSString stringWithFormat:KSAppLinkExFormat, KSAppLinkProtocolWeb, region, appID];
-}
-
 static inline NSString *KSAppWebArtistURL(const NSUInteger artistID)
 {
     return [NSString stringWithFormat:KSAppArtistLinkFormat, KSAppLinkProtocolWeb, artistID];
-}
-
-static inline NSString *KSAppWebArtistURLEx(const NSUInteger artistID, NSString *region)
-{
-    return [NSString stringWithFormat:KSAppArtistLinkExFormat, KSAppLinkProtocolWeb, region, artistID];
 }
 
 #endif
