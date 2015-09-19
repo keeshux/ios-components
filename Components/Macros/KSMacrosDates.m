@@ -36,7 +36,7 @@ typedef struct {
 #pragma mark - Year
 
 NSInteger KSDatesYear(NSDate *date) {
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear
                                                                    fromDate:date];
     
     return components.year;
@@ -74,7 +74,7 @@ NSDate *KSDatesDatePlusYears(NSDate *date, const NSInteger years) {
 #pragma mark - Month
 
 NSInteger KSDatesMonth(NSDate *date) {
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth
                                                                    fromDate:date];
     
     return components.month;
@@ -114,7 +114,7 @@ NSDate *KSDatesDateFromComponents(NSUInteger year, NSUInteger month, NSUInteger 
     components.year = year;
     components.month = month;
     components.day = day;
-    return [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] dateFromComponents:components];
+    return [[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian] dateFromComponents:components];
 }
 
 BOOL KSDatesIsPastDay(NSDate *date) {
@@ -125,7 +125,7 @@ BOOL KSDatesIsPastDay(NSDate *date) {
     }
     
     // giorni dalla data parametro ad oggi
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
                                                                    fromDate:[NSDate date]
                                                                      toDate:date
                                                                     options:0];
@@ -139,11 +139,11 @@ BOOL KSDatesIsPastDay(NSDate *date) {
 
 NSInteger KSDatesDistanceInDays(NSDate *from, NSDate *to) {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    const NSUInteger units = NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    const NSUInteger units = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear;
     NSDateComponents *fromComponents = [calendar components:units fromDate:from];
     NSDateComponents *toComponents = [calendar components:units fromDate:to];
     
-    NSDateComponents *components = [calendar components:NSDayCalendarUnit
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay
                                                fromDate:[calendar dateFromComponents:fromComponents]
                                                  toDate:[calendar dateFromComponents:toComponents]
                                                 options:0];
@@ -164,6 +164,6 @@ NSDate *KSDatesDatePlusDays(NSDate *date, NSInteger days) {
 
 NSUInteger KSDatesAge(NSDate *birthDate) {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:birthDate toDate:[NSDate date] options:0];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:birthDate toDate:[NSDate date] options:0];
     return components.year;
 }

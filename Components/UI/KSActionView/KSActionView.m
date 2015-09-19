@@ -86,7 +86,7 @@
         
         NSMutableArray *items = [[NSMutableArray alloc] init];
         UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithTitle:_itemCancelString
-                                                                       style:UIBarButtonItemStyleBordered
+                                                                       style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(cancelClicked:)];
         UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace

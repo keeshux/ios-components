@@ -94,7 +94,7 @@ static inline NSString *KSDatesMonthString(const NSUInteger month) {
 NSDate *KSDatesDateFromComponents(NSUInteger year, NSUInteger month, NSUInteger day);
 
 static inline NSInteger KSDatesDay(NSDate *date) {
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
                                                                    fromDate:date];
     
     return components.day;
