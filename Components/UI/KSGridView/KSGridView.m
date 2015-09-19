@@ -174,7 +174,10 @@
     if ([self.dataSource respondsToSelector:@selector(gridView:viewForItemInRect:)]) {
         return [self.dataSource gridView:self viewForItemInRect:rect];
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         return [self.dataSource viewForItemInGridView:self];
+#pragma clang diagnostic pop
     }
 }
 
