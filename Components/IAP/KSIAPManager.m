@@ -171,7 +171,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 
         self.keychainSalt = [self generateSalt];
-//        NSLog(@"KSIAP: Keychain salt is %@", self.keychainSalt);
+//        NSLog(@"%@: Keychain salt is %@", [self class], self.keychainSalt);
         
         // load products metadata from configuration file
         self.metadataPath = [[NSBundle bundleForClass:[self class]] pathForResource:KSIAPManagerConfigurationPlist ofType:@"plist"];
@@ -224,7 +224,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
     // no existing salt from keychain, generate a new one
     if (!salt) {
-        NSLog(@"KSIAP: No salt found in keychain, generating a new one");
+        NSLog(@"%@: No salt found in keychain, generating a new one", [self class]);
 
         // start from random string
         NSMutableString *newSalt = [[[NSString randomStringWithLength:KSIAPManagerSaltKeyLength] mutableCopy] autorelease];
@@ -280,7 +280,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         }
     }
 
-    NSLog(@"KSIAP: Products metadata from configuration file: %@", metadata);
+    NSLog(@"%@: Products metadata from configuration file: %@", [self class], metadata);
     [plist release];
 
     return [metadata autorelease];
@@ -292,7 +292,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     if (!purchases) {
         purchases = [[NSMutableDictionary alloc] init];
     }
-    NSLog(@"KSIAP: Purchases history: %@", purchases);
+    NSLog(@"%@: Purchases history: %@", [self class], purchases);
     
     // integrity check
     NSMutableArray *invalidIdentifiers = [[NSMutableArray alloc] init];
@@ -504,10 +504,10 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     for (SKProduct *product in response.products) {
         [products setObject:product forKey:product.productIdentifier];
 
-        NSLog(@"KSIAP: Product: %@, title: '%@', price: %@", product.productIdentifier, product.localizedTitle, product.price);
+        NSLog(@"%@: Product: %@, title: '%@', price: %@", [self class], product.productIdentifier, product.localizedTitle, product.price);
     }
     for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
-        NSLog(@"KSIAP: Invalid product: %@", invalidIdentifier);
+        NSLog(@"%@: Invalid product: %@", [self class], invalidIdentifier);
     }
 
     self.availableProducts = products;
@@ -544,13 +544,13 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
             }
         }
 
-        NSLog(@"KSIAP: Transaction: %@ (state = %ld)", transaction.payment.productIdentifier, (long)transaction.transactionState);
+        NSLog(@"%@: Transaction: %@ (state = %ld)", [self class], transaction.payment.productIdentifier, (long)transaction.transactionState);
     }
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
-    NSLog(@"KSIAP: Restored completed transactions");
+    NSLog(@"%@: Restored completed transactions", [self class]);
 
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidRestoreCompletedNotification
                                                         object:nil
@@ -559,7 +559,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
 {
-    NSLog(@"KSIAP: Failed to restore completed transactions: %@", error);
+    NSLog(@"%@: Failed to restore completed transactions: %@", [self class], error);
 
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailToRestoreCompletedNotification
