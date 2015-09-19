@@ -34,4 +34,10 @@ Pod::Spec.new do |s|
         p.dependency 'ios-components/Macros'
         p.dependency 'ios-components/Utils'
     end
+
+    s.subspec 'ProgressDownloader' do |p|
+        p.source_files  = ['Components/ProgressDownloader/**/*.{h,m}']
+        p.dependency 'ios-components/Macros'
+        p.dependency 'MBProgressHUD'
+    end
 end

@@ -48,6 +48,10 @@ Everything _should_ work with both ARC and non-ARC projects.
 
 - [KSIAP](Components/IAP) - Easier in-app purchases tracking
 
+## Progress downloader
+
+- [KSProgressDownloader](Components/ProgressDownloader) - HTTP fetcher showing download progress.
+
 ## Donations
 
 Bitcoin address: [16w2AWamiH2SS68NYSMDcrbh5MnZ1c5eju](bitcoin:16w2AWamiH2SS68NYSMDcrbh5MnZ1c5eju)

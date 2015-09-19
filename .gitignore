@@ -2,6 +2,9 @@
 *.swp
 *.o
 *.class
+*.xcworkspace/xcuserdata
+*.xcworkspace/xcshareddata
 *.xcodeproj/project.xcworkspace
 *.xcodeproj/xcuserdata
 comment
+Pods
