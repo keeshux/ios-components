@@ -141,7 +141,7 @@
         [fm createFileAtPath:_destinationFile contents:nil attributes:nil];
         self.destination = [NSFileHandle fileHandleForWritingAtPath:_destinationFile];
 
-        NSLog(@"%@: Download is starting (%lu bytes), %@", [self class], (unsigned long)_contentLength, _destination);
+        NSLog(@"%@: Download is starting (%lu bytes), %@", [self class], (unsigned long)_contentLength, _destinationFile);
     } else {
 
         // stop here, do NOT download
