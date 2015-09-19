@@ -37,7 +37,7 @@
 #define KSAppLinkProtocolWeb            @"http"
 
 #define KSAppLinkFormat                 @"%@://itunes.apple.com/app/id%lu"
-#define KSAppArtistLinkFormat           @"%@://itunes.apple.com/developer/id%lu"
+#define KSAppDeveloperLinkFormat        @"%@://itunes.apple.com/developer/id%lu"
 
 #define KSAppGCLogin                    @"gamecenter:/me"
 
@@ -66,24 +66,24 @@ static inline void KSAppPrintVersion()
     NSLog(@"%@", KSAppVersionDescription());
 }
 
-static inline NSString *KSAppURL(const NSUInteger appID)
+static inline NSString *KSAppURL(const unsigned long appID)
 {
     return [NSString stringWithFormat:KSAppLinkFormat, KSAppLinkProtocol, appID];
 }
 
-static inline NSString *KSAppArtistURL(const NSUInteger artistID)
+static inline NSString *KSAppDeveloperURL(const unsigned long developerID)
 {
-    return [NSString stringWithFormat:KSAppArtistLinkFormat, KSAppLinkProtocol, artistID];
+    return [NSString stringWithFormat:KSAppDeveloperLinkFormat, KSAppLinkProtocol, developerID];
 }
 
-static inline NSString *KSAppWebURL(const NSUInteger appID)
+static inline NSString *KSAppWebURL(const unsigned long appID)
 {
     return [NSString stringWithFormat:KSAppLinkFormat, KSAppLinkProtocolWeb, appID];
 }
 
-static inline NSString *KSAppWebArtistURL(const NSUInteger artistID)
+static inline NSString *KSAppWebDeveloperURL(const unsigned long developerID)
 {
-    return [NSString stringWithFormat:KSAppArtistLinkFormat, KSAppLinkProtocolWeb, artistID];
+    return [NSString stringWithFormat:KSAppDeveloperLinkFormat, KSAppLinkProtocolWeb, developerID];
 }
 
 #endif
