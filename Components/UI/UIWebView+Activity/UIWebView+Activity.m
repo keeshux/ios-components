@@ -45,7 +45,6 @@ static const NSInteger UIWebViewActivityTag = 17000;
     activity.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     activity.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [self addSubview:activity];
-    [activity release];
 }
 
 - (BOOL)isLoading

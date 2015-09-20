@@ -28,7 +28,6 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
-#import "ARCHelper.h"
 
 typedef enum {
     KSIAPProductMetadataKindConsumable = 1,

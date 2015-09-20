@@ -27,26 +27,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @protocol KSCheckViewDelegate;
 
-@interface KSCheckView : UIControl {
-    CGFloat width;
-    CGMutablePathRef path;
-}
+@interface KSCheckView : UIControl
 
 @property (nonatomic, assign) BOOL checked;
 @property (nonatomic, strong) UIColor *color;
 
-@property (nonatomic, ah_weak) id<KSCheckViewDelegate> delegate;
+@property (nonatomic, weak) id<KSCheckViewDelegate> delegate;
 
-- (void) toggleChecked;
+- (void)toggleChecked;
 
 @end
 
 @protocol KSCheckViewDelegate
 
-- (void) checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked;
+- (void)checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked;
 
 @end

@@ -14,6 +14,6 @@
 @property (nonatomic, strong) UITextField *outputField;
 @property (nonatomic, strong) UISegmentedControl *digestChoice;
 
-- (void) updateDigest;
+- (void)updateDigest;
 
 @end

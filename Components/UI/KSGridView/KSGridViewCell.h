@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @protocol KSGridViewCellDelegate;
 
@@ -37,9 +36,9 @@
 @property (nonatomic, assign) NSUInteger numberOfColumns;
 @property (nonatomic, assign) NSUInteger numberOfVisibleItems;
 @property (nonatomic, assign) CGSize itemSize;
-@property (nonatomic, ah_weak) id<KSGridViewCellDelegate> delegate;
+@property (nonatomic, weak) id<KSGridViewCellDelegate> delegate;
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)setNumberOfColumns:(NSUInteger)numberOfColumns removeExceedingItems:(BOOL)removeExceedingItems;
 - (UIView *)itemAtIndex:(NSUInteger)index;

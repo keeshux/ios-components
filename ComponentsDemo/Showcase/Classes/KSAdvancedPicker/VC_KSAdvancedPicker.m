@@ -36,7 +36,6 @@
     ap.delegate = self;
     [ap selectRow:4 inComponent:0 animated:YES];
     [self.view addSubview:ap];
-    [ap release];
 
 //    for (NSUInteger i = 0; i < [self numberOfComponentsInAdvancedPicker:ap]; ++i) {
 //        UITableView *table = [ap tableViewForComponent:i];
@@ -51,12 +50,12 @@
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
     return NO;
 }
 
-#pragma mark - KSAdvancedPickerDataSource
+#pragma mark KSAdvancedPickerDataSource
 
 - (NSInteger)numberOfComponentsInAdvancedPicker:(KSAdvancedPicker *)picker
 {
@@ -86,7 +85,7 @@
             break;
     }
 
-    return [label autorelease];
+    return label;
 }
 
 - (void)advancedPicker:(KSAdvancedPicker *)picker setDataForView:(UIView *)view row:(NSInteger)row inComponent:(NSInteger)component
@@ -127,7 +126,7 @@
     return round(width);
 }
 
-#pragma mark - KSAdvancedPickerDelegate
+#pragma mark KSAdvancedPickerDelegate
 
 - (void)advancedPicker:(KSAdvancedPicker *)picker didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {

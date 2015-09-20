@@ -28,7 +28,6 @@
     onCheck.checked = YES;
     onCheck.delegate = self;
     [self.view addSubview:onCheck];
-    [onCheck release];
 
     KSCheckView *offCheck = [[KSCheckView alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
     offCheck.backgroundColor = [UIColor redColor];
@@ -36,24 +35,16 @@
     offCheck.checked = NO;
     offCheck.delegate = self;
     [self.view addSubview:offCheck];
-    [offCheck release];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
     return NO;
 }
 
-#pragma mark - KSCheckViewDelegate
+#pragma mark KSCheckViewDelegate
 
-- (void) checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked
+- (void)checkView:(KSCheckView *)checkView didChangeToChecked:(BOOL)checked
 {
     NSLog(@"check view is now %@", (checked ? @"checked" : @"unchecked"));
 }

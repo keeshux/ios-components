@@ -12,15 +12,6 @@
 
 @implementation VC_MKMapView_Zoom
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -37,7 +28,6 @@
 
     MKMapView *map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:map];
-    [map release];
 
     // add some annotations
     [map addAnnotation:[KSBasicMapAnnotation annotationWithCoordinate:CLLocationCoordinate2DMake(52.37022, 4.89517)
@@ -67,10 +57,14 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

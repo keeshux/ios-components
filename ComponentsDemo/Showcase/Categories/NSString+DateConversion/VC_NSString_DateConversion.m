@@ -11,23 +11,6 @@
 
 @implementation VC_NSString_DateConversion
 
-@synthesize inputDate;
-@synthesize inputFormat;
-@synthesize outputFormat;
-@synthesize outputDate;
-@synthesize convertButton;
-
-- (void) dealloc
-{
-    self.inputDate = nil;
-    self.inputFormat = nil;
-    self.outputFormat = nil;
-    self.outputDate = nil;
-    self.convertButton = nil;
-
-    [super ah_dealloc];
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -50,61 +33,49 @@
     const CGFloat x = 20;
     const CGFloat width = scrollableSize.width - 2 * x;
     
-    inputDate = [[UITextField alloc] initWithFrame:CGRectMake(x, 20, width, 30)];
-    inputDate.placeholder = @"Input date (e.g.: 06/15/2011)";
-    inputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 60, width, 30)];
-    inputFormat.placeholder = @"Input format (e.g.: MM/dd/yyyy)";
-    outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
-    outputFormat.placeholder = @"Output format (e.g.: eee dd)";
-    outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
+    self.inputDate = [[UITextField alloc] initWithFrame:CGRectMake(x, 20, width, 30)];
+    self.inputDate.placeholder = @"Input date (e.g.: 06/15/2011)";
+    self.inputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 60, width, 30)];
+    self.inputFormat.placeholder = @"Input format (e.g.: MM/dd/yyyy)";
+    self.outputFormat = [[UITextField alloc] initWithFrame:CGRectMake(x, 100, width, 30)];
+    self.outputFormat.placeholder = @"Output format (e.g.: eee dd)";
+    self.outputDate = [[UILabel alloc] initWithFrame:CGRectMake(x, 140, width, 50)];
     self.convertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
-    inputDate.borderStyle = UITextBorderStyleRoundedRect;
-    inputDate.delegate = self;
-    inputFormat.borderStyle = UITextBorderStyleRoundedRect;
-    inputFormat.delegate = self;
-    outputFormat.borderStyle = UITextBorderStyleRoundedRect;
-    outputFormat.delegate = self;
-    convertButton.frame = CGRectMake(20, 200, width, 40);
-    [convertButton setTitle:@"Convert" forState:UIControlStateNormal];
-    [convertButton addTarget:self action:@selector(convertDate:) forControlEvents:UIControlEventTouchUpInside];
+    self.inputDate.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputDate.delegate = self;
+    self.inputFormat.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputFormat.delegate = self;
+    self.outputFormat.borderStyle = UITextBorderStyleRoundedRect;
+    self.outputFormat.delegate = self;
+    self.convertButton.frame = CGRectMake(20, 200, width, 40);
+    [self.convertButton setTitle:@"Convert" forState:UIControlStateNormal];
+    [self.convertButton addTarget:self action:@selector(convertDate:) forControlEvents:UIControlEventTouchUpInside];
     
-    [scroller addSubview:inputDate];
-    [scroller addSubview:inputFormat];
-    [scroller addSubview:outputFormat];
-    [scroller addSubview:outputDate];
-    [scroller addSubview:convertButton];
+    [scroller addSubview:self.inputDate];
+    [scroller addSubview:self.inputFormat];
+    [scroller addSubview:self.outputFormat];
+    [scroller addSubview:self.outputDate];
+    [scroller addSubview:self.convertButton];
     
     [self.view addSubview:scroller];
-    [scroller release];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.inputDate = nil;
-    self.inputFormat = nil;
-    self.outputFormat = nil;
-    self.outputDate = nil;
-    self.convertButton = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
     return NO;
 }
 
-- (void) convertDate:(id)sender
+- (void)convertDate:(id)sender
 {
-    outputDate.text = [inputDate.text dateStringFromFormat:inputFormat.text toFormat:outputFormat.text];
+    self.outputDate.text = [self.inputDate.text dateStringFromFormat:self.inputFormat.text toFormat:self.outputFormat.text];
 
     [self.view endEditing:NO];    
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark UITextFieldDelegate
 
-- (void) textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [textField resignFirstResponder];
 }

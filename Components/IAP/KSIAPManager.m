@@ -160,12 +160,12 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 {
     static KSIAPManager *instance = nil;
     if (!instance) {
-        instance = [[KSIAPManager alloc] init];
+        instance = [[self alloc] init];
     }
     return instance;
 }
 
-- (id)init
+- (instancetype)init
 {
     if ((self = [super init])) {
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -178,7 +178,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         
         // load already purchased products
         self.purchasesPath = [documentsDirectory stringByAppendingPathComponent:KSIAPManagerPurchasesFile];
-        self.purchases = [[[self loadPurchases] mutableCopy] autorelease];
+        self.purchases = [[self loadPurchases] mutableCopy];
         
         // do this early
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -193,20 +193,10 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 - (void)dealloc
 {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    self.keychainSalt = nil;
-    self.purchasesPath = nil;
-    self.productsMetadata = nil;
-    self.purchases = nil;
-    self.availableProducts = nil;
-    self.ongoingProductsRequest = nil;
-
-    [super ah_dealloc];
 }
 
 - (void)setMetadataPath:(NSString *)metadataPath
 {
-    [_metadataPath autorelease];
     _metadataPath = [metadataPath copy];
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:_metadataPath]) {
@@ -227,7 +217,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         NSLog(@"%@: No salt found in keychain, generating a new one", [self class]);
 
         // start from random string
-        NSMutableString *newSalt = [[[NSString randomStringWithLength:KSIAPManagerSaltKeyLength] mutableCopy] autorelease];
+        NSMutableString *newSalt = [[NSString randomStringWithLength:KSIAPManagerSaltKeyLength] mutableCopy];
 
         // append unique identifier
         UIDevice *device = [UIDevice currentDevice];
@@ -276,14 +266,12 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
             pm.kind = KSIAPProductMetadataKindFromString(kindString);
 
             [metadata setObject:pm forKey:productIdentifier];
-            [pm release];
         }
     }
 
     NSLog(@"%@: Products metadata from configuration file: %@", [self class], metadata);
-    [plist release];
 
-    return [metadata autorelease];
+    return metadata;
 }
 
 - (NSDictionary *)loadPurchases
@@ -313,9 +301,8 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         // update stored file
         [NSKeyedArchiver archiveRootObject:purchases toFile:self.purchasesPath];
     }
-    [invalidIdentifiers release];
 
-    return [purchases autorelease];
+    return purchases;
 }
 
 - (KSIAPPurchase *)savePurchaseWithProductIdentifier:(NSString *)productIdentifier quantity:(NSInteger)quantity
@@ -323,7 +310,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     // remember purchased product
     KSIAPPurchase *purchase = [self.purchases objectForKey:productIdentifier];
     if (!purchase) {
-        purchase = [[[KSIAPPurchase alloc] init] autorelease];
+        purchase = [[KSIAPPurchase alloc] init];
         purchase.productIdentifier = productIdentifier;
         purchase.quantity = quantity;
         purchase.purchaseHash = [self hashForPurchase:purchase];
@@ -344,11 +331,9 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     NSSet *productIdentifiers = [[NSSet alloc] initWithArray:[self.productsMetadata allKeys]];
     
     // refresh products list
-    self.ongoingProductsRequest = [[[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers] autorelease];
+    self.ongoingProductsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
     self.ongoingProductsRequest.delegate = self;
     [self.ongoingProductsRequest start];
-    
-    [productIdentifiers release];
 }
 
 - (BOOL)isPurchasedProductIdentifier:(NSString *)productIdentifier
@@ -383,7 +368,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
         [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                             object:nil
                                                           userInfo:userInfo];
-        [userInfo release];
 
         return KSIAPManagerPurchaseResultPurchased;
     }
@@ -440,7 +424,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidStartPurchasingProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
-    [userInfo release];
 }
 
 - (void)transactionSucceeded:(SKPaymentTransaction *)transaction
@@ -455,7 +438,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
-    [userInfo release];
     
     [self completeTransaction:transaction];
 }
@@ -472,7 +454,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
-    [userInfo release];
 
     [self completeTransaction:transaction];
 }
@@ -486,7 +467,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
-    [userInfo release];
 
     [self completeTransaction:transaction];
 }
@@ -511,7 +491,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     }
 
     self.availableProducts = products;
-    [products release];
 
     // finish request
     self.ongoingProductsRequest = nil;
@@ -565,7 +544,6 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailToRestoreCompletedNotification
                                                         object:nil
                                                       userInfo:userInfo];
-    [userInfo release];
 }
 
 //#pragma mark - UIApplication

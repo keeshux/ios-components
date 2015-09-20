@@ -11,23 +11,6 @@
 
 @implementation VC_NSTimer_Pause
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void) dealloc
-{
-    self.countdownLabel = nil;
-    self.timer = nil;
-    
-    [super ah_dealloc];
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -56,18 +39,15 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(count) userInfo:nil repeats:YES];
 }
 
-- (void)viewDidUnload
+- (BOOL)shouldAutorotate
 {
-    [super viewDidUnload];
-
-    self.countdownLabel = nil;
-    self.timer = nil;
+    return YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)delayCountdown

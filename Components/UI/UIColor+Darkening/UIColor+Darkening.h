@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @interface UIColor (Darkening)
 

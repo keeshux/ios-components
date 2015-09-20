@@ -36,29 +36,18 @@
 @property (nonatomic, strong) UIView *overlay;
 @property (nonatomic, strong) UIView *selector;
 
-- (void) addContent;
-- (void) removeContent;
-- (void) updateDelegateSubviews;
+- (void)addContent;
+- (void)removeContent;
+- (void)updateDelegateSubviews;
 
-- (NSInteger) componentFromTableView:(UITableView *)tableView;
-- (void) alignTableViewToRowBoundary:(UITableView *)tableView;
+- (NSInteger)componentFromTableView:(UITableView *)tableView;
+- (void)alignTableViewToRowBoundary:(UITableView *)tableView;
 
 @end
 
 @implementation KSAdvancedPicker
 
-// public
-@synthesize dataSource;
-@synthesize delegate;
-
-// private
-@synthesize tables;
-@synthesize selectedRowIndexes;
-@synthesize backgroundView;
-@synthesize overlay;
-@synthesize selector;
-
-- (id) initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
         self.backgroundColor = [UIColor whiteColor];
@@ -67,23 +56,9 @@
     return self;
 }
 
-- (void) dealloc
+- (void)setDataSource:(id<KSAdvancedPickerDataSource>)dataSource
 {
-    // data source
-    self.tables = nil;
-    self.selectedRowIndexes = nil;
-
-    // delegate
-    self.backgroundView = nil;
-    self.overlay = nil;
-    self.selector = nil;
-    
-    [super ah_dealloc];
-}
-
-- (void) setDataSource:(id<KSAdvancedPickerDataSource>)aDataSource
-{
-    if (aDataSource == dataSource) {
+    if (dataSource == _dataSource) {
         return;
     }
 
@@ -91,78 +66,78 @@
     [self removeContent];
 
     // add new content
-    dataSource = aDataSource;
-    if (dataSource) {
+    _dataSource = dataSource;
+    if (_dataSource) {
         [self addContent];
         [self updateDelegateSubviews];
         [self reloadData];
     }
 }
 
-- (void) setDelegate:(id<KSAdvancedPickerDelegate>)aDelegate
+- (void)setDelegate:(id<KSAdvancedPickerDelegate>)delegate
 {
-    if (aDelegate == delegate) {
+    if (delegate == _delegate) {
         return;
     }
 
     // rearrange content
-    delegate = aDelegate;
-    if (delegate) {
+    _delegate = delegate;
+    if (_delegate) {
         [self updateDelegateSubviews];
         [self reloadData];
     }
 }
 
-- (UITableView *) tableViewForComponent:(NSInteger)component
+- (UITableView *)tableViewForComponent:(NSInteger)component
 {
-    return [tables objectAtIndex:component];
+    return [self.tables objectAtIndex:component];
 }
 
-- (NSInteger) selectedRowInComponent:(NSInteger)component
+- (NSInteger)selectedRowInComponent:(NSInteger)component
 {
-    return [[selectedRowIndexes objectAtIndex:component] integerValue];
+    return [[self.selectedRowIndexes objectAtIndex:component] integerValue];
 }
 
-- (void) selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
+- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
 {
-    [selectedRowIndexes replaceObjectAtIndex:component withObject:[NSNumber numberWithInteger:row]];
+    [self.selectedRowIndexes replaceObjectAtIndex:component withObject:[NSNumber numberWithInteger:row]];
     
-    UITableView *table = [tables objectAtIndex:component];
+    UITableView *table = [self.tables objectAtIndex:component];
 
     const CGPoint alignedOffset = CGPointMake(0, row * table.rowHeight - table.contentInset.top);
     [table setContentOffset:alignedOffset animated:animated];
     
-    if ([delegate respondsToSelector:@selector(advancedPicker:didSelectRow:inComponent:)]) {
-        [delegate advancedPicker:self didSelectRow:row inComponent:component];
+    if ([self.delegate respondsToSelector:@selector(advancedPicker:didSelectRow:inComponent:)]) {
+        [self.delegate advancedPicker:self didSelectRow:row inComponent:component];
     }
 }
 
-- (void) reloadData
+- (void)reloadData
 {
-    for (UITableView *table in tables) {
+    for (UITableView *table in self.tables) {
         [table reloadData];
     }
 }
 
-- (void) reloadDataInComponent:(NSInteger)component
+- (void)reloadDataInComponent:(NSInteger)component
 {
-    [[tables objectAtIndex:component] reloadData];
+    [[self.tables objectAtIndex:component] reloadData];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark UITableViewDataSource
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     const NSInteger component = [self componentFromTableView:tableView];
-    return [dataSource advancedPicker:self numberOfRowsInComponent:component];
+    return [self.dataSource advancedPicker:self numberOfRowsInComponent:component];
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"ComponentCell";
     static const NSInteger tag = 1000;
@@ -171,8 +146,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     UIView *view = nil;
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:identifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:identifier];
         cell.backgroundColor = [UIColor clearColor];
 
         // allow selection but keep invisible
@@ -182,12 +157,12 @@
         const CGRect viewRect = cell.contentView.bounds;
 
         // LEGACY: support old method
-        if ([dataSource respondsToSelector:@selector(advancedPicker:viewForComponent:inRect:)]) {
-            view = [dataSource advancedPicker:self viewForComponent:component inRect:viewRect];
+        if ([self.dataSource respondsToSelector:@selector(advancedPicker:viewForComponent:inRect:)]) {
+            view = [self.dataSource advancedPicker:self viewForComponent:component inRect:viewRect];
         } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            view = [dataSource advancedPicker:self viewForComponent:component];
+            view = [self.dataSource advancedPicker:self viewForComponent:component];
 #pragma clang diagnostic pop
         }
 
@@ -200,73 +175,73 @@
     }
 
     // ask content to data source
-    [dataSource advancedPicker:self setDataForView:view row:indexPath.row inComponent:component];
+    [self.dataSource advancedPicker:self setDataForView:view row:indexPath.row inComponent:component];
 
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark UITableViewDelegate
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     const NSInteger component = [self componentFromTableView:tableView];
 
     // call upon animation end?
-    if ([delegate respondsToSelector:@selector(advancedPicker:didClickRow:inComponent:)]) {
-        [delegate advancedPicker:self didClickRow:indexPath.row inComponent:component];
+    if ([self.delegate respondsToSelector:@selector(advancedPicker:didClickRow:inComponent:)]) {
+        [self.delegate advancedPicker:self didClickRow:indexPath.row inComponent:component];
     }
 
     [self selectRow:indexPath.row inComponent:component animated:YES];
 }
 
-#pragma mark - UIScrollViewDelegate
+#pragma mark UIScrollViewDelegate
 
-- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate) {
         [self alignTableViewToRowBoundary:(UITableView *)scrollView];
     }
 }
 
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self alignTableViewToRowBoundary:(UITableView *)scrollView];
 }
 
-#pragma mark - Content management
+#pragma mark Content management
 
-- (void) addContent
+- (void)addContent
 {
     // custom row height?
-    if ([dataSource respondsToSelector:@selector(heightForRowInAdvancedPicker:)]) {
-        rowHeight = [dataSource heightForRowInAdvancedPicker:self];
+    if ([self.dataSource respondsToSelector:@selector(heightForRowInAdvancedPicker:)]) {
+        self.rowHeight = [self.dataSource heightForRowInAdvancedPicker:self];
     } else {
-        rowHeight = 44;
+        self.rowHeight = 44;
     }
     
     // distance from center
-    centralRowOffset = (self.frame.size.height - rowHeight) / 2;
+    self.centralRowOffset = (self.frame.size.height - self.rowHeight) / 2;
     
     // number of components
-    const NSInteger components = [dataSource numberOfComponentsInAdvancedPicker:self];
+    const NSInteger components = [self.dataSource numberOfComponentsInAdvancedPicker:self];
     
     // picker content
-    tables = [[NSMutableArray alloc] init];
-    selectedRowIndexes = [[NSMutableArray alloc] init];
+    self.tables = [[NSMutableArray alloc] init];
+    self.selectedRowIndexes = [[NSMutableArray alloc] init];
     CGRect tableFrame = CGRectMake(0, 0, 0, self.bounds.size.height);
     for (NSInteger i = 0; i < components; ++i) {
         
         // optional width
-        if ([dataSource respondsToSelector:@selector(advancedPicker:widthForComponent:)]) {
-            tableFrame.size.width = [dataSource advancedPicker:self widthForComponent:i];
+        if ([self.dataSource respondsToSelector:@selector(advancedPicker:widthForComponent:)]) {
+            tableFrame.size.width = [self.dataSource advancedPicker:self widthForComponent:i];
         } else {
             tableFrame.size.width = (NSUInteger)(self.frame.size.width / components);
         }
         
         // component table
         UITableView *table = [[UITableView alloc] initWithFrame:tableFrame];
-        table.rowHeight = rowHeight;
-        table.contentInset = UIEdgeInsetsMake(centralRowOffset, 0, centralRowOffset, 0);
+        table.rowHeight = self.rowHeight;
+        table.contentInset = UIEdgeInsetsMake(self.centralRowOffset, 0, self.centralRowOffset, 0);
         table.separatorStyle = UITableViewCellSeparatorStyleNone;
         table.showsVerticalScrollIndicator = NO;
         
@@ -274,19 +249,18 @@
         table.delegate = self;
         [self addSubview:table];
         
-        [tables addObject:table];
-        [selectedRowIndexes addObject:[NSNumber numberWithInteger:0]]; // first row selected by default
-        [table release];
+        [self.tables addObject:table];
+        [self.selectedRowIndexes addObject:[NSNumber numberWithInteger:0]]; // first row selected by default
         
         // next component offset
         tableFrame.origin.x += tableFrame.size.width;
     }
 }
 
-- (void) removeContent
+- (void)removeContent
 {
     // remove tables
-    for (UITableView *table in tables) {
+    for (UITableView *table in self.tables) {
         [table removeFromSuperview];
     }
     self.tables = nil;
@@ -295,35 +269,35 @@
     self.selectedRowIndexes = nil;
     
     // remove background
-    [backgroundView removeFromSuperview];
+    [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
     
     // remove overlay
-    [overlay removeFromSuperview];
+    [self.overlay removeFromSuperview];
     self.overlay = nil;
 
     // remove selector
-    [selector removeFromSuperview];
+    [self.selector removeFromSuperview];
     self.selector = nil;
 }
 
-- (void) updateDelegateSubviews
+- (void)updateDelegateSubviews
 {
     // remove delegate subviews
-    [backgroundView removeFromSuperview];
+    [self.backgroundView removeFromSuperview];
     self.backgroundView = nil;
-    [overlay removeFromSuperview];
+    [self.overlay removeFromSuperview];
     self.overlay = nil;
-    [selector removeFromSuperview];
+    [self.selector removeFromSuperview];
     self.selector = nil;
 
     // component background view/color
     NSUInteger i = 0;
-    for (UITableView *table in tables) {
-        if ([delegate respondsToSelector:@selector(advancedPicker:backgroundViewForComponent:)]) {
-            table.backgroundView = [delegate advancedPicker:self backgroundViewForComponent:i];
-        } else if ([delegate respondsToSelector:@selector(advancedPicker:backgroundColorForComponent:)]) {
-            table.backgroundColor = [delegate advancedPicker:self backgroundColorForComponent:i];
+    for (UITableView *table in self.tables) {
+        if ([self.delegate respondsToSelector:@selector(advancedPicker:backgroundViewForComponent:)]) {
+            table.backgroundView = [self.delegate advancedPicker:self backgroundViewForComponent:i];
+        } else if ([self.delegate respondsToSelector:@selector(advancedPicker:backgroundColorForComponent:)]) {
+            table.backgroundColor = [self.delegate advancedPicker:self backgroundColorForComponent:i];
         } else {
             table.backgroundColor = [UIColor clearColor];
         }
@@ -331,72 +305,72 @@
     }
     
     // picker background
-    if ([delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) {
-        self.backgroundView = [delegate backgroundViewForAdvancedPicker:self];
+    if ([self.delegate respondsToSelector:@selector(backgroundViewForAdvancedPicker:)]) {
+        self.backgroundView = [self.delegate backgroundViewForAdvancedPicker:self];
 
         // add and send to back
-        [self addSubview:backgroundView];
-        [self sendSubviewToBack:backgroundView];
-    } else if ([delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) {
-        self.backgroundColor = [delegate backgroundColorForAdvancedPicker:self];
+        [self addSubview:self.backgroundView];
+        [self sendSubviewToBack:self.backgroundView];
+    } else if ([self.delegate respondsToSelector:@selector(backgroundColorForAdvancedPicker:)]) {
+        self.backgroundColor = [self.delegate backgroundColorForAdvancedPicker:self];
     }
     
     // optional overlay
-    if ([delegate respondsToSelector:@selector(overlayViewForAdvancedPickerSelector:)]) {
-        self.overlay = [delegate overlayViewForAdvancedPickerSelector:self];
-    } else if ([delegate respondsToSelector:@selector(overlayColorForAdvancedPickerSelector:)]) {
-        overlay = [[UIView alloc] init];
-        overlay.backgroundColor = [delegate overlayColorForAdvancedPickerSelector:self];
+    if ([self.delegate respondsToSelector:@selector(overlayViewForAdvancedPickerSelector:)]) {
+        self.overlay = [self.delegate overlayViewForAdvancedPickerSelector:self];
+    } else if ([self.delegate respondsToSelector:@selector(overlayColorForAdvancedPickerSelector:)]) {
+        self.overlay = [[UIView alloc] init];
+        self.overlay.backgroundColor = [self.delegate overlayColorForAdvancedPickerSelector:self];
     }
     
-    if (overlay) {
+    if (self.overlay) {
         
         // ignore user input on selector
-        overlay.userInteractionEnabled = NO;
+        self.overlay.userInteractionEnabled = NO;
         
         // fill parent
-        overlay.frame = self.bounds;
-        [self addSubview:overlay];
+        self.overlay.frame = self.bounds;
+        [self addSubview:self.overlay];
     }
     
     // custom selector?
-    if ([delegate respondsToSelector:@selector(viewForAdvancedPickerSelector:)]) {
-        self.selector = [delegate viewForAdvancedPickerSelector:self];
-    } else if ([delegate respondsToSelector:@selector(viewColorForAdvancedPickerSelector:)]) {
-        selector = [[UIView alloc] init];
-        selector.backgroundColor = [delegate viewColorForAdvancedPickerSelector:self];
+    if ([self.delegate respondsToSelector:@selector(viewForAdvancedPickerSelector:)]) {
+        self.selector = [self.delegate viewForAdvancedPickerSelector:self];
+    } else if ([self.delegate respondsToSelector:@selector(viewColorForAdvancedPickerSelector:)]) {
+        self.selector = [[UIView alloc] init];
+        self.selector.backgroundColor = [self.delegate viewColorForAdvancedPickerSelector:self];
     } else {
-        selector = [[UIView alloc] init];
-        selector.backgroundColor = [UIColor blackColor];
-        selector.alpha = 0.3;
+        self.selector = [[UIView alloc] init];
+        self.selector.backgroundColor = [UIColor blackColor];
+        self.selector.alpha = 0.3;
     }
     
     // ignore user input on selector
-    selector.userInteractionEnabled = NO;
+    self.selector.userInteractionEnabled = NO;
     
     // override selector frame
     CGRect selectorFrame;
     selectorFrame.origin.x = 0;
-    selectorFrame.origin.y = centralRowOffset;
+    selectorFrame.origin.y = self.centralRowOffset;
     selectorFrame.size.width = self.frame.size.width;
-    selectorFrame.size.height = rowHeight;
-    selector.frame = selectorFrame;
+    selectorFrame.size.height = self.rowHeight;
+    self.selector.frame = selectorFrame;
     
-    [self addSubview:selector];
+    [self addSubview:self.selector];
     
 //    NSLog(@"self.frame = %@", NSStringFromCGRect(self.frame));
 //    NSLog(@"table.frame = %@", NSStringFromCGRect(table.frame));
 //    NSLog(@"selector.frame = %@", NSStringFromCGRect(selector.frame));
 }
 
-#pragma mark - Other methods
+#pragma mark Other methods
 
-- (NSInteger) componentFromTableView:(UITableView *)tableView
+- (NSInteger)componentFromTableView:(UITableView *)tableView
 {
-    return [tables indexOfObject:tableView];
+    return [self.tables indexOfObject:tableView];
 }
 
-- (void) alignTableViewToRowBoundary:(UITableView *)tableView
+- (void)alignTableViewToRowBoundary:(UITableView *)tableView
 {
 //    NSLog(@"contentOffset = %@", NSStringFromCGPoint(tableView.contentOffset));
 //    NSLog(@"rowHeight = %f", tableView.rowHeight);

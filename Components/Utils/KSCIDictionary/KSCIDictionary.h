@@ -27,28 +27,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARCHelper.h"
 
 @interface KSCIDictionary : NSObject <NSCopying, NSMutableCopying, NSCoding>
 
-+ (id)dictionary;
-+ (id)dictionaryWithObject:(id)object forKey:(NSString *)key;
-+ (id)dictionaryWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt;
-+ (id)dictionaryWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
-+ (id)dictionaryWithDictionary:(NSDictionary *)dict;
-+ (id)dictionaryWithObjects:(NSArray *)objects forKeys:(NSArray *)keys;
++ (instancetype)dictionary;
++ (instancetype)dictionaryWithObject:(id)object forKey:(NSString *)key;
++ (instancetype)dictionaryWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt;
++ (instancetype)dictionaryWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)dictionaryWithDictionary:(NSDictionary *)dict;
++ (instancetype)dictionaryWithObjects:(NSArray *)objects forKeys:(NSArray *)keys;
 
-- (id)init;
-- (id)initWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt;
-- (id)initWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
-- (id)initWithDictionary:(NSDictionary *)otherDictionary;
-- (id)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag;
-- (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys;
+- (instancetype)init;
+- (instancetype)initWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt;
+- (instancetype)initWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithDictionary:(NSDictionary *)otherDictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag;
+- (instancetype)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys;
 
-+ (id)dictionaryWithContentsOfFile:(NSString *)path;
-+ (id)dictionaryWithContentsOfURL:(NSURL *)url;
-- (id)initWithContentsOfFile:(NSString *)path;
-- (id)initWithContentsOfURL:(NSURL *)url;
++ (instancetype)dictionaryWithContentsOfFile:(NSString *)path;
++ (instancetype)dictionaryWithContentsOfURL:(NSURL *)url;
+- (instancetype)initWithContentsOfFile:(NSString *)path;
+- (instancetype)initWithContentsOfURL:(NSURL *)url;
 
 - (NSUInteger)count;
 - (id)objectForKey:(NSString *)key;

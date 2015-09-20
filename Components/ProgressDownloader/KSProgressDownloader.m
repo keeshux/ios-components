@@ -30,14 +30,13 @@
 
 #import "KSProgressDownloader.h"
 
-@interface KSProgressDownloader () {
-    NSInteger _contentLength;
-    NSInteger _downloadedBytes;
-}
+@interface KSProgressDownloader ()
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) NSURLRequest *request;
 @property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, assign) NSInteger contentLength;
+@property (nonatomic, assign) NSInteger downloadedBytes;
 @property (nonatomic, strong) NSMutableDictionary *originalHeaders;
 @property (nonatomic, strong) MBProgressHUD *progressHUD;
 @property (nonatomic, strong) NSFileHandle *destination;
@@ -51,7 +50,7 @@
 
 + (instancetype)downloaderWithWindow:(UIWindow *)window
 {
-    return [[[self alloc] initWithWindow:window] autorelease];
+    return [[self alloc] initWithWindow:window];
 }
 
 - (instancetype)initWithWindow:(UIWindow *)window
@@ -62,20 +61,6 @@
         self.cancelTitle = @"Cancel";
     }
     return self;
-}
-
-- (void)dealloc
-{
-    self.window = nil;
-    self.message = nil;
-    self.cancelTitle = nil;
-
-    [self cleanUpRequest];
-    self.destinationFile = nil;
-    self.originalHeaders = nil;
-    self.progressHUD = nil;
-
-    [super ah_dealloc];
 }
 
 - (void)downloadWithRequest:(NSURLRequest *)request
@@ -102,20 +87,19 @@
 //    // show alert
 //    [_progressAlert show];
     
-    [_progressHUD hide:NO];
-    self.progressHUD = nil;
+    [self.progressHUD hide:NO];
     
-    _progressHUD = [[MBProgressHUD alloc] initWithWindow:_window];
-    _progressHUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    _progressHUD.labelText = _message;
-    [_window addSubview:_progressHUD];
-    [_progressHUD show:YES];
+    self.progressHUD = [[MBProgressHUD alloc] initWithWindow:self.window];
+    self.progressHUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    self.progressHUD.labelText = self.message;
+    [self.window addSubview:self.progressHUD];
+    [self.progressHUD show:YES];
 
     // TODO: caching
 
     // copy original request
-    self.request = [[request copy] autorelease];
-    self.connection = [NSURLConnection connectionWithRequest:_request delegate:self];
+    self.request = [request copy];
+    self.connection = [NSURLConnection connectionWithRequest:self.request delegate:self];
 }
 
 #pragma mark UIAlertViewDelegate
@@ -133,19 +117,19 @@
     const NSInteger statusCode = urlResponse.statusCode;
 
     if (statusCode == 200) {
-        _contentLength = [[[urlResponse allHeaderFields] objectForKey:@"Content-Length"] integerValue];
-        _downloadedBytes = 0;
+        self.contentLength = [[[urlResponse allHeaderFields] objectForKey:@"Content-Length"] integerValue];
+        self.downloadedBytes = 0;
 
         NSFileManager *fm = [NSFileManager defaultManager];
-        [fm removeItemAtPath:_destinationFile error:nil];
-        [fm createFileAtPath:_destinationFile contents:nil attributes:nil];
-        self.destination = [NSFileHandle fileHandleForWritingAtPath:_destinationFile];
+        [fm removeItemAtPath:self.destinationFile error:nil];
+        [fm createFileAtPath:self.destinationFile contents:nil attributes:nil];
+        self.destination = [NSFileHandle fileHandleForWritingAtPath:self.destinationFile];
 
-        NSLog(@"%@: Download is starting (%lu bytes), %@", [self class], (unsigned long)_contentLength, _destinationFile);
+        NSLog(@"%@: Download is starting (%lu bytes), %@", [self class], (unsigned long)self.contentLength, self.destinationFile);
     } else {
 
         // stop here, do NOT download
-        [_connection cancel];
+        [self.connection cancel];
         
         if ((statusCode > 300) && (statusCode < 304)) {
             NSLog(@"%@: Redirected", [self class]);
@@ -167,15 +151,15 @@
 {
 //    NSLog(@"%@: Received %lu bytes", [self class], (unsigned long)[data length]);
 
-    [_destination seekToEndOfFile];
-    [_destination writeData:data];
+    [self.destination seekToEndOfFile];
+    [self.destination writeData:data];
 
     // update progress
-    _downloadedBytes += [data length];
-    if (_contentLength > 0) {
-        const float progress = (float)_downloadedBytes / _contentLength;
-//        _progressView.progress = progress;
-        _progressHUD.progress = progress;
+    self.downloadedBytes += [data length];
+    if (self.contentLength > 0) {
+        const float progress = (float)self.downloadedBytes / self.contentLength;
+//        self.progressView.progress = progress;
+        self.progressHUD.progress = progress;
     }
 }
 
@@ -183,14 +167,10 @@
 {
     NSLog(@"%@: Download finished", [self class]);
 
-    NSURL *url = [_request.URL ah_retain];
-    NSString *file = [_destinationFile ah_retain];
-//    [_progressAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [_progressHUD hide:YES];
+//    [self.progressAlert dismissWithClickedButtonIndex:0 animated:YES];
+    [self.progressHUD hide:YES];
 
-    [_delegate downloader:self didDownloadURL:url toFile:file];
-    [url release];
-    [file release];
+    [self.delegate downloader:self didDownloadURL:self.request.URL toFile:self.destinationFile];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -208,18 +188,16 @@
         NSLog(@"%@: Download failed (%d)", [self class], statusCode);
     }
     
-    NSURL *url = [_request.URL ah_retain];
-//    [_progressAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [_progressHUD hide:YES];
+//    [self.progressAlert dismissWithClickedButtonIndex:0 animated:YES];
+    [self.progressHUD hide:YES];
     
-    [_delegate downloader:self didFailToDownloadURL:url errorCode:0];
-    [url release];
+    [self.delegate downloader:self didFailToDownloadURL:self.request.URL errorCode:0];
 }
 
-- (void) cleanUpRequest
+- (void)cleanUpRequest
 {
-    [_destination closeFile];
-    [_connection cancel];
+    [self.destination closeFile];
+    [self.connection cancel];
     self.destination = nil;
     self.connection = nil;
     self.request = nil;

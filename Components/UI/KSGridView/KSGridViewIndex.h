@@ -27,7 +27,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARCHelper.h"
 
 @class KSGridViewCell;
 
@@ -37,9 +36,9 @@
 @property (nonatomic, readonly) NSUInteger row;
 @property (nonatomic, readonly) NSUInteger column;
 
-+ (id)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
-+ (id)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
-- (id)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
-- (id)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
++ (instancetype)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
++ (instancetype)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
+- (instancetype)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column;
+- (instancetype)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column;
 
 @end

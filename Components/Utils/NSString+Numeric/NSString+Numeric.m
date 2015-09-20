@@ -34,9 +34,8 @@
 {
     static NSCharacterSet *csetNonDigits = nil;
     if (!csetNonDigits) {
-        csetNonDigits = [[[NSCharacterSet decimalDigitCharacterSet] invertedSet] ah_retain];
+        csetNonDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     }
-
     return ([self rangeOfCharacterFromSet:csetNonDigits].location == NSNotFound);
 }
 

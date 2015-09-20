@@ -37,10 +37,10 @@
 
 @implementation KSGridView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        self.table = [[[UITableView alloc] initWithFrame:self.bounds] autorelease];
+        self.table = [[UITableView alloc] initWithFrame:self.bounds];
         self.table.backgroundColor = [UIColor clearColor];
         self.table.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -49,13 +49,6 @@
         [self addSubview:self.table];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    self.table = nil;
-
-    [super ah_dealloc];
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor
@@ -90,6 +83,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (!self.dataSource) {
+        return 0;
+    }
     const NSUInteger numberOfItems = [self.dataSource numberOfItemsInGridView:self];
     const NSUInteger numberOfColumns = [self.dataSource numberOfColumnsInGridView:self];
     NSUInteger rows = numberOfItems / numberOfColumns;
@@ -104,6 +100,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (!self.dataSource) {
+        return nil;
+    }
     static NSString *defaultIdentifier = @"KSGridViewCell";
 
     // LEGACY: default identifier (mandatory method instead)
@@ -121,7 +120,7 @@
 
     KSGridViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[[KSGridViewCell alloc] initWithReuseIdentifier:identifier] autorelease];
+        cell = [[KSGridViewCell alloc] initWithReuseIdentifier:identifier];
         cell.delegate = self;
 
         // fixed item size
@@ -171,6 +170,8 @@
 
 - (UIView *)gridViewCell:(KSGridViewCell *)cell viewForItemInRect:(CGRect)rect
 {
+    NSAssert(self.dataSource, @"No data source");
+
     if ([self.dataSource respondsToSelector:@selector(gridView:viewForItemInRect:)]) {
         return [self.dataSource gridView:self viewForItemInRect:rect];
     } else {

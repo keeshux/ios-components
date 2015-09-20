@@ -10,71 +10,53 @@
 
 @implementation MenuItem
 
-@synthesize className;
-@synthesize categoryName;
-
-+ (id) itemWithClassName:(NSString *)aClassName
++ (instancetype)itemWithClassName:(NSString *)className
 {
-    return [[[self alloc] initWithClassName:aClassName] autorelease];
+    return [[self alloc] initWithClassName:className];
 }
 
-+ (id) itemWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName
++ (instancetype)itemWithClassName:(NSString *)className categoryName:(NSString *)categoryName
 {
-    return [[[self alloc] initWithClassName:aClassName categoryName:aCategoryName] autorelease];
+    return [[self alloc] initWithClassName:className categoryName:categoryName];
 }
 
-- (id) initWithClassName:(NSString *)aClassName
+- (instancetype)initWithClassName:(NSString *)className
 {
-    return [self initWithClassName:aClassName categoryName:nil];
+    return [self initWithClassName:className categoryName:nil];
 }
 
-- (id) initWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName
+- (instancetype)initWithClassName:(NSString *)className categoryName:(NSString *)categoryName
 {
     if ((self = [super init])) {
-        self.className = aClassName;
-        self.categoryName = aCategoryName;
+        self.className = className;
+        self.categoryName = categoryName;
     }
     return self;
 }
 
-- (void) dealloc
+- (NSString *)viewControllerClassName
 {
-    self.className = nil;
-    self.categoryName = nil;
-
-    [super ah_dealloc];
-}
-
-- (NSString *) viewControllerClassName
-{
-    if (!categoryName) {
-        return [NSString stringWithFormat:@"VC_%@", className];
+    if (!self.categoryName) {
+        return [NSString stringWithFormat:@"VC_%@", self.className];
     } else {
-        return [NSString stringWithFormat:@"VC_%@_%@", className, categoryName];
+        return [NSString stringWithFormat:@"VC_%@_%@", self.className, self.categoryName];
     }
 }
 
-- (NSString *) title
+- (NSString *)title
 {
-    if (!categoryName) {
-        return className;
+    if (!self.categoryName) {
+        return self.className;
     } else {
-        return [NSString stringWithFormat:@"%@+%@", className, categoryName];
+        return [NSString stringWithFormat:@"%@+%@", self.className, self.categoryName];
     }
 }
 
 @end
 
+#pragma mark -
+
 @implementation ViewController
-
-@synthesize menu;
-
-- (void) dealloc
-{
-    self.menu = nil;
-
-    [super ah_dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -91,7 +73,6 @@
     NSMutableArray *menuClasses = [[NSMutableArray alloc] init];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSAdvancedPicker"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSCheckView"]];
-    [menuClasses addObject:[MenuItem itemWithClassName:@"KSEditEnder"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSGridView"]];
     [menuClasses addObject:[MenuItem itemWithClassName:@"KSSheetView"]];
 
@@ -105,30 +86,16 @@
     [menuCategories addObject:[MenuItem itemWithClassName:@"UIBarButtonItem" categoryName:@"CustomImage"]];
 
     self.menu = [NSArray arrayWithObjects:menuClasses, menuCategories, nil];
-    [menuClasses release];
-    [menuCategories release];
 }
 
-- (void)viewDidUnload
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super viewDidUnload];
-    
-    self.menu = nil;
+    return [self.menu count];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [menu count];
-}
-
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
         return @"Classes";
@@ -137,22 +104,22 @@
     }
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[menu objectAtIndex:section] count];
+    return [[self.menu objectAtIndex:section] count];
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"CellIdentifier";
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                       reuseIdentifier:identifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:identifier];
     }
 
-    MenuItem *item = [[menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    MenuItem *item = self.menu[indexPath.section][indexPath.row];
 
     cell.textLabel.text = item.className;
     cell.detailTextLabel.text = item.categoryName; // may be nil
@@ -160,16 +127,15 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark UITableViewDelegate
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuItem *item = [[menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    MenuItem *item = self.menu[indexPath.section][indexPath.row];
 
     UIViewController *vc = [[NSClassFromString([item viewControllerClassName]) alloc] init];
     vc.title = [item title];
     [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
 }
 
 @end

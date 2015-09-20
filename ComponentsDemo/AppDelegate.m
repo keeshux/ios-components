@@ -10,18 +10,9 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize navigationController;
-
-- (void)dealloc
-{
-    [_window release];
-    [super ah_dealloc];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self.window addSubview:navigationController.view];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
 
     return YES;

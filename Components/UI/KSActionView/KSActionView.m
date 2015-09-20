@@ -36,6 +36,7 @@
 @property (nonatomic, strong) UIView *actionView;
 @property (nonatomic, strong) UIWindow *statusBarOverlay;
 @property (nonatomic, strong) UIControl *overlayView;
+@property (nonatomic, assign) BOOL hidden;
 
 @end
 
@@ -53,29 +54,16 @@
 - (id)init
 {
     if ((self = [super init])) {
-        _hidden = YES;
+        self.hidden = YES;
 
-        _statusBarOverlay = [[UIWindow alloc] initWithFrame:CGRectZero];
-        _statusBarOverlay.frame = [[UIApplication sharedApplication] statusBarFrame];
-        _statusBarOverlay.windowLevel = UIWindowLevelStatusBar + 1.0;
-        _statusBarOverlay.backgroundColor = [UIColor blackColor];
-        _statusBarOverlay.alpha = 0.0;
-        _statusBarOverlay.hidden = YES;
+        self.statusBarOverlay = [[UIWindow alloc] initWithFrame:CGRectZero];
+        self.statusBarOverlay.frame = [[UIApplication sharedApplication] statusBarFrame];
+        self.statusBarOverlay.windowLevel = UIWindowLevelStatusBar + 1.0;
+        self.statusBarOverlay.backgroundColor = [UIColor blackColor];
+        self.statusBarOverlay.alpha = 0.0;
+        self.statusBarOverlay.hidden = YES;
     }
     return self;
-}
-
-- (void)dealloc
-{
-    self.actionView = nil;
-    self.statusBarOverlay = nil;
-    self.overlayView = nil;
-    self.inputView = nil;
-
-    self.itemCancelString = nil;
-    self.itemDoneString = nil;
-
-    [super ah_dealloc];
 }
 
 - (UIView *)actionView
@@ -85,111 +73,105 @@
         _actionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 260)];
         
         NSMutableArray *items = [[NSMutableArray alloc] init];
-        UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithTitle:_itemCancelString
+        UIBarButtonItem *itemCancel = [[UIBarButtonItem alloc] initWithTitle:self.itemCancelString
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(cancelClicked:)];
         UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                    target:nil
                                                                                    action:nil];
-        UIBarButtonItem *itemDone = [[UIBarButtonItem alloc] initWithTitle:_itemDoneString
+        UIBarButtonItem *itemDone = [[UIBarButtonItem alloc] initWithTitle:self.itemDoneString
                                                                      style:UIBarButtonItemStyleDone
                                                                     target:self
                                                                     action:@selector(doneClicked:)];
         [items addObject:itemCancel];
         [items addObject:itemSpace];
         [items addObject:itemDone];
-        [itemCancel release];
-        [itemSpace release];
-        [itemDone release];
         
         UIToolbar *bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         bar.barStyle = UIBarStyleBlackTranslucent;
         bar.items = items;
-        [items release];
         
         [_actionView addSubview:bar];
-        [bar release];
     }
     return _actionView;
 }
 
-- (void)setSelectorView:(UIView *)aSelectorView
+- (void)setInputView:(UIView *)inputView
 {
     [_inputView removeFromSuperview];
-    [_inputView release];
 
-    _inputView = [aSelectorView ah_retain];
+    _inputView = inputView;
     _inputView.frame = CGRectMake(0, 44, _inputView.frame.size.width, _inputView.frame.size.height);
     [self.actionView addSubview:_inputView];
 }
 
 - (void)show
 {
-    if (!_hidden) {
+    if (!self.hidden) {
         return;
     }
 
-    [_delegate actionViewWillShow:self];
+    [self.delegate actionViewWillShow:self];
 
     // make modal, touch outside to dismiss (popover like)
-    _overlayView = [[UIControl alloc] initWithFrame:_window.bounds];
-    _overlayView.backgroundColor = [UIColor blackColor];
-    _overlayView.alpha = 0.0;
-    _statusBarOverlay.alpha = 0.0;
-    _statusBarOverlay.hidden = NO;
-    [_overlayView addTarget:self action:@selector(cancelClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_window addSubview:_overlayView];
+    self.overlayView = [[UIControl alloc] initWithFrame:_window.bounds];
+    self.overlayView.backgroundColor = [UIColor blackColor];
+    self.overlayView.alpha = 0.0;
+    self.statusBarOverlay.alpha = 0.0;
+    self.statusBarOverlay.hidden = NO;
+    [self.overlayView addTarget:self action:@selector(cancelClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:self.overlayView];
 
     // slide up (lazy creation with self)
-    self.actionView.frame = CGRectOffset(_actionView.bounds, 0, _window.bounds.size.height);
-    [_window addSubview:_actionView];
+    self.actionView.frame = CGRectOffset(self.actionView.bounds, 0, self.window.bounds.size.height);
+    [self.window addSubview:self.actionView];
     [UIView animateWithDuration:KSActionViewAnimationDuration animations:^{
-        _actionView.frame = CGRectOffset(_actionView.frame, 0, -_actionView.bounds.size.height);
-        _overlayView.alpha = KSActionViewOverlayAlpha;
-        _statusBarOverlay.alpha = KSActionViewOverlayAlpha;
-        _hidden = NO;
+        self.actionView.frame = CGRectOffset(self.actionView.frame, 0, -self.actionView.bounds.size.height);
+        self.overlayView.alpha = KSActionViewOverlayAlpha;
+        self.statusBarOverlay.alpha = KSActionViewOverlayAlpha;
+        self.hidden = NO;
 
-        [_delegate actionViewDidShow:self];
+        [self.delegate actionViewDidShow:self];
     }];
 }
 
 - (void)dismiss
 {
-    if (_hidden) {
+    if (self.hidden) {
         return;
     }
 
-    [_delegate actionViewWillDismiss:self];
+    [self.delegate actionViewWillDismiss:self];
 
     // slide down
     [UIView animateWithDuration:KSActionViewAnimationDuration animations:^{
-        _actionView.frame = CGRectOffset(_actionView.frame, 0, _actionView.bounds.size.height);
-        _overlayView.alpha = 0.0;
-        _statusBarOverlay.alpha = 0.0;
+        self.actionView.frame = CGRectOffset(self.actionView.frame, 0, self.actionView.bounds.size.height);
+        self.overlayView.alpha = 0.0;
+        self.statusBarOverlay.alpha = 0.0;
     } completion:^(BOOL finished) {
-        [_actionView removeFromSuperview];
-        [_overlayView removeFromSuperview];
+        [self.actionView removeFromSuperview];
+        [self.overlayView removeFromSuperview];
 
         self.actionView = nil;
-        _statusBarOverlay.hidden = YES;
+        self.statusBarOverlay.hidden = YES;
         self.overlayView = nil;
         self.inputView = nil;
         self.delegate = nil;
-        _hidden = YES;
+        self.hidden = YES;
 
-        [_delegate actionViewDidDismiss:self];
+        [self.delegate actionViewDidDismiss:self];
     }];
 }
 
 - (void)doneClicked:(id)sender
 {
-    [_delegate actionView:self didClickDone:YES];
+    [self.delegate actionView:self didClickDone:YES];
 }
 
 - (void)cancelClicked:(id)sender
 {
-    [_delegate actionView:self didClickDone:NO];
+    [self.delegate actionView:self didClickDone:NO];
 }
 
 @end

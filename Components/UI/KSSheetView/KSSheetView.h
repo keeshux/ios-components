@@ -27,25 +27,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @protocol KSSheetViewDelegate;
 
-@interface KSSheetView : UIView {
-    CGColorRef paperColor;
-    CGColorRef lineColor;
-}
+@interface KSSheetView : UIView
 
 @property (nonatomic, assign) NSUInteger cellSize;
 @property (nonatomic, assign) CGPoint offset;
 @property (nonatomic, assign) CGFloat lineWidth;
 
-// derived from cellSize
-@property (nonatomic, readonly) NSUInteger gridWidth;
-@property (nonatomic, readonly) NSUInteger gridHeight;
-
 // for custom drawing
-@property (nonatomic, ah_weak) id<KSSheetViewDelegate> delegate;
+@property (nonatomic, weak) id<KSSheetViewDelegate> delegate;
 
 @end
 

@@ -27,7 +27,6 @@
     sheet.lineWidth = 1.0;
     sheet.delegate = self;
     [self.view addSubview:sheet];
-    [sheet release];
 }
 
 - (void)viewDidUnload
@@ -37,7 +36,7 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
     return NO;
 }

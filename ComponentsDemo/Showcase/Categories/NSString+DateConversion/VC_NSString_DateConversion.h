@@ -16,6 +16,6 @@
 @property (nonatomic, strong) UILabel *outputDate;
 @property (nonatomic, strong) UIButton *convertButton;
 
-- (void) convertDate:(id)sender;
+- (void)convertDate:(id)sender;
 
 @end

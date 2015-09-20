@@ -31,17 +31,17 @@
 
 @implementation KSGridViewIndex
 
-+ (id)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
++ (instancetype)indexWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
 {
-    return [[[self alloc] initWithPosition:position row:row column:column] autorelease];
+    return [[self alloc] initWithPosition:position row:row column:column];
 }
 
-+ (id)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
++ (instancetype)indexWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
 {
-    return [[[self alloc] initWithCell:cell column:column] autorelease];
+    return [[self alloc] initWithCell:cell column:column];
 }
 
-- (id)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
+- (instancetype)initWithPosition:(NSUInteger)position row:(NSUInteger)row column:(NSUInteger)column
 {
     if ((self = [super init])) {
         _position = position;
@@ -51,7 +51,7 @@
     return self;
 }
 
-- (id)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
+- (instancetype)initWithCell:(KSGridViewCell *)cell column:(NSUInteger)column
 {
     const NSInteger position = cell.row * cell.numberOfColumns + column;
     

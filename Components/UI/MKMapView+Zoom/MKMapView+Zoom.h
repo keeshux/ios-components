@@ -28,7 +28,6 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "ARCHelper.h"
 
 @interface MKMapView (Zoom)
 

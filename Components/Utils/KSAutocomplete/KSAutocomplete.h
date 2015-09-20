@@ -27,7 +27,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ARCHelper.h"
 
 //#define KS_AUTOCOMPLETE_VERBOSE
 
@@ -40,9 +39,9 @@ typedef enum {
 
 @property (nonatomic, assign) NSUInteger minLength;
 @property (nonatomic, assign) BOOL enableFallback;
-@property (nonatomic, retain) NSArray *fallbackList;
+@property (nonatomic, strong) NSArray *fallbackList;
 
-- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock;
+- (instancetype)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock;
 
 - (KSAutocompleteResult)searchWithPattern:(NSString *)searchPattern;
 - (BOOL)setRemoteList:(NSArray *)remoteList originalSearchPattern:(NSString *)originalSearchPattern;

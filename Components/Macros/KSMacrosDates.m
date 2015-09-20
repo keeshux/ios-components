@@ -65,10 +65,7 @@ NSMutableArray *KSDatesYears(const NSInteger from, const NSInteger to, const NSI
 NSDate *KSDatesDatePlusYears(NSDate *date, const NSInteger years) {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     components.year = years;
-    NSDate *offsetDate = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
-    [components release];
-    
-    return offsetDate;
+    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:date options:0];
 }
 
 #pragma mark - Month
@@ -85,25 +82,19 @@ NSInteger KSDatesMonth(NSDate *date) {
 NSString *KSDatesISOString(NSDate *date) {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd";
-    NSString *string = [formatter stringFromDate:date];
-    [formatter release];
-    return string;
+    return [formatter stringFromDate:date];
 }
 
 NSDate *KSDatesISODate(NSString *string) {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd";
-    NSDate *date = [formatter dateFromString:string];
-    [formatter release];
-    return date;
+    return [formatter dateFromString:string];
 }
 
 NSDate *KSDatesISODateTime(NSString *string) {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSDate *date = [formatter dateFromString:string];
-    [formatter release];
-    return date;
+    return [formatter dateFromString:string];
 }
 
 #pragma mark - Date
@@ -156,10 +147,7 @@ NSDate *KSDatesDatePlusDays(NSDate *date, NSInteger days) {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     components.day = days;
     
-    NSDate *plus = [calendar dateByAddingComponents:components toDate:date options:0];
-    [components release];
-    
-    return plus;
+    return [calendar dateByAddingComponents:components toDate:date options:0];
 }
 
 NSUInteger KSDatesAge(NSDate *birthDate) {

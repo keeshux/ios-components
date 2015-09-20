@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @interface UIWebView (Activity)
 

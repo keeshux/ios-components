@@ -30,31 +30,19 @@
 
 @implementation KSBasicMapAnnotation
 
-@synthesize coordinate;
-@synthesize title;
-@synthesize subtitle;
-
-+ (id) annotationWithCoordinate:(CLLocationCoordinate2D)aCoordinate title:(NSString *)aTitle subtitle:(NSString *)aSubtitle
++ (instancetype)annotationWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle
 {
-    return [[[self alloc] initWithCoordinate:aCoordinate title:aTitle subtitle:aSubtitle] autorelease];
+    return [[self alloc] initWithCoordinate:coordinate title:title subtitle:subtitle];
 }
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)aCoordinate title:(NSString *)aTitle subtitle:(NSString *)aSubtitle
+- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate title:(NSString *)title subtitle:(NSString *)subtitle
 {
     if ((self = [super init])) {
-        self.coordinate = aCoordinate;
-        self.title = aTitle;
-        self.subtitle = aSubtitle;
+        self.coordinate = coordinate;
+        self.title = title;
+        self.subtitle = subtitle;
     }
     return self;
-}
-
-- (void) dealloc
-{
-    self.title = nil;
-    self.subtitle = nil;
-    
-    [super ah_dealloc];
 }
 
 @end

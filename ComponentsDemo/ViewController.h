@@ -13,17 +13,17 @@
 @property (nonatomic, copy) NSString *className;
 @property (nonatomic, copy) NSString *categoryName;
 
-+ (id) itemWithClassName:(NSString *)aClassName;
-+ (id) itemWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
-- (id) initWithClassName:(NSString *)aClassName;
-- (id) initWithClassName:(NSString *)aClassName categoryName:(NSString *)aCategoryName;
++ (instancetype)itemWithClassName:(NSString *)className;
++ (instancetype)itemWithClassName:(NSString *)className categoryName:(NSString *)categoryName;
+- (instancetype)initWithClassName:(NSString *)className;
+- (instancetype)initWithClassName:(NSString *)className categoryName:(NSString *)categoryName;
 
-- (NSString *) viewControllerClassName;
-- (NSString *) title;
+- (NSString *)viewControllerClassName;
+- (NSString *)title;
 
 @end
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *menu;
 

@@ -64,22 +64,22 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
 
 @implementation KSCIDictionary
 
-+ (id)dictionary
++ (instancetype)dictionary
 {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
 
-+ (id)dictionaryWithObject:(id)object forKey:(NSString *)key
++ (instancetype)dictionaryWithObject:(id)object forKey:(NSString *)key
 {
-    return [[[self alloc] initWithObjectsAndKeys:object, key, nil] autorelease];
+    return [[self alloc] initWithObjectsAndKeys:object, key, nil];
 }
 
-+ (id)dictionaryWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt
++ (instancetype)dictionaryWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt
 {
-    return [[[self alloc] initWithObjects:objects forKeys:keys count:cnt] autorelease];
+    return [[self alloc] initWithObjects:objects forKeys:keys count:cnt];
 }
 
-+ (id)dictionaryWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
++ (instancetype)dictionaryWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
 {
     va_list args;
     va_start(args, firstObject);
@@ -95,20 +95,20 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     }
     va_end(args);
 
-    return [[[self alloc] initWithDictionary:ciDictionary] autorelease];
+    return [[self alloc] initWithDictionary:ciDictionary];
 }
 
-+ (id)dictionaryWithDictionary:(NSDictionary *)dict
++ (instancetype)dictionaryWithDictionary:(NSDictionary *)dict
 {
-    return [[[self alloc] initWithDictionary:dict] autorelease];
+    return [[self alloc] initWithDictionary:dict];
 }
 
-+ (id)dictionaryWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
++ (instancetype)dictionaryWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
 {
-    return [[[self alloc] initWithObjects:objects forKeys:keys] autorelease];
+    return [[self alloc] initWithObjects:objects forKeys:keys];
 }
 
-- (id)init
+- (instancetype)init
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
@@ -117,7 +117,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (id)initWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt
+- (instancetype)initWithObjects:(const id [])objects forKeys:(__unsafe_unretained NSString * [])keys count:(NSUInteger)cnt
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionaryWithCapacity:cnt];
@@ -130,7 +130,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (id)initWithObjectsAndKeys:(id)firstObject, ...
+- (instancetype)initWithObjectsAndKeys:(id)firstObject, ...
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
@@ -152,12 +152,12 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (id)initWithDictionary:(NSDictionary *)otherDictionary
+- (instancetype)initWithDictionary:(NSDictionary *)otherDictionary
 {
     return [self initWithDictionary:otherDictionary copyItems:NO];
 }
 
-- (id)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag
+- (instancetype)initWithDictionary:(NSDictionary *)otherDictionary copyItems:(BOOL)flag
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
@@ -166,7 +166,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
         for (NSString *key in [otherDictionary allKeys]) {
             id object = [otherDictionary objectForKey:key];
             if (flag) {
-                [[object copy] autorelease];
+                object = [object copy];
             }
             KSCIDictionarySetObjectAndMapping(self.backing, self.mapping, object, key);
         }
@@ -174,7 +174,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (id)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
+- (instancetype)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys
 {
     if ((self = [super init])) {
         self.backing = [NSMutableDictionary dictionary];
@@ -190,17 +190,17 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-+ (id)dictionaryWithContentsOfFile:(NSString *)path
++ (instancetype)dictionaryWithContentsOfFile:(NSString *)path
 {
-    return [[[self alloc] initWithContentsOfFile:path] autorelease];
+    return [[self alloc] initWithContentsOfFile:path];
 }
 
-+ (id)dictionaryWithContentsOfURL:(NSURL *)url
++ (instancetype)dictionaryWithContentsOfURL:(NSURL *)url
 {
-    return [[[self alloc] initWithContentsOfURL:url] autorelease];
+    return [[self alloc] initWithContentsOfURL:url];
 }
 
-- (id)initWithContentsOfFile:(NSString *)path
+- (instancetype)initWithContentsOfFile:(NSString *)path
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     if ((self = [super init])) {
@@ -215,7 +215,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (id)initWithContentsOfURL:(NSURL *)url
+- (instancetype)initWithContentsOfURL:(NSURL *)url
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfURL:url];
     if ((self = [super init])) {
@@ -230,20 +230,12 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self;
 }
 
-- (void)dealloc
-{
-    self.backing = nil;
-    self.mapping = nil;
-
-    [super ah_dealloc];
-}
-
 - (NSUInteger)count
 {
     return [self.backing count];
 }
 
-- (id)objectForKey:(NSString *)key
+- (instancetype)objectForKey:(NSString *)key
 {
     NSString *ciKey = KSCIDictionaryKey(key);
     NSString *originalKey = [self.mapping objectForKey:ciKey];
@@ -308,7 +300,7 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return self.backing;
 }
 
-#pragma mark - NSObject
+#pragma mark NSObject
 
 - (BOOL)isEqual:(id)object
 {
@@ -320,29 +312,29 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
     return [self.backing description];
 }
 
-#pragma mark - NSCopying
+#pragma mark NSCopying
 
-- (id)copyWithZone:(NSZone *)zone
+- (instancetype)copyWithZone:(NSZone *)zone
 {
     KSCIDictionary *otherDictionary = [[KSCIDictionary class] allocWithZone:zone];
-    otherDictionary.backing = [[self.backing mutableCopy] autorelease];
-    otherDictionary.mapping = [[self.mapping mutableCopy] autorelease];
+    otherDictionary.backing = [self.backing mutableCopy];
+    otherDictionary.mapping = [self.mapping mutableCopy];
     return otherDictionary;
 }
 
-#pragma mark - NSMutableCopying
+#pragma mark NSMutableCopying
 
-- (id)mutableCopyWithZone:(NSZone *)zone
+- (instancetype)mutableCopyWithZone:(NSZone *)zone
 {
     KSCIMutableDictionary *otherDictionary = [[KSCIMutableDictionary class] allocWithZone:zone];
-    otherDictionary.backing = [[self.backing mutableCopy] autorelease];
-    otherDictionary.mapping = [[self.mapping mutableCopy] autorelease];
+    otherDictionary.backing = [self.backing mutableCopy];
+    otherDictionary.mapping = [self.mapping mutableCopy];
     return otherDictionary;
 }
 
-#pragma mark - NSCoding
+#pragma mark NSCoding
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super init])) {
         self.backing = [aDecoder decodeObject];
@@ -361,12 +353,12 @@ static inline void KSCIDictionarySetObjectAndMapping(NSMutableDictionary *dictio
 
 @implementation KSCIMutableDictionary
 
-+ (id)dictionaryWithCapacity:(NSUInteger)numItems
++ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems
 {
-    return [[[self alloc] initWithCapacity:numItems] autorelease];
+    return [[self alloc] initWithCapacity:numItems];
 }
 
-- (id)initWithCapacity:(NSUInteger)numItems
+- (instancetype)initWithCapacity:(NSUInteger)numItems
 {
     if ((self = [super init])) {
         self.dictionary = [NSMutableDictionary dictionaryWithCapacity:numItems];

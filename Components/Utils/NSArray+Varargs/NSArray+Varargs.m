@@ -36,8 +36,7 @@
     NSMutableData *args = [[NSMutableData alloc] initWithLength:count * sizeof(id)];
     [self getObjects:(__unsafe_unretained id *)args.mutableBytes range:NSMakeRange(0, count)];
     
-    NSString *string = [[NSString alloc] initWithFormat:format arguments:args.mutableBytes];
-    return [string autorelease];
+    return [[NSString alloc] initWithFormat:format arguments:args.mutableBytes];
 }
 
 @end

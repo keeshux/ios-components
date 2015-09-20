@@ -11,28 +11,6 @@
 
 @implementation VC_NSString_Digest
 
-@synthesize inputField;
-@synthesize outputField;
-@synthesize digestChoice;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void) dealloc
-{
-    self.inputField = nil;
-    self.outputField = nil;
-    self.digestChoice = nil;
-
-    [super ah_dealloc];
-}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -49,56 +27,53 @@
 
     const CGFloat width = self.view.bounds.size.width - 40;
 
-    inputField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, width, 30)];
-    outputField = [[UITextField alloc] initWithFrame:CGRectMake(20, 60, width, 30)];
+    self.inputField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, width, 30)];
+    self.outputField = [[UITextField alloc] initWithFrame:CGRectMake(20, 60, width, 30)];
     NSArray *digestItems = [NSArray arrayWithObjects:@"MD5", @"SHA1", nil];
-    digestChoice = [[UISegmentedControl alloc] initWithItems:digestItems];
-    digestChoice.frame = CGRectMake(20, 100, width, 50);
-    digestChoice.momentary = YES;
-    [digestChoice addTarget:self action:@selector(updateDigest) forControlEvents:UIControlEventValueChanged];
+    self.digestChoice = [[UISegmentedControl alloc] initWithItems:digestItems];
+    self.digestChoice.frame = CGRectMake(20, 100, width, 50);
+    self.digestChoice.momentary = YES;
+    [self.digestChoice addTarget:self action:@selector(updateDigest) forControlEvents:UIControlEventValueChanged];
 
-    inputField.borderStyle = UITextBorderStyleRoundedRect;
-    inputField.placeholder = @"Input string";
-    outputField.borderStyle = UITextBorderStyleRoundedRect;
-    outputField.placeholder = @"Output digest";
-    outputField.enabled = NO;
+    self.inputField.borderStyle = UITextBorderStyleRoundedRect;
+    self.inputField.placeholder = @"Input string";
+    self.outputField.borderStyle = UITextBorderStyleRoundedRect;
+    self.outputField.placeholder = @"Output digest";
+    self.outputField.enabled = NO;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        inputField.font = [UIFont systemFontOfSize:14];
-        outputField.font = [UIFont systemFontOfSize:14];
+        self.inputField.font = [UIFont systemFontOfSize:14];
+        self.outputField.font = [UIFont systemFontOfSize:14];
     } else {
-        inputField.font = [UIFont systemFontOfSize:12];
-        outputField.font = [UIFont systemFontOfSize:12];
+        self.inputField.font = [UIFont systemFontOfSize:12];
+        self.outputField.font = [UIFont systemFontOfSize:12];
     }
 
-    [self.view addSubview:inputField];
-    [self.view addSubview:outputField];
-    [self.view addSubview:digestChoice];
+    [self.view addSubview:self.inputField];
+    [self.view addSubview:self.outputField];
+    [self.view addSubview:self.digestChoice];
 }
 
-- (void)viewDidUnload
+- (BOOL)shouldAutorotate
 {
-    [super viewDidUnload];
-
-    self.inputField = nil;
-    self.outputField = nil;
-    self.digestChoice = nil;
+    return YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return UIInterfaceOrientationMaskPortrait;
 }
 
-- (void) updateDigest
+- (void)updateDigest
 {
-    switch (digestChoice.selectedSegmentIndex) {
-        case 0:
-            outputField.text = [inputField.text digestByMD5];
+    switch (self.digestChoice.selectedSegmentIndex) {
+        case 0: {
+            self.outputField.text = [self.inputField.text digestByMD5];
             break;
-        case 1:
-            outputField.text = [inputField.text digestBySHA1];
+        }
+        case 1: {
+            self.outputField.text = [self.inputField.text digestBySHA1];
             break;
+        }
     }
 }
 

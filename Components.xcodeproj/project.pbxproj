@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0E303ACF1BAD67F30020C156 /* KSProgressDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E303ACD1BAD67F30020C156 /* KSProgressDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		0E5325EA1BAEC40A00950C7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
+		0E5325EB1BAEC41000950C7A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0824B718CA760300491FEE /* StoreKit.framework */; };
+		0E5325EC1BAEC41400950C7A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0824B918CA761100491FEE /* Security.framework */; };
+		0E5325ED1BAEC41800950C7A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D644146D84E60042648E /* CoreLocation.framework */; };
+		0E5325EE1BAEC41C00950C7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A5146750E70065A877 /* CoreGraphics.framework */; };
+		0E5325EF1BAEC42800950C7A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D642146D84B60042648E /* MapKit.framework */; };
+		0E5325F11BAEC52D00950C7A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5325F01BAEC52D00950C7A /* libPods.a */; };
 		0E741A8F1BACC7E0000D0DAA /* KSIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A051BACC7E0000D0DAA /* KSIAPManager.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A911BACC7E0000D0DAA /* CALayer+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A0B1BACC7E0000D0DAA /* CALayer+Borders.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A921BACC7E0000D0DAA /* KSActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A0E1BACC7E0000D0DAA /* KSActionView.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A941BACC7E0000D0DAA /* KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A121BACC7E0000D0DAA /* KSAdvancedPicker.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A961BACC7E0000D0DAA /* KSBasicMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A191BACC7E0000D0DAA /* KSBasicMapAnnotation.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A981BACC7E0000D0DAA /* KSCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A1D1BACC7E0000D0DAA /* KSCheckView.m */; settings = {ASSET_TAGS = (); }; };
-		0E741A9A1BACC7E0000D0DAA /* KSEditEnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A211BACC7E0000D0DAA /* KSEditEnder.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A9C1BACC7E0000D0DAA /* KSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A251BACC7E0000D0DAA /* KSGridView.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A9D1BACC7E0000D0DAA /* KSGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A271BACC7E0000D0DAA /* KSGridViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		0E741A9E1BACC7E0000D0DAA /* KSGridViewIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741A291BACC7E0000D0DAA /* KSGridViewIndex.m */; settings = {ASSET_TAGS = (); }; };
@@ -44,13 +50,11 @@
 		0E741ADB1BAD3EF0000D0DAA /* KSMacrosSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741AD41BAD3EF0000D0DAA /* KSMacrosSharing.m */; settings = {ASSET_TAGS = (); }; };
 		0E741ADC1BAD3EF0000D0DAA /* KSMacrosUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E741AD71BAD3EF0000D0DAA /* KSMacrosUI.m */; settings = {ASSET_TAGS = (); }; };
 		0E9EE38719CC64E700229C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9EE38619CC64E700229C3C /* Default-568h@2x.png */; };
+		74B607B37D47EB40721B7257 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793B00DC38867F228D942D9B /* libPods.a */; };
 		8C0824B518CA737300491FEE /* VC_KSAdvancedPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B118CA737300491FEE /* VC_KSAdvancedPicker.m */; };
 		8C0824B618CA737300491FEE /* VC_KSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0824B418CA737300491FEE /* VC_KSGridView.m */; };
-		8C0824B818CA760300491FEE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0824B718CA760300491FEE /* StoreKit.framework */; };
-		8C0824BA18CA761100491FEE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0824B918CA761100491FEE /* Security.framework */; };
 		8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A1146750E70065A877 /* UIKit.framework */; };
 		8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A3146750E70065A877 /* Foundation.framework */; };
-		8C2C55A6146750E70065A877 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2C55A5146750E70065A877 /* CoreGraphics.framework */; };
 		8C2C55AC146750E70065A877 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C55AA146750E70065A877 /* InfoPlist.strings */; };
 		8C2C55AE146750E70065A877 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C55AD146750E70065A877 /* main.m */; };
 		8C2C55B2146750E70065A877 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2C55B1146750E70065A877 /* AppDelegate.m */; };
@@ -69,12 +73,9 @@
 		8C8AE0FA19678BF0007787ED /* libComponents.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8AE0301967878E007787ED /* libComponents.a */; };
 		8C8AE0FD19678D69007787ED /* LegacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8AE0FC19678D69007787ED /* LegacyViewController.m */; };
 		8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA7D640146D84810042648E /* VC_MKMapView_Zoom.m */; };
-		8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D642146D84B60042648E /* MapKit.framework */; };
-		8CA7D645146D84E60042648E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA7D644146D84E60042648E /* CoreLocation.framework */; };
 		8CABAF95146AC9DC0056D831 /* VC_NSString_DateConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF91146AC9DC0056D831 /* VC_NSString_DateConversion.m */; };
 		8CABAF96146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAF94146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m */; };
 		8CABAFB0146AD26D0056D831 /* VC_KSCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAFA5146AD26D0056D831 /* VC_KSCheckView.m */; };
-		8CABAFB1146AD26D0056D831 /* VC_KSEditEnder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAFA8146AD26D0056D831 /* VC_KSEditEnder.m */; };
 		8CABAFB3146AD26D0056D831 /* VC_KSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CABAFAE146AD26D0056D831 /* VC_KSSheetView.m */; };
 		8CABAFB8146AD3120056D831 /* ItemBackgroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB4146AD3120056D831 /* ItemBackgroundImage.png */; };
 		8CABAFB9146AD3120056D831 /* ItemBackgroundImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CABAFB5146AD3120056D831 /* ItemBackgroundImage@2x.png */; };
@@ -84,7 +85,7 @@
 		8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD055B014730C12001A3EF5 /* VC_NSString_Digest.m */; };
 		8CEA567714C7796600453958 /* VC_NSTimer_Pause.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA567614C7796600453958 /* VC_NSTimer_Pause.m */; };
 		8CFBD73614C288750041D042 /* VC_NSMutableArray_Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBD73514C288750041D042 /* VC_NSMutableArray_Shuffling.m */; };
-		90E5657FDEE08E11D30B340D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793B00DC38867F228D942D9B /* libPods.a */; };
+		9A335C08E7F20BF994801BE2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793B00DC38867F228D942D9B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		0E303ACC1BAD67F30020C156 /* KSProgressDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSProgressDownloader.h; sourceTree = "<group>"; };
 		0E303ACD1BAD67F30020C156 /* KSProgressDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSProgressDownloader.m; sourceTree = "<group>"; };
 		0E303ACE1BAD67F30020C156 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0E5325F01BAEC52D00950C7A /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		0E741A041BACC7E0000D0DAA /* KSIAPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSIAPManager.h; sourceTree = "<group>"; };
 		0E741A051BACC7E0000D0DAA /* KSIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSIAPManager.m; sourceTree = "<group>"; };
 		0E741A061BACC7E0000D0DAA /* KSIAPManager.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KSIAPManager.plist; sourceTree = "<group>"; };
@@ -133,9 +135,6 @@
 		0E741A1C1BACC7E0000D0DAA /* KSCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCheckView.h; sourceTree = "<group>"; };
 		0E741A1D1BACC7E0000D0DAA /* KSCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCheckView.m; sourceTree = "<group>"; };
 		0E741A1E1BACC7E0000D0DAA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0E741A201BACC7E0000D0DAA /* KSEditEnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSEditEnder.h; sourceTree = "<group>"; };
-		0E741A211BACC7E0000D0DAA /* KSEditEnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSEditEnder.m; sourceTree = "<group>"; };
-		0E741A221BACC7E0000D0DAA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0E741A241BACC7E0000D0DAA /* KSGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGridView.h; sourceTree = "<group>"; };
 		0E741A251BACC7E0000D0DAA /* KSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSGridView.m; sourceTree = "<group>"; };
 		0E741A261BACC7E0000D0DAA /* KSGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGridViewCell.h; sourceTree = "<group>"; };
@@ -250,7 +249,6 @@
 		8C8AE03D1967878E007787ED /* ComponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8AE0461967878E007787ED /* ComponentsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ComponentsTests-Info.plist"; sourceTree = "<group>"; };
 		8C8AE0481967878E007787ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8C8AE052196787B3007787ED /* ARCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
 		8C8AE0F819678958007787ED /* KSCIDictionaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCIDictionaryTests.m; sourceTree = "<group>"; };
 		8C8AE0FB19678D69007787ED /* LegacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegacyViewController.h; sourceTree = "<group>"; };
 		8C8AE0FC19678D69007787ED /* LegacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegacyViewController.m; sourceTree = "<group>"; };
@@ -264,8 +262,6 @@
 		8CABAF94146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_UIBarButtonItem_CustomImage.m; sourceTree = "<group>"; };
 		8CABAFA4146AD26D0056D831 /* VC_KSCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSCheckView.h; sourceTree = "<group>"; };
 		8CABAFA5146AD26D0056D831 /* VC_KSCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSCheckView.m; sourceTree = "<group>"; };
-		8CABAFA7146AD26D0056D831 /* VC_KSEditEnder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSEditEnder.h; sourceTree = "<group>"; };
-		8CABAFA8146AD26D0056D831 /* VC_KSEditEnder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSEditEnder.m; sourceTree = "<group>"; };
 		8CABAFAD146AD26D0056D831 /* VC_KSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC_KSSheetView.h; sourceTree = "<group>"; };
 		8CABAFAE146AD26D0056D831 /* VC_KSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VC_KSSheetView.m; sourceTree = "<group>"; };
 		8CABAFB4146AD3120056D831 /* ItemBackgroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemBackgroundImage.png; sourceTree = "<group>"; };
@@ -288,14 +284,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5325F11BAEC52D00950C7A /* libPods.a in Frameworks */,
 				8C8AE0FA19678BF0007787ED /* libComponents.a in Frameworks */,
-				8C0824BA18CA761100491FEE /* Security.framework in Frameworks */,
-				8C0824B818CA760300491FEE /* StoreKit.framework in Frameworks */,
 				8C2C55A2146750E70065A877 /* UIKit.framework in Frameworks */,
 				8C2C55A4146750E70065A877 /* Foundation.framework in Frameworks */,
-				8C2C55A6146750E70065A877 /* CoreGraphics.framework in Frameworks */,
-				8CA7D645146D84E60042648E /* CoreLocation.framework in Frameworks */,
-				8CA7D643146D84B60042648E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +295,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5325EF1BAEC42800950C7A /* MapKit.framework in Frameworks */,
+				0E5325EE1BAEC41C00950C7A /* CoreGraphics.framework in Frameworks */,
+				0E5325ED1BAEC41800950C7A /* CoreLocation.framework in Frameworks */,
+				0E5325EC1BAEC41400950C7A /* Security.framework in Frameworks */,
+				0E5325EB1BAEC41000950C7A /* StoreKit.framework in Frameworks */,
+				0E5325EA1BAEC40A00950C7A /* UIKit.framework in Frameworks */,
 				8C8AE0311967878E007787ED /* Foundation.framework in Frameworks */,
-				90E5657FDEE08E11D30B340D /* libPods.a in Frameworks */,
+				9A335C08E7F20BF994801BE2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +314,7 @@
 				8C8AE0401967878E007787ED /* UIKit.framework in Frameworks */,
 				8C8AE03F1967878E007787ED /* Foundation.framework in Frameworks */,
 				8C8AE0431967878E007787ED /* libComponents.a in Frameworks */,
+				74B607B37D47EB40721B7257 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +350,6 @@
 				0E741A101BACC7E0000D0DAA /* KSAdvancedPicker */,
 				0E741A171BACC7E0000D0DAA /* KSBasicMapAnnotation */,
 				0E741A1B1BACC7E0000D0DAA /* KSCheckView */,
-				0E741A1F1BACC7E0000D0DAA /* KSEditEnder */,
 				0E741A231BACC7E0000D0DAA /* KSGridView */,
 				0E741A301BACC7E0000D0DAA /* KSOptionsViewController */,
 				0E741A331BACC7E0000D0DAA /* KSSheetView */,
@@ -422,16 +420,6 @@
 				0E741A1E1BACC7E0000D0DAA /* README.md */,
 			);
 			path = KSCheckView;
-			sourceTree = "<group>";
-		};
-		0E741A1F1BACC7E0000D0DAA /* KSEditEnder */ = {
-			isa = PBXGroup;
-			children = (
-				0E741A201BACC7E0000D0DAA /* KSEditEnder.h */,
-				0E741A211BACC7E0000D0DAA /* KSEditEnder.m */,
-				0E741A221BACC7E0000D0DAA /* README.md */,
-			);
-			path = KSEditEnder;
 			sourceTree = "<group>";
 		};
 		0E741A231BACC7E0000D0DAA /* KSGridView */ = {
@@ -750,6 +738,7 @@
 		8C2C55A0146750E70065A877 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E5325F01BAEC52D00950C7A /* libPods.a */,
 				8C0824B918CA761100491FEE /* Security.framework */,
 				8C0824B718CA760300491FEE /* StoreKit.framework */,
 				8C2C55A1146750E70065A877 /* UIKit.framework */,
@@ -810,7 +799,6 @@
 				0E303ACB1BAD67F30020C156 /* ProgressDownloader */,
 				0E741A081BACC7E0000D0DAA /* UI */,
 				0E741A4F1BACC7E0000D0DAA /* Utils */,
-				8C8AE052196787B3007787ED /* ARCHelper.h */,
 				8C8AE0331967878E007787ED /* Supporting Files */,
 			);
 			path = Components;
@@ -909,7 +897,6 @@
 				8C0824AF18CA737300491FEE /* KSAdvancedPicker */,
 				8C0824B218CA737300491FEE /* KSGridView */,
 				8CABAFA3146AD26D0056D831 /* KSCheckView */,
-				8CABAFA6146AD26D0056D831 /* KSEditEnder */,
 				8CABAFAC146AD26D0056D831 /* KSSheetView */,
 			);
 			path = Classes;
@@ -922,15 +909,6 @@
 				8CABAFA5146AD26D0056D831 /* VC_KSCheckView.m */,
 			);
 			path = KSCheckView;
-			sourceTree = "<group>";
-		};
-		8CABAFA6146AD26D0056D831 /* KSEditEnder */ = {
-			isa = PBXGroup;
-			children = (
-				8CABAFA7146AD26D0056D831 /* VC_KSEditEnder.h */,
-				8CABAFA8146AD26D0056D831 /* VC_KSEditEnder.m */,
-			);
-			path = KSEditEnder;
 			sourceTree = "<group>";
 		};
 		8CABAFAC146AD26D0056D831 /* KSSheetView */ = {
@@ -1030,9 +1008,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C8AE04F1967878E007787ED /* Build configuration list for PBXNativeTarget "ComponentsTests" */;
 			buildPhases = (
+				F3D350CCE95B0D798AC3493A /* Check Pods Manifest.lock */,
 				8C8AE0391967878E007787ED /* Sources */,
 				8C8AE03A1967878E007787ED /* Frameworks */,
 				8C8AE03B1967878E007787ED /* Resources */,
+				C81DB0286E570F8A955B794B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1121,7 +1101,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C81DB0286E570F8A955B794B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA9EC758602C5DCA294236EE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3D350CCE95B0D798AC3493A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1151,7 +1161,6 @@
 				8C0824B618CA737300491FEE /* VC_KSGridView.m in Sources */,
 				8CABAF96146AC9DC0056D831 /* VC_UIBarButtonItem_CustomImage.m in Sources */,
 				8CABAFB0146AD26D0056D831 /* VC_KSCheckView.m in Sources */,
-				8CABAFB1146AD26D0056D831 /* VC_KSEditEnder.m in Sources */,
 				8CABAFB3146AD26D0056D831 /* VC_KSSheetView.m in Sources */,
 				8CA7D641146D84810042648E /* VC_MKMapView_Zoom.m in Sources */,
 				8CD055B114730C12001A3EF5 /* VC_NSString_Digest.m in Sources */,
@@ -1186,7 +1195,6 @@
 				0E741ABF1BACC7E0000D0DAA /* NSFileManager+UserDirectories.m in Sources */,
 				0E741ADB1BAD3EF0000D0DAA /* KSMacrosSharing.m in Sources */,
 				0E741ABD1BACC7E0000D0DAA /* NSArray+Varargs.m in Sources */,
-				0E741A9A1BACC7E0000D0DAA /* KSEditEnder.m in Sources */,
 				0E741AA01BACC7E0000D0DAA /* KSOptionsViewController.m in Sources */,
 				0E741A8F1BACC7E0000D0DAA /* KSIAPManager.m in Sources */,
 				0E741AA81BACC7E0000D0DAA /* UIColor+Darkening.m in Sources */,
@@ -1350,11 +1358,15 @@
 		};
 		8C2C55B6146750E70065A877 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88C3B6EA9C5BBA2A70A7A745 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
@@ -1363,11 +1375,15 @@
 		};
 		8C2C55B7146750E70065A877 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB72462EA6BB8B4216681E1E /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ComponentsDemo/Components-Prefix.pch";
 				INFOPLIST_FILE = "ComponentsDemo/Components-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.algoritmico.ios.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ComponentsDemo;
 				WRAPPER_EXTENSION = app;
@@ -1440,6 +1456,7 @@
 		};
 		8C8AE0501967878E007787ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88C3B6EA9C5BBA2A70A7A745 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1479,6 +1496,7 @@
 		};
 		8C8AE0511967878E007787ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB72462EA6BB8B4216681E1E /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -45,7 +45,6 @@
     }
     
     [self zoomOnAnnotations:annotations spanCorrection:spanCorrection animated:animated];
-    [annotations release];
 }
 
 - (void)zoomOnAnnotations:(NSArray *)customAnnotations animated:(BOOL)animated

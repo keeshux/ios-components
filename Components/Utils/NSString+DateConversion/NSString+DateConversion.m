@@ -34,20 +34,14 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = format;
-    NSString *string = [formatter stringFromDate:date];
-    [formatter release];
-
-    return string;
+    return [formatter stringFromDate:date];
 }
 
 - (NSDate *)dateValueWithFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = format;
-    NSDate *date = [formatter dateFromString:self];
-    [formatter release];
-    
-    return date;
+    return [formatter dateFromString:self];
 }
 
 - (NSString *)dateStringFromFormat:(NSString *)inFormat toFormat:(NSString *)outFormat
@@ -56,10 +50,7 @@
     formatter.dateFormat = inFormat;
     NSDate *date = [formatter dateFromString:self];
     formatter.dateFormat = outFormat;
-    NSString *dateString = [formatter stringFromDate:date];
-    [formatter release];
-    
-    return dateString;
+    return [formatter stringFromDate:date];
 }
 
 @end

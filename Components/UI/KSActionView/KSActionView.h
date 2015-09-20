@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @protocol KSActionViewDelegate;
 
@@ -35,8 +34,7 @@
 
 @property (nonatomic, assign) UIWindow *window;
 @property (nonatomic, strong) UIView *inputView;
-@property (nonatomic, readonly) BOOL hidden;
-@property (nonatomic, assign) id<KSActionViewDelegate> delegate;
+@property (nonatomic, weak) id<KSActionViewDelegate> delegate;
 
 @property (nonatomic, copy) NSString *itemCancelString;
 @property (nonatomic, copy) NSString *itemDoneString;
@@ -45,6 +43,7 @@
 
 - (void)show;
 - (void)dismiss;
+- (BOOL)hidden;
 
 @end
 

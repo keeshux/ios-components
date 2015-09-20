@@ -10,15 +10,6 @@
 
 @implementation VC_KSGridView
 
-@synthesize grid;
-
-- (void)dealloc
-{
-    self.grid = nil;
-
-    [super ah_dealloc];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -31,36 +22,24 @@
 {
     [super viewDidLoad];
 
-    grid = [[KSGridView alloc] initWithFrame:self.view.bounds];
-    grid.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.8 alpha:1.0];
-    grid.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    grid.dataSource = self;
-    grid.delegate = self;
-    [self.view addSubview:grid];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-
-    self.grid = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
+    self.grid = [[KSGridView alloc] initWithFrame:self.view.bounds];
+    self.grid.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.8 alpha:1.0];
+    self.grid.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.grid.dataSource = self;
+    self.grid.delegate = self;
+    [self.view addSubview:self.grid];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [grid reloadData];
+    [self.grid reloadData];
 }
 
-#pragma mark - KSGridViewDataSource
+#pragma mark KSGridViewDataSource
 
 - (NSString *)identifierForGridView:(KSGridView *)gridView
 {
-    if (alternative) {
+    if (self.alternative) {
         return @"AlternativeGrid";
     } else {
         return @"StandardGrid";
@@ -89,7 +68,7 @@
 
 - (CGSize)sizeForItemInGridView:(KSGridView *)gridView
 {
-    if (alternative) {
+    if (self.alternative) {
         return CGSizeMake(80, 50);
     } else {
         return CGSizeMake(120, 70);
@@ -108,13 +87,13 @@
 - (UIView *)gridView:(KSGridView *)gridView viewForItemInRect:(CGRect)rect
 {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    if (alternative) {
+    if (self.alternative) {
         label.textColor = [UIColor blueColor];
     } else {
         label.textColor = [UIColor redColor];
     }
     label.textAlignment = NSTextAlignmentCenter;
-    return [label autorelease];
+    return label;
 }
 
 - (void)gridView:(KSGridView *)gridView setDataForItemView:(UIView *)itemView atIndex:(KSGridViewIndex *)index
@@ -124,13 +103,13 @@
     [(UILabel *)itemView setText:title];
 }
 
-#pragma mark - KSGridViewDelegate
+#pragma mark KSGridViewDelegate
 
 - (void)gridView:(KSGridView *)gridView didSelectIndex:(KSGridViewIndex *)index
 {
     NSLog(@"selected = %@", index);
 
-    alternative = !alternative;
+    self.alternative = !self.alternative;
     [gridView reloadData];
 }
 

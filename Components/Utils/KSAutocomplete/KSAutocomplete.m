@@ -31,10 +31,10 @@
 @interface KSAutocomplete ()
 
 @property (nonatomic, copy) BOOL (^filterBlock)(id, NSString *);
-@property (nonatomic, retain) NSArray *list;
-@property (nonatomic, retain) NSArray *filteredList;
-@property (nonatomic, retain) NSString *lastRemoteSearch;
-@property (nonatomic, retain) NSString *lastLocalSearch;
+@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSArray *filteredList;
+@property (nonatomic, strong) NSString *lastRemoteSearch;
+@property (nonatomic, strong) NSString *lastLocalSearch;
 
 - (NSArray *)filteredListWithList:(NSArray *)initialList searchPattern:(NSString *)searchPattern;
 
@@ -42,7 +42,7 @@
 
 @implementation KSAutocomplete
 
-- (id)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock
+- (instancetype)initWithFilterBlock:(BOOL (^)(id, NSString *))filterBlock
 {
     if ((self = [super init])) {
         self.filterBlock = filterBlock;
@@ -50,22 +50,9 @@
     return self;
 }
 
-- (void)dealloc
-{
-    self.filterBlock = nil;
-    self.fallbackList = nil;
-    self.list = nil;
-    self.filteredList = nil;
-    self.lastRemoteSearch = nil;
-    self.lastLocalSearch = nil;
-
-    [super ah_dealloc];
-}
-
 - (void)setList:(NSArray *)list
 {
-    [_list release];
-    _list = [list ah_retain];
+    _list = list;
 #ifdef KS_AUTOCOMPLETE_VERBOSE
     NSLog(@"list count = %d", [_list count]);
 #endif
@@ -77,21 +64,20 @@
 - (void)setFilteredList:(NSArray *)filteredList
 {
     // fallback
-    if (_enableFallback && ([filteredList count] == 0)) {
-        filteredList = _fallbackList;
+    if (self.enableFallback && ([filteredList count] == 0)) {
+        filteredList = self.fallbackList;
     }
 
-    [_filteredList release];
-    _filteredList = [filteredList ah_retain];
+    _filteredList = filteredList;
 #ifdef KS_AUTOCOMPLETE_VERBOSE
-    NSLog(@"filteredList count = %d (fallback=%d)", [_filteredList count], _enableFallback);
+    NSLog(@"filteredList count = %d (fallback=%d)", [_filteredList count], self.enableFallback);
 #endif
 }
 
 - (KSAutocompleteResult)searchWithPattern:(NSString *)searchPattern
 {
     const NSUInteger length = [searchPattern length];
-    if (length < _minLength) {
+    if (length < self.minLength) {
         return KSAutocompleteResultOK;
     }
 
@@ -101,7 +87,7 @@
     searchPattern = [searchPattern lowercaseString];
 
     // get prefix
-    NSString *searchPrefix = [searchPattern substringToIndex:_minLength];
+    NSString *searchPrefix = [searchPattern substringToIndex:self.minLength];
 
 #ifdef KS_AUTOCOMPLETE_VERBOSE
     NSLog(@"searchPattern: %@", searchPattern);
@@ -111,7 +97,7 @@
     // request remote data if not a subset of previous remote search
 //    if ((length == minLength) && (!lastRemoteSearch || ![searchPattern hasPrefix:lastRemoteSearch])) {
 //        self.lastRemoteSearch = [searchPattern lowercaseString];
-    if (!_lastRemoteSearch || ![searchPrefix isEqualToString:_lastRemoteSearch]) {
+    if (!self.lastRemoteSearch || ![searchPrefix isEqualToString:self.lastRemoteSearch]) {
         self.lastRemoteSearch = searchPrefix;
         
         result = KSAutocompleteResultRemote;
@@ -120,12 +106,12 @@
     else {
         
         // local subset, progressive filter
-        if (!_lastLocalSearch || [searchPattern hasPrefix:_lastLocalSearch]) {
-            self.filteredList = [self filteredListWithList:_filteredList searchPattern:searchPattern];
+        if (!self.lastLocalSearch || [searchPattern hasPrefix:self.lastLocalSearch]) {
+            self.filteredList = [self filteredListWithList:self.filteredList searchPattern:searchPattern];
         }
         // local superset, filter initial list
         else {
-            self.filteredList = [self filteredListWithList:_list searchPattern:searchPattern];
+            self.filteredList = [self filteredListWithList:self.list searchPattern:searchPattern];
         }
         
         result = KSAutocompleteResultOK;
@@ -145,19 +131,19 @@
     originalSearchPattern = [originalSearchPattern lowercaseString];
     
     // cancel if no longer matches original search (if meaningful)
-    if (_lastLocalSearch && (_lastLocalSearch.length >= _minLength) && ![_lastLocalSearch hasPrefix:originalSearchPattern]) {
+    if (self.lastLocalSearch && (self.lastLocalSearch.length >= self.minLength) && ![self.lastLocalSearch hasPrefix:originalSearchPattern]) {
         return NO;
     }
 
     self.list = remoteList;
-    self.filteredList = [self filteredListWithList:_list searchPattern:_lastLocalSearch];
+    self.filteredList = [self filteredListWithList:self.list searchPattern:self.lastLocalSearch];
 
     return YES;
 }
 
 - (NSString *)lastSearch
 {
-    return _lastLocalSearch;
+    return self.lastLocalSearch;
 }
 
 #pragma mark - Private
@@ -166,7 +152,7 @@
 {
     NSMutableArray *built = [NSMutableArray array];
     for (id object in initialList) {
-        if (_filterBlock(object, searchPattern) || [_fallbackList containsObject:object]) {
+        if (self.filterBlock(object, searchPattern) || [self.fallbackList containsObject:object]) {
             [built addObject:object];
         }
     }

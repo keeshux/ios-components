@@ -28,18 +28,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 // NOTE: customView is an UIButton
 
 @interface UIBarButtonItem (CustomImage)
 
-+ (id)itemWithBackgroundImage:(UIImage *)image;
-+ (id)itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action;
++ (instancetype)itemWithBackgroundImage:(UIImage *)image;
++ (instancetype)itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action;
 - (void)setCustomButtonTitle:(NSString *)title forState:(UIControlState)state;
 - (void)setCustomButtonTitleColor:(UIColor *)color forState:(UIControlState)state;
 
-+ (id)itemWithImage:(UIImage *)image;
-+ (id)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
++ (instancetype)itemWithImage:(UIImage *)image;
++ (instancetype)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action;
 
 @end

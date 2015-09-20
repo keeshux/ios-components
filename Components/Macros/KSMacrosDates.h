@@ -28,7 +28,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ARCHelper.h"
 
 #pragma mark - Year
 
@@ -80,9 +79,7 @@ static inline NSInteger KSDatesCurrentMonth() {
 
 static inline NSArray *KSDatesMonthStrings() {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSArray *months = [formatter monthSymbols];
-    [formatter release];
-    return months;
+    return [formatter monthSymbols];
 }
 
 static inline NSString *KSDatesMonthString(const NSUInteger month) {

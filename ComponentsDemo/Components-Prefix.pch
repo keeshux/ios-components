@@ -11,6 +11,5 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "ARCHelper.h"
-    #import "LegacyViewController.h"
+        #import "LegacyViewController.h"
 #endif

@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 
 @protocol KSProgressDownloaderDelegate;
 
@@ -37,7 +36,7 @@
 @property (nonatomic, copy) NSString *cancelTitle;
 @property (nonatomic, copy) NSString *destinationFile;
 
-@property (nonatomic, ah_weak) id<KSProgressDownloaderDelegate> delegate;
+@property (nonatomic, weak) id<KSProgressDownloaderDelegate> delegate;
 
 + (instancetype)downloaderWithWindow:(UIWindow *)window;
 - (instancetype)initWithWindow:(UIWindow *)window;

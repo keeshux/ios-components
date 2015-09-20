@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIButton *shuffleButton;
 @property (nonatomic, strong) UILabel *afterLabel;
 
-- (void) shuffleData:(id)sender;
+- (void)shuffleData:(id)sender;
 
 @end

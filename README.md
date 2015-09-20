@@ -4,8 +4,6 @@ Podfile:
 
     pod 'ios-components'
 
-Everything _should_ work with both ARC and non-ARC projects.
-
 ## Macros
 
 - [KSMacros](Components/Macros) - Common routines
@@ -33,7 +31,6 @@ Everything _should_ work with both ARC and non-ARC projects.
 - [KSAdvancedPicker](Components/UI/KSAdvancedPicker) - Meant to overcome `UIPickerView` limitations
 - [KSBasicMapAnnotation](Components/UI/KSBasicMapAnnotation)
 - [KSCheckView](Components/UI/KSCheckView)
-- [KSEditEnder](Components/UI/KSEditEnder)
 - [KSGridView](Components/UI/KSGridView) - Static, no-brainer, bidimensional grid
 - [KSOptionsViewController](Components/UI/KSOptionsViewController) - Convenient table view controller for option selection
 - [KSSheetView](Components/UI/KSSheetView)

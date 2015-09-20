@@ -28,22 +28,24 @@
 
 #import "KSCheckView.h"
 
+@interface KSCheckView ()
+
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, unsafe_unretained) CGMutablePathRef path;
+
+@end
+
 @implementation KSCheckView
 
-@synthesize checked;
-@synthesize color;
-
-@synthesize delegate;
-
-- (id) initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        width = self.frame.size.width / 8.0;
+        self.width = self.frame.size.width / 8.0;
 
-        path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, width, self.frame.size.height / 2);
-        CGPathAddLineToPoint(path, NULL, self.frame.size.width * 0.4, self.frame.size.height - width);
-        CGPathAddLineToPoint(path, NULL, self.frame.size.width - width, width);
+        self.path = CGPathCreateMutable();
+        CGPathMoveToPoint(self.path, NULL, self.width, self.frame.size.height / 2);
+        CGPathAddLineToPoint(self.path, NULL, self.frame.size.width * 0.4, self.frame.size.height - self.width);
+        CGPathAddLineToPoint(self.path, NULL, self.frame.size.width - self.width, self.width);
 
         self.backgroundColor = [UIColor whiteColor];
         self.color = [UIColor blackColor];
@@ -54,28 +56,24 @@
     return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
-    CGPathRelease(path);
-    self.color = nil;
-
-    [super ah_dealloc];
+    CGPathRelease(self.path);
 }
 
-- (void) setChecked:(BOOL)aChecked
+- (void)setChecked:(BOOL)checked
 {
-    // do nothing
-    if (checked == aChecked) {
+    if (_checked == checked) {
         return;
     }
 
-    checked = aChecked;
+    _checked = checked;
     [self setNeedsDisplay];
 
-    [delegate checkView:self didChangeToChecked:checked];
+    [self.delegate checkView:self didChangeToChecked:_checked];
 }
 
-- (void) drawRect:(CGRect)rect
+- (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
@@ -84,21 +82,21 @@
     CGContextFillRect(context, rect);
 
     // check mark
-    if (checked) {
-        CGContextSetStrokeColorWithColor(context, color.CGColor);
+    if (self.checked) {
+        CGContextSetStrokeColorWithColor(context, self.color.CGColor);
         CGContextSetShouldAntialias(context, YES);
         CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextSetLineWidth(context, width);
+        CGContextSetLineWidth(context, self.width);
 
         CGContextBeginPath(context);
-        CGContextAddPath(context, path);
+        CGContextAddPath(context, self.path);
         CGContextStrokePath(context);
     }
 }
 
-- (void) toggleChecked
+- (void)toggleChecked
 {
-    self.checked = !checked;
+    self.checked = !self.checked;
 }
 
 @end

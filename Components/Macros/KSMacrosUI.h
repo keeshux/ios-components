@@ -32,7 +32,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "ARCHelper.h"
 
 static inline BOOL KSUIIsPad()
 {

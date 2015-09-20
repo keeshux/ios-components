@@ -36,22 +36,15 @@
 
 @implementation KSGridViewCell
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        self.items = [[[NSMutableArray alloc] init] autorelease];
+        self.items = [[NSMutableArray alloc] init];
         self.itemSize = CGSizeZero;
     }
     return self;
-}
-
-- (void)dealloc
-{
-    self.items = nil;
-
-    [super ah_dealloc];
 }
 
 - (void)setNumberOfColumns:(NSUInteger)numberOfColumns

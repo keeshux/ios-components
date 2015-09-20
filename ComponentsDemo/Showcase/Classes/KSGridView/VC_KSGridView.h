@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "KSGridView.h"
 
-@interface VC_KSGridView : LegacyViewController <KSGridViewDataSource, KSGridViewDelegate> {
-    BOOL alternative;
-}
+@interface VC_KSGridView : LegacyViewController <KSGridViewDataSource, KSGridViewDelegate>
 
 @property (nonatomic, strong) KSGridView *grid;
+@property (nonatomic, assign) BOOL alternative;
 
 @end

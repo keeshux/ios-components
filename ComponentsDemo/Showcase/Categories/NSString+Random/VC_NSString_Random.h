@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UITextField *outputField;
 
-- (void) generateString;
+- (void)generateString;
 
 @end

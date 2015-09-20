@@ -30,17 +30,17 @@
 
 @implementation UIBarButtonItem (CustomImage)
 
-+ (id)itemWithBackgroundImage:(UIImage *)image
++ (instancetype)itemWithBackgroundImage:(UIImage *)image
 {
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setBackgroundImage:image forState:UIControlStateNormal];
     aButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     aButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
 
-    return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:aButton];
 }
 
-+ (id)itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action
++ (instancetype)itemWithBackgroundImage:(UIImage *)image target:(id)target action:(SEL)action
 {
     UIBarButtonItem *item = [UIBarButtonItem itemWithBackgroundImage:image];
     UIButton *aButton = (UIButton *) item.customView;
@@ -51,27 +51,27 @@
 
 - (void)setCustomButtonTitle:(NSString *)title forState:(UIControlState)state
 {
-    [((UIButton *) self.customView) setTitle:title forState:state];
+    [(UIButton *)self.customView setTitle:title forState:state];
 }
 
 - (void)setCustomButtonTitleColor:(UIColor *)color forState:(UIControlState)state
 {
-    [((UIButton *) self.customView) setTitleColor:color forState:state];
+    [(UIButton *)self.customView setTitleColor:color forState:state];
 }
 
-+ (id)itemWithImage:(UIImage *)image
++ (instancetype)itemWithImage:(UIImage *)image
 {
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setImage:image forState:UIControlStateNormal];
     aButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     
-    return [[[UIBarButtonItem alloc] initWithCustomView:aButton] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:aButton];
 }
 
-+ (id)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action
++ (instancetype)itemWithImage:(UIImage *)image target:(id)target action:(SEL)action
 {
     UIBarButtonItem *item = [UIBarButtonItem itemWithImage:image];
-    UIButton *aButton = (UIButton *) item.customView;
+    UIButton *aButton = (UIButton *)item.customView;
     [aButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 
     return item;

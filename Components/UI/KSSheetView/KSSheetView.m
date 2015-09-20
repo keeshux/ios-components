@@ -28,97 +28,95 @@
 
 #import "KSSheetView.h"
 
+@interface KSSheetView ()
+
+// derived from cellSize
+@property (nonatomic, assign) NSUInteger gridWidth;
+@property (nonatomic, assign) NSUInteger gridHeight;
+
+@property (nonatomic, unsafe_unretained) CGColorRef paperColor;
+@property (nonatomic, unsafe_unretained) CGColorRef lineColor;
+
+@end
+
 @implementation KSSheetView
 
-@synthesize cellSize;
-@synthesize offset;
-@synthesize lineWidth;
-
-@synthesize gridWidth;
-@synthesize gridHeight;
-
-@synthesize delegate;
-
-#pragma mark - init/dealloc
-
-- (id) initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        paperColor = CGColorCreateCopy([UIColor colorWithRed:0.93
-                                                       green:0.93
-                                                        blue:0.93
-                                                       alpha:1.0].CGColor);
-        lineColor = CGColorCreateCopy([UIColor colorWithRed:0.48
-                                                      green:0.73
-                                                       blue:0.96
-                                                      alpha:1.0].CGColor);
+        self.paperColor = CGColorCreateCopy([UIColor colorWithRed:0.93
+                                                            green:0.93
+                                                             blue:0.93
+                                                            alpha:1.0].CGColor);
+        self.lineColor = CGColorCreateCopy([UIColor colorWithRed:0.48
+                                                           green:0.73
+                                                            blue:0.96
+                                                           alpha:1.0].CGColor);
 
         // default
         self.cellSize = frame.size.width / 12;
-        self.offset = CGPointMake((frame.size.width - cellSize * gridWidth) / 2,
-                                  (frame.size.height - cellSize * gridHeight) / 2);
+        self.offset = CGPointMake((frame.size.width - self.cellSize * self.gridWidth) / 2,
+                                  (frame.size.height - self.cellSize * self.gridHeight) / 2);
         self.lineWidth = ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 2.0 : 1.0);
     }
     return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
-    CGColorRelease(paperColor);
-    CGColorRelease(lineColor);
-    
-    [super ah_dealloc];
+    CGColorRelease(self.paperColor);
+    CGColorRelease(self.lineColor);
 }
 
-- (void) setCellSize:(NSUInteger)aCellSize
+- (void)setCellSize:(NSUInteger)cellSize
 {
-    cellSize = aCellSize;
+    _cellSize = cellSize;
 
     // dependent ivars
-    gridWidth = self.frame.size.width / cellSize;
-    gridHeight = self.frame.size.height / cellSize;
+    self.gridWidth = self.frame.size.width / _cellSize;
+    self.gridHeight = self.frame.size.height / _cellSize;
+    
+    [self setNeedsDisplay];
 }
 
-#pragma mark - Draw loop
-
-- (void) drawRect:(CGRect)rect
+- (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     // paper color
-    CGContextSetFillColorWithColor(context, paperColor);
+    CGContextSetFillColorWithColor(context, self.paperColor);
     CGContextFillRect(context, rect);
 
     // grid color
-    CGContextSetStrokeColorWithColor(context, lineColor);
-    CGContextSetLineWidth(context, lineWidth);
+    CGContextSetStrokeColorWithColor(context, self.lineColor);
+    CGContextSetLineWidth(context, self.lineWidth);
 
     CGPoint delta;
 
     // horizontal lines
-    delta.y = offset.y;
+    delta.y = self.offset.y;
     while (delta.y < rect.size.height) {
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, rect.origin.x, rect.origin.y + delta.y);
         CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + delta.y);
         CGContextStrokePath(context);
 
-        delta.y += cellSize;
+        delta.y += self.cellSize;
     }
 
     // vertical lines
-    delta.x = offset.x;
+    delta.x = self.offset.x;
     while (delta.x < rect.size.width) {
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, rect.origin.x + delta.x, rect.origin.y);
         CGContextAddLineToPoint(context, rect.origin.x + delta.x, rect.origin.y + rect.size.height);
         CGContextStrokePath(context);
         
-        delta.x += cellSize;
+        delta.x += self.cellSize;
     }
 
     // delegate custom drawing
-    [delegate drawInSheet:self inContext:context inRect:rect];
+    [self.delegate drawInSheet:self inContext:context inRect:rect];
 }
 
 @end

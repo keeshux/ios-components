@@ -27,7 +27,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ARCHelper.h"
 #import "KSGridViewCell.h"
 #import "KSGridViewIndex.h"
 
@@ -37,8 +36,8 @@
 @interface KSGridView : UIView <UITableViewDataSource, UITableViewDelegate, KSGridViewCellDelegate>
 
 @property (nonatomic, assign) BOOL scrollEnabled;
-@property (nonatomic, ah_weak) id<KSGridViewDataSource> dataSource;
-@property (nonatomic, ah_weak) id<KSGridViewDelegate> delegate;
+@property (nonatomic, weak) id<KSGridViewDataSource> dataSource;
+@property (nonatomic, weak) id<KSGridViewDelegate> delegate;
 
 - (void)reloadData;
 
