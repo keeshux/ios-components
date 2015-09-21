@@ -37,7 +37,7 @@ typedef enum {
 KSIAPProductMetadataKind KSIAPProductMetadataKindFromString(NSString *string);
 NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind);
 
-//
+#pragma mark -
 
 @interface KSIAPProductMetadata : NSObject <NSCoding>
 
@@ -54,7 +54,7 @@ NSString *KSIAPProductMetadataKindToString(const KSIAPProductMetadataKind kind);
 
 @end
 
-//
+#pragma mark -
 
 extern NSString *const KSIAPManagerDidFetchProductsListNotification;
 extern NSString *const KSIAPManagerDidStartPurchasingProductNotification;
