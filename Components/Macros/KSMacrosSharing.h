@@ -28,7 +28,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL);
 
 void KSSharingFacebookPostStatus(UIViewController *controller, NSString *status, UIImage *image);

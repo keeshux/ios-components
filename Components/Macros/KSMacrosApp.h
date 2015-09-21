@@ -26,19 +26,15 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef KSMacrosApp_h
-#define KSMacrosApp_h
-
 #import <Foundation/Foundation.h>
 
+extern NSString *const KSAppLinkProtocol;
+extern NSString *const KSAppLinkProtocolWeb;
 
-#define KSAppLinkProtocol               @"itms-apps"
-#define KSAppLinkProtocolWeb            @"http"
+extern NSString *const KSAppLinkFormat;
+extern NSString *const KSAppDeveloperLinkFormat;
 
-#define KSAppLinkFormat                 @"%@://itunes.apple.com/app/id%lu"
-#define KSAppDeveloperLinkFormat        @"%@://itunes.apple.com/developer/id%lu"
-
-#define KSAppGCLogin                    @"gamecenter:/me"
+extern NSString *const KSAppGCLogin;
 
 static inline NSString *KSAppVersion()
 {
@@ -84,5 +80,3 @@ static inline NSString *KSAppWebDeveloperURL(const unsigned long developerID)
 {
     return [NSString stringWithFormat:KSAppDeveloperLinkFormat, KSAppLinkProtocolWeb, developerID];
 }
-
-#endif

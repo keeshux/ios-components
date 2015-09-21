@@ -26,12 +26,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef KSMacrosUI_h
-#define KSMacrosUI_h
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 
 static inline BOOL KSUIIsPad()
 {
@@ -57,7 +53,9 @@ static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
     return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
 
+#ifndef KSUISF
 #define KSUISF(format, ...)     [NSString stringWithFormat:format, __VA_ARGS__]
+#endif
 
 static inline NSString *KSUIString(NSString *key)
 {
@@ -72,5 +70,3 @@ static inline NSString *KSUITableString(NSString *table, NSString *key)
 BOOL KSUIPhoneCanCall(void);
 
 BOOL KSUIPhoneCall(NSString *phone);
-
-#endif

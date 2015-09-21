@@ -28,7 +28,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 #pragma mark - Year
 
 NSInteger KSDatesYear(NSDate *date);

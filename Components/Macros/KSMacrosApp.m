@@ -26,6 +26,12 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
+#import "KSMacrosApp.h"
 
-void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)());
+NSString *const KSAppLinkProtocol               = @"itms-apps";
+NSString *const KSAppLinkProtocolWeb            = @"http";
+
+NSString *const KSAppLinkFormat                 = @"%@://itunes.apple.com/app/id%lu";
+NSString *const KSAppDeveloperLinkFormat        = @"%@://itunes.apple.com/developer/id%lu";
+
+NSString *const KSAppGCLogin                    = @"gamecenter:/me";

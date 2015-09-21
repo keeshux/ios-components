@@ -26,12 +26,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef KSMacrosSystem_h
-#define KSMacrosSystem_h
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 
 static inline NSString *KSSystemVersion()
 {
@@ -72,5 +68,3 @@ static inline BOOL KSSystemIsiOS7()
     return NO;
 #endif
 }
-
-#endif
