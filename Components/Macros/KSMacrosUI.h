@@ -26,22 +26,60 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#ifndef KSMacrosUI_h
+#define KSMacrosUI_h
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+static inline BOOL KSUIIsPhone()
+{
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
+}
 
 static inline BOOL KSUIIsPad()
 {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
-static inline BOOL KSUIIsPhone5()
-{
-    return (fabs((double)[UIScreen mainScreen].bounds.size.height - (double)568) < DBL_EPSILON);
-}
-
 static inline BOOL KSUIIsRetina()
 {
     return ([[UIScreen mainScreen] scale] > 1.9);
+}
+
+static inline CGFloat KSUIScreenWidth()
+{
+    return [[UIScreen mainScreen] bounds].size.width;
+}
+
+static inline CGFloat KSUIScreenHeight()
+{
+    return [[UIScreen mainScreen] bounds].size.height;
+}
+
+static inline CGFloat KSUIScreenMaxLength()
+{
+    return MAX(KSUIScreenWidth(), KSUIScreenHeight());
+}
+
+static inline CGFloat KSUIScreenMinLength()
+{
+    return MIN(KSUIScreenWidth(), KSUIScreenHeight());
+}
+
+static inline BOOL KSUIIsPadNonRetina()
+{
+    return (KSUIIsPad() && !KSUIIsRetina());
+}
+
+static inline BOOL KSUIIsPhone5()
+{
+    return (KSUIIsPhone() && (KSUIScreenMaxLength() == 568.0));
+}
+
+static inline BOOL KSUIIsPhone5OrLater()
+{
+    return (KSUIIsPhone() && (KSUIScreenMaxLength() >= 568.0));
 }
 
 static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
@@ -53,9 +91,7 @@ static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
     return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
 
-#ifndef KSUISF
 #define KSUISF(format, ...)     [NSString stringWithFormat:format, __VA_ARGS__]
-#endif
 
 static inline NSString *KSUIString(NSString *key)
 {
@@ -70,3 +106,5 @@ static inline NSString *KSUITableString(NSString *table, NSString *key)
 BOOL KSUIPhoneCanCall(void);
 
 BOOL KSUIPhoneCall(NSString *phone);
+
+#endif
