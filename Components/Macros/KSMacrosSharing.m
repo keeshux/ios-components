@@ -46,7 +46,7 @@ void KSSharingFacebookOpenPage(NSString *pageId, NSString *fallbackURL)
 
 static inline void KSSharingPostStatus(UIViewController *controller, NSString *serviceType, NSString *status, UIImage *image)
 {
-    SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    SLComposeViewController *composer = [SLComposeViewController composeViewControllerForServiceType:serviceType];
     [composer setInitialText:status];
     if (image) {
         [composer addImage:image];
