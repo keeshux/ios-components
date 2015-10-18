@@ -32,21 +32,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-static inline BOOL KSUIIsPhone()
-{
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
-}
-
-static inline BOOL KSUIIsPad()
-{
-    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
-}
-
-static inline BOOL KSUIIsRetina()
-{
-    return ([[UIScreen mainScreen] scale] > 1.9);
-}
-
 static inline CGFloat KSUIScreenWidth()
 {
     return [[UIScreen mainScreen] bounds].size.width;
@@ -67,6 +52,26 @@ static inline CGFloat KSUIScreenMinLength()
     return MIN(KSUIScreenWidth(), KSUIScreenHeight());
 }
 
+static inline BOOL KSUIIsPhone()
+{
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
+}
+
+static inline BOOL KSUIIsPad()
+{
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
+static inline BOOL KSUIIsRetina()
+{
+    return ([[UIScreen mainScreen] scale] > 1.9);
+}
+
+static inline BOOL KSUIIsPadRetina()
+{
+    return (KSUIIsPad() && KSUIIsRetina());
+}
+
 static inline BOOL KSUIIsPadNonRetina()
 {
     return (KSUIIsPad() && !KSUIIsRetina());
@@ -75,6 +80,16 @@ static inline BOOL KSUIIsPadNonRetina()
 static inline BOOL KSUIIsPhone5()
 {
     return (KSUIIsPhone() && (KSUIScreenMaxLength() == 568.0));
+}
+
+static inline BOOL KSUIIsPhone6()
+{
+    return (KSUIIsPhone() && (KSUIScreenMaxLength() == 667.0));
+}
+
+static inline BOOL KSUIIsPhone6Plus()
+{
+    return (KSUIIsPhone() && (KSUIScreenMaxLength() == 736.0));
 }
 
 static inline BOOL KSUIIsPhone5OrLater()
