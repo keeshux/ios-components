@@ -38,20 +38,20 @@ extern NSString *const KSAppGCLogin;
 
 static inline NSString *KSAppVersion()
 {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
 }
 
 static inline NSString *KSAppBundleVersion()
 {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    return [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey];
 }
 
 static inline NSString *KSAppVersionDescription()
 {
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *appName = [info objectForKey:(NSString *)kCFBundleNameKey];
-    NSString *appVersion = [info objectForKey:@"CFBundleShortVersionString"];
-    NSString *appBuild = [info objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *appName = info[(NSString *)kCFBundleNameKey];
+    NSString *appVersion = info[@"CFBundleShortVersionString"];
+    NSString *appBuild = info[(NSString *)kCFBundleVersionKey];
     
     return [NSString stringWithFormat:@"%@ %@ (#%@)", appName, appVersion, appBuild];
 }
