@@ -36,34 +36,34 @@ extern NSString *const KSAppDeveloperLinkFormat;
 
 extern NSString *const KSAppGCLogin;
 
+static inline NSString *KSAppName()
+{
+    return [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleNameKey];
+}
+
 static inline NSString *KSAppVersion()
 {
     return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
 }
 
-static inline NSString *KSAppBundleVersion()
+static inline NSString *KSAppBuild()
 {
     return [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey];
 }
 
 static inline NSString *KSAppFullVersion()
 {
-    return [NSString stringWithFormat:@"%@ (%@)", KSAppVersion(), KSAppBundleVersion()];
+    return [NSString stringWithFormat:@"%@ (%@)", KSAppVersion(), KSAppBuild()];
 }
 
-static inline NSString *KSAppVersionDescription()
+static inline NSString *KSAppDescription()
 {
-    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
-    NSString *appName = info[(NSString *)kCFBundleNameKey];
-    NSString *appVersion = info[@"CFBundleShortVersionString"];
-    NSString *appBuild = info[(NSString *)kCFBundleVersionKey];
-    
-    return [NSString stringWithFormat:@"%@ %@ (%@)", appName, appVersion, appBuild];
+    return [NSString stringWithFormat:@"%@ %@ (%@)", KSAppName(), KSAppVersion(), KSAppBuild()];
 }
 
-static inline void KSAppPrintVersion()
+static inline void KSAppPrintDescription()
 {
-    NSLog(@"%@", KSAppVersionDescription());
+    NSLog(@"%@", KSAppDescription());
 }
 
 static inline NSString *KSAppURL(const unsigned long appID)
