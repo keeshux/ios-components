@@ -46,6 +46,11 @@ static inline NSString *KSAppBundleVersion()
     return [[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey];
 }
 
+static inline NSString *KSAppFullVersion()
+{
+    return [NSString stringWithFormat:@"%@ (%@)", KSAppVersion(), KSAppBundleVersion()];
+}
+
 static inline NSString *KSAppVersionDescription()
 {
     NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
@@ -53,7 +58,7 @@ static inline NSString *KSAppVersionDescription()
     NSString *appVersion = info[@"CFBundleShortVersionString"];
     NSString *appBuild = info[(NSString *)kCFBundleVersionKey];
     
-    return [NSString stringWithFormat:@"%@ %@ (#%@)", appName, appVersion, appBuild];
+    return [NSString stringWithFormat:@"%@ %@ (%@)", appName, appVersion, appBuild];
 }
 
 static inline void KSAppPrintVersion()
