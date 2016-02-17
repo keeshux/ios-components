@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name              = 'ios-components'
-    s.version           = '1.2.4'
+    s.version           = '1.3'
     s.license           = 'GPL'
 
     s.summary           = 'Collection of reusable components for iOS development.'
