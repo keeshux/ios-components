@@ -97,13 +97,26 @@ static inline BOOL KSUIIsPhone5OrLater()
     return (KSUIIsPhone() && (KSUIScreenMaxLength() >= 568.0));
 }
 
-static inline UIColor *KSUIColorFromRGB(const NSUInteger rgb)
+static inline UIColor *KSUIColorFromRGBA(const NSUInteger r, const NSUInteger g, const NSUInteger b, const NSUInteger a)
 {
-    const CGFloat r = ((rgb >> 16) & 0xFF) / 255.0;
-    const CGFloat g = ((rgb >> 8) & 0xFF) / 255.0;
-    const CGFloat b = (rgb & 0xFF) / 255.0;
+    return [UIColor colorWithRed:(r / 255.0)
+                           green:(g / 255.0)
+                            blue:(b / 255.0)
+                           alpha:(a / 255.0)];
+}
+
+static inline UIColor *KSUIColorFromRGB(const NSUInteger r, const NSUInteger g, const NSUInteger b)
+{
+    return KSUIColorFromRGBA(r, g, b, 255.0);
+}
+
+static inline UIColor *KSUIColorFromHex(const NSUInteger hex)
+{
+    const CGFloat r = ((hex >> 16) & 0xFF) / 255.0;
+    const CGFloat g = ((hex >> 8) & 0xFF) / 255.0;
+    const CGFloat b = (hex & 0xFF) / 255.0;
     
-    return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
+    return KSUIColorFromRGB(r, g, b);
 }
 
 #define KSUISF(format, ...)     [NSString stringWithFormat:format, __VA_ARGS__]
