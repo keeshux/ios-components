@@ -192,6 +192,8 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 
 - (void)dealloc
 {
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
