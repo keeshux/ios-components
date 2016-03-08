@@ -63,6 +63,12 @@ extern NSString *const KSIAPManagerDidFailProductNotification;
 extern NSString *const KSIAPManagerDidRestoreCompletedNotification;
 extern NSString *const KSIAPManagerDidFailToRestoreCompletedNotification;
 
+extern NSString *const KSIAPManagerProductKey;
+extern NSString *const KSIAPManagerProductIdentifierKey;
+extern NSString *const KSIAPManagerPurchaseKey;
+extern NSString *const KSIAPManagerIsRestoredKey;
+extern NSString *const KSIAPManagerErrorKey;
+
 typedef enum {
     KSIAPManagerPurchaseResultRequested,
     KSIAPManagerPurchaseResultPurchased,

@@ -115,6 +115,12 @@ NSString *const KSIAPManagerDidFailProductNotification              = @"KSIAPMan
 NSString *const KSIAPManagerDidRestoreCompletedNotification         = @"KSIAPManagerDidRestoreCompletedNotification";
 NSString *const KSIAPManagerDidFailToRestoreCompletedNotification   = @"KSIAPManagerDidFailToRestoreCompletedNotification";
 
+NSString *const KSIAPManagerProductKey                  = @"product";
+NSString *const KSIAPManagerProductIdentifierKey        = @"productIdentifier";
+NSString *const KSIAPManagerPurchaseKey                 = @"purchase";
+NSString *const KSIAPManagerIsRestoredKey               = @"isRestored";
+NSString *const KSIAPManagerErrorKey                    = @"error";
+
 static NSString *const KSIAPManagerSaltKey              = @"KSIAPManager";
 static NSString *const KSIAPManagerConfigurationPlist   = @"KSIAPManager";
 static NSString *const KSIAPManagerPurchasesFile        = @"KSIAPManager.db";
@@ -366,7 +372,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     if ((metadata.kind == KSIAPProductMetadataKindNonConsumable) &&
         [self isPurchasedProductIdentifier:productIdentifier]) {
 
-        NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, @"productIdentifier", nil];
+        NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, KSIAPManagerProductIdentifierKey, nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                             object:nil
                                                           userInfo:userInfo];
@@ -422,7 +428,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 {
     NSString *productIdentifier = transaction.payment.productIdentifier;
 
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, @"productIdentifier", nil];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, KSIAPManagerProductIdentifierKey, nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidStartPurchasingProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
@@ -435,8 +441,8 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     KSIAPPurchase *purchase = [self savePurchaseWithProductIdentifier:productIdentifier quantity:quantity];
     SKProduct *product = [self.availableProducts objectForKey:productIdentifier];
 
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, @"product",
-                              purchase, @"purchase", nil];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, KSIAPManagerProductKey,
+                              purchase, KSIAPManagerPurchaseKey, nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
@@ -451,8 +457,8 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     KSIAPPurchase *purchase = [self savePurchaseWithProductIdentifier:productIdentifier quantity:quantity];
     SKProduct *product = [self.availableProducts objectForKey:productIdentifier];
 
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, @"product",
-                              purchase, @"purchase", [NSNumber numberWithBool:YES], @"isRestored", nil];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:product, KSIAPManagerProductKey,
+                              purchase, KSIAPManagerPurchaseKey, @YES, KSIAPManagerIsRestoredKey, nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidPurchaseProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
@@ -465,7 +471,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
     NSString *productIdentifier = transaction.payment.productIdentifier;
     NSError *error = transaction.error;
 
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, @"productIdentifier", error, @"error", nil];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:productIdentifier, KSIAPManagerProductIdentifierKey, error, KSIAPManagerErrorKey, nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailProductNotification
                                                         object:nil
                                                       userInfo:userInfo];
@@ -542,7 +548,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 {
     NSLog(@"%@: Failed to restore completed transactions: %@", [self class], error);
 
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:error, KSIAPManagerErrorKey, nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:KSIAPManagerDidFailToRestoreCompletedNotification
                                                         object:nil
                                                       userInfo:userInfo];
