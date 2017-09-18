@@ -112,9 +112,9 @@ static inline UIColor *KSUIColorFromRGB(const NSUInteger r, const NSUInteger g, 
 
 static inline UIColor *KSUIColorFromHex(const NSUInteger hex)
 {
-    const CGFloat r = ((hex >> 16) & 0xFF) / 255.0;
-    const CGFloat g = ((hex >> 8) & 0xFF) / 255.0;
-    const CGFloat b = (hex & 0xFF) / 255.0;
+    const CGFloat r = (hex >> 16) & 0xFF;
+    const CGFloat g = (hex >> 8) & 0xFF;
+    const CGFloat b = hex & 0xFF;
     
     return KSUIColorFromRGB(r, g, b);
 }
