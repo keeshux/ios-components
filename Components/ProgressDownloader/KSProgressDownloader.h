@@ -38,8 +38,8 @@
 
 @property (nonatomic, weak) id<KSProgressDownloaderDelegate> delegate;
 
-+ (instancetype)downloaderWithWindow:(UIWindow *)window;
-- (instancetype)initWithWindow:(UIWindow *)window;
++ (instancetype)downloaderWithView:(UIView *)view;
+- (instancetype)initWithView:(UIView *)view;
 
 - (void)downloadWithRequest:(NSURLRequest *)request;
 

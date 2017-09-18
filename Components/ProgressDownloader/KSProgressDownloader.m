@@ -32,7 +32,7 @@
 
 @interface KSProgressDownloader ()
 
-@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UIView *view;
 @property (nonatomic, strong) NSURLRequest *request;
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, assign) NSInteger contentLength;
@@ -48,15 +48,15 @@
 
 @implementation KSProgressDownloader
 
-+ (instancetype)downloaderWithWindow:(UIWindow *)window
++ (instancetype)downloaderWithView:(UIWindow *)view
 {
-    return [[self alloc] initWithWindow:window];
+    return [[self alloc] initWithView:view];
 }
 
-- (instancetype)initWithWindow:(UIWindow *)window
+- (instancetype)initWithView:(UIView *)view
 {
     if ((self = [super init])) {
-        self.window = window;
+        self.view = view;
         self.message = @"Downloading";
         self.cancelTitle = @"Cancel";
     }
@@ -87,13 +87,13 @@
 //    // show alert
 //    [_progressAlert show];
     
-    [self.progressHUD hide:NO];
+    [self.progressHUD hideAnimated:NO];
     
-    self.progressHUD = [[MBProgressHUD alloc] initWithWindow:self.window];
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
     self.progressHUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    self.progressHUD.labelText = self.message;
-    [self.window addSubview:self.progressHUD];
-    [self.progressHUD show:YES];
+    self.progressHUD.label.text = self.message;
+    [self.view addSubview:self.progressHUD];
+    [self.progressHUD showAnimated:YES];
 
     // TODO: caching
 
@@ -168,7 +168,7 @@
     NSLog(@"%@: Download finished", [self class]);
 
 //    [self.progressAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [self.progressHUD hide:YES];
+    [self.progressHUD hideAnimated:YES];
 
     [self.delegate downloader:self didDownloadURL:self.request.URL toFile:self.destinationFile];
 }
@@ -189,7 +189,7 @@
     }
     
 //    [self.progressAlert dismissWithClickedButtonIndex:0 animated:YES];
-    [self.progressHUD hide:YES];
+    [self.progressHUD hideAnimated:YES];
     
     [self.delegate downloader:self didFailToDownloadURL:self.request.URL errorCode:0];
 }
