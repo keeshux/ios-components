@@ -28,4 +28,4 @@
 
 #import <Foundation/Foundation.h>
 
-void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)());
+void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)(void));

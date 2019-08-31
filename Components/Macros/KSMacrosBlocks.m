@@ -28,7 +28,7 @@
 
 #import "KSMacrosBlocks.h"
 
-void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)()) {
+void KSBlocksDelaySeconds(const NSTimeInterval seconds, void (^block)(void)) {
     const dispatch_time_t when = dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC);
     const dispatch_queue_t queue = dispatch_get_main_queue();
     dispatch_after(when, queue, block);
