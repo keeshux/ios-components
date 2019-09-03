@@ -122,7 +122,7 @@ NSString *const KSIAPManagerIsRestoredKey               = @"isRestored";
 NSString *const KSIAPManagerErrorKey                    = @"error";
 
 static NSString *const KSIAPManagerSaltKey              = @"KSIAPManager";
-static NSString *const KSIAPManagerConfigurationPlist   = @"KSIAPManager";
+//static NSString *const KSIAPManagerConfigurationPlist   = @"KSIAPManager";
 static NSString *const KSIAPManagerPurchasesFile        = @"KSIAPManager.db";
 
 static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
@@ -180,7 +180,7 @@ static const NSUInteger KSIAPManagerSaltKeyLength       = 32;
 //        NSLog(@"%@: Keychain salt is %@", [self class], self.keychainSalt);
         
         // load products metadata from configuration file
-        self.metadataPath = [[NSBundle bundleForClass:[self class]] pathForResource:KSIAPManagerConfigurationPlist ofType:@"plist"];
+//        self.metadataPath = [[NSBundle mainBundle] pathForResource:KSIAPManagerConfigurationPlist ofType:@"plist"];
         
         // load already purchased products
         self.purchasesPath = [documentsDirectory stringByAppendingPathComponent:KSIAPManagerPurchasesFile];
